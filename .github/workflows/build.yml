@@ -1,0 +1,62 @@
+name: Build ID3-TagIT
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build Release
+    runs-on: windows-2022
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Install NuGet
+        uses: NuGet/setup-nuget@v4
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v3
+
+      - name: Restore NuGet packages
+        run: nuget restore ID3-TagIT.sln
+
+      - name: Build Release x86
+        run: >
+          msbuild ID3-TagIT.sln
+          /p:Configuration=Release
+          /p:Platform=x86
+          /m
+
+      - name: Package build
+        shell: pwsh
+        run: |
+          $shortSha = $env:GITHUB_SHA.Substring(0, 7)
+          "SHORT_SHA=$shortSha" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          Compress-Archive -Path bin\Release\* -DestinationPath "ID3-TagIT-$shortSha.zip"
+
+      # The release and its tag are both named after the short SHA of the commit that was built.
+      # Re-running the workflow for the same commit replaces the zip on the existing release.
+      - name: Publish release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $zip = "ID3-TagIT-$env:SHORT_SHA.zip"
+          gh release view $env:SHORT_SHA *> $null
+
+          if ($LASTEXITCODE -eq 0) {
+            gh release upload $env:SHORT_SHA $zip --clobber
+          }
+          else {
+            git log -1 --format=%B $env:GITHUB_SHA | Out-File -FilePath notes.md -Encoding utf8
+            gh release create $env:SHORT_SHA $zip --title $env:SHORT_SHA --target $env:GITHUB_SHA --notes-file notes.md --latest
+          }
+
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
