@@ -29,6 +29,10 @@ namespace ID3_TagIT
     private MenuStrip mnuBtns;
     private MenuStrip mnuDDs;
     private MenuStrip mnuExtended;
+    private ToolStripPanel tspTop;
+    private ToolStripPanel tspBottom;
+    private ToolStripPanel tspLeft;
+    private ToolStripPanel tspRight;
     private FolderBrowserDialog FolderBrowserDialog;
     private System.Windows.Forms.Timer FolderRenameTimer;
     private System.Windows.Forms.Timer Timer;
@@ -672,6 +676,10 @@ namespace ID3_TagIT
       this.sepButtons4 = new System.Windows.Forms.ToolStripSeparator();
       this.sepButtons5 = new System.Windows.Forms.ToolStripSeparator();
       this.mnuBtns = new System.Windows.Forms.MenuStrip();
+      this.tspTop = new System.Windows.Forms.ToolStripPanel();
+      this.tspBottom = new System.Windows.Forms.ToolStripPanel();
+      this.tspLeft = new System.Windows.Forms.ToolStripPanel();
+      this.tspRight = new System.Windows.Forms.ToolStripPanel();
       this.btnAddFolder = new System.Windows.Forms.ToolStripMenuItem();
       this.btnSave = new System.Windows.Forms.ToolStripMenuItem();
       this.btnPlay = new System.Windows.Forms.ToolStripMenuItem();
@@ -724,6 +732,7 @@ namespace ID3_TagIT
       this.mnuDDs.SuspendLayout();
       this.mnuExtended.SuspendLayout();
       this.mnuBtns.SuspendLayout();
+      this.tspTop.SuspendLayout();
       this.statusStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -2399,9 +2408,13 @@ namespace ID3_TagIT
             this.tsmiTitle,
             this.tsmiAlbum,
             this.tsmiClearFilter});
-      this.mnuExtended.Location = new System.Drawing.Point(0, 51);
+      this.mnuExtended.Dock = System.Windows.Forms.DockStyle.None;
+      this.mnuExtended.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
+      this.mnuExtended.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.StackWithOverflow;
+      this.mnuExtended.Location = new System.Drawing.Point(0, 27);
       this.mnuExtended.Name = "mnuExtended";
-      this.mnuExtended.Size = new System.Drawing.Size(1178, 27);
+      this.mnuExtended.Size = new System.Drawing.Size(600, 27);
+      this.mnuExtended.Stretch = false;
       this.mnuExtended.TabIndex = 29;
       // 
       // mnubCaseConv
@@ -3331,12 +3344,54 @@ namespace ID3_TagIT
             this.btnRemoveV2,
             this.btnFileToTagV2,
             this.btnTagToFileV2});
-      this.mnuBtns.Location = new System.Drawing.Point(0, 24);
+      this.mnuBtns.Dock = System.Windows.Forms.DockStyle.None;
+      this.mnuBtns.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
+      this.mnuBtns.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.StackWithOverflow;
+      this.mnuBtns.Location = new System.Drawing.Point(0, 0);
       this.mnuBtns.Name = "mnuBtns";
-      this.mnuBtns.Size = new System.Drawing.Size(1178, 27);
+      this.mnuBtns.Size = new System.Drawing.Size(600, 27);
+      this.mnuBtns.Stretch = false;
       this.mnuBtns.TabIndex = 29;
       this.mnuBtns.Text = "mnuBtns";
-      // 
+      //
+      // tspTop
+      //
+      this.tspTop.Controls.Add(this.mnuBtns);
+      this.tspTop.Controls.Add(this.mnuExtended);
+      this.tspTop.Dock = System.Windows.Forms.DockStyle.Top;
+      this.tspTop.Location = new System.Drawing.Point(0, 24);
+      this.tspTop.Name = "tspTop";
+      this.tspTop.Orientation = System.Windows.Forms.Orientation.Horizontal;
+      this.tspTop.RowMargin = new System.Windows.Forms.Padding(0);
+      this.tspTop.Size = new System.Drawing.Size(1178, 54);
+      //
+      // tspBottom
+      //
+      this.tspBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+      this.tspBottom.Location = new System.Drawing.Point(0, 842);
+      this.tspBottom.Name = "tspBottom";
+      this.tspBottom.Orientation = System.Windows.Forms.Orientation.Horizontal;
+      this.tspBottom.RowMargin = new System.Windows.Forms.Padding(0);
+      this.tspBottom.Size = new System.Drawing.Size(1178, 0);
+      //
+      // tspLeft
+      //
+      this.tspLeft.Dock = System.Windows.Forms.DockStyle.Left;
+      this.tspLeft.Location = new System.Drawing.Point(0, 78);
+      this.tspLeft.Name = "tspLeft";
+      this.tspLeft.Orientation = System.Windows.Forms.Orientation.Vertical;
+      this.tspLeft.RowMargin = new System.Windows.Forms.Padding(0);
+      this.tspLeft.Size = new System.Drawing.Size(0, 764);
+      //
+      // tspRight
+      //
+      this.tspRight.Dock = System.Windows.Forms.DockStyle.Right;
+      this.tspRight.Location = new System.Drawing.Point(1178, 78);
+      this.tspRight.Name = "tspRight";
+      this.tspRight.Orientation = System.Windows.Forms.Orientation.Vertical;
+      this.tspRight.RowMargin = new System.Windows.Forms.Padding(0);
+      this.tspRight.Size = new System.Drawing.Size(0, 764);
+      //
       // btnAddFolder
       // 
       this.btnAddFolder.Image = global::Properties.Resources.AddFolder;
@@ -3549,8 +3604,10 @@ namespace ID3_TagIT
       this.ClientSize = new System.Drawing.Size(1178, 864);
       this.Controls.Add(this.spltQuickInfo);
       this.Controls.Add(this.EnumInfo);
-      this.Controls.Add(this.mnuExtended);
-      this.Controls.Add(this.mnuBtns);
+      this.Controls.Add(this.tspLeft);
+      this.Controls.Add(this.tspRight);
+      this.Controls.Add(this.tspBottom);
+      this.Controls.Add(this.tspTop);
       this.Controls.Add(this.mnuDDs);
       this.Controls.Add(this.statusStrip1);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -3590,6 +3647,8 @@ namespace ID3_TagIT
       this.mnuExtended.PerformLayout();
       this.mnuBtns.ResumeLayout(false);
       this.mnuBtns.PerformLayout();
+      this.tspTop.ResumeLayout(false);
+      this.tspTop.PerformLayout();
       this.statusStrip1.ResumeLayout(false);
       this.statusStrip1.PerformLayout();
       this.ResumeLayout(false);

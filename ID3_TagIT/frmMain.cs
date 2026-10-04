@@ -1099,6 +1099,8 @@ Label_010B:
         Declarations.objSettings.ErrorExpanded = this.gripErrors.Expanded;
       }
 
+      Declarations.objSettings.ToolbarLayout = this.GetToolbarLayout();
+
       Form form = this;
       Id3TagIT_Main.SaveFormSettings(ref form);
       this.MP3View_SaveColumns();
@@ -1440,6 +1442,7 @@ Label_010B:
       this.gripNavigation.Expanded = Declarations.objSettings.NavPanExpanded;
       this.gripSideBar.Expanded = Declarations.objSettings.SideBarExpanded;
       this.gripErrors.Expanded = Declarations.objSettings.ErrorExpanded;
+      this.RestoreToolbarLayout(Declarations.objSettings.ToolbarLayout);
       //this.NavigationPan.RecalcLayout();
       //this.NavigationPan.ResetText();
       this.vbooStartUp = false;
@@ -4652,6 +4655,97 @@ Label_23AA:
         }
         this.UpdateListItem(item, false);
         frmProg.ProgressBar.PerformStep();
+      }
+    }
+
+    // The toolbars can be dragged by their grips to any of the four ToolStripPanels. Their
+    // layout is saved as "name,panel,x,y;..." where x/y is the toolbar's location in the panel.
+    private string GetToolbarLayout()
+    {
+      StringBuilder layout = new StringBuilder();
+
+      foreach (ToolStrip strip in new ToolStrip[] { this.mnuBtns, this.mnuExtended })
+      {
+        ToolStripPanel panel = strip.Parent as ToolStripPanel;
+
+        if (panel == null)
+          continue;
+
+        if (layout.Length > 0)
+          layout.Append(';');
+
+        layout.AppendFormat("{0},{1},{2},{3}", strip.Name, panel.Name, strip.Left, strip.Top);
+      }
+
+      return layout.ToString();
+    }
+
+    private void RestoreToolbarLayout(string layout)
+    {
+      ArrayList entries = new ArrayList();
+
+      foreach (string entry in layout.Split(';'))
+      {
+        string[] parts = entry.Split(',');
+        int x;
+        int y;
+
+        if (parts.Length != 4 || !int.TryParse(parts[2], out x) || !int.TryParse(parts[3], out y))
+          continue;
+
+        ToolStrip strip = (parts[0] == this.mnuBtns.Name) ? this.mnuBtns : ((parts[0] == this.mnuExtended.Name) ? this.mnuExtended : null);
+        ToolStripPanel panel = null;
+
+        foreach (ToolStripPanel candidate in new ToolStripPanel[] { this.tspTop, this.tspBottom, this.tspLeft, this.tspRight })
+          if (candidate.Name == parts[1])
+            panel = candidate;
+
+        if (strip != null && panel != null)
+          entries.Add(new object[] { strip, panel, new Point(x, y) });
+      }
+
+      // Anything unreadable keeps the default layout.
+      if (entries.Count != 2 || ((object[])entries[0])[0] == ((object[])entries[1])[0])
+        return;
+
+      // Rebuild from empty panels, joining in row order so each lands in the row it was in.
+      entries.Sort(new ToolbarEntryComparer());
+      this.SuspendLayout();
+
+      try
+      {
+        foreach (object[] entry in entries)
+          ((ToolStrip)entry[0]).Parent.Controls.Remove((ToolStrip)entry[0]);
+
+        foreach (object[] entry in entries)
+          ((ToolStripPanel)entry[1]).Join((ToolStrip)entry[0], (Point)entry[2]);
+      }
+      finally
+      {
+        this.ResumeLayout(true);
+      }
+    }
+
+    // Orders saved toolbar positions by panel, then row, then position within the row.
+    private sealed class ToolbarEntryComparer : IComparer
+    {
+      public int Compare(object a, object b)
+      {
+        ToolStripPanel panelA = (ToolStripPanel)((object[])a)[1];
+        ToolStripPanel panelB = (ToolStripPanel)((object[])b)[1];
+        Point pointA = (Point)((object[])a)[2];
+        Point pointB = (Point)((object[])b)[2];
+
+        if (panelA != panelB)
+          return string.CompareOrdinal(panelA.Name, panelB.Name);
+
+        bool horizontal = panelA.Orientation == Orientation.Horizontal;
+        int row = horizontal ? pointA.Y.CompareTo(pointB.Y) : pointA.X.CompareTo(pointB.X);
+
+        if (row != 0)
+          return row;
+
+        return horizontal ? pointA.X.CompareTo(pointB.X) : pointA.Y.CompareTo(pointB.Y);
       }
     }
 

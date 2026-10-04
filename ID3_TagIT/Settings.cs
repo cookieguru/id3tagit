@@ -1917,6 +1917,26 @@ namespace ID3_TagIT
       }
     }
 
+    // Where the main window's toolbars are docked; see frmMain.GetToolbarLayout. Empty means
+    // the default layout. Added on first write, like Theme.
+    public string ToolbarLayout
+    {
+      get
+      {
+        if (!this.SettingsTable.Columns.Contains("ToolbarLayout") || Convert.IsDBNull(this.SettingsRow["ToolbarLayout"]))
+          return "";
+
+        return StringType.FromObject(this.SettingsRow["ToolbarLayout"]);
+      }
+      set
+      {
+        if (!this.SettingsTable.Columns.Contains("ToolbarLayout"))
+          this.SettingsTable.Columns.Add(new DataColumn("ToolbarLayout", typeof(string)));
+
+        this.SettingsRow["ToolbarLayout"] = value;
+      }
+    }
+
     public byte V23Encoding
     {
       get
