@@ -13,8 +13,8 @@ namespace ID3_TagIT
   [StandardModule]
   internal sealed class Id3TagIT_Main
   {
-    internal static bool IS_ALPHA = true;
-    internal static bool IS_BETA = false;
+    internal static bool IS_ALPHA = false;
+    internal static bool IS_BETA = true;
 
     public static MemoryStream objDebugStream = new MemoryStream();
 
