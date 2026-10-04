@@ -1038,17 +1038,6 @@ Label_010B:
 
       try
       {
-        this.GetFilesTimeThread.Abort();
-      }
-      catch (Exception exception5)
-      {
-        ProjectData.SetProjectError(exception5);
-        Exception exception2 = exception5;
-        ProjectData.ClearProjectError();
-      }
-
-      try
-      {
         if (CalcAudioCheckSumThread != null)
         {
           this.CalcAudioCheckSumThread.Abort();
@@ -1462,18 +1451,6 @@ Label_010B:
 
       try
       {
-        if (this.GetFilesTimeThread != null)
-          this.GetFilesTimeThread.Abort();
-      }
-      catch (Exception exception1)
-      {
-        ProjectData.SetProjectError(exception1);
-        Exception exception = exception1;
-        ProjectData.ClearProjectError();
-      }
-
-      try
-      {
         if (this.CalcAudioCheckSumThread != null)
         {
           this.CalcAudioCheckSumThread.Abort();
@@ -1509,11 +1486,7 @@ Label_010B:
 
       progress.SetStateScan();
       progress.ShowDialog(this);
-      this.vintHelpCount = 0;
-      this.GetFilesTimeThread = new Thread(new ThreadStart(this.CalcGetTime));
-      this.GetFilesTimeThread.IsBackground = true;
-      this.GetFilesTimeThread.Priority = ThreadPriority.BelowNormal;
-      this.GetFilesTimeThread.Start();
+      this.objGetFilesTime = Stopwatch.StartNew();
       ownerForm = this;
       cB = new frmProgress.Callback(this.GetFilesCB);
 
@@ -1524,17 +1497,7 @@ Label_010B:
 
       progress.SetStateRead();
       progress.ShowDialog(this);
-
-      try
-      {
-        this.GetFilesTimeThread.Abort();
-      }
-      catch (Exception exception5)
-      {
-        ProjectData.SetProjectError(exception5);
-        Exception exception3 = exception5;
-        ProjectData.ClearProjectError();
-      }
+      this.objGetFilesTime.Stop();
 
       if (vbooFill)
         this.MP3View_FillColumns(ref Declarations.MP3s);
@@ -2652,16 +2615,6 @@ Label_0B93:
       }
     }
 
-    private void CalcGetTime()
-    {
-      do
-      {
-        Thread.Sleep(1000);
-        this.vintHelpCount++;
-      }
-      while (false);
-    }
-
     private bool CheckAllChanged()
     {
       foreach (ListViewItem item in this.MP3View.Items)
@@ -2816,13 +2769,19 @@ Label_0B93:
         MP3 mp = new MP3(vstrFullFilename);
         if (mp.ExploreMP3())
           Declarations.MP3s.Add(mp);
-        if (vintHelpCount != this.vintHelpCount)
+        // Update the time-remaining estimate once per elapsed second.
+        int elapsedSeconds = (int)(this.objGetFilesTime.ElapsedMilliseconds / 1000);
+
+        if (vintHelpCount != elapsedSeconds)
         {
-          vintHelpCount = this.vintHelpCount;
+          vintHelpCount = elapsedSeconds;
           try
           {
-            if (Declarations.MP3s.Count > 0)
-              num3 = (count - Declarations.MP3s.Count) / (Declarations.MP3s.Count / vintHelpCount);
+            // Files per second, in whole files; below one per second there's no estimate yet.
+            int filesPerSecond = Declarations.MP3s.Count / vintHelpCount;
+
+            if (filesPerSecond > 0)
+              num3 = (count - Declarations.MP3s.Count) / filesPerSecond;
           }
           catch (Exception exception1)
           {

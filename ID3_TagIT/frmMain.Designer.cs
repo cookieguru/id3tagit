@@ -37,7 +37,7 @@ namespace ID3_TagIT
     private System.Windows.Forms.Timer FolderRenameTimer;
     private System.Windows.Forms.Timer Timer;
     private Thread CalcAudioCheckSumThread;
-    private Thread GetFilesTimeThread;
+    private Stopwatch objGetFilesTime = new Stopwatch();
     private ToolStripComboBox cboLanguage;
     private ToolStripMenuItem aboutToolStripMenuItem;
     private ToolStripMenuItem addDirectoryToolStripMenuItem;
@@ -170,7 +170,6 @@ namespace ID3_TagIT
     private byte vbytFolderRenameCount;
     private byte vbytSelTimerCount;
     private int vintEnumCount;
-    private int vintHelpCount;
     private int vintSelTimerCount;
     private int[] aintLastSelected;
     private string vstrFilter;
@@ -3706,7 +3705,6 @@ namespace ID3_TagIT
       this.vstrFolderRenameNewPath = "";
       this.alstCopyPaste = new ArrayList();
       this.vintEnumCount = Declarations.objSettings.FilenumberStart;
-      this.vintHelpCount = 0;
       this.InitializeComponent();
       ThemeManager.Register(this);
     }
