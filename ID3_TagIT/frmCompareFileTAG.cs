@@ -267,8 +267,8 @@ namespace ID3_TagIT
         if (StringType.StrCmp(sLeft, "", false) != 0)
         {
           tag.FileTAGCompare = false;
-          item.BackColor = SystemColors.Window;
-          item.ForeColor = SystemColors.WindowText;
+          item.BackColor = Color.Empty; // inherit the list colors (theme-aware)
+          item.ForeColor = Color.Empty;
 
           if (tag.Changed)
           {

@@ -277,6 +277,7 @@ namespace ID3_TagIT
     {
       base.Load += new EventHandler(this.frmFilenameToTAG1_Load);
       this.InitializeComponent();
+      ThemeManager.Register(this);
       this.MainForm = FormMain;
     }
 

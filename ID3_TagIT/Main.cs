@@ -499,6 +499,7 @@ namespace ID3_TagIT
       }
 
       Declarations.objResources.ReadResources();
+      ThemeManager.Initialize();
       line.Resolve();
 
       if ((StringType.StrCmp(line.Path, "", false) != 0) & Directory.Exists(line.Path))

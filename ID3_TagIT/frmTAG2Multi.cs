@@ -3643,6 +3643,7 @@ namespace ID3_TagIT
       this.vbooLyricsMoved = false;
       this.vbooRatingMoved = false;
       this.InitializeComponent();
+      ThemeManager.Register(this);
       this.MainForm = FormMain;
     }
 

@@ -687,6 +687,7 @@ namespace ID3_TagIT
       this.vstrComparePath = "*";
       this.vstrTemplatesPath = StringType.FromObject(Interaction.IIf(Application.StartupPath.EndsWith(@"\"), Application.StartupPath + @"Templetes\", Application.StartupPath + @"\Templetes\"));
       this.InitializeComponent();
+      ThemeManager.Register(this);
       this.AddColumns();
       this.cmbWidth.SelectedIndex = 0;
       this.txtWidth.Minimum = decimal.Zero;

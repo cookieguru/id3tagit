@@ -199,6 +199,7 @@ namespace ID3_TagIT
       base.Load += new EventHandler(this.frmDouble_Load);
       this.vbooCancel = false;
       this.InitializeComponent();
+      ThemeManager.Register(this);
       this.MainForm = Main;
     }
 

@@ -4007,8 +4007,8 @@ Label_23AA:
 
           if (tag.WriteChanges())
           {
-            item.BackColor = SystemColors.Window;
-            item.ForeColor = SystemColors.WindowText;
+            item.BackColor = System.Drawing.Color.Empty; // inherit the list colors (theme-aware)
+            item.ForeColor = System.Drawing.Color.Empty;
 
             if (tag.FileTAGCompare)
             {
