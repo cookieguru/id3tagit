@@ -2901,6 +2901,8 @@ Label_0B93:
           this.MP3View_BuildColumns(ref this.colHAudioCheckSum, dataRo, StringType.FromObject(Declarations.objResources.ResStrings["Col" + dataRo["ID"].ToString().PadLeft(2, '0')]));
         else if (ObjectType.ObjTst(obj3, 0x1a, false) == 0)
           this.MP3View_BuildColumns(ref this.colHCreateDate, dataRo, StringType.FromObject(Declarations.objResources.ResStrings["Col" + dataRo["ID"].ToString().PadLeft(2, '0')]));
+        else if (ObjectType.ObjTst(obj3, 0x1b, false) == 0)
+          this.MP3View_BuildColumns(ref this.colHPublisher, dataRo, StringType.FromObject(Declarations.objResources.ResStrings["Col" + dataRo["ID"].ToString().PadLeft(2, '0')]));
       }
       if (ObjectType.ObjTst(Declarations.objSettings.Columns.Rows[0]["ID"], 1, false) != 0)
       {
@@ -3408,6 +3410,13 @@ Label_208F:
           else
             item.SubItems[this.colHComposer.Index].Text = "";
         }
+        if (this.MP3View.Columns.Contains(this.colHPublisher))
+        {
+          if (mp.V2TAG.FrameExists("TPUB"))
+            item.SubItems[this.colHPublisher.Index].Text = StringType.FromObject(LateBinding.LateGet(mp.V2TAG.GetFrame("TPUB"), null, "Content", new object[0], null, null));
+          else
+            item.SubItems[this.colHPublisher.Index].Text = "";
+        }
         if (this.MP3View.Columns.Contains(this.colHPicCount))
           item.SubItems[this.colHPicCount.Index].Text = StringType.FromInteger(mp.V2TAG.GetFrames("APIC").Count);
 Label_216E:
@@ -3525,6 +3534,9 @@ Label_23AA:
 
         if (header == this.colHCreateDate)
           row["ID"] = 0x1a;
+
+        if (header == this.colHPublisher)
+          row["ID"] = 0x1b;
 
         row["Width"] = header.Width;
         row["Alignment"] = header.TextAlign.ToString();
@@ -4156,6 +4168,7 @@ Label_23AA:
       this.colHPicCount.Text = StringType.FromObject(Declarations.objResources.ResStrings["Col24"]);
       this.colHAudioCheckSum.Text = StringType.FromObject(Declarations.objResources.ResStrings["Col25"]);
       this.colHCreateDate.Text = StringType.FromObject(Declarations.objResources.ResStrings["Col26"]);
+      this.colHPublisher.Text = StringType.FromObject(Declarations.objResources.ResStrings["Col27"]);
       this.colHErrFile.Text = StringType.FromObject(Declarations.objResources.ResStrings["CHError1"]);
       this.colHErrMsg.Text = StringType.FromObject(Declarations.objResources.ResStrings["CHError2"]);
       this.lblQEArtist.Text = this.colHArtist.Text;
@@ -4927,6 +4940,9 @@ Label_23AA:
         if (this.MP3View.Columns.Contains(this.colHComposer))
           lstItem.SubItems[this.colHComposer.Index].Text = "";
 
+        if (this.MP3View.Columns.Contains(this.colHPublisher))
+          lstItem.SubItems[this.colHPublisher.Index].Text = "";
+
         if (this.MP3View.Columns.Contains(this.colHBPM))
           lstItem.SubItems[this.colHBPM.Index].Text = "";
 
@@ -5070,6 +5086,14 @@ Label_0CC7:
           lstItem.SubItems[this.colHComposer.Index].Text = StringType.FromObject(LateBinding.LateGet(tag.V2TAG.GetFrame("TCOM"), null, "Content", new object[0], null, null));
         else
           lstItem.SubItems[this.colHComposer.Index].Text = "";
+      }
+
+      if (this.MP3View.Columns.Contains(this.colHPublisher))
+      {
+        if (tag.V2TAG.FrameExists("TPUB"))
+          lstItem.SubItems[this.colHPublisher.Index].Text = StringType.FromObject(LateBinding.LateGet(tag.V2TAG.GetFrame("TPUB"), null, "Content", new object[0], null, null));
+        else
+          lstItem.SubItems[this.colHPublisher.Index].Text = "";
       }
 
       if (this.MP3View.Columns.Contains(this.colHPicCount))

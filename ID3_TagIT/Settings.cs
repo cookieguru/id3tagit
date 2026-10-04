@@ -1917,6 +1917,44 @@ namespace ID3_TagIT
       }
     }
 
+    // Highest file list column ID this user has been offered. Columns added after 3.3.0 (which
+    // had 26) are switched on once by AddNewColumns, then stay as the user leaves them.
+    public int KnownColumns
+    {
+      get
+      {
+        if (!this.SettingsTable.Columns.Contains("KnownColumns") || Convert.IsDBNull(this.SettingsRow["KnownColumns"]))
+          return 0x1a;
+
+        return IntegerType.FromObject(this.SettingsRow["KnownColumns"]);
+      }
+      set
+      {
+        if (!this.SettingsTable.Columns.Contains("KnownColumns"))
+          this.SettingsTable.Columns.Add(new DataColumn("KnownColumns", typeof(int)));
+
+        this.SettingsRow["KnownColumns"] = value;
+      }
+    }
+
+    // Shows columns that are new since this user's settings were created: 27 (Publisher).
+    public void AddNewColumns()
+    {
+      if (this.SettingsTable == null || this.ColumnsTable == null || this.KnownColumns >= 0x1b)
+        return;
+
+      if (this.ColumnsTable.Select("ID = 27").Length == 0)
+      {
+        DataRow row = this.ColumnsTable.NewRow();
+        row["ID"] = 0x1b;
+        row["Width"] = 150;
+        row["Alignment"] = "Left";
+        this.ColumnsTable.Rows.Add(row);
+      }
+
+      this.KnownColumns = 0x1b;
+    }
+
     // Where the main window's toolbars are docked; see frmMain.GetToolbarLayout. Empty means
     // the default layout. Added on first write, like Theme.
     public string ToolbarLayout

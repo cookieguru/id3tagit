@@ -1629,6 +1629,12 @@ namespace ID3_TagIT
             double num = Conversion.Val(inputStr) / 100.0;
             return num.ToString();
           }
+
+        case 0x1b:
+          if (!this.optID3V2.Checked || !tag.V2TAG.FrameExists("TPUB"))
+            break;
+
+          return StringType.FromObject(LateBinding.LateGet(RuntimeHelpers.GetObjectValue(tag.V2TAG.GetFrame("TPUB")), null, "Content", new object[0], null, null));
       }
 
       return "";

@@ -184,6 +184,7 @@ namespace ID3_TagIT
     public ColumnHeader colHChannel;
     public ColumnHeader colHComment;
     public ColumnHeader colHComposer;
+    public ColumnHeader colHPublisher;
     public ColumnHeader colHCreateDate;
     public ColumnHeader colHDate;
     public ColumnHeader colHDuration;
@@ -3681,6 +3682,7 @@ namespace ID3_TagIT
       this.colHVersion = new ColumnHeader();
       this.colHDate = new ColumnHeader();
       this.colHComposer = new ColumnHeader();
+      this.colHPublisher = new ColumnHeader();
       this.colHFileSize = new ColumnHeader();
       this.colHBPM = new ColumnHeader();
       this.colHPicCount = new ColumnHeader();

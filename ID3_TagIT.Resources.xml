@@ -36,6 +36,7 @@
                 <xs:element name="Col24" type="xs:string" minOccurs="0" />
                 <xs:element name="Col25" type="xs:string" minOccurs="0" />
                 <xs:element name="Col26" type="xs:string" minOccurs="0" />
+                <xs:element name="Col27" type="xs:string" minOccurs="0" />
                 <xs:element name="DialogCol01" type="xs:string" minOccurs="0" />
                 <xs:element name="DialogCol02" type="xs:string" minOccurs="0" />
                 <xs:element name="DialogCol03" type="xs:string" minOccurs="0" />
@@ -1043,6 +1044,7 @@
     <Col24>Number of Pic.</Col24>
     <Col25>Checksum Audio</Col25>
     <Col26>Date of creation</Col26>
+    <Col27>Publisher</Col27>
     <DialogCol01>Own TAG Ver. 2 genre</DialogCol01>
     <DialogCol02>TAG Ver. 1 genre for transfer 1 -&gt;  2</DialogCol02>
     <DialogCol03>TAG Ver. 1 genre for transfer 2 -&gt;  1</DialogCol03>

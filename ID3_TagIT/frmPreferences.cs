@@ -1925,6 +1925,8 @@ namespace ID3_TagIT
           list.Add(0x19);
         if (header == this.MainForm.colHCreateDate)
           list.Add(0x1a);
+        if (header == this.MainForm.colHPublisher)
+          list.Add(0x1b);
 
         list.Add(header.Width);
         list.Add(header.TextAlign.ToString());
@@ -1980,7 +1982,7 @@ namespace ID3_TagIT
         flag = false;
         num++;
       }
-      while (num <= 0x1a);
+      while (num <= 0x1b);
     }
 
     private void AddToolTips()

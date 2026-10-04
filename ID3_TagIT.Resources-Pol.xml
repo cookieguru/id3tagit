@@ -33,6 +33,7 @@
                 <xs:element name="ThemeDark" type="xs:string" minOccurs="0" />
                 <xs:element name="Col22" type="xs:string" minOccurs="0" />
                 <xs:element name="Col23" type="xs:string" minOccurs="0" />
+                <xs:element name="Col27" type="xs:string" minOccurs="0" />
                 <xs:element name="DialogCol01" type="xs:string" minOccurs="0" />
                 <xs:element name="DialogCol02" type="xs:string" minOccurs="0" />
                 <xs:element name="DialogCol03" type="xs:string" minOccurs="0" />
@@ -1030,6 +1031,7 @@
     <ThemeDark>Ciemny</ThemeDark>
     <Col22>Wielko� pliku (KB)</Col22>
     <Col23>BPM</Col23>
+    <Col27>Wydawca</Col27>
     <DialogCol01>Wasny gatunek taga v.2</DialogCol01>
     <DialogCol02>Gatunek taga v.1 dla transferu 1 -&gt;  2</DialogCol02>
     <DialogCol03>Gatunek taga v.1 dla transferu 2 -&gt;  1</DialogCol03>

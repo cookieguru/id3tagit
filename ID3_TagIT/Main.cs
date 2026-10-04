@@ -499,6 +499,7 @@ namespace ID3_TagIT
       }
 
       Declarations.objResources.ReadResources();
+      Declarations.objSettings.AddNewColumns();
       ThemeManager.Initialize();
       line.Resolve();
 
