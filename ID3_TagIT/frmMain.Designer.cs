@@ -350,6 +350,9 @@ namespace ID3_TagIT
     private TabPage tabFavorites;
     public TreeView FavTree;
     private SplitContainer spltMiddle;
+    private SplitterGrip gripNavigation;
+    private SplitterGrip gripSideBar;
+    private SplitterGrip gripErrors;
     public ListView ErrorMsg;
     public int SortedColumn;
 
@@ -745,7 +748,6 @@ namespace ID3_TagIT
       this.spltQuickInfo.Size = new System.Drawing.Size(1178, 764);
       this.spltQuickInfo.SplitterDistance = 975;
       this.spltQuickInfo.TabIndex = 31;
-      this.spltQuickInfo.Click += new System.EventHandler(this.spltQuickInfo_Click);
       // 
       // spltTop
       // 

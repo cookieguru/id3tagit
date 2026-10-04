@@ -1092,9 +1092,12 @@ Label_010B:
       // FIXME - Distaince - Declarations.objSettings.NavPanWidth = this.NavigationPan.Width;
       // FIXME - Distaince - Declarations.objSettings.SideBarWidth = this.splitContainer1.Panel2.Width;
       //Declarations.objSettings.ErrorHeight = this.ErrorMsg.Height;
-      //Declarations.objSettings.NavPanExpanded = this.SplitterLeft.Expanded;
-      //Declarations.objSettings.SideBarExpanded = this.SplitterRight.Expanded;
-      //Declarations.objSettings.ErrorExpanded = this.SplitterBottom.Expanded;
+      if (this.gripNavigation != null)
+      {
+        Declarations.objSettings.NavPanExpanded = this.gripNavigation.Expanded;
+        Declarations.objSettings.SideBarExpanded = this.gripSideBar.Expanded;
+        Declarations.objSettings.ErrorExpanded = this.gripErrors.Expanded;
+      }
 
       Form form = this;
       Id3TagIT_Main.SaveFormSettings(ref form);
@@ -1431,9 +1434,12 @@ Label_010B:
 
       this.colHErrFile.Width = (int)Math.Round((double)(this.ErrorMsg.Width * 0.4));
       this.colHErrMsg.Width = (int)Math.Round((double)(this.ErrorMsg.Width * 0.55));
-      //this.SplitterLeft.Expanded = Declarations.objSettings.NavPanExpanded;
-      //this.SplitterRight.Expanded = Declarations.objSettings.SideBarExpanded;
-      //this.SplitterBottom.Expanded = Declarations.objSettings.ErrorExpanded;
+      this.gripNavigation = new SplitterGrip(this.spltTop, FixedPanel.Panel1);
+      this.gripSideBar = new SplitterGrip(this.spltQuickInfo, FixedPanel.Panel2);
+      this.gripErrors = new SplitterGrip(this.spltMiddle, FixedPanel.Panel2);
+      this.gripNavigation.Expanded = Declarations.objSettings.NavPanExpanded;
+      this.gripSideBar.Expanded = Declarations.objSettings.SideBarExpanded;
+      this.gripErrors.Expanded = Declarations.objSettings.ErrorExpanded;
       //this.NavigationPan.RecalcLayout();
       //this.NavigationPan.ResetText();
       this.vbooStartUp = false;
@@ -5752,12 +5758,6 @@ Label_0DA3:
           UseShellExecute = true
         }
       }.Start();
-    }
-
-    private void spltQuickInfo_Click(object sender, EventArgs e)
-    {
-      // FIXME - Nope,  this hides the splitter control  :/
-      // spltQuickInfo.Panel2Collapsed = !spltQuickInfo.Panel2Collapsed;
     }
 
     private void splitTAGVer1ArtistIntoArtistAndTitleToolStripMenuItem_Click(object sender, EventArgs e)
