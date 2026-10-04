@@ -124,6 +124,7 @@ namespace ID3_TagIT
       this.objList = null;
       this.objListHelp = null;
       this.InitializeComponent();
+      ThemeManager.Register(this);
       this.ProgressBar.Minimum = vintMinimum;
       this.ProgressBar.Maximum = vintMaximum;
       this.ProgressBar.Step = vintStep;

@@ -36,6 +36,8 @@ namespace ID3_TagIT
     private CheckBox chkSingle;
     private CheckBox chkUnSync;
     private CheckBox chkWinXPThemes;
+    private Label lblTheme;
+    private ComboBox cmbTheme;
     private ComboBox cmbPlay;
     private ComboBox cmbShell;
     private ComboBox cmbV23Enc;
@@ -196,6 +198,8 @@ namespace ID3_TagIT
       this.lblServer = new System.Windows.Forms.Label();
       this.Server = new System.Windows.Forms.TextBox();
       this.chkWinXPThemes = new System.Windows.Forms.CheckBox();
+      this.lblTheme = new System.Windows.Forms.Label();
+      this.cmbTheme = new System.Windows.Forms.ComboBox();
       this.Label5 = new System.Windows.Forms.Label();
       this.Label6 = new System.Windows.Forms.Label();
       this.ColorCompareText = new System.Windows.Forms.Button();
@@ -892,6 +896,25 @@ namespace ID3_TagIT
       this.chkWinXPThemes.Text = "Use Windows XP menu style";
       this.chkWinXPThemes.UseVisualStyleBackColor = false;
       // 
+      // lblTheme
+      // 
+      this.lblTheme.BackColor = System.Drawing.Color.Transparent;
+      this.lblTheme.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+      this.lblTheme.Location = new System.Drawing.Point(6, 215);
+      this.lblTheme.Name = "lblTheme";
+      this.lblTheme.Size = new System.Drawing.Size(336, 16);
+      this.lblTheme.TabIndex = 13;
+      this.lblTheme.Text = "Color theme:";
+      // 
+      // cmbTheme
+      // 
+      this.cmbTheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.cmbTheme.ItemHeight = 13;
+      this.cmbTheme.Location = new System.Drawing.Point(366, 211);
+      this.cmbTheme.Name = "cmbTheme";
+      this.cmbTheme.Size = new System.Drawing.Size(160, 21);
+      this.cmbTheme.TabIndex = 14;
+      // 
       // Label5
       // 
       this.Label5.BackColor = System.Drawing.Color.Transparent;
@@ -1353,6 +1376,8 @@ namespace ID3_TagIT
       this.tabPage5.Controls.Add(this.ColorCompareText);
       this.tabPage5.Controls.Add(this.Label4);
       this.tabPage5.Controls.Add(this.ColorCompareBack);
+      this.tabPage5.Controls.Add(this.lblTheme);
+      this.tabPage5.Controls.Add(this.cmbTheme);
       this.tabPage5.Location = new System.Drawing.Point(4, 22);
       this.tabPage5.Name = "tabPage5";
       this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
@@ -1429,6 +1454,7 @@ namespace ID3_TagIT
       this.ColumnSettingsChanged = false;
       this.vbooChecking = false;
       this.InitializeComponent();
+      ThemeManager.Register(this);
       this.MainForm = Main;
       this.AddColumns();
     }
@@ -1565,6 +1591,12 @@ namespace ID3_TagIT
       Declarations.objSettings.ColorCompareBack = this.ColorCompareBack.BackColor.ToArgb();
       Declarations.objSettings.ColorCompareText = this.ColorCompareText.BackColor.ToArgb();
       Declarations.objSettings.UseThemes = this.chkWinXPThemes.Checked;
+
+      if (this.cmbTheme.SelectedIndex >= 0 && this.cmbTheme.SelectedIndex != Declarations.objSettings.Theme)
+      {
+        Declarations.objSettings.Theme = (byte)this.cmbTheme.SelectedIndex;
+        ThemeManager.Refresh();
+      }
 
       try
       {
@@ -1764,6 +1796,12 @@ namespace ID3_TagIT
       this.txtProxyPassword.Text = Declarations.objSettings.FreeDBProxyPassword;
       this.chkProxy.Checked = Declarations.objSettings.FreeDBProxyUse;
       this.chkWinXPThemes.Checked = Declarations.objSettings.UseThemes;
+      // Item order matches ThemeManager.THEME_SYSTEM, THEME_LIGHT, THEME_DARK.
+      this.cmbTheme.Items.Clear();
+      this.cmbTheme.Items.Add(StringType.FromObject(Declarations.objResources.ResStrings["ThemeSystem"]));
+      this.cmbTheme.Items.Add(StringType.FromObject(Declarations.objResources.ResStrings["ThemeLight"]));
+      this.cmbTheme.Items.Add(StringType.FromObject(Declarations.objResources.ResStrings["ThemeDark"]));
+      this.cmbTheme.SelectedIndex = Math.Min((int)Declarations.objSettings.Theme, this.cmbTheme.Items.Count - 1);
       this.cmbShell.Enabled = false;
       this.txtPath.Enabled = true;
       this.txtParameters.Enabled = true;

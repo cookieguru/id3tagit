@@ -376,6 +376,7 @@ namespace ID3_TagIT
     {
       base.Load += new EventHandler(this.frmSearch_Load);
       this.InitializeComponent();
+      ThemeManager.Register(this);
     }
 
     #endregion

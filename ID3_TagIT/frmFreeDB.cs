@@ -382,6 +382,7 @@ namespace ID3_TagIT
       this.alstFilesToTAG = new ArrayList();
       this.vbooCancel = false;
       this.InitializeComponent();
+      ThemeManager.Register(this);
       this.MainForm = frmM;
     }
 

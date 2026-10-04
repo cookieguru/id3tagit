@@ -1897,6 +1897,26 @@ namespace ID3_TagIT
       }
     }
 
+    // One of ThemeManager.THEME_SYSTEM, THEME_LIGHT or THEME_DARK. Settings files from older
+    // versions don't have the column, so it is added on first write.
+    public byte Theme
+    {
+      get
+      {
+        if (!this.SettingsTable.Columns.Contains("Theme") || Convert.IsDBNull(this.SettingsRow["Theme"]))
+          return ThemeManager.THEME_SYSTEM;
+
+        return ByteType.FromObject(this.SettingsRow["Theme"]);
+      }
+      set
+      {
+        if (!this.SettingsTable.Columns.Contains("Theme"))
+          this.SettingsTable.Columns.Add(new DataColumn("Theme", typeof(byte)));
+
+        this.SettingsRow["Theme"] = value;
+      }
+    }
+
     public byte V23Encoding
     {
       get

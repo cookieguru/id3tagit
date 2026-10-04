@@ -3655,6 +3655,7 @@ namespace ID3_TagIT
       this.vintEnumCount = Declarations.objSettings.FilenumberStart;
       this.vintHelpCount = 0;
       this.InitializeComponent();
+      ThemeManager.Register(this);
     }
 
     #endregion

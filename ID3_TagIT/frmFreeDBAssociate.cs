@@ -214,6 +214,7 @@ namespace ID3_TagIT
     {
       base.Load += new EventHandler(this.frmFreeDBAssociate_Load);
       this.InitializeComponent();
+      ThemeManager.Register(this);
       this.MainForm = frmM;
     }
 

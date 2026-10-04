@@ -696,6 +696,7 @@ namespace ID3_TagIT
       base.Load += new EventHandler(this.frmLibraries_Load);
       this.vstrPfad = Declarations.objSettings.CurrentPath;
       this.InitializeComponent();
+      ThemeManager.Register(this);
       this.MainForm = FormMain;
     }
 
