@@ -159,7 +159,9 @@ namespace ID3_TagIT
             Application.DoEvents();
         }
 
-        prgFileTreeView.Value++;
+        // Only expanding a node sets Maximum; _SelectNode also gets here, so don't overshoot.
+        if (prgFileTreeView.Value < prgFileTreeView.Maximum)
+          prgFileTreeView.Value++;
       }
       catch
       {
