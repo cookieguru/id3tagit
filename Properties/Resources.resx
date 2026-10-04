@@ -176,7 +176,7 @@
     <value>..\ID3_TagIT\icons\FileToTagV1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ID3_TagIT_Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ID3_TagIT_Logo.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\ID3_TagIT\icons\ID3_TagIT_Logo.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Quit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\ID3_TagIT\icons\Quit.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

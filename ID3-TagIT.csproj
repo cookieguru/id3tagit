@@ -211,6 +211,12 @@
     <Compile Include="ID3_TagIT\frmSplash.Designer.cs">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </Compile>
+    <Compile Include="ID3_TagIT\frmShortcuts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ID3_TagIT\frmShortcuts.Designer.cs">
+      <DependentUpon>frmShortcuts.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ID3_TagIT\frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </EmbeddedResource>
@@ -436,33 +442,6 @@
     <None Include="ID3_TagIT\icons\Refresh.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Help\index.htm">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Help\main.htm">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Help\pictures\logo.gif">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Help\pictures\tableback1.gif">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Help\pictures\tableback2.gif">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Help\pictures\tableback3.gif">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Help\shortcuts.htm">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Help\styles.css">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Help\top.htm">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="ID3_TagIT\icons\Playlist.ico" />
     <None Include="ID3_TagIT\icons\Question.ico" />
     <None Include="ID3_TagIT\icons\Info16.png" />
@@ -476,6 +455,6 @@
     <None Include="ID3_TagIT\icons\Previous.png" />
     <None Include="ID3_TagIT\icons\Previous.ico" />
     <None Include="ID3_TagIT\icons\Next.ico" />
-    <None Include="ID3_TagIT_Logo.gif" />
+    <None Include="ID3_TagIT\icons\ID3_TagIT_Logo.gif" />
   </ItemGroup>
 </Project>

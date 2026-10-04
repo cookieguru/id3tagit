@@ -5193,18 +5193,6 @@ Label_0DA3:
       this.MP3View.EndUpdate();
     }
 
-    private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
-    {
-      new Process
-      {
-        StartInfo =
-        {
-          FileName = StringType.FromObject(Application.StartupPath.EndsWith(@"\") ? Application.StartupPath + @"Help\index.htm" : Application.StartupPath + @"\Help\index.htm"),
-          UseShellExecute = true
-        }
-      }.Start();
-    }
-
     private void invertSelectionToolStripMenuItem_Click(object sender, EventArgs e)
     {
       this.MP3View.BeginUpdate();
@@ -5750,14 +5738,8 @@ Label_0DA3:
 
     private void shortcutsToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      new Process
-      {
-        StartInfo =
-        {
-          FileName = StringType.FromObject(Application.StartupPath.EndsWith(@"\") ? Application.StartupPath + @"Help\shortcuts.htm" : Application.StartupPath + @"\Help\shortcuts.htm"),
-          UseShellExecute = true
-        }
-      }.Start();
+      using (frmShortcuts shortcuts = new frmShortcuts())
+        shortcuts.ShowDialog(this);
     }
 
     private void splitTAGVer1ArtistIntoArtistAndTitleToolStripMenuItem_Click(object sender, EventArgs e)

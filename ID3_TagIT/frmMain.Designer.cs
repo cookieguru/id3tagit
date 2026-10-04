@@ -82,7 +82,6 @@ namespace ID3_TagIT
     private ToolStripMenuItem filenameTAGVer1ToolStripMenuItem;
     private ToolStripMenuItem findduplicateFilesToolStripMenuItem;
     private ToolStripMenuItem groupSelectionToolStripMenuItem;
-    private ToolStripMenuItem helpToolStripMenuItem1;
     private ToolStripMenuItem helpToolStripMenuItem;
     private ToolStripMenuItem iD3FunctionsToolStripMenuItem;
     private ToolStripMenuItem invertSelectionToolStripMenuItem;
@@ -552,7 +551,6 @@ namespace ID3_TagIT
       this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
       this.cboLanguage = new System.Windows.Forms.ToolStripComboBox();
       this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
       this.shortcutsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
       this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -2352,7 +2350,6 @@ namespace ID3_TagIT
       // helpToolStripMenuItem
       // 
       this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.helpToolStripMenuItem1,
             this.shortcutsToolStripMenuItem,
             this.toolStripSeparator1,
             this.aboutToolStripMenuItem});
@@ -2360,18 +2357,11 @@ namespace ID3_TagIT
       this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
       this.helpToolStripMenuItem.Text = "&Help";
       // 
-      // helpToolStripMenuItem1
-      // 
-      this.helpToolStripMenuItem1.Image = global::Properties.Resources.Question;
-      this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-      this.helpToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F1;
-      this.helpToolStripMenuItem1.Size = new System.Drawing.Size(136, 22);
-      this.helpToolStripMenuItem1.Text = "&Help ...";
-      this.helpToolStripMenuItem1.Click += new System.EventHandler(this.helpToolStripMenuItem1_Click);
-      // 
       // shortcutsToolStripMenuItem
       // 
+      this.shortcutsToolStripMenuItem.Image = global::Properties.Resources.Question;
       this.shortcutsToolStripMenuItem.Name = "shortcutsToolStripMenuItem";
+      this.shortcutsToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
       this.shortcutsToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
       this.shortcutsToolStripMenuItem.Text = "&Shortcuts ...";
       this.shortcutsToolStripMenuItem.Click += new System.EventHandler(this.shortcutsToolStripMenuItem_Click);
