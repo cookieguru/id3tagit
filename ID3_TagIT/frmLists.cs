@@ -1604,10 +1604,10 @@ namespace ID3_TagIT
           return tag.FI.LastWriteTime.ToString();
 
         case 0x15:
-          if (!this.optID3V2.Checked || !tag.V2TAG.FrameExists("TCOM"))
+          if (!this.optID3V2.Checked || !tag.V2TAG.FrameExists("TPUB"))
             break;
 
-          return StringType.FromObject(LateBinding.LateGet(RuntimeHelpers.GetObjectValue(tag.V2TAG.GetFrame("TCOM")), null, "Content", new object[0], null, null));
+          return StringType.FromObject(LateBinding.LateGet(RuntimeHelpers.GetObjectValue(tag.V2TAG.GetFrame("TPUB")), null, "Content", new object[0], null, null));
 
         case 0x16:
           {

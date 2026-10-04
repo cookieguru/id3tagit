@@ -1875,7 +1875,7 @@ namespace ID3_TagIT
           list.Add(0x13);
         if (header == this.MainForm.colHDate)
           list.Add(20);
-        if (header == this.MainForm.colHComposer)
+        if (header == this.MainForm.colHPublisher)
           list.Add(0x15);
         if (header == this.MainForm.colHFileSize)
           list.Add(0x16);
