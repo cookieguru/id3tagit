@@ -1714,28 +1714,31 @@ namespace ID3_TagIT
         ThemeManager.Refresh();
       }
 
-      try
+      if (Id3TagIT_Main.IsElevated())
       {
-        RegistryKey key = Registry.ClassesRoot.OpenSubKey(@"Directory\Shell\ID3-TagIT", true);
-        string executablePath = Application.ExecutablePath;
-
-        if (Declarations.objSettings.ExplorerContext)
+        try
         {
-          if (key != null)
+          RegistryKey key = Registry.ClassesRoot.OpenSubKey(@"Directory\Shell\ID3-TagIT", true);
+          string executablePath = Application.ExecutablePath;
+
+          if (Declarations.objSettings.ExplorerContext)
+          {
+            if (key != null)
+              Registry.ClassesRoot.OpenSubKey(@"Directory\Shell", true).DeleteSubKeyTree("ID3-TagIT");
+
+            Registry.ClassesRoot.OpenSubKey(@"Directory\Shell", true).CreateSubKey("ID3-TagIT");
+            Registry.ClassesRoot.OpenSubKey(@"Directory\Shell\ID3-TagIT", true).CreateSubKey("command");
+            Registry.ClassesRoot.OpenSubKey(@"Directory\Shell\ID3-TagIT\command", true).SetValue(null, "\"" + executablePath + "\"" + " " + "\"" + "/P=%1" + "\"");
+          }
+
+          if (!Declarations.objSettings.ExplorerContext & (key != null))
             Registry.ClassesRoot.OpenSubKey(@"Directory\Shell", true).DeleteSubKeyTree("ID3-TagIT");
-
-          Registry.ClassesRoot.OpenSubKey(@"Directory\Shell", true).CreateSubKey("ID3-TagIT");
-          Registry.ClassesRoot.OpenSubKey(@"Directory\Shell\ID3-TagIT", true).CreateSubKey("command");
-          Registry.ClassesRoot.OpenSubKey(@"Directory\Shell\ID3-TagIT\command", true).SetValue(null, "\"" + executablePath + "\"" + " " + "\"" + "/P=%1" + "\"");
         }
-
-        if (!Declarations.objSettings.ExplorerContext & (key != null))
-          Registry.ClassesRoot.OpenSubKey(@"Directory\Shell", true).DeleteSubKeyTree("ID3-TagIT");
-      }
-      catch (Exception exception1)
-      {
-        ProjectData.SetProjectError(exception1);
-        ProjectData.ClearProjectError();
+        catch (Exception exception1)
+        {
+          ProjectData.SetProjectError(exception1);
+          ProjectData.ClearProjectError();
+        }
       }
 
       if (this.ColumnSettingsChanged)

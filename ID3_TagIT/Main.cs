@@ -18,6 +18,14 @@ namespace ID3_TagIT
 
     public static MemoryStream objDebugStream = new MemoryStream();
 
+    // True when running with administrator rights. Registering the Explorer context menu entry
+    // writes under HKEY_CLASSES_ROOT, which fails with a SecurityException without them.
+    internal static bool IsElevated()
+    {
+      using (System.Security.Principal.WindowsIdentity identity = System.Security.Principal.WindowsIdentity.GetCurrent())
+        return new System.Security.Principal.WindowsPrincipal(identity).IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator);
+    }
+
     public static bool CheckFilename(string vstrName, bool vbooCompletePath = false)
     {
       if (vbooCompletePath)
