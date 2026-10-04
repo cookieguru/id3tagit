@@ -124,7 +124,10 @@ namespace ID3_TagIT
 
       try
       {
-        objForm.Text = StringType.FromObject(tempRow["FormName"]);
+        string text = GetTranslation(tempRow, "FormName");
+
+        if (text != null)
+          objForm.Text = text;
       }
       catch (Exception exception1)
       {
@@ -136,6 +139,16 @@ namespace ID3_TagIT
 
       for (int i = 0; i <= num2; i++)
         this.ResourcesToFormRecusiv(objForm.Controls[i], ref tempRow);
+    }
+
+    // The translation of a form's or control's text, or null if the form's table has none.
+    // Most controls have no entry, so check for the column instead of catching the exception.
+    private static string GetTranslation(DataRow row, string name)
+    {
+      if (string.IsNullOrEmpty(name) || !row.Table.Columns.Contains(name) || Convert.IsDBNull(row[name]))
+        return null;
+
+      return StringType.FromObject(row[name]);
     }
 
     private void ResourcesToFormRecusiv(Control objControl, ref DataRow TempRow)
@@ -161,7 +174,10 @@ namespace ID3_TagIT
         //  }
         //}
         //else
-        objControl.Text = StringType.FromObject(TempRow[objControl.Name]);
+        string text = GetTranslation(TempRow, objControl.Name);
+
+        if (text != null)
+          objControl.Text = text;
       }
       catch (Exception exception2)
       {
