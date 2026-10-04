@@ -272,14 +272,14 @@ namespace ID3_TagIT
 
           if (tag.Changed)
           {
-            item.BackColor = Color.FromArgb(Declarations.objSettings.ColorChangedBack);
-            item.ForeColor = Color.FromArgb(Declarations.objSettings.ColorChangedText);
+            item.BackColor = Declarations.objSettings.ChangedBackColor;
+            item.ForeColor = Declarations.objSettings.ChangedTextColor;
           }
 
           if (tag.Doubled)
           {
-            item.BackColor = Color.FromArgb(Declarations.objSettings.ColorDoubleBack);
-            item.ForeColor = Color.FromArgb(Declarations.objSettings.ColorDoubleText);
+            item.BackColor = Declarations.objSettings.DoubleBackColor;
+            item.ForeColor = Declarations.objSettings.DoubleTextColor;
           }
 
           if (this.chkIgnoreCase.Checked)
@@ -287,15 +287,15 @@ namespace ID3_TagIT
             if (!tag.CurrentFullName.ToLower().EndsWith(sLeft))
             {
               tag.FileTAGCompare = true;
-              item.BackColor = Color.FromArgb(Declarations.objSettings.ColorCompareBack);
-              item.ForeColor = Color.FromArgb(Declarations.objSettings.ColorCompareText);
+              item.BackColor = Declarations.objSettings.CompareBackColor;
+              item.ForeColor = Declarations.objSettings.CompareTextColor;
             }
           }
           else if (!tag.CurrentFullName.EndsWith(sLeft))
           {
             tag.FileTAGCompare = true;
-            item.BackColor = Color.FromArgb(Declarations.objSettings.ColorCompareBack);
-            item.ForeColor = Color.FromArgb(Declarations.objSettings.ColorCompareText);
+            item.BackColor = Declarations.objSettings.CompareBackColor;
+            item.ForeColor = Declarations.objSettings.CompareTextColor;
           }
         }
 

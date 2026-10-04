@@ -103,7 +103,14 @@ namespace ID3_TagIT
       foreach (Form form in GetRegisteredForms())
         if (form.IsHandleCreated && !form.IsDisposed)
           Apply(form);
+
+      if (ThemeChanged != null)
+        ThemeChanged(null, EventArgs.Empty);
     }
+
+    // Raised after a live switch between light and dark, for colors the theme can't remap on
+    // its own (such as the file list's per-theme highlight colors).
+    public static event EventHandler ThemeChanged;
 
     public static void Register(Form form)
     {

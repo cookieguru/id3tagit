@@ -273,6 +273,93 @@ namespace ID3_TagIT
       }
     }
 
+    // The Color* settings above are the light theme's highlight colors. The dark theme has its
+    // own set, added after 3.3.0, with muted backgrounds and light text as defaults.
+    public int ColorChangedBackDark
+    {
+      get { return this.GetOptionalColor("ColorChangedBackDark", System.Drawing.Color.FromArgb(92, 80, 10)); }
+      set { this.SetOptionalColor("ColorChangedBackDark", value); }
+    }
+
+    public int ColorChangedTextDark
+    {
+      get { return this.GetOptionalColor("ColorChangedTextDark", System.Drawing.Color.FromArgb(255, 236, 150)); }
+      set { this.SetOptionalColor("ColorChangedTextDark", value); }
+    }
+
+    public int ColorDoubleBackDark
+    {
+      get { return this.GetOptionalColor("ColorDoubleBackDark", System.Drawing.Color.FromArgb(110, 35, 35)); }
+      set { this.SetOptionalColor("ColorDoubleBackDark", value); }
+    }
+
+    public int ColorDoubleTextDark
+    {
+      get { return this.GetOptionalColor("ColorDoubleTextDark", System.Drawing.Color.FromArgb(255, 205, 205)); }
+      set { this.SetOptionalColor("ColorDoubleTextDark", value); }
+    }
+
+    public int ColorCompareBackDark
+    {
+      get { return this.GetOptionalColor("ColorCompareBackDark", System.Drawing.Color.FromArgb(30, 85, 40)); }
+      set { this.SetOptionalColor("ColorCompareBackDark", value); }
+    }
+
+    public int ColorCompareTextDark
+    {
+      get { return this.GetOptionalColor("ColorCompareTextDark", System.Drawing.Color.FromArgb(195, 255, 195)); }
+      set { this.SetOptionalColor("ColorCompareTextDark", value); }
+    }
+
+    // Highlight colors for the active theme, for coloring file list rows.
+    public System.Drawing.Color ChangedBackColor
+    {
+      get { return System.Drawing.Color.FromArgb(ThemeManager.IsDark ? this.ColorChangedBackDark : this.ColorChangedBack); }
+    }
+
+    public System.Drawing.Color ChangedTextColor
+    {
+      get { return System.Drawing.Color.FromArgb(ThemeManager.IsDark ? this.ColorChangedTextDark : this.ColorChangedText); }
+    }
+
+    public System.Drawing.Color DoubleBackColor
+    {
+      get { return System.Drawing.Color.FromArgb(ThemeManager.IsDark ? this.ColorDoubleBackDark : this.ColorDoubleBack); }
+    }
+
+    public System.Drawing.Color DoubleTextColor
+    {
+      get { return System.Drawing.Color.FromArgb(ThemeManager.IsDark ? this.ColorDoubleTextDark : this.ColorDoubleText); }
+    }
+
+    public System.Drawing.Color CompareBackColor
+    {
+      get { return System.Drawing.Color.FromArgb(ThemeManager.IsDark ? this.ColorCompareBackDark : this.ColorCompareBack); }
+    }
+
+    public System.Drawing.Color CompareTextColor
+    {
+      get { return System.Drawing.Color.FromArgb(ThemeManager.IsDark ? this.ColorCompareTextDark : this.ColorCompareText); }
+    }
+
+    // Settings files from older versions lack the newer color columns; they are added on first
+    // write.
+    private int GetOptionalColor(string column, System.Drawing.Color defaultColor)
+    {
+      if (!this.SettingsTable.Columns.Contains(column) || Convert.IsDBNull(this.SettingsRow[column]))
+        return defaultColor.ToArgb();
+
+      return IntegerType.FromObject(this.SettingsRow[column]);
+    }
+
+    private void SetOptionalColor(string column, int value)
+    {
+      if (!this.SettingsTable.Columns.Contains(column))
+        this.SettingsTable.Columns.Add(new DataColumn(column, typeof(int)));
+
+      this.SettingsRow[column] = value;
+    }
+
     public int ColorDoubleBack
     {
       get

@@ -1100,6 +1100,7 @@ Label_010B:
       }
 
       Declarations.objSettings.ToolbarLayout = this.GetToolbarLayout();
+      ThemeManager.ThemeChanged -= new EventHandler(this.ThemeManager_ThemeChanged);
 
       Form form = this;
       Id3TagIT_Main.SaveFormSettings(ref form);
@@ -1443,6 +1444,7 @@ Label_010B:
       this.gripSideBar.Expanded = Declarations.objSettings.SideBarExpanded;
       this.gripErrors.Expanded = Declarations.objSettings.ErrorExpanded;
       this.RestoreToolbarLayout(Declarations.objSettings.ToolbarLayout);
+      ThemeManager.ThemeChanged += new EventHandler(this.ThemeManager_ThemeChanged);
       //this.NavigationPan.RecalcLayout();
       //this.NavigationPan.ResetText();
       this.vbooStartUp = false;
@@ -1665,8 +1667,8 @@ Label_010B:
           tag.CurrentFullName = str;
           tag.Changed = true;
           this.MP3View.Items[e.Item].Text = tag.CurrentName;
-          this.MP3View.Items[e.Item].BackColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorChangedBack);
-          this.MP3View.Items[e.Item].ForeColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorChangedText);
+          this.MP3View.Items[e.Item].BackColor = Declarations.objSettings.ChangedBackColor;
+          this.MP3View.Items[e.Item].ForeColor = Declarations.objSettings.ChangedTextColor;
           if (Declarations.objSettings.QuickFilenameEditing & ((this.MP3View.Items.Count - 1) > e.Item))
           {
             this.MP3View.Items[e.Item].Selected = false;
@@ -2686,8 +2688,8 @@ Label_0B93:
               tag.CurrentName = this.vintEnumCount.ToString().PadLeft(Declarations.objSettings.FilenumberDigits, '0') + Declarations.objSettings.EnumSeparator + tag.CurrentName;
               tag.Changed = true;
               item.Text = tag.CurrentName;
-              item.BackColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorChangedBack);
-              item.ForeColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorChangedText);
+              item.BackColor = Declarations.objSettings.ChangedBackColor;
+              item.ForeColor = Declarations.objSettings.ChangedTextColor;
             }
 
             if ((Declarations.objSettings.EnumVer1 | (Declarations.objSettings.SynchronizeTAGs & Declarations.objSettings.EnumVer2)) && (this.vintEnumCount <= 0xff))
@@ -3224,18 +3226,18 @@ Label_11ED:
           item.SubItems.Add("");
         if (mp.Changed)
         {
-          item.BackColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorChangedBack);
-          item.ForeColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorChangedText);
+          item.BackColor = Declarations.objSettings.ChangedBackColor;
+          item.ForeColor = Declarations.objSettings.ChangedTextColor;
         }
         if (mp.FileTAGCompare)
         {
-          item.BackColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorCompareBack);
-          item.ForeColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorCompareText);
+          item.BackColor = Declarations.objSettings.CompareBackColor;
+          item.ForeColor = Declarations.objSettings.CompareTextColor;
         }
         if (mp.Doubled)
         {
-          item.BackColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorDoubleBack);
-          item.ForeColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorDoubleText);
+          item.BackColor = Declarations.objSettings.DoubleBackColor;
+          item.ForeColor = Declarations.objSettings.DoubleTextColor;
         }
         if (this.MP3View.Columns.Contains(this.colHSubDir))
           item.SubItems[this.colHSubDir.Index].Text = StringType.FromObject(Declarations.objSettings.CurrentPath.EndsWith(":") ? mp.FI.DirectoryName.Replace(Declarations.objSettings.CurrentPath + @"\", "") : mp.FI.DirectoryName.Replace(Declarations.objSettings.CurrentPath, ""));
@@ -4033,14 +4035,14 @@ Label_23AA:
 
             if (tag.FileTAGCompare)
             {
-              item.BackColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorCompareBack);
-              item.ForeColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorCompareText);
+              item.BackColor = Declarations.objSettings.CompareBackColor;
+              item.ForeColor = Declarations.objSettings.CompareTextColor;
             }
 
             if (tag.Doubled)
             {
-              item.BackColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorDoubleBack);
-              item.ForeColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorDoubleText);
+              item.BackColor = Declarations.objSettings.DoubleBackColor;
+              item.ForeColor = Declarations.objSettings.DoubleTextColor;
             }
 
             frmProg.ProgressBar.PerformStep();
@@ -4671,6 +4673,42 @@ Label_23AA:
       }
     }
 
+    private void ThemeManager_ThemeChanged(object sender, EventArgs e)
+    {
+      this.RecolorHighlightedRows();
+    }
+
+    // Re-applies the highlight colors (for the active theme) to rows that have one, after a
+    // theme switch or a color change in Preferences. The priority (duplicate, then mismatch,
+    // then changed) matches UpdateListItem.
+    private void RecolorHighlightedRows()
+    {
+      this.MP3View.BeginUpdate();
+
+      foreach (ListViewItem item in this.MP3View.Items)
+      {
+        MP3 tag = (MP3)item.Tag;
+
+        if (tag.Doubled)
+        {
+          item.BackColor = Declarations.objSettings.DoubleBackColor;
+          item.ForeColor = Declarations.objSettings.DoubleTextColor;
+        }
+        else if (tag.FileTAGCompare)
+        {
+          item.BackColor = Declarations.objSettings.CompareBackColor;
+          item.ForeColor = Declarations.objSettings.CompareTextColor;
+        }
+        else if (tag.Changed)
+        {
+          item.BackColor = Declarations.objSettings.ChangedBackColor;
+          item.ForeColor = Declarations.objSettings.ChangedTextColor;
+        }
+      }
+
+      this.MP3View.EndUpdate();
+    }
+
     // The toolbars can be dragged by their grips to any of the four ToolStripPanels. Their
     // layout is saved as "name,panel,x,y;..." where x/y is the toolbar's location in the panel.
     private string GetToolbarLayout()
@@ -4874,20 +4912,20 @@ Label_23AA:
 
       if (tag.Changed)
       {
-        lstItem.BackColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorChangedBack);
-        lstItem.ForeColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorChangedText);
+        lstItem.BackColor = Declarations.objSettings.ChangedBackColor;
+        lstItem.ForeColor = Declarations.objSettings.ChangedTextColor;
       }
 
       if (tag.FileTAGCompare)
       {
-        lstItem.BackColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorCompareBack);
-        lstItem.ForeColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorCompareText);
+        lstItem.BackColor = Declarations.objSettings.CompareBackColor;
+        lstItem.ForeColor = Declarations.objSettings.CompareTextColor;
       }
 
       if (tag.Doubled)
       {
-        lstItem.BackColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorDoubleBack);
-        lstItem.ForeColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorDoubleText);
+        lstItem.BackColor = Declarations.objSettings.DoubleBackColor;
+        lstItem.ForeColor = Declarations.objSettings.DoubleTextColor;
       }
 
       if (this.MP3View.Columns.Contains(this.colHTAGVer1))
@@ -5585,6 +5623,7 @@ Label_0DA3:
     private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
     {
       new frmPreferences(this).ShowDialog();
+      this.RecolorHighlightedRows();
 
       if (!((Declarations.objSettings.EnumFile | Declarations.objSettings.EnumVer1) | Declarations.objSettings.EnumVer2))
       {

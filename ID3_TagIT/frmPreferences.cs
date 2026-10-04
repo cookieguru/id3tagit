@@ -49,6 +49,14 @@ namespace ID3_TagIT
     private Button ColorCompareText;
     private System.Windows.Forms.ColorDialog ColorDialog;
     private Button ColorDoubleBack;
+    private Label lblColorsLight;
+    private Label lblColorsDark;
+    private Button ColorChangedBackDark;
+    private Button ColorChangedTextDark;
+    private Button ColorDoubleBackDark;
+    private Button ColorDoubleTextDark;
+    private Button ColorCompareBackDark;
+    private Button ColorCompareTextDark;
     private Button ColorDoubleText;
     private ListView ColumnsList;
     private GroupBox frameDoubleClick;
@@ -211,6 +219,14 @@ namespace ID3_TagIT
       this.ColorChangedBack = new System.Windows.Forms.Button();
       this.ColorDoubleText = new System.Windows.Forms.Button();
       this.ColorDoubleBack = new System.Windows.Forms.Button();
+      this.lblColorsLight = new System.Windows.Forms.Label();
+      this.lblColorsDark = new System.Windows.Forms.Label();
+      this.ColorChangedBackDark = new System.Windows.Forms.Button();
+      this.ColorChangedTextDark = new System.Windows.Forms.Button();
+      this.ColorDoubleBackDark = new System.Windows.Forms.Button();
+      this.ColorDoubleTextDark = new System.Windows.Forms.Button();
+      this.ColorCompareBackDark = new System.Windows.Forms.Button();
+      this.ColorCompareTextDark = new System.Windows.Forms.Button();
       this.ColorChangedText = new System.Windows.Forms.Button();
       this.ToolGrid = new System.Windows.Forms.DataGrid();
       this.Style = new System.Windows.Forms.DataGridTableStyle();
@@ -934,9 +950,95 @@ namespace ID3_TagIT
       this.Label6.Size = new System.Drawing.Size(336, 16);
       this.Label6.TabIndex = 10;
       this.Label6.Text = "Background color of mismatches Filename<->TAG  files:";
-      // 
+      //
+      // lblColorsLight
+      //
+      this.lblColorsLight.BackColor = System.Drawing.Color.Transparent;
+      this.lblColorsLight.Location = new System.Drawing.Point(359, 0);
+      this.lblColorsLight.Name = "lblColorsLight";
+      this.lblColorsLight.Size = new System.Drawing.Size(38, 14);
+      this.lblColorsLight.TabIndex = 15;
+      this.lblColorsLight.Text = "Light";
+      this.lblColorsLight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      //
+      // lblColorsDark
+      //
+      this.lblColorsDark.BackColor = System.Drawing.Color.Transparent;
+      this.lblColorsDark.Location = new System.Drawing.Point(397, 0);
+      this.lblColorsDark.Name = "lblColorsDark";
+      this.lblColorsDark.Size = new System.Drawing.Size(38, 14);
+      this.lblColorsDark.TabIndex = 16;
+      this.lblColorsDark.Text = "Dark";
+      this.lblColorsDark.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      //
+      // ColorChangedBackDark
+      //
+      this.ColorChangedBackDark.BackColor = System.Drawing.SystemColors.Control;
+      this.ColorChangedBackDark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.ColorChangedBackDark.Location = new System.Drawing.Point(402, 15);
+      this.ColorChangedBackDark.Name = "ColorChangedBackDark";
+      this.ColorChangedBackDark.Size = new System.Drawing.Size(24, 24);
+      this.ColorChangedBackDark.TabIndex = 17;
+      this.ColorChangedBackDark.UseVisualStyleBackColor = false;
+      this.ColorChangedBackDark.Click += new System.EventHandler(this.ColorChangedBack_Click);
+      //
+      // ColorChangedTextDark
+      //
+      this.ColorChangedTextDark.BackColor = System.Drawing.SystemColors.Control;
+      this.ColorChangedTextDark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.ColorChangedTextDark.Location = new System.Drawing.Point(402, 47);
+      this.ColorChangedTextDark.Name = "ColorChangedTextDark";
+      this.ColorChangedTextDark.Size = new System.Drawing.Size(24, 24);
+      this.ColorChangedTextDark.TabIndex = 18;
+      this.ColorChangedTextDark.UseVisualStyleBackColor = false;
+      this.ColorChangedTextDark.Click += new System.EventHandler(this.ColorChangedBack_Click);
+      //
+      // ColorDoubleBackDark
+      //
+      this.ColorDoubleBackDark.BackColor = System.Drawing.SystemColors.Control;
+      this.ColorDoubleBackDark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.ColorDoubleBackDark.Location = new System.Drawing.Point(402, 79);
+      this.ColorDoubleBackDark.Name = "ColorDoubleBackDark";
+      this.ColorDoubleBackDark.Size = new System.Drawing.Size(24, 24);
+      this.ColorDoubleBackDark.TabIndex = 19;
+      this.ColorDoubleBackDark.UseVisualStyleBackColor = false;
+      this.ColorDoubleBackDark.Click += new System.EventHandler(this.ColorChangedBack_Click);
+      //
+      // ColorDoubleTextDark
+      //
+      this.ColorDoubleTextDark.BackColor = System.Drawing.SystemColors.Control;
+      this.ColorDoubleTextDark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.ColorDoubleTextDark.Location = new System.Drawing.Point(402, 111);
+      this.ColorDoubleTextDark.Name = "ColorDoubleTextDark";
+      this.ColorDoubleTextDark.Size = new System.Drawing.Size(24, 24);
+      this.ColorDoubleTextDark.TabIndex = 20;
+      this.ColorDoubleTextDark.UseVisualStyleBackColor = false;
+      this.ColorDoubleTextDark.Click += new System.EventHandler(this.ColorChangedBack_Click);
+      //
+      // ColorCompareBackDark
+      //
+      this.ColorCompareBackDark.BackColor = System.Drawing.SystemColors.Control;
+      this.ColorCompareBackDark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.ColorCompareBackDark.Location = new System.Drawing.Point(402, 143);
+      this.ColorCompareBackDark.Name = "ColorCompareBackDark";
+      this.ColorCompareBackDark.Size = new System.Drawing.Size(24, 24);
+      this.ColorCompareBackDark.TabIndex = 21;
+      this.ColorCompareBackDark.UseVisualStyleBackColor = false;
+      this.ColorCompareBackDark.Click += new System.EventHandler(this.ColorChangedBack_Click);
+      //
+      // ColorCompareTextDark
+      //
+      this.ColorCompareTextDark.BackColor = System.Drawing.SystemColors.Control;
+      this.ColorCompareTextDark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.ColorCompareTextDark.Location = new System.Drawing.Point(402, 175);
+      this.ColorCompareTextDark.Name = "ColorCompareTextDark";
+      this.ColorCompareTextDark.Size = new System.Drawing.Size(24, 24);
+      this.ColorCompareTextDark.TabIndex = 22;
+      this.ColorCompareTextDark.UseVisualStyleBackColor = false;
+      this.ColorCompareTextDark.Click += new System.EventHandler(this.ColorChangedBack_Click);
+      //
       // ColorCompareText
-      // 
+      //
       this.ColorCompareText.BackColor = System.Drawing.SystemColors.Control;
       this.ColorCompareText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.ColorCompareText.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -1378,6 +1480,14 @@ namespace ID3_TagIT
       this.tabPage5.Controls.Add(this.ColorCompareBack);
       this.tabPage5.Controls.Add(this.lblTheme);
       this.tabPage5.Controls.Add(this.cmbTheme);
+      this.tabPage5.Controls.Add(this.lblColorsLight);
+      this.tabPage5.Controls.Add(this.lblColorsDark);
+      this.tabPage5.Controls.Add(this.ColorChangedBackDark);
+      this.tabPage5.Controls.Add(this.ColorChangedTextDark);
+      this.tabPage5.Controls.Add(this.ColorDoubleBackDark);
+      this.tabPage5.Controls.Add(this.ColorDoubleTextDark);
+      this.tabPage5.Controls.Add(this.ColorCompareBackDark);
+      this.tabPage5.Controls.Add(this.ColorCompareTextDark);
       this.tabPage5.Location = new System.Drawing.Point(4, 22);
       this.tabPage5.Name = "tabPage5";
       this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
@@ -1590,6 +1700,12 @@ namespace ID3_TagIT
       Declarations.objSettings.ColorDoubleText = this.ColorDoubleText.BackColor.ToArgb();
       Declarations.objSettings.ColorCompareBack = this.ColorCompareBack.BackColor.ToArgb();
       Declarations.objSettings.ColorCompareText = this.ColorCompareText.BackColor.ToArgb();
+      Declarations.objSettings.ColorChangedBackDark = this.ColorChangedBackDark.BackColor.ToArgb();
+      Declarations.objSettings.ColorChangedTextDark = this.ColorChangedTextDark.BackColor.ToArgb();
+      Declarations.objSettings.ColorDoubleBackDark = this.ColorDoubleBackDark.BackColor.ToArgb();
+      Declarations.objSettings.ColorDoubleTextDark = this.ColorDoubleTextDark.BackColor.ToArgb();
+      Declarations.objSettings.ColorCompareBackDark = this.ColorCompareBackDark.BackColor.ToArgb();
+      Declarations.objSettings.ColorCompareTextDark = this.ColorCompareTextDark.BackColor.ToArgb();
       Declarations.objSettings.UseThemes = this.chkWinXPThemes.Checked;
 
       if (this.cmbTheme.SelectedIndex >= 0 && this.cmbTheme.SelectedIndex != Declarations.objSettings.Theme)
@@ -1753,6 +1869,14 @@ namespace ID3_TagIT
       this.ColorDoubleText.BackColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorDoubleText);
       this.ColorCompareBack.BackColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorCompareBack);
       this.ColorCompareText.BackColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorCompareText);
+      this.ColorChangedBackDark.BackColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorChangedBackDark);
+      this.ColorChangedTextDark.BackColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorChangedTextDark);
+      this.ColorDoubleBackDark.BackColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorDoubleBackDark);
+      this.ColorDoubleTextDark.BackColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorDoubleTextDark);
+      this.ColorCompareBackDark.BackColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorCompareBackDark);
+      this.ColorCompareTextDark.BackColor = System.Drawing.Color.FromArgb(Declarations.objSettings.ColorCompareTextDark);
+      this.lblColorsLight.Text = StringType.FromObject(Declarations.objResources.ResStrings["ThemeLight"]);
+      this.lblColorsDark.Text = StringType.FromObject(Declarations.objResources.ResStrings["ThemeDark"]);
 
       if (Declarations.objSettings.EditDialog == 1)
         this.optEditV1.Checked = true;
@@ -1838,6 +1962,14 @@ namespace ID3_TagIT
       this.ToolGrid.DataSource = Declarations.objSettings.Tools;
       this.ToolGrid.TableStyles[0].MappingName = Declarations.objSettings.Tools.TableName;
       this.AddToolTips();
+
+      // The dark-theme swatches share the tooltips of their light counterparts.
+      this.ToolTip.SetToolTip(this.ColorChangedBackDark, this.ToolTip.GetToolTip(this.ColorChangedBack));
+      this.ToolTip.SetToolTip(this.ColorChangedTextDark, this.ToolTip.GetToolTip(this.ColorChangedText));
+      this.ToolTip.SetToolTip(this.ColorDoubleBackDark, this.ToolTip.GetToolTip(this.ColorDoubleBack));
+      this.ToolTip.SetToolTip(this.ColorDoubleTextDark, this.ToolTip.GetToolTip(this.ColorDoubleText));
+      this.ToolTip.SetToolTip(this.ColorCompareBackDark, this.ToolTip.GetToolTip(this.ColorCompareBack));
+      this.ToolTip.SetToolTip(this.ColorCompareTextDark, this.ToolTip.GetToolTip(this.ColorCompareText));
     }
 
     private void txtEnumSept_KeyPress(object sender, KeyPressEventArgs e)
