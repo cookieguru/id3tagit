@@ -1486,21 +1486,98 @@ Label_010B:
 
       progress.SetStateScan();
       progress.ShowDialog(this);
-      this.objGetFilesTime = Stopwatch.StartNew();
-      ownerForm = this;
-      cB = new frmProgress.Callback(this.GetFilesCB);
+      this.ReadFiles(list);
 
-      progress = new frmProgress(0, list.Count, 1, ref ownerForm, ref cB)
+      if (vbooFill)
+        this.MP3View_FillColumns(ref Declarations.MP3s);
+    }
+
+    // Reads and parses the given files on a background thread while the progress dialog stays
+    // responsive, then adds the MP3s to Declarations.MP3s. Returns once reading has finished or
+    // was cancelled; files read before a cancel are kept.
+    private void ReadFiles(ArrayList files)
+    {
+      Form ownerForm = this;
+      frmProgress.Callback noCallback = null;
+      frmProgress progress = new frmProgress(0, files.Count, 1, ref ownerForm, ref noCallback)
       {
-        List = list
+        List = files
+      };
+      ArrayList read = new ArrayList();
+      Stopwatch elapsed = new Stopwatch();
+      int lastEstimateSecond = 0;
+      Exception error = null;
+      BackgroundWorker worker = new BackgroundWorker();
+      worker.WorkerReportsProgress = true;
+
+      worker.DoWork += delegate (object sender, DoWorkEventArgs e)
+      {
+        // Report at most every 50 ms; a progress message per file would flood the UI thread.
+        Stopwatch sinceReport = Stopwatch.StartNew();
+
+        for (int i = 0; i < files.Count; i++)
+        {
+          if (progress.Canceled)
+            return;
+
+          string filename = StringType.FromObject(files[i]);
+          MP3 mp = new MP3(filename);
+
+          if (mp.ExploreMP3())
+            read.Add(mp);
+
+          if (sinceReport.ElapsedMilliseconds >= 50 || i == files.Count - 1)
+          {
+            worker.ReportProgress(0, new object[] { i + 1, filename });
+            sinceReport.Restart();
+          }
+        }
+      };
+
+      worker.ProgressChanged += delegate (object sender, ProgressChangedEventArgs e)
+      {
+        object[] state = (object[])e.UserState;
+        int done = (int)state[0];
+
+        progress.lblInfo.Text = ((string)state[1]).Replace("&", "&&");
+        progress.ProgressBar.Value = Math.Min(done, progress.ProgressBar.Maximum);
+
+        // Update the time-remaining estimate once per elapsed second.
+        int seconds = (int)(elapsed.ElapsedMilliseconds / 1000);
+
+        if (seconds > lastEstimateSecond)
+        {
+          lastEstimateSecond = seconds;
+          int filesPerSecond = done / seconds;
+          int remaining = (filesPerSecond > 0) ? (files.Count - done) / filesPerSecond : 0;
+
+          progress.State.Text = StringType.FromObject(Declarations.objResources.ResStrings["Read"]) + " (" +
+            (remaining / 3600).ToString().PadLeft(2, '0') + ":" +
+            ((remaining / 60) % 60).ToString().PadLeft(2, '0') + ":" +
+            (remaining % 60).ToString().PadLeft(2, '0') + ")";
+        }
+      };
+
+      worker.RunWorkerCompleted += delegate (object sender, RunWorkerCompletedEventArgs e)
+      {
+        error = e.Error;
+        progress.Finish();
+      };
+
+      // Start once the dialog is up, so a fast read can't finish before it shows.
+      progress.Shown += delegate (object sender, EventArgs e)
+      {
+        elapsed.Start();
+        worker.RunWorkerAsync();
       };
 
       progress.SetStateRead();
       progress.ShowDialog(this);
-      this.objGetFilesTime.Stop();
+      Declarations.MP3s.AddRange(read);
 
-      if (vbooFill)
-        this.MP3View_FillColumns(ref Declarations.MP3s);
+      // Report a failure the way an exception in the old UI-thread loop was reported.
+      if (error != null)
+        Application.OnThreadException(error);
     }
 
     private void MoveFiles(object sender, EventArgs e)
@@ -2746,56 +2823,6 @@ Label_0B93:
       {
         if (enumerator is IDisposable)
           ((IDisposable)enumerator).Dispose();
-      }
-    }
-
-    private void GetFilesCB(ref frmProgress frmProg)
-    {
-      int num3 = 0;
-      int count = frmProg.List.Count;
-      int vintHelpCount = 0;
-
-      var enumerator = frmProg.List.GetEnumerator();
-
-      while (enumerator.MoveNext())
-      {
-        string vstrFullFilename = StringType.FromObject(enumerator.Current);
-        Application.DoEvents();
-
-        if (frmProg.Canceled)
-          return;
-
-        frmProg.lblInfo.Text = vstrFullFilename.Replace("&", "&&");
-        MP3 mp = new MP3(vstrFullFilename);
-        if (mp.ExploreMP3())
-          Declarations.MP3s.Add(mp);
-        // Update the time-remaining estimate once per elapsed second.
-        int elapsedSeconds = (int)(this.objGetFilesTime.ElapsedMilliseconds / 1000);
-
-        if (vintHelpCount != elapsedSeconds)
-        {
-          vintHelpCount = elapsedSeconds;
-          try
-          {
-            // Files per second, in whole files; below one per second there's no estimate yet.
-            int filesPerSecond = Declarations.MP3s.Count / vintHelpCount;
-
-            if (filesPerSecond > 0)
-              num3 = (count - Declarations.MP3s.Count) / filesPerSecond;
-          }
-          catch (Exception exception1)
-          {
-            ProjectData.SetProjectError(exception1);
-            Exception exception = exception1;
-            ProjectData.ClearProjectError();
-          }
-          int num6 = num3 / 3600;
-          int num5 = (num3 / 60) % 60;
-          int num4 = num3 % 60;
-          frmProg.State.Text = StringType.FromObject(ObjectType.StrCatObj(ObjectType.StrCatObj(ObjectType.StrCatObj(ObjectType.StrCatObj(ObjectType.StrCatObj(ObjectType.StrCatObj(ObjectType.StrCatObj(Declarations.objResources.ResStrings["Read"], " ("), num6.ToString().PadLeft(2, '0')), ":"), num5.ToString().PadLeft(2, '0')), ":"), num4.ToString().PadLeft(2, '0')), ")"));
-        }
-        frmProg.ProgressBar.PerformStep();
-        mp = null;
       }
     }
 

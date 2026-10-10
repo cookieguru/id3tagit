@@ -15,7 +15,7 @@ namespace ID3_TagIT
     private ID3_TagIT.MP3 objMP3;
     private bool vboo01;
     private bool vboo02;
-    private bool vbooCanceled;
+    private volatile bool vbooCanceled;
     private bool vbooFinished;
     private int vint01;
     private int vint02;
@@ -56,6 +56,11 @@ namespace ID3_TagIT
         return;
 
       this.Timer.Enabled = false;
+
+      // Without a callback the work runs elsewhere (a BackgroundWorker), which calls Finish.
+      if (this.CBack == null)
+        return;
+
       frmProgress frmProg = this;
       this.CBack(ref frmProg);
       this.vbooFinished = true;
@@ -266,6 +271,14 @@ namespace ID3_TagIT
       }
     }
 
+    // Closes the dialog when its work ran without a callback (see Timer_Tick).
+    public void Finish()
+    {
+      this.vbooFinished = true;
+      this.Close();
+    }
+
+    // Read from worker threads too, hence the volatile field.
     public bool Canceled
     {
       get

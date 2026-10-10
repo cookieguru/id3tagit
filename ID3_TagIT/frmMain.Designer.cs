@@ -37,7 +37,6 @@ namespace ID3_TagIT
     private System.Windows.Forms.Timer FolderRenameTimer;
     private System.Windows.Forms.Timer Timer;
     private Thread CalcAudioCheckSumThread;
-    private Stopwatch objGetFilesTime = new Stopwatch();
     private ToolStripComboBox cboLanguage;
     private ToolStripMenuItem aboutToolStripMenuItem;
     private ToolStripMenuItem addDirectoryToolStripMenuItem;
