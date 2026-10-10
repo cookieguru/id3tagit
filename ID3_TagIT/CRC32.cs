@@ -50,18 +50,40 @@ namespace ID3_TagIT
       return ~num2;
     }
 
-    public int CRC_32(int intCRC32, ref FileStream objFileStream, int vintStart, int Length)
+    // CRC32 of length bytes of the stream from start. Reads in blocks and polls cancelRequested
+    // (if given) between them. Returns false if cancelled or if the stream ends early, in which
+    // case checksum is 0.
+    public bool TryCRC_32(Stream stream, long start, long length, Func<bool> cancelRequested, out int checksum)
     {
-      int num2 = -1;
-      objFileStream.Seek((long)vintStart, SeekOrigin.Begin);
-      int num6 = Length - 1;
-      for (int i = 0; i <= num6; i++)
+      int crc = -1;
+      byte[] buffer = new byte[0x10000];
+
+      checksum = 0;
+      stream.Seek(start, SeekOrigin.Begin);
+
+      while (length > 0)
       {
-        int index = (num2 & 0xff) ^ Convert.ToByte(objFileStream.ReadByte());
-        num2 = ((num2 & -256) / 0x100) & 0xffffff;
-        num2 ^= this.crc32Table[index];
+        if (cancelRequested != null && cancelRequested())
+          return false;
+
+        int read = stream.Read(buffer, 0, (int)Math.Min(buffer.Length, length));
+
+        if (read <= 0)
+          return false;
+
+        for (int i = 0; i < read; i++)
+        {
+          int index = (crc & 0xff) ^ buffer[i];
+          crc = ((crc & -256) / 0x100) & 0xffffff;
+          crc ^= this.crc32Table[index];
+        }
+
+        length -= read;
       }
-      return ~num2;
+
+      checksum = ~crc;
+
+      return true;
     }
   }
 }

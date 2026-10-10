@@ -45,18 +45,32 @@ namespace ID3_TagIT
       this.vintDurationMS = 0;
     }
 
-    public void CalcAudioCheckSum()
+    // CRC32 of the audio data (the file without its tags); 0 if the file can't be read.
+    // Uses its own stream rather than the shared objFileStream, so it can run on a background
+    // thread while the UI reads the same file. cancelRequested, when given, is polled while
+    // reading; a cancelled calculation leaves AudioCheckSum at 0.
+    public void CalcAudioCheckSum(Func<bool> cancelRequested = null)
     {
       int vintStart = 0;
       int length = 0;
-      CRC32 crc = new CRC32();
+      int checksum;
+      FileStream stream;
       this.vintAudioCheckSum = 0;
 
-      if (this.OpenFileStreamR())
+      try
       {
-        this.OpenBinaryReader();
+        stream = this.FI.Open(FileMode.Open, FileAccess.Read, FileShare.Read);
+      }
+      catch (Exception exception1)
+      {
+        ProjectData.SetProjectError(exception1);
+        ProjectData.ClearProjectError();
+        return;
+      }
+
+      using (stream)
+      {
         length = (int)this.FI.Length;
-        vintStart = 0;
 
         if (this.V1TAG.TAGPresent)
           length -= 0x80;
@@ -64,12 +78,9 @@ namespace ID3_TagIT
         if (this.V2TAG.TAGHeaderPresent)
           vintStart = IntegerType.FromObject(Interaction.IIf(this.V2TAG.FooterPresent, this.V2TAG.TAGSize + 20, this.V2TAG.TAGSize + 10));
 
-        this.vintAudioCheckSum = crc.CRC_32(0, ref objFileStream, vintStart, length - vintStart);
-        this.CloseBinaryReader();
-        this.CloseFileStream();
+        if (new CRC32().TryCRC_32(stream, vintStart, length - vintStart, cancelRequested, out checksum))
+          this.vintAudioCheckSum = checksum;
       }
-      else
-        this.vintAudioCheckSum = 0;
     }
 
     public MP3 Clone()

@@ -149,17 +149,7 @@ namespace ID3_TagIT
 
         if (Directory.Exists(path))
         {
-          try
-          {
-            this.CalcAudioCheckSumThread.Abort();
-            this.CalcAudioCheckSumThread.Join();
-          }
-          catch (Exception exception1)
-          {
-            ProjectData.SetProjectError(exception1);
-            Exception exception = exception1;
-            ProjectData.ClearProjectError();
-          }
+          this.StopAudioCheckSum();
 
           foreach (ListViewItem item in this.MP3View.SelectedItems)
             vLeft = StringType.FromObject(ObjectType.StrCatObj(vLeft, ObjectType.StrCatObj(LateBinding.LateGet(LateBinding.LateGet(item.Tag, null, "FI", new object[0], null, null), null, "Fullname", new object[0], null, null), "\0")));
@@ -240,17 +230,7 @@ namespace ID3_TagIT
           }
         }
 
-        try
-        {
-          this.CalcAudioCheckSumThread.Abort();
-          this.CalcAudioCheckSumThread.Join();
-        }
-        catch (Exception exception1)
-        {
-          ProjectData.SetProjectError(exception1);
-          Exception exception = exception1;
-          ProjectData.ClearProjectError();
-        }
+        this.StopAudioCheckSum();
 
         if (Id3TagIT_Main.ShellFileOp(vLeft, vstrDestFolder, Declarations.ShellOperation.DeleteOp, Declarations.ShellOperationFlags.FilesOnly | Declarations.ShellOperationFlags.AllowUndo, this))
         {
@@ -274,9 +254,9 @@ namespace ID3_TagIT
 
     //public DevComponents.DotNetBar.DotNetBarManager DotNetBarManager;
     //this.DotNetBarManager = new DevComponents.DotNetBar.DotNetBarManager(this.components);
-    // 
+    //
     // DotNetBarManager
-    // 
+    //
     //this.DotNetBarManager.AllowUserBarCustomize = false;
     //this.DotNetBarManager.DefinitionName = "ID3-TagIT.MenuBars.xml";
     //this.DotNetBarManager.ParentForm = this;
@@ -1036,20 +1016,7 @@ Label_010B:
       }
       while (!flag);
 
-      try
-      {
-        if (CalcAudioCheckSumThread != null)
-        {
-          this.CalcAudioCheckSumThread.Abort();
-          this.CalcAudioCheckSumThread.Join();
-        }
-      }
-      catch (Exception exception6)
-      {
-        ProjectData.SetProjectError(exception6);
-        Exception exception3 = exception6;
-        ProjectData.ClearProjectError();
-      }
+      this.StopAudioCheckSum();
 
       try
       {
@@ -1449,20 +1416,7 @@ Label_010B:
     {
       ArrayList list = new ArrayList();
 
-      try
-      {
-        if (this.CalcAudioCheckSumThread != null)
-        {
-          this.CalcAudioCheckSumThread.Abort();
-          this.CalcAudioCheckSumThread.Join();
-        }
-      }
-      catch (Exception exception4)
-      {
-        ProjectData.SetProjectError(exception4);
-        Exception exception2 = exception4;
-        ProjectData.ClearProjectError();
-      }
+      this.StopAudioCheckSum();
 
       if (vbooClear)
       {
@@ -1616,17 +1570,7 @@ Label_010B:
         path = this.FolderBrowserDialog.SelectedPath;
         if (Directory.Exists(path))
         {
-          try
-          {
-            this.CalcAudioCheckSumThread.Abort();
-            this.CalcAudioCheckSumThread.Join();
-          }
-          catch (Exception exception1)
-          {
-            ProjectData.SetProjectError(exception1);
-            Exception exception = exception1;
-            ProjectData.ClearProjectError();
-          }
+          this.StopAudioCheckSum();
           foreach (ListViewItem item in this.MP3View.SelectedItems)
           {
             vLeft = StringType.FromObject(ObjectType.StrCatObj(vLeft, ObjectType.StrCatObj(LateBinding.LateGet(LateBinding.LateGet(item.Tag, null, "FI", new object[0], null, null), null, "Fullname", new object[0], null, null), "\0")));
@@ -2601,95 +2545,109 @@ Label_0B93:
 
     #region Class logic
 
+    // Calculates the audio checksum of every listed file that doesn't have one yet, on a
+    // background thread, filling in the checksum column and the status bar progress as it goes.
+    //
+    // This deliberately uses one worker. A checksum reads a whole file sequentially, and two
+    // workers reading different files at once makes a spinning disk seek between them
     private void AudioCheckSumCalculation()
     {
-      if (Declarations.objSettings.AudioChecksumCalc)
+      if (!Declarations.objSettings.AudioChecksumCalc)
+        return;
+
+      this.StopAudioCheckSum();
+
+      // The worker must not touch the ListView, so hand it the items and tags up front.
+      ListViewItem[] items = new ListViewItem[this.MP3View.Items.Count];
+      this.MP3View.Items.CopyTo(items, 0);
+      MP3[] tags = new MP3[items.Length];
+
+      for (int i = 0; i < items.Length; i++)
+        tags[i] = (MP3)items[i].Tag;
+
+      BackgroundWorker worker = new BackgroundWorker();
+      ManualResetEvent done = new ManualResetEvent(false);
+      worker.WorkerReportsProgress = true;
+      worker.WorkerSupportsCancellation = true;
+
+      worker.DoWork += delegate (object sender, DoWorkEventArgs e)
       {
+        // Stay out of the way of the UI, as the old dedicated thread did.
+        ThreadPriority priority = Thread.CurrentThread.Priority;
+        Thread.CurrentThread.Priority = ThreadPriority.Lowest;
+
         try
         {
-          if (this.CalcAudioCheckSumThread != null)
+          for (int i = 0; i < tags.Length; i++)
           {
-            this.CalcAudioCheckSumThread.Abort();
-            this.CalcAudioCheckSumThread.Join();
+            if (worker.CancellationPending)
+            {
+              e.Cancel = true;
+              return;
+            }
+
+            if (tags[i].AudioCheckSum == 0)
+              tags[i].CalcAudioCheckSum(() => worker.CancellationPending);
+
+            worker.ReportProgress(0, i);
           }
         }
-        catch (Exception exception1)
+        finally
         {
-          ProjectData.SetProjectError(exception1);
-          Exception exception = exception1;
-          ProjectData.ClearProjectError();
+          Thread.CurrentThread.Priority = priority;
+          done.Set();
         }
+      };
 
-        StatusProgressBar.Value = 0;
-        StatusProgressBar.Maximum = this.MP3View.Items.Count;
-        lblVersion.Visible = false;
-        lblSubDirs.Visible = false;
-        lblProgress.Visible = true;
-        StatusProgressBar.Visible = true;
-        this.CalcAudioCheckSumThread = new Thread(new ThreadStart(this.CalcAudioCheckSum));
-        this.CalcAudioCheckSumThread.IsBackground = true;
-        this.CalcAudioCheckSumThread.Priority = ThreadPriority.Lowest;
-        this.CalcAudioCheckSumThread.Start();
-      }
-    }
-
-    private void CalcAudioCheckSum()
-    {
-      MP3 tag = null;
-
-      try
+      worker.ProgressChanged += delegate (object sender, ProgressChangedEventArgs e)
       {
-        int mp3Count = this.MP3View.Items.Count - 1;
+        // Ignore a stopped run's last messages once a new one has started.
+        if (sender != this.objChecksumWorker)
+          return;
 
-        for (int i = 0; i <= mp3Count; i++)
-        {
-          tag = (MP3)this.MP3View.Items[i].Tag;
+        ListViewItem item = items[(int)e.UserState];
+        MP3 tag = (MP3)item.Tag;
 
-          if (tag.AudioCheckSum == 0)
-          {
-            tag.CalcAudioCheckSum();
+        if (item.ListView == this.MP3View && this.MP3View.Columns.Contains(this.colHAudioCheckSum))
+          item.SubItems[this.colHAudioCheckSum.Index].Text = (tag.AudioCheckSum != 0) ? tag.AudioCheckSum.ToString() : "";
 
-            if (this.MP3View.Columns.Contains(this.colHAudioCheckSum))
-              this.MP3View.Items[i].SubItems[this.colHAudioCheckSum.Index].Text = StringType.FromObject(tag.AudioCheckSum != 0 ? tag.AudioCheckSum.ToString() : "");
-          }
+        StatusProgressBar.PerformStep();
+      };
 
-          StatusProgressBar.PerformStep();
-        }
-      }
-      catch (ThreadAbortException exception1)
+      worker.RunWorkerCompleted += delegate (object sender, RunWorkerCompletedEventArgs e)
       {
-        ProjectData.SetProjectError(exception1);
-        ThreadAbortException exception = exception1;
+        if (sender != this.objChecksumWorker)
+          return;
 
-        try
-        {
-          tag.CloseBinaryReader();
-        }
-        catch (Exception exception2)
-        {
-          ProjectData.SetProjectError(exception2);
-          ProjectData.ClearProjectError();
-        }
-
-        try
-        {
-          tag.CloseFileStream();
-        }
-        catch (Exception exception3)
-        {
-          ProjectData.SetProjectError(exception3);
-          ProjectData.ClearProjectError();
-        }
-
-        ProjectData.ClearProjectError();
-      }
-      finally
-      {
         lblVersion.Visible = true;
         lblSubDirs.Visible = true;
         lblProgress.Visible = false;
         StatusProgressBar.Visible = false;
-      }
+
+        if (e.Error != null)
+          Application.OnThreadException(e.Error);
+      };
+
+      StatusProgressBar.Value = 0;
+      StatusProgressBar.Maximum = items.Length;
+      lblVersion.Visible = false;
+      lblSubDirs.Visible = false;
+      lblProgress.Visible = true;
+      StatusProgressBar.Visible = true;
+      this.objChecksumWorker = worker;
+      this.objChecksumDone = done;
+      worker.RunWorkerAsync();
+    }
+
+    // Stops a running checksum calculation and waits until it has closed its file, so callers
+    // can move, delete or rewrite files. A file part-way through keeps no checksum.
+    private void StopAudioCheckSum()
+    {
+      if (this.objChecksumWorker == null || !this.objChecksumWorker.IsBusy)
+        return;
+
+      this.objChecksumWorker.CancelAsync();
+      this.objChecksumDone.WaitOne();
     }
 
     private bool CheckAllChanged()
@@ -3980,20 +3938,7 @@ Label_23AA:
 
       if (vintMaximum > 0)
       {
-        try
-        {
-          if (this.CalcAudioCheckSumThread != null)
-          {
-            this.CalcAudioCheckSumThread.Abort();
-            this.CalcAudioCheckSumThread.Join();
-          }
-        }
-        catch (Exception exception1)
-        {
-          ProjectData.SetProjectError(exception1);
-          Exception exception = exception1;
-          ProjectData.ClearProjectError();
-        }
+        this.StopAudioCheckSum();
 
         Form ownerForm = this;
         frmProgress.Callback cB = new frmProgress.Callback(this.SaveChangesCB);
@@ -5541,17 +5486,7 @@ Label_0DA3:
       }
       while (!flag);
 
-      try
-      {
-        this.CalcAudioCheckSumThread.Abort();
-        this.CalcAudioCheckSumThread.Join();
-      }
-      catch (Exception exception1)
-      {
-        ProjectData.SetProjectError(exception1);
-        Exception exception = exception1;
-        ProjectData.ClearProjectError();
-      }
+      this.StopAudioCheckSum();
 
       this.vbooRefreshFlag = true;
       this.FolderTree.RefreshView();

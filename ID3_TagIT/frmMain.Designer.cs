@@ -36,7 +36,8 @@ namespace ID3_TagIT
     private FolderBrowserDialog FolderBrowserDialog;
     private System.Windows.Forms.Timer FolderRenameTimer;
     private System.Windows.Forms.Timer Timer;
-    private Thread CalcAudioCheckSumThread;
+    private BackgroundWorker objChecksumWorker;
+    private ManualResetEvent objChecksumDone;
     private ToolStripComboBox cboLanguage;
     private ToolStripMenuItem aboutToolStripMenuItem;
     private ToolStripMenuItem addDirectoryToolStripMenuItem;
