@@ -3,6 +3,7 @@ using Microsoft.VisualBasic.CompilerServices;
 using Microsoft.Win32;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
@@ -3963,88 +3964,117 @@ Label_23AA:
       }
     }
 
+    // Writes the changed files on a background thread while the progress dialog stays
+    // responsive, one file at a time. Returns once saving has finished or was cancelled.
     private void SaveChanges()
     {
-      int vintMaximum = 0;
+      List<ListViewItem> items = new List<ListViewItem>();
 
       foreach (ListViewItem item in this.MP3View.Items)
+        if (((MP3)item.Tag).Changed)
+          items.Add(item);
+
+      if (items.Count == 0)
+        return;
+
+      this.StopAudioCheckSum();
+      // Its ticks read the selected file's tag, which may be the one being written.
+      this.Timer.Stop();
+
+      MP3[] tags = new MP3[items.Count];
+
+      for (int i = 0; i < items.Count; i++)
+        tags[i] = (MP3)items[i].Tag;
+
+      Form ownerForm = this;
+      frmProgress.Callback noCallback = null;
+      frmProgress progress = new frmProgress(0, items.Count, 1, ref ownerForm, ref noCallback);
+      Exception error = null;
+      BackgroundWorker worker = new BackgroundWorker();
+      worker.WorkerReportsProgress = true;
+
+      // Progress 0 announces the file about to be written; 1 reports whether writing it worked.
+      worker.DoWork += delegate (object sender, DoWorkEventArgs e)
       {
-        MP3 tag = (MP3)item.Tag;
-
-        if (tag.Changed)
-          vintMaximum++;
-      }
-
-      if (vintMaximum > 0)
-      {
-        this.StopAudioCheckSum();
-
-        Form ownerForm = this;
-        frmProgress.Callback cB = new frmProgress.Callback(this.SaveChangesCB);
-        frmProgress progress = new frmProgress(0, vintMaximum, 1, ref ownerForm, ref cB);
-        progress.SetStateSave();
-        progress.ShowDialog(this);
-        this.AudioCheckSumCalculation();
-      }
-    }
-
-    private void SaveChangesCB(ref frmProgress frmProg)
-    {
-      foreach (ListViewItem item in this.MP3View.Items)
-      {
-        if (frmProg.Canceled)
-          break;
-
-        MP3 tag = (MP3)item.Tag;
-
-        if (tag.Changed)
+        for (int i = 0; i < tags.Length; i++)
         {
-          frmProg.lblInfo.Text = tag.CurrentFullName.Replace("&", "&&");
+          if (progress.Canceled)
+            return;
 
-          if (tag.WriteChanges())
-          {
-            item.BackColor = System.Drawing.Color.Empty; // inherit the list colors (theme-aware)
-            item.ForeColor = System.Drawing.Color.Empty;
+          worker.ReportProgress(0, i);
+          worker.ReportProgress(1, new object[] { i, tags[i].WriteChanges() });
+        }
+      };
 
-            if (tag.FileTAGCompare)
-            {
-              item.BackColor = Declarations.objSettings.CompareBackColor;
-              item.ForeColor = Declarations.objSettings.CompareTextColor;
-            }
-
-            if (tag.Doubled)
-            {
-              item.BackColor = Declarations.objSettings.DoubleBackColor;
-              item.ForeColor = Declarations.objSettings.DoubleTextColor;
-            }
-
-            frmProg.ProgressBar.PerformStep();
-          }
-          else
-          {
-            ListViewItem item2 = new ListViewItem
-            {
-              Text = StringType.FromObject(LateBinding.LateGet(item.Tag, null, "CurrentFullName", new object[0], null, null))
-            };
-
-            object[] objArray2 = new object[1];
-            DataRow resStrings = Declarations.objResources.ResStrings;
-            string str = "ErrorCouldNotWriteChanges";
-            objArray2[0] = RuntimeHelpers.GetObjectValue(resStrings[str]);
-            object[] args = objArray2;
-            bool[] copyBack = new bool[] { true };
-            LateBinding.LateCall(item2.SubItems, null, "Add", args, null, copyBack);
-
-            if (copyBack[0])
-              resStrings[str] = RuntimeHelpers.GetObjectValue(args[0]);
-
-            this.ErrorMsg.Items.Insert(0, item2);
-            // FIXME - Exp this.SplitterBottom.Expanded = true;
-          }
+      worker.ProgressChanged += delegate (object sender, ProgressChangedEventArgs e)
+      {
+        if (e.ProgressPercentage == 0)
+        {
+          progress.lblInfo.Text = tags[(int)e.UserState].CurrentFullName.Replace("&", "&&");
+          return;
         }
 
-        Application.DoEvents();
-      }
+        object[] result = (object[])e.UserState;
+        ListViewItem item = items[(int)result[0]];
+        MP3 tag = tags[(int)result[0]];
+
+        if ((bool)result[1])
+        {
+          item.BackColor = System.Drawing.Color.Empty; // inherit the list colors (theme-aware)
+          item.ForeColor = System.Drawing.Color.Empty;
+
+          if (tag.FileTAGCompare)
+          {
+            item.BackColor = Declarations.objSettings.CompareBackColor;
+            item.ForeColor = Declarations.objSettings.CompareTextColor;
+          }
+
+          if (tag.Doubled)
+          {
+            item.BackColor = Declarations.objSettings.DoubleBackColor;
+            item.ForeColor = Declarations.objSettings.DoubleTextColor;
+          }
+
+          progress.ProgressBar.PerformStep();
+        }
+        else
+        {
+          ListViewItem item2 = new ListViewItem
+          {
+            Text = StringType.FromObject(LateBinding.LateGet(item.Tag, null, "CurrentFullName", new object[0], null, null))
+          };
+
+          object[] objArray2 = new object[1];
+          DataRow resStrings = Declarations.objResources.ResStrings;
+          string str = "ErrorCouldNotWriteChanges";
+          objArray2[0] = RuntimeHelpers.GetObjectValue(resStrings[str]);
+          object[] args = objArray2;
+          bool[] copyBack = new bool[] { true };
+          LateBinding.LateCall(item2.SubItems, null, "Add", args, null, copyBack);
+
+          if (copyBack[0])
+            resStrings[str] = RuntimeHelpers.GetObjectValue(args[0]);
+
+          this.ErrorMsg.Items.Insert(0, item2);
+          // FIXME - Exp this.SplitterBottom.Expanded = true;
+        }
+      };
+
+      worker.RunWorkerCompleted += delegate (object sender, RunWorkerCompletedEventArgs e)
+      {
+        error = e.Error;
+        progress.Finish();
+      };
+
+      progress.Shown += delegate (object sender, EventArgs e) { worker.RunWorkerAsync(); };
+      progress.SetStateSave();
+      progress.ShowDialog(this);
+
+      // Report a failure the way an exception in the old UI-thread loop was reported.
+      if (error != null)
+        Application.OnThreadException(error);
+
+      this.AudioCheckSumCalculation();
     }
 
     private void ScanCB(ref frmProgress frmProg)
