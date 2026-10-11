@@ -1431,20 +1431,63 @@ Label_010B:
         alstFolders.Add(Declarations.objSettings.CurrentPath);
       }
 
-      Form ownerForm = this;
-      frmProgress.Callback cB = new frmProgress.Callback(this.ScanCB);
-      frmProgress progress = new frmProgress(0, list.Count, 1, ref ownerForm, ref cB)
-      {
-        List = list,
-        ListHelp = alstFolders
-      };
-
-      progress.SetStateScan();
-      progress.ShowDialog(this);
+      this.ScanFiles(alstFolders, list);
       this.ReadFiles(list);
 
       if (vbooFill)
         this.MP3View_FillColumns(ref Declarations.MP3s);
+    }
+
+    // Finds the MP3s in the given folders (and their subfolders, if set) on a background thread
+    // while the progress dialog stays responsive, adding their paths to files. Returns once the
+    // scan has finished or was cancelled.
+    private void ScanFiles(ArrayList folders, ArrayList files)
+    {
+      Form ownerForm = this;
+      frmProgress.Callback noCallback = null;
+      frmProgress progress = new frmProgress(0, 0, 1, ref ownerForm, ref noCallback)
+      {
+        List = files,
+        ListHelp = folders
+      };
+      bool includeSubfolders = Declarations.objSettings.ScanSubDirs;
+      Exception error = null;
+      BackgroundWorker worker = new BackgroundWorker();
+      worker.WorkerReportsProgress = true;
+
+      worker.DoWork += delegate (object sender, DoWorkEventArgs e)
+      {
+        // Report at most every 50 ms; a progress message per folder would flood the UI thread.
+        Stopwatch sinceReport = Stopwatch.StartNew();
+
+        Id3TagIT_Main.ScanForFiles(folders, "*.mp3", includeSubfolders, ref files, () => progress.Canceled, delegate (string folder)
+        {
+          if (sinceReport.ElapsedMilliseconds >= 50)
+          {
+            worker.ReportProgress(0, folder);
+            sinceReport.Restart();
+          }
+        });
+      };
+
+      worker.ProgressChanged += delegate (object sender, ProgressChangedEventArgs e)
+      {
+        progress.lblInfo.Text = ((string)e.UserState).Replace("&", "&&");
+      };
+
+      worker.RunWorkerCompleted += delegate (object sender, RunWorkerCompletedEventArgs e)
+      {
+        error = e.Error;
+        progress.Finish();
+      };
+
+      progress.Shown += delegate (object sender, EventArgs e) { worker.RunWorkerAsync(); };
+      progress.SetStateScan();
+      progress.ShowDialog(this);
+
+      // Report a failure the way an exception in the old UI-thread scan was reported.
+      if (error != null)
+        Application.OnThreadException(error);
     }
 
     // Reads and parses the given files in the background while the progress dialog stays
@@ -4075,14 +4118,6 @@ Label_23AA:
         Application.OnThreadException(error);
 
       this.AudioCheckSumCalculation();
-    }
-
-    private void ScanCB(ref frmProgress frmProg)
-    {
-      frmProgress progress = frmProg;
-      ArrayList alstFile = progress.List;
-      Id3TagIT_Main.ScanForFiles(frmProg.ListHelp, "*.mp3", Declarations.objSettings.ScanSubDirs, ref alstFile, ref frmProg);
-      progress.List = alstFile;
     }
 
     private void SetLanguage()

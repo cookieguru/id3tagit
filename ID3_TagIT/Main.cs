@@ -587,7 +587,10 @@ namespace ID3_TagIT
       Declarations.objSettings.Forms.Rows.Add(row);
     }
 
-    public static void ScanForFiles(ArrayList alstFolders, string vstrSearchPattern, bool vbooIncludeSubDir, ref ArrayList alstFile, [Optional, DefaultParameterValue(null)] ref frmProgress frmProg)
+    // Adds the files in alstFolders matching vstrSearchPattern to alstFile, including subfolders
+    // when vbooIncludeSubDir is set. Touches no UI, so it can run on a background thread: canceled
+    // is polled between folders, and folderScanned is called with each folder as it is scanned.
+    public static void ScanForFiles(ArrayList alstFolders, string vstrSearchPattern, bool vbooIncludeSubDir, ref ArrayList alstFile, Func<bool> canceled, Action<string> folderScanned)
     {
       foreach (string str in alstFolders)
       {
@@ -605,20 +608,15 @@ namespace ID3_TagIT
           {
             foreach (DirectoryInfo info2 in directories)
             {
-              Application.DoEvents();
-
-              if (frmProg.Canceled)
+              if (canceled())
                 return;
 
               ArrayList list = new ArrayList { info2.FullName };
-              ScanForFiles(list, vstrSearchPattern, vbooIncludeSubDir, ref alstFile, ref frmProg);
+              ScanForFiles(list, vstrSearchPattern, vbooIncludeSubDir, ref alstFile, canceled, folderScanned);
             }
           }
 
-          if (frmProg != null)
-            frmProg.lblInfo.Text = info.FullName.Replace("&", "&&");
-
-          Application.DoEvents();
+          folderScanned(info.FullName);
 
           foreach (FileInfo info3 in info.GetFiles(vstrSearchPattern))
             alstFile.Add(info3.FullName);
