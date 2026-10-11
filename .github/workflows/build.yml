@@ -70,6 +70,15 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           Move-Item "installer\Output\ID3-TagIT-$name-Setup.exe" .
 
+      # Drives the portable edition from the zip on the runner's desktop; a failure stops the release.
+      - name: Run smoke tests
+        shell: pwsh
+        run: |
+          Expand-Archive "$env:PACKAGE-Portable.zip" smoke-app
+          $env:ID3TAGIT_SMOKE_APP = "$pwd\smoke-app"
+          packages\xunit.runner.console.2.9.3\tools\net48\xunit.console.x86.exe ID3-TagIT.SmokeTests\bin\Release\ID3-TagIT.SmokeTests.dll
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
       # Runs on other branches only build the packages, for testing.
       - name: Upload packages
         if: github.ref != 'refs/heads/main'
