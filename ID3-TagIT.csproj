@@ -457,4 +457,21 @@
     <None Include="ID3_TagIT\icons\Next.ico" />
     <None Include="ID3_TagIT\icons\ID3_TagIT_Logo.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templetes\CSV-Short.itl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templetes\HTML-Short.itl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templetes\Readme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templetes\RTF-Short.itl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templetes\SFV (CRC32 Checksum file).itl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>

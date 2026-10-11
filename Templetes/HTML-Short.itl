@@ -1,0 +1,55 @@
+[ITLHEADER]
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta name="GENERATOR" content="ID3-TagIT - http://www.id3-tagit.de">
+    <title>ID3-TagIT - Filelist</title>
+    <style type="text/css"><!--
+      h1 { font-family: Verdana; font-size: 14pt }
+      body { font-family: Verdana; font-size: 8pt }
+      table { font-family: Verdana; font-size: 9pt }
+      a {color: #0033FF; text-decoration: none }
+      a:hover {color: #FF0033; text-decoration: none}
+      -->
+    </style>
+  </head>
+  <body marginwidth=10 marginheight=10 leftmargin=10 topmargin=10 bgcolor=#FFFFFF text=#000000>
+    <p align=center>
+      <table border=0 cellpadding=0 cellspacing=0 width=80% bgcolor=#000000>
+        <tr><td>
+          <table border=0 cellpadding=5 cellspacing=1 width=100%>
+            <tr><td bgcolor=#CCCCCC>
+              <h1>ID3-TagIT HTML-List   (created by <a href="http://www.id3-tagit.de" target=_blank>ID3-TagIT </a> )</h1>
+            </td></tr>
+          </table>
+        </td></tr>
+      </table>
+    </p>
+    <p align=center>
+      <table border=0 cellpadding=0 cellspacing=0 width=80% bgcolor=#999999>
+        <tr><td>
+          <table border=0 cellpadding=3 cellspacing=1 width=100%>
+            <tr bgcolor=#CCCCCC><td><b>Artist</b></td><td><b>Title</b></td><td><b>Album</b></td><td><b>Track</b></td><td><b>Year</b></td><td><b>Genre</b></td><td><b>Filename</b></td></tr>
+
+[ITLRECORD]
+            <tr bgcolor=#FFFFFF>
+              <td>%Artist%</td>
+              <td>%Title%</td>
+              <td>%Album%</td>
+              <td align=right>%Track%</td>
+              <td align=right>%Year%</td>
+              <td>%Genre%</td>
+              <td>%Filename%</td>
+            </tr>
+
+[ITLFOOTER]
+          </table>
+        </td></tr>
+      </table>
+    </p>
+  </body>
+</html>
+
+[ITLEXTENSION]
+html
