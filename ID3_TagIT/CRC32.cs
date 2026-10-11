@@ -44,7 +44,7 @@ namespace ID3_TagIT
       for (int i = 0; i <= num6; i++)
       {
         int index = (num2 & 0xff) ^ bArrayIn[i];
-        num2 = ((num2 & -256) / 0x100) & 0xffffff;
+        num2 = (int)((uint)num2 >> 8);
         num2 ^= this.crc32Table[index];
       }
       return ~num2;
@@ -74,7 +74,7 @@ namespace ID3_TagIT
         for (int i = 0; i < read; i++)
         {
           int index = (crc & 0xff) ^ buffer[i];
-          crc = ((crc & -256) / 0x100) & 0xffffff;
+          crc = (int)((uint)crc >> 8);
           crc ^= this.crc32Table[index];
         }
 
