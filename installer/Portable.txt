@@ -1,0 +1,6 @@
+While this file is next to ID3-TagIT.exe, ID3-TagIT runs as a portable copy:
+all settings are kept in the Settings folder here, temporary files in the
+Temp folder here, and nothing is written to the registry.
+
+Delete this file to have ID3-TagIT keep its settings in your user profile
+instead, like an installed copy.

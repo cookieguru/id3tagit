@@ -15,8 +15,11 @@ jobs:
     runs-on: windows-2022
 
     steps:
+      # Full history and tags, so the release notes can list the commits since the last release.
       - name: Checkout repository
         uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
 
       - name: Install NuGet
         uses: NuGet/setup-nuget@v4
@@ -37,29 +40,68 @@ jobs:
       - name: Run unit tests
         run: packages\xunit.runner.console.2.9.3\tools\net48\xunit.console.x86.exe ID3-TagIT.Tests\bin\Release\ID3-TagIT.Tests.dll
 
-      - name: Package build
+      # The bare build, for a quick look; releases carry only the installer and the portable zip.
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: ID3-TagIT-build
+          path: bin/Release
+
+      # Packages are named after the version, e.g. ID3-TagIT-3.5.0-beta-1a2b3c4-Setup.exe. An alpha
+      # or beta (IS_ALPHA/IS_BETA in Main.cs) is built many times, so it also carries the short SHA;
+      # a final build is just ID3-TagIT-3.5.0-Setup.exe.
+      - name: Package portable edition and installer
         shell: pwsh
         run: |
           $shortSha = $env:GITHUB_SHA.Substring(0, 7)
-          "SHORT_SHA=$shortSha" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
-          Compress-Archive -Path bin\Release\* -DestinationPath "ID3-TagIT-$shortSha.zip"
+          $version = ((Get-Item bin\Release\ID3-TagIT.exe).VersionInfo.FileVersion -split '\.')[0..2] -join '.'
+          $main = Get-Content ID3_TagIT\Main.cs -Raw
+          $label = if ($main -match 'IS_ALPHA = true') { 'alpha' } elseif ($main -match 'IS_BETA = true') { 'beta' } else { '' }
+          $name = if ($label) { "$version-$label-$shortSha" } else { $version }
+          "SHORT_SHA=$shortSha", "PACKAGE=ID3-TagIT-$name" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
 
-      # The release and its tag are both named after the short SHA of the commit that was built.
-      # Re-running the workflow for the same commit replaces the zip on the existing release.
+          # Portable.txt next to the exe keeps settings and temp files in the extracted folder.
+          New-Item -ItemType Directory portable | Out-Null
+          Copy-Item -Recurse bin\Release\* portable
+          Copy-Item installer\Portable.txt portable
+          Compress-Archive -Path portable\* -DestinationPath "ID3-TagIT-$name-Portable.zip"
+
+          & "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe" "/DSuffix=$name" "/DSourceDir=$pwd\bin\Release" installer\ID3-TagIT.iss
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          Move-Item "installer\Output\ID3-TagIT-$name-Setup.exe" .
+
+      # Runs on other branches only build the packages, for testing.
+      - name: Upload packages
+        if: github.ref != 'refs/heads/main'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ID3-TagIT-packages
+          path: |
+            ${{ env.PACKAGE }}-Setup.exe
+            ${{ env.PACKAGE }}-Portable.zip
+          retention-days: 7
+
+      # The release's tag is the short SHA of the commit that was built; its title is the package
+      # name. The notes list every commit since the previous release. Re-running the workflow for
+      # the same commit replaces the files on the existing release.
       - name: Publish release
+        if: github.ref == 'refs/heads/main'
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          $zip = "ID3-TagIT-$env:SHORT_SHA.zip"
+          $files = "$env:PACKAGE-Setup.exe", "$env:PACKAGE-Portable.zip"
           gh release view $env:SHORT_SHA *> $null
 
           if ($LASTEXITCODE -eq 0) {
-            gh release upload $env:SHORT_SHA $zip --clobber
+            gh release upload $env:SHORT_SHA @files --clobber
           }
           else {
-            git log -1 --format=%B $env:GITHUB_SHA | Out-File -FilePath notes.md -Encoding utf8
-            gh release create $env:SHORT_SHA $zip --title $env:SHORT_SHA --target $env:GITHUB_SHA --notes-file notes.md --latest
+            $previous = gh release list --limit 20 --json tagName --jq '.[].tagName' | Where-Object { $_ -ne $env:SHORT_SHA } | Select-Object -First 1
+            $range = if ($previous) { "$previous..$env:GITHUB_SHA" } else { $env:GITHUB_SHA }
+            git log --reverse --format='* %s' $range | Out-File -FilePath notes.md -Encoding utf8
+
+            gh release create $env:SHORT_SHA @files --title $env:PACKAGE --target $env:GITHUB_SHA --notes-file notes.md --latest
           }
 
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
