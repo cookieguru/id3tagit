@@ -29,7 +29,8 @@ namespace ID3_TagIT.Tests
       foreach (string key in new[] { "ThemeSystem", "ThemeLight", "ThemeDark", "Col27", "SettingsReadOnly" })
         Assert.False(string.IsNullOrEmpty(strings[key] as string), key + " is missing");
 
-      Assert.False(string.IsNullOrEmpty(preferences["lblTheme"] as string), "lblTheme is missing");
+      foreach (string key in new[] { "lblTheme", "chkShellMenuMe", "chkShellMenuAll", "lblShellMenuPortable" })
+        Assert.False(string.IsNullOrEmpty(preferences[key] as string), key + " is missing");
     }
 
     [Fact]

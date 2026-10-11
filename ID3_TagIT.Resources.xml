@@ -504,7 +504,9 @@
                 <xs:element name="btnOK" type="xs:string" minOccurs="0" />
                 <xs:element name="Settings" type="xs:string" minOccurs="0" />
                 <xs:element name="lblPlay" type="xs:string" minOccurs="0" />
-                <xs:element name="chkExplorerContext" type="xs:string" minOccurs="0" />
+                <xs:element name="chkShellMenuMe" type="xs:string" minOccurs="0" />
+                <xs:element name="chkShellMenuAll" type="xs:string" minOccurs="0" />
+                <xs:element name="lblShellMenuPortable" type="xs:string" minOccurs="0" />
                 <xs:element name="frameEnum" type="xs:string" minOccurs="0" />
                 <xs:element name="lbl2" type="xs:string" minOccurs="0" />
                 <xs:element name="lblEnumSep" type="xs:string" minOccurs="0" />
@@ -1461,7 +1463,9 @@
     <btnOK>&amp;OK</btnOK>
     <Settings>Settings</Settings>
     <lblPlay>Shell command for PLA&amp;Y function:</lblPlay>
-    <chkExplorerContext>Show "ID3-TagIT" in the folder context menu of the Windows Explorer</chkExplorerContext>
+    <chkShellMenuMe>Folder right-click menu for &amp;me</chkShellMenuMe>
+    <chkShellMenuAll>...for all &amp;users</chkShellMenuAll>
+    <lblShellMenuPortable>Not available in the portable edition</lblShellMenuPortable>
     <frameEnum>Enumerating mode</frameEnum>
     <lbl2>Number of digits of filename enumeration:</lbl2>
     <lblEnumSep>Separator:</lblEnumSep>

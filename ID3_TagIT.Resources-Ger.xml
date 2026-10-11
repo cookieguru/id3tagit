@@ -504,7 +504,9 @@
 								<xs:element name="btnOK" type="xs:string" minOccurs="0" />
 								<xs:element name="Settings" type="xs:string" minOccurs="0" />
 								<xs:element name="lblPlay" type="xs:string" minOccurs="0" />
-								<xs:element name="chkExplorerContext" type="xs:string" minOccurs="0" />
+								<xs:element name="chkShellMenuMe" type="xs:string" minOccurs="0" />
+								<xs:element name="chkShellMenuAll" type="xs:string" minOccurs="0" />
+								<xs:element name="lblShellMenuPortable" type="xs:string" minOccurs="0" />
 								<xs:element name="frameEnum" type="xs:string" minOccurs="0" />
 								<xs:element name="lbl2" type="xs:string" minOccurs="0" />
 								<xs:element name="lblEnumSep" type="xs:string" minOccurs="0" />
@@ -1461,7 +1463,9 @@
 		<btnOK>&amp;OK</btnOK>
 		<Settings>Einstellungen</Settings>
 		<lblPlay>Shell Befehl für PLA&amp;Y:</lblPlay>
-		<chkExplorerContext>Zeige ID3-TagIT im Ordner-Kontextmenü des Windows Explorer</chkExplorerContext>
+		<chkShellMenuMe>Ordner-Kontextmenü für &amp;mich</chkShellMenuMe>
+		<chkShellMenuAll>...für alle &amp;Benutzer</chkShellMenuAll>
+		<lblShellMenuPortable>In der portablen Version nicht verfügbar</lblShellMenuPortable>
 		<frameEnum>Dateiaufzählung</frameEnum>
 		<lbl2>Anz. der Ziffern der Dateiaufzählung:</lbl2>
 		<lblEnumSep>Trennzeichen:</lblEnumSep>

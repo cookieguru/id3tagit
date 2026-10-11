@@ -13,10 +13,28 @@ namespace ID3_TagIT
 
     public void Resolve()
     {
+      this.Resolve(Interaction.Command());
+    }
+
+    public void Resolve(string commandLine)
+    {
       string str = "";
       string sLeft = "";
 
-      sLeft = Interaction.Command().Trim(new char[] { ' ' });
+      sLeft = commandLine.Trim(new char[] { ' ' });
+
+      // Sent only by Preferences, to an elevated copy of the app; it is always on its own.
+      if (string.Equals(sLeft, "/shellmenu=allusers:on", System.StringComparison.OrdinalIgnoreCase))
+      {
+        this.ShellMenuAllUsers = true;
+        return;
+      }
+
+      if (string.Equals(sLeft, "/shellmenu=allusers:off", System.StringComparison.OrdinalIgnoreCase))
+      {
+        this.ShellMenuAllUsers = false;
+        return;
+      }
 
       if (StringType.StrCmp(sLeft, "", false) != 0)
       {
@@ -89,6 +107,9 @@ namespace ID3_TagIT
         }
       }
     }
+
+    // Set by /shellmenu=allusers:on|off: turn the all-users right-click entry on or off, then exit.
+    public bool? ShellMenuAllUsers { get; private set; }
 
     public bool AutoModus
     {

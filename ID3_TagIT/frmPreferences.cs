@@ -27,7 +27,10 @@ namespace ID3_TagIT
     private DataGridTextBoxColumn C5;
     private CheckBox chkAudioChecksumCalc;
     private CheckBox chkDefault;
-    private CheckBox chkExplorerContext;
+    private CheckBox chkShellMenuMe;
+    private CheckBox chkShellMenuAll;
+    private Label lblShellMenuPortable;
+    private bool vbooShellMenuAllUsers;
     private CheckBox chkIgnoreWrite;
     private CheckBox chkMouseRenaming;
     private CheckBox chkProxy;
@@ -151,7 +154,9 @@ namespace ID3_TagIT
       this.components = new System.ComponentModel.Container();
       this.lblPlay = new System.Windows.Forms.Label();
       this.cmbPlay = new System.Windows.Forms.ComboBox();
-      this.chkExplorerContext = new System.Windows.Forms.CheckBox();
+      this.chkShellMenuMe = new System.Windows.Forms.CheckBox();
+      this.chkShellMenuAll = new System.Windows.Forms.CheckBox();
+      this.lblShellMenuPortable = new System.Windows.Forms.Label();
       this.frameEnum = new System.Windows.Forms.GroupBox();
       this.lbl2 = new System.Windows.Forms.Label();
       this.txtFDigits = new System.Windows.Forms.NumericUpDown();
@@ -297,16 +302,36 @@ namespace ID3_TagIT
       this.cmbPlay.Size = new System.Drawing.Size(248, 21);
       this.cmbPlay.TabIndex = 19;
       // 
-      // chkExplorerContext
+      // chkShellMenuMe
       // 
-      this.chkExplorerContext.BackColor = System.Drawing.SystemColors.Control;
-      this.chkExplorerContext.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-      this.chkExplorerContext.Location = new System.Drawing.Point(14, 247);
-      this.chkExplorerContext.Name = "chkExplorerContext";
-      this.chkExplorerContext.Size = new System.Drawing.Size(520, 16);
-      this.chkExplorerContext.TabIndex = 16;
-      this.chkExplorerContext.Text = "Show \"ID3-TagIT\" in the folder context menu of the Windows &Explorer";
-      this.chkExplorerContext.UseVisualStyleBackColor = false;
+      this.chkShellMenuMe.BackColor = System.Drawing.SystemColors.Control;
+      this.chkShellMenuMe.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+      this.chkShellMenuMe.Location = new System.Drawing.Point(14, 247);
+      this.chkShellMenuMe.Name = "chkShellMenuMe";
+      this.chkShellMenuMe.Size = new System.Drawing.Size(248, 16);
+      this.chkShellMenuMe.TabIndex = 16;
+      this.chkShellMenuMe.Text = "Folder right-click menu for &me";
+      this.chkShellMenuMe.UseVisualStyleBackColor = false;
+      // 
+      // chkShellMenuAll
+      // 
+      this.chkShellMenuAll.BackColor = System.Drawing.SystemColors.Control;
+      this.chkShellMenuAll.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+      this.chkShellMenuAll.Location = new System.Drawing.Point(278, 245);
+      this.chkShellMenuAll.Name = "chkShellMenuAll";
+      this.chkShellMenuAll.Size = new System.Drawing.Size(256, 20);
+      this.chkShellMenuAll.TabIndex = 17;
+      this.chkShellMenuAll.Text = "...for all &users";
+      this.chkShellMenuAll.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.chkShellMenuAll.UseVisualStyleBackColor = false;
+      // 
+      // lblShellMenuPortable
+      // 
+      this.lblShellMenuPortable.Location = new System.Drawing.Point(278, 248);
+      this.lblShellMenuPortable.Name = "lblShellMenuPortable";
+      this.lblShellMenuPortable.Size = new System.Drawing.Size(256, 16);
+      this.lblShellMenuPortable.Text = "Not available in the portable edition";
+      this.lblShellMenuPortable.Visible = false;
       // 
       // frameEnum
       // 
@@ -1392,7 +1417,9 @@ namespace ID3_TagIT
       this.tabPage1.Controls.Add(this.chkIgnoreWrite);
       this.tabPage1.Controls.Add(this.frameEnum);
       this.tabPage1.Controls.Add(this.chkMouseRenaming);
-      this.tabPage1.Controls.Add(this.chkExplorerContext);
+      this.tabPage1.Controls.Add(this.chkShellMenuMe);
+      this.tabPage1.Controls.Add(this.chkShellMenuAll);
+      this.tabPage1.Controls.Add(this.lblShellMenuPortable);
       this.tabPage1.Controls.Add(this.chkRestore);
       this.tabPage1.Controls.Add(this.cmbPlay);
       this.tabPage1.Controls.Add(this.lblTracknumbers);
@@ -1679,7 +1706,6 @@ namespace ID3_TagIT
       Declarations.objSettings.FilenumberDigits = Convert.ToByte(this.txtFDigits.Value);
       Declarations.objSettings.FilenumberStart = Convert.ToInt32(this.txtStartNr.Value);
       Declarations.objSettings.Play = this.cmbPlay.Text;
-      Declarations.objSettings.ExplorerContext = this.chkExplorerContext.Checked;
       Declarations.objSettings.SaveFolder = this.chkSaveOnExit.Checked;
       Declarations.objSettings.IgnoreWrite = this.chkIgnoreWrite.Checked;
       Declarations.objSettings.AudioChecksumCalc = this.chkAudioChecksumCalc.Checked;
@@ -1714,32 +1740,7 @@ namespace ID3_TagIT
         ThemeManager.Refresh();
       }
 
-      if (Id3TagIT_Main.IsElevated())
-      {
-        try
-        {
-          RegistryKey key = Registry.ClassesRoot.OpenSubKey(@"Directory\Shell\ID3-TagIT", true);
-          string executablePath = Application.ExecutablePath;
-
-          if (Declarations.objSettings.ExplorerContext)
-          {
-            if (key != null)
-              Registry.ClassesRoot.OpenSubKey(@"Directory\Shell", true).DeleteSubKeyTree("ID3-TagIT");
-
-            Registry.ClassesRoot.OpenSubKey(@"Directory\Shell", true).CreateSubKey("ID3-TagIT");
-            Registry.ClassesRoot.OpenSubKey(@"Directory\Shell\ID3-TagIT", true).CreateSubKey("command");
-            Registry.ClassesRoot.OpenSubKey(@"Directory\Shell\ID3-TagIT\command", true).SetValue(null, "\"" + executablePath + "\"" + " " + "\"" + "/P=%1" + "\"");
-          }
-
-          if (!Declarations.objSettings.ExplorerContext & (key != null))
-            Registry.ClassesRoot.OpenSubKey(@"Directory\Shell", true).DeleteSubKeyTree("ID3-TagIT");
-        }
-        catch (Exception exception1)
-        {
-          ProjectData.SetProjectError(exception1);
-          ProjectData.ClearProjectError();
-        }
-      }
+      this.SaveShellMenu();
 
       if (this.ColumnSettingsChanged)
       {
@@ -1908,7 +1909,7 @@ namespace ID3_TagIT
       this.txtTTDigits.Value = new decimal(Declarations.objSettings.TracknumberDigitsTAG);
       this.txtFDigits.Value = new decimal(Declarations.objSettings.FilenumberDigits);
       this.txtStartNr.Value = new decimal(Declarations.objSettings.FilenumberStart);
-      this.chkExplorerContext.Checked = Declarations.objSettings.ExplorerContext;
+      this.LoadShellMenu();
       this.chkSaveOnExit.Checked = Declarations.objSettings.SaveFolder;
       this.chkIgnoreWrite.Checked = Declarations.objSettings.IgnoreWrite;
       this.chkAudioChecksumCalc.Checked = Declarations.objSettings.AudioChecksumCalc;
@@ -2128,9 +2129,9 @@ namespace ID3_TagIT
       this.ToolTip.SetToolTip(this.cmbPlay, Declarations.objResources.GetToolTip(ref vstrName, ref cmbPlay));
 
       vstrName = "frmPreferences";
-      cmbPlay = this.chkExplorerContext;
-      this.chkExplorerContext = (CheckBox)cmbPlay;
-      this.ToolTip.SetToolTip(this.chkExplorerContext, Declarations.objResources.GetToolTip(ref vstrName, ref cmbPlay));
+      cmbPlay = this.chkShellMenuMe;
+      this.chkShellMenuMe = (CheckBox)cmbPlay;
+      this.ToolTip.SetToolTip(this.chkShellMenuMe, Declarations.objResources.GetToolTip(ref vstrName, ref cmbPlay));
 
       vstrName = "frmPreferences";
       cmbPlay = this.txtFDigits;
@@ -2329,5 +2330,64 @@ namespace ID3_TagIT
     }
 
     #endregion
+
+    // The checkboxes show what is in the registry now, not a stored setting. "For all users" is
+    // offered only to an all-users install; the portable edition never changes the registry.
+    private void LoadShellMenu()
+    {
+      this.vbooShellMenuAllUsers = AppEnvironment.InstallScope == InstallScope.AllUsers;
+      this.chkShellMenuAll.Visible = this.vbooShellMenuAllUsers;
+      this.chkShellMenuAll.Image = new System.Drawing.Bitmap(System.Drawing.SystemIcons.Shield.ToBitmap(), 16, 16);
+
+      if (AppEnvironment.IsPortable)
+      {
+        this.chkShellMenuMe.Enabled = false;
+        this.lblShellMenuPortable.Visible = true;
+        return;
+      }
+
+      ShellMenu menu = ShellMenu.ForThisExe();
+      this.chkShellMenuMe.Checked = menu.ForMe;
+      this.chkShellMenuAll.Checked = menu.ForAllUsers;
+    }
+
+    private void SaveShellMenu()
+    {
+      if (AppEnvironment.IsPortable)
+        return;
+
+      try
+      {
+        // HKLM needs admin, so a copy of the app is started elevated to change it.
+        if (this.vbooShellMenuAllUsers && this.chkShellMenuAll.Checked != ShellMenu.ForThisExe().ForAllUsers)
+        {
+          ProcessStartInfo info = new ProcessStartInfo(Application.ExecutablePath, "/shellmenu=allusers:" + (this.chkShellMenuAll.Checked ? "on" : "off"));
+          info.UseShellExecute = true;
+          info.Verb = "runas";
+
+          try
+          {
+            using (Process process = Process.Start(info))
+              process.WaitForExit();
+          }
+          catch (Win32Exception exception)
+          {
+            // 1223: the UAC prompt was cancelled; leave the entry as it was.
+            if (exception.NativeErrorCode != 1223)
+              throw;
+          }
+        }
+
+        // Showing it again also repairs an entry that points at an old exe path.
+        ShellMenu menu = ShellMenu.ForThisExe();
+
+        if (this.chkShellMenuMe.Checked || menu.ForMe)
+          menu.SetForMe(this.chkShellMenuMe.Checked);
+      }
+      catch (Exception exception)
+      {
+        Interaction.MsgBox(exception.Message, MsgBoxStyle.Exclamation, null);
+      }
+    }
   }
 }

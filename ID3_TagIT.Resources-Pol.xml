@@ -499,7 +499,9 @@
                 <xs:element name="btnOK" type="xs:string" minOccurs="0" />
                 <xs:element name="Settings" type="xs:string" minOccurs="0" />
                 <xs:element name="lblPlay" type="xs:string" minOccurs="0" />
-                <xs:element name="chkExplorerContext" type="xs:string" minOccurs="0" />
+                <xs:element name="chkShellMenuMe" type="xs:string" minOccurs="0" />
+                <xs:element name="chkShellMenuAll" type="xs:string" minOccurs="0" />
+                <xs:element name="lblShellMenuPortable" type="xs:string" minOccurs="0" />
                 <xs:element name="frameEnum" type="xs:string" minOccurs="0" />
                 <xs:element name="lbl2" type="xs:string" minOccurs="0" />
                 <xs:element name="lblEnumSep" type="xs:string" minOccurs="0" />
@@ -1446,7 +1448,9 @@
     <btnOK>&amp;OK</btnOK>
     <Settings>Ustawienia</Settings>
     <lblPlay>Polecenie powoki dla funkcji PLA&amp;Y:</lblPlay>
-    <chkExplorerContext>Poka opcj� "ID3-TagIT" w menu kontekstowym Eksploratora Windows</chkExplorerContext>
+    <chkShellMenuMe>Menu kontekstowe folderów dla &amp;mnie</chkShellMenuMe>
+    <chkShellMenuAll>...dla wszystkich &amp;użytkowników</chkShellMenuAll>
+    <lblShellMenuPortable>Niedostępne w wersji przenośnej</lblShellMenuPortable>
     <frameEnum>Tryb numerowania</frameEnum>
     <lbl2>Liczba cyfr dla numerowania plik�w:</lbl2>
     <lblEnumSep>Separator:</lblEnumSep>

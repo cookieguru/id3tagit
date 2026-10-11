@@ -1075,41 +1075,6 @@ Label_010B:
       frmSplash splash = new frmSplash();
       splash.Show();
       Application.DoEvents();
-      splash.lblState.Text = "Checking Registry settings";
-      Application.DoEvents();
-
-      if (Id3TagIT_Main.IsElevated())
-      {
-        try
-        {
-          RegistryKey key4 = Registry.ClassesRoot.OpenSubKey(@"Folder\Shell\ID3-TagIT", true);
-          string executablePath = Application.ExecutablePath;
-
-          if (key4 != null)
-            Registry.ClassesRoot.OpenSubKey(@"Folder\Shell", true).DeleteSubKeyTree("ID3-TagIT");
-
-          RegistryKey key3 = Registry.ClassesRoot.OpenSubKey(@"Directory\Shell\ID3-TagIT", true);
-
-          if (Declarations.objSettings.ExplorerContext)
-          {
-            if (key3 != null)
-              Registry.ClassesRoot.OpenSubKey(@"Directory\Shell", true).DeleteSubKeyTree("ID3-TagIT");
-
-            Registry.ClassesRoot.OpenSubKey(@"Directory\Shell", true).CreateSubKey("ID3-TagIT");
-            Registry.ClassesRoot.OpenSubKey(@"Directory\Shell\ID3-TagIT", true).CreateSubKey("command");
-            Registry.ClassesRoot.OpenSubKey(@"Directory\Shell\ID3-TagIT\command", true).SetValue(null, "\"" + executablePath + "\"" + " " + "\"" + "/P=%1" + "\"");
-          }
-
-          if (!Declarations.objSettings.ExplorerContext & (key3 != null))
-            Registry.ClassesRoot.OpenSubKey(@"Directory\Shell", true).DeleteSubKeyTree("ID3-TagIT");
-        }
-        catch (Exception exception1)
-        {
-          ProjectData.SetProjectError(exception1);
-          ProjectData.ClearProjectError();
-        }
-      }
-
       splash.lblState.Text = "Restoring interface";
       Application.DoEvents();
       Form form = this;

@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppEnvironmentTests.cs" />
+    <Compile Include="CommandLineTests.cs" />
     <Compile Include="Crc32Tests.cs" />
     <Compile Include="FolderTreeTests.cs" />
     <Compile Include="MainFormTests.cs" />

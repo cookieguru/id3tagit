@@ -170,6 +170,22 @@ namespace ID3_TagIT
       Declarations.vstrUserAppData = AppEnvironment.SettingsFolder;
       Declarations.Declaration();
       CommandLine line = new CommandLine();
+      line.Resolve();
+
+      // An elevated copy started by Preferences to change the all-users right-click entry.
+      if (line.ShellMenuAllUsers.HasValue)
+      {
+        try
+        {
+          ShellMenu.ForThisExe().SetForAllUsers(line.ShellMenuAllUsers.Value);
+        }
+        catch (Exception)
+        {
+          Environment.ExitCode = 1;
+        }
+
+        return;
+      }
 
       Version previous = null;
       bool settingsReadOnly = false;
@@ -427,7 +443,6 @@ namespace ID3_TagIT
 
       Declarations.objSettings.AddNewColumns();
       ThemeManager.Initialize();
-      line.Resolve();
 
       if ((StringType.StrCmp(line.Path, "", false) != 0) & Directory.Exists(line.Path))
         Declarations.objSettings.CurrentPath = line.Path;
