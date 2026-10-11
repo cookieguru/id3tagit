@@ -54,7 +54,6 @@
     <Compile Include="FolderTreeTests.cs" />
     <Compile Include="MainFormTests.cs" />
     <Compile Include="Mp3Tests.cs" />
-    <Compile Include="PackagingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourcesTests.cs" />
     <Compile Include="ScanForFilesTests.cs" />

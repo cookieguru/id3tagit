@@ -46,6 +46,20 @@ namespace ID3_TagIT.SmokeTests
       Assert.Equal(before, OutsideState());
     }
 
+    // frmLists reads its export templates from Templetes\ next to the exe; 3.x only got them from
+    // its installer.
+    [Theory]
+    [InlineData("CSV-Short.itl")]
+    [InlineData("HTML-Short.itl")]
+    [InlineData("RTF-Short.itl")]
+    [InlineData("SFV (CRC32 Checksum file).itl")]
+    [InlineData("Readme.txt")]
+    public void TheListExportTemplatesShipWithTheApp(string file)
+    {
+      using (PortableApp app = new PortableApp())
+        Assert.True(File.Exists(Path.Combine(app.AppFolder, "Templetes", file)), file + " is missing");
+    }
+
     // 3.4/3.5 betas reset the column list and other files on every start.
     [Fact]
     public void SettingsSurviveARestart()
