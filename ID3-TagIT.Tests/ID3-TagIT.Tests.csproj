@@ -48,6 +48,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppEnvironmentTests.cs" />
     <Compile Include="Crc32Tests.cs" />
     <Compile Include="FolderTreeTests.cs" />
     <Compile Include="MainFormTests.cs" />

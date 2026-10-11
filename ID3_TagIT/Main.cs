@@ -52,19 +52,7 @@ namespace ID3_TagIT
 
     public static string CreateTempFile(byte[] abytData, [Optional, DefaultParameterValue("")] string vstrExt)
     {
-      string tempFileName = Path.GetTempFileName();
-
-      if (StringType.StrCmp(vstrExt, "", false) != 0)
-      {
-        string path = tempFileName.Substring(0, tempFileName.LastIndexOf(".") + 1) + vstrExt;
-
-        if (File.Exists(path))
-          File.Delete(path);
-
-        File.Move(tempFileName, path);
-        tempFileName = path;
-        Application.DoEvents();
-      }
+      string tempFileName = AppEnvironment.NewTempFile(vstrExt);
 
       FileStream stream = new FileStream(tempFileName, FileMode.Open, FileAccess.ReadWrite);
 
@@ -72,7 +60,6 @@ namespace ID3_TagIT
       stream.Flush();
       stream.Close();
       Application.DoEvents();
-      Declarations.TempFiles.Add(tempFileName);
 
       return tempFileName;
     }
@@ -179,6 +166,8 @@ namespace ID3_TagIT
       Debug.Listeners.Add(new TextWriterTraceListener(objDebugStream));
       Debug.AutoFlush = true;
 
+      AppEnvironment.Initialize(Application.StartupPath, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), Path.GetTempPath());
+      Declarations.vstrUserAppData = AppEnvironment.SettingsFolder;
       Declarations.Declaration();
       CommandLine line = new CommandLine();
 

@@ -970,7 +970,7 @@ Label_010B:
 
         if (Id3TagIT_Main.objDebugStream.ReadByte() == 0x20)
         {
-          FileStream stream = new FileStream(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\ID3-TagIT-Log.txt", FileMode.OpenOrCreate);
+          FileStream stream = new FileStream(Path.Combine(AppEnvironment.LogFolder, "ID3-TagIT-Log.txt"), FileMode.OpenOrCreate);
           Id3TagIT_Main.objDebugStream.Flush();
           stream.Write(Id3TagIT_Main.objDebugStream.ToArray(), 0, Id3TagIT_Main.objDebugStream.ToArray().Length);
           stream.Flush();
@@ -1063,23 +1063,7 @@ Label_010B:
       Id3TagIT_Main.SaveFormSettings(ref form);
       this.MP3View_SaveColumns();
       Declarations.objSettings.WriteSettings();
-      var enumerator = Declarations.TempFiles.GetEnumerator();
-
-      while (enumerator.MoveNext())
-      {
-        string path = StringType.FromObject(enumerator.Current);
-        try
-        {
-          File.Delete(path);
-          continue;
-        }
-        catch (Exception exception9)
-        {
-          ProjectData.SetProjectError(exception9);
-          ProjectData.ClearProjectError();
-          continue;
-        }
-      }
+      AppEnvironment.DeleteOwnTempFiles();
 
       Declarations.UNDOList.Clear();
       Declarations.REDOList.Clear();

@@ -151,6 +151,7 @@
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing.Design" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="ID3_TagIT\AppEnvironment.cs" />
     <Compile Include="ID3_TagIT\ComboBoxAutoComplete.cs">
       <SubType>Component</SubType>
     </Compile>
