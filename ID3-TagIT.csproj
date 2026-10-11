@@ -154,6 +154,7 @@
     <Compile Include="ID3_TagIT\AppEnvironment.cs" />
     <Compile Include="ID3_TagIT\DefaultSettings.cs" />
     <Compile Include="ID3_TagIT\SettingsMigration.cs" />
+    <Compile Include="ID3_TagIT\ShellMenu.cs" />
     <Compile Include="ID3_TagIT\ComboBoxAutoComplete.cs">
       <SubType>Component</SubType>
     </Compile>

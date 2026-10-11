@@ -59,6 +59,7 @@
     <Compile Include="ScanForFilesTests.cs" />
     <Compile Include="SettingsMigrationTests.cs" />
     <Compile Include="SettingsTests.cs" />
+    <Compile Include="ShellMenuTests.cs" />
     <Compile Include="ShortcutsTests.cs" />
     <Compile Include="SplitterGripTests.cs" />
     <Compile Include="TestSupport\MainForm.cs" />
