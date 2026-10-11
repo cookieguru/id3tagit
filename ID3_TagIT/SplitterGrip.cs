@@ -5,8 +5,9 @@ using System.Windows.Forms;
 namespace ID3_TagIT
 {
   // Restores the collapse/expand grip that the original DotNetBar ExpandableSplitter drew in
-  // the middle of the splitter bar. Clicking the grip collapses one panel of a SplitContainer
-  // and clicking it again restores the previous size; dragging the splitter works as before.
+  // the middle of the splitter bar. Clicking the splitter collapses one panel of a
+  // SplitContainer and clicking it again restores the previous size; dragging the splitter
+  // works as before.
   //
   // Collapsing moves the splitter to the edge instead of using Panel1Collapsed/Panel2Collapsed,
   // because those hide the splitter bar too and leave nothing to click to bring the panel back.
@@ -23,7 +24,8 @@ namespace ID3_TagIT
     private readonly bool vbooCollapsePanel1;
     private bool vbooCollapsed;
     private bool vbooAdjusting;
-    private bool vbooGripPressed;
+    private bool vbooSplitterPressed;
+    private bool vbooDragged;
     private Point objMouseDown;
     private int vintRestoreSize;
 
@@ -49,6 +51,7 @@ namespace ID3_TagIT
       split.Paint += new PaintEventHandler(this.Split_Paint);
       split.MouseDown += new MouseEventHandler(this.Split_MouseDown);
       split.MouseUp += new MouseEventHandler(this.Split_MouseUp);
+      split.SplitterMoving += new SplitterCancelEventHandler(this.Split_SplitterMoving);
       split.SplitterMoved += new SplitterEventHandler(this.Split_SplitterMoved);
       split.SizeChanged += new EventHandler(this.Split_SizeChanged);
     }
@@ -143,12 +146,22 @@ namespace ID3_TagIT
       }
     }
 
+    // SplitterMoving is raised only while the user drags the splitter, never when the container
+    // rescales on resize, so it tells a drag apart from a resize in SplitterMoved.
+    private void Split_SplitterMoving(object sender, SplitterCancelEventArgs e)
+    {
+      if (!this.vbooAdjusting)
+        this.vbooDragged = true;
+    }
+
     private void Split_SplitterMoved(object sender, SplitterEventArgs e)
     {
-      // Dragging a collapsed panel open expands it. SplitContainer also raises SplitterMoved
-      // when it rescales on resize, which must not count as expanding.
-      if (!this.vbooAdjusting && this.vbooCollapsed && Control.MouseButtons == MouseButtons.Left && this.PanelSize > 0)
-        this.vbooCollapsed = false;
+      // After a drag the panel is collapsed only if it was dragged fully shut.
+      if (!this.vbooAdjusting && this.vbooDragged)
+      {
+        this.vbooDragged = false;
+        this.vbooCollapsed = (this.PanelSize == 0);
+      }
 
       this.objSplit.Invalidate();
     }
@@ -162,19 +175,21 @@ namespace ID3_TagIT
 
     private void Split_MouseDown(object sender, MouseEventArgs e)
     {
-      this.vbooGripPressed = (e.Button == MouseButtons.Left) && this.GripBounds.Contains(e.Location);
+      this.vbooSplitterPressed = (e.Button == MouseButtons.Left) && this.objSplit.SplitterRectangle.Contains(e.Location);
       this.objMouseDown = e.Location;
     }
 
+    // A click anywhere on the splitter toggles the panel, as with the original splitters; a
+    // drag resizes it instead.
     private void Split_MouseUp(object sender, MouseEventArgs e)
     {
-      if (!this.vbooGripPressed)
+      if (!this.vbooSplitterPressed)
         return;
 
-      this.vbooGripPressed = false;
+      this.vbooSplitterPressed = false;
       Size drag = SystemInformation.DragSize;
 
-      if (!this.GripBounds.Contains(e.Location) || Math.Abs(e.X - this.objMouseDown.X) > drag.Width || Math.Abs(e.Y - this.objMouseDown.Y) > drag.Height)
+      if (Math.Abs(e.X - this.objMouseDown.X) > drag.Width || Math.Abs(e.Y - this.objMouseDown.Y) > drag.Height)
         return;
 
       // SplitContainer finishes its own splitter drag after raising MouseUp, which would
