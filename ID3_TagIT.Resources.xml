@@ -31,6 +31,7 @@
                 <xs:element name="ThemeSystem" type="xs:string" minOccurs="0" />
                 <xs:element name="ThemeLight" type="xs:string" minOccurs="0" />
                 <xs:element name="ThemeDark" type="xs:string" minOccurs="0" />
+                <xs:element name="SettingsReadOnly" type="xs:string" minOccurs="0" />
                 <xs:element name="Col22" type="xs:string" minOccurs="0" />
                 <xs:element name="Col23" type="xs:string" minOccurs="0" />
                 <xs:element name="Col24" type="xs:string" minOccurs="0" />
@@ -1039,6 +1040,7 @@
     <ThemeSystem>Use Windows setting</ThemeSystem>
     <ThemeLight>Light</ThemeLight>
     <ThemeDark>Dark</ThemeDark>
+    <SettingsReadOnly>Settings can't be saved in %P. ID3-TagIT will use its default settings.</SettingsReadOnly>
     <Col22>File size (KB)</Col22>
     <Col23>BPM</Col23>
     <Col24>Number of Pic.</Col24>

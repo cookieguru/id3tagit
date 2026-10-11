@@ -47,7 +47,6 @@ namespace ID3_TagIT
     public const int SEE_MASK_INVOKEIDLIST = 12;
     public const int SEE_MASK_NOCLOSEPROCESS = 0x40;
     public static ArrayList UNDOList = new ArrayList();
-    public static string vstrCommonAppData = (Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\ID3-TagIT 3\");
     public static string vstrUserAppData = (Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ID3-TagIT 3\");
 
     public static void Declaration()

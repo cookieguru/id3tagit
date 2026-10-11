@@ -57,6 +57,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourcesTests.cs" />
     <Compile Include="ScanForFilesTests.cs" />
+    <Compile Include="SettingsMigrationTests.cs" />
     <Compile Include="SettingsTests.cs" />
     <Compile Include="ShortcutsTests.cs" />
     <Compile Include="SplitterGripTests.cs" />

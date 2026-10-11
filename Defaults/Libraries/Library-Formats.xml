@@ -1,0 +1,84 @@
+<?xml version="1.0" standalone="yes"?>
+<FormatsLibrary>
+  <xs:schema id="FormatsLibrary" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="FormatsLibrary" msdata:IsDataSet="true" msdata:Locale="de-DE">
+      <xs:complexType>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element name="OrganizeFiles">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Format" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="T1F">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Format" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="FT1">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Format" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="T2F">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Format" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="FT2">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Format" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="SelectFormats">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Format" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="CompareFormat">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Format" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <OrganizeFiles>
+    <Format>&lt;1&gt;\&lt;A&gt;\&lt;B&gt;\&lt;E&gt;</Format>
+  </OrganizeFiles>
+  <T1F>
+    <Format>&lt;A&gt; - &lt;B&gt; - &lt;K&gt; - &lt;T&gt;</Format>
+  </T1F>
+  <FT1>
+    <Format>&lt;A&gt; - &lt;B&gt; - &lt;K&gt; - &lt;T&gt;</Format>
+  </FT1>
+  <T2F>
+    <Format>&lt;A&gt; - &lt;B&gt; - &lt;K&gt; - &lt;T&gt;</Format>
+  </T2F>
+  <FT2>
+    <Format>&lt;A&gt; - &lt;B&gt; - &lt;K&gt; - &lt;T&gt;</Format>
+  </FT2>
+  <FT2>
+    <Format>&lt;A&gt; - &lt;T&gt;</Format>
+  </FT2>
+  <SelectFormats>
+    <Format>&lt;ABC&gt; - &lt;ABC&gt; - &lt;123&gt; - &lt;ABC&gt;</Format>
+  </SelectFormats>
+  <CompareFormat>
+    <Format>&lt;A&gt; - &lt;B&gt; - &lt;K&gt; - &lt;T&gt;</Format>
+  </CompareFormat>
+</FormatsLibrary>

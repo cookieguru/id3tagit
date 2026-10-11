@@ -26,7 +26,7 @@ namespace ID3_TagIT.Tests
       DataRow strings = set.Tables[0].Rows[0];
       DataRow preferences = set.Tables["frmPreferences"].Rows[0];
 
-      foreach (string key in new[] { "ThemeSystem", "ThemeLight", "ThemeDark", "Col27" })
+      foreach (string key in new[] { "ThemeSystem", "ThemeLight", "ThemeDark", "Col27", "SettingsReadOnly" })
         Assert.False(string.IsNullOrEmpty(strings[key] as string), key + " is missing");
 
       Assert.False(string.IsNullOrEmpty(preferences["lblTheme"] as string), "lblTheme is missing");

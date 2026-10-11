@@ -52,9 +52,9 @@ namespace ID3_TagIT
       string str5 = (Declarations.vstrUserAppData + @"\Libraries\Library-Favourites.xml").Replace(@"\\", @"\");
       string str3 = (Declarations.vstrUserAppData + @"\Libraries\Library-CommDescriptors.xml").Replace(@"\\", @"\");
 
-      if (File.Exists(str))
+      if (SettingsFileExists(str))
       {
-        this.ArtistLibrary.ReadXml(str);
+        ReadSettingsFile(this.ArtistLibrary, str);
         this.ArtistTable = this.ArtistLibrary.Tables["Artists"];
       }
       else
@@ -66,9 +66,9 @@ namespace ID3_TagIT
         this.ArtistTable = this.ArtistLibrary.Tables["Artists"];
       }
 
-      if (File.Exists(str4))
+      if (SettingsFileExists(str4))
       {
-        this.ExceptionsLibrary.ReadXml(str4);
+        ReadSettingsFile(this.ExceptionsLibrary, str4);
         this.ExceptionsTable = this.ExceptionsLibrary.Tables["Exceptions"];
       }
       else
@@ -80,9 +80,9 @@ namespace ID3_TagIT
         this.ExceptionsTable = this.ExceptionsLibrary.Tables["Exceptions"];
       }
 
-      if (File.Exists(str7))
+      if (SettingsFileExists(str7))
       {
-        this.GenreLibrary.ReadXml(str7);
+        ReadSettingsFile(this.GenreLibrary, str7);
         this.GenreTable = this.GenreLibrary.Tables["Genres"];
       }
       else
@@ -100,9 +100,9 @@ namespace ID3_TagIT
         this.GenreTable = this.GenreLibrary.Tables["Genres"];
       }
 
-      if (File.Exists(str6))
+      if (SettingsFileExists(str6))
       {
-        this.FormatsLibrary.ReadXml(str6);
+        ReadSettingsFile(this.FormatsLibrary, str6);
         this.OrganizeTable = this.FormatsLibrary.Tables[0];
         this.T1FTable = this.FormatsLibrary.Tables[1];
         this.FT1Table = this.FormatsLibrary.Tables[2];
@@ -112,27 +112,27 @@ namespace ID3_TagIT
         this.CompareFormatTable = this.FormatsLibrary.Tables[6];
       }
 
-      if (File.Exists(str9))
+      if (SettingsFileExists(str9))
       {
-        this.ToolsLibrary.ReadXml(str9);
+        ReadSettingsFile(this.ToolsLibrary, str9);
         this.ToolsTable = this.ToolsLibrary.Tables[0];
       }
 
-      if (File.Exists(str3))
+      if (SettingsFileExists(str3))
       {
-        this.CommDLibrary.ReadXml(str3);
+        ReadSettingsFile(this.CommDLibrary, str3);
         this.CommDTable = this.CommDLibrary.Tables[0];
       }
 
-      if (File.Exists(str2))
+      if (SettingsFileExists(str2))
       {
-        this.ColumnsLibrary.ReadXml(str2);
+        ReadSettingsFile(this.ColumnsLibrary, str2);
         this.ColumnsTable = this.ColumnsLibrary.Tables[0];
       }
 
-      if (File.Exists(path))
+      if (SettingsFileExists(path))
       {
-        this.TotalSettings.ReadXml(path);
+        ReadSettingsFile(this.TotalSettings, path);
         this.SettingsTable = this.TotalSettings.Tables[0];
         this.FormsTable = this.TotalSettings.Tables[1];
         this.SettingsRow = this.SettingsTable.Rows[0];
@@ -143,9 +143,12 @@ namespace ID3_TagIT
       {
         IEnumerator enumerator = null;
         BinaryFormatter formatter = new BinaryFormatter();
-        FileStream serializationStream = new FileStream(str5, FileMode.OpenOrCreate);
-        ArrayList list = (ArrayList)formatter.Deserialize(serializationStream);
-        serializationStream.Close();
+        ArrayList list = new ArrayList();
+
+        // No file means no favourites yet.
+        if (File.Exists(str5))
+          using (FileStream serializationStream = new FileStream(str5, FileMode.Open, FileAccess.Read))
+            list = (ArrayList)formatter.Deserialize(serializationStream);
 
         try
         {
@@ -167,8 +170,38 @@ namespace ID3_TagIT
       }
     }
 
+    // A settings file that is missing (the folder couldn't be written) is read from the defaults
+    // built into the exe.
+    private static bool SettingsFileExists(string path)
+    {
+      if (File.Exists(path))
+        return true;
+
+      using (Stream stream = DefaultSettings.Open(DefaultsName(path)))
+        return stream != null;
+    }
+
+    private static void ReadSettingsFile(DataSet set, string path)
+    {
+      using (Stream stream = File.Exists(path) ? new FileStream(path, FileMode.Open, FileAccess.Read) : DefaultSettings.Open(DefaultsName(path)))
+        set.ReadXml(stream);
+    }
+
+    private static string DefaultsName(string path)
+    {
+      string name = Path.GetFileName(path);
+
+      return path.Contains(@"\Libraries\") ? @"Libraries\" + name : name;
+    }
+
+    // Set when the settings folder can't be written; settings are then never saved.
+    public bool ReadOnly { get; set; }
+
     public void WriteSettings()
     {
+      if (this.ReadOnly)
+        return;
+
       string fileName = (Declarations.vstrUserAppData + @"\Settings.xml").Replace(@"\\", @"\");
       string str = (Declarations.vstrUserAppData + @"\Libraries\Library-Artists.xml").Replace(@"\\", @"\");
       string str7 = (Declarations.vstrUserAppData + @"\Libraries\Library-Genres.xml").Replace(@"\\", @"\");

@@ -152,6 +152,8 @@
     <Reference Include="System.Drawing.Design" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="ID3_TagIT\AppEnvironment.cs" />
+    <Compile Include="ID3_TagIT\DefaultSettings.cs" />
+    <Compile Include="ID3_TagIT\SettingsMigration.cs" />
     <Compile Include="ID3_TagIT\ComboBoxAutoComplete.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -457,6 +459,32 @@
     <None Include="ID3_TagIT\icons\Previous.ico" />
     <None Include="ID3_TagIT\icons\Next.ico" />
     <None Include="ID3_TagIT\icons\ID3_TagIT_Logo.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Defaults\Settings.xml">
+      <LogicalName>ID3_TagIT.Defaults.Settings.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Defaults\Libraries\Library-Artists.xml">
+      <LogicalName>ID3_TagIT.Defaults.Libraries.Library-Artists.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Defaults\Libraries\Library-Columns.xml">
+      <LogicalName>ID3_TagIT.Defaults.Libraries.Library-Columns.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Defaults\Libraries\Library-CommDescriptors.xml">
+      <LogicalName>ID3_TagIT.Defaults.Libraries.Library-CommDescriptors.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Defaults\Libraries\Library-Exceptions.xml">
+      <LogicalName>ID3_TagIT.Defaults.Libraries.Library-Exceptions.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Defaults\Libraries\Library-Formats.xml">
+      <LogicalName>ID3_TagIT.Defaults.Libraries.Library-Formats.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Defaults\Libraries\Library-Genres.xml">
+      <LogicalName>ID3_TagIT.Defaults.Libraries.Library-Genres.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Defaults\Libraries\Library-Tools.xml">
+      <LogicalName>ID3_TagIT.Defaults.Libraries.Library-Tools.xml</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Templetes\CSV-Short.itl">

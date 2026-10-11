@@ -1,0 +1,411 @@
+<?xml version="1.0" standalone="yes"?>
+<Settings>
+  <xs:schema id="Settings" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="Settings" msdata:IsDataSet="true" msdata:Locale="de-DE">
+      <xs:complexType>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element name="Settings">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Path" type="xs:string" minOccurs="0" />
+                <xs:element name="MoveCopyPath" type="xs:string" minOccurs="0" />
+                <xs:element name="OrganizePath" type="xs:string" minOccurs="0" />
+                <xs:element name="OrganizeFormat" type="xs:string" minOccurs="0" />
+                <xs:element name="OrganizeVersion" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="OrganizeOverwrite" type="xs:boolean" minOccurs="0" />
+                <xs:element name="OrganizeCopy" type="xs:boolean" minOccurs="0" />
+                <xs:element name="VersionToShow" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="ScanSubDirs" type="xs:boolean" minOccurs="0" />
+                <xs:element name="SynchronizeTAGs" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Play" type="xs:string" minOccurs="0" />
+                <xs:element name="ExplorerContext" type="xs:boolean" minOccurs="0" />
+                <xs:element name="EditDialog" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="SelectionMode" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="EnumFile" type="xs:boolean" minOccurs="0" />
+                <xs:element name="EnumVer1" type="xs:boolean" minOccurs="0" />
+                <xs:element name="EnumVer2" type="xs:boolean" minOccurs="0" />
+                <xs:element name="EnumSeparator" type="xs:string" minOccurs="0" />
+                <xs:element name="NewV2Version" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="V23Encoding" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="V24Encoding" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="V2YearOnly" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="WriteUnsync" type="xs:boolean" minOccurs="0" />
+                <xs:element name="RestoreDate" type="xs:boolean" minOccurs="0" />
+                <xs:element name="SingleGC" type="xs:boolean" minOccurs="0" />
+                <xs:element name="SaveFolder" type="xs:boolean" minOccurs="0" />
+                <xs:element name="IgnoreWrite" type="xs:boolean" minOccurs="0" />
+                <xs:element name="OwnGenreOnly" type="xs:boolean" minOccurs="0" />
+                <xs:element name="QuickFilenameEditing" type="xs:boolean" minOccurs="0" />
+                <xs:element name="MouseFilenameEditing" type="xs:boolean" minOccurs="0" />
+                <xs:element name="T1FFormat" type="xs:string" minOccurs="0" />
+                <xs:element name="FT1Format" type="xs:string" minOccurs="0" />
+                <xs:element name="T2FFormat" type="xs:string" minOccurs="0" />
+                <xs:element name="FT2Format" type="xs:string" minOccurs="0" />
+                <xs:element name="V2Language" type="xs:integer" minOccurs="0" />
+                <xs:element name="SelectFormat" type="xs:string" minOccurs="0" />
+                <xs:element name="CompareFormat" type="xs:string" minOccurs="0" />
+                <xs:element name="TracknumberDigitsFilename" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="TracknumberDigitsTAG" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="FilenumberStart" type="xs:integer" minOccurs="0" />
+                <xs:element name="FilenumberDigits" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="FreeDBLastSearch" type="xs:string" minOccurs="0" />
+                <xs:element name="FreeDBSearchOptions" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="FreeDBSingleArtist" type="xs:boolean" minOccurs="0" />
+                <xs:element name="FreeDBWrite1" type="xs:boolean" minOccurs="0" />
+                <xs:element name="FreeDBWrite2" type="xs:boolean" minOccurs="0" />
+                <xs:element name="FreeDBUser" type="xs:string" minOccurs="0" />
+                <xs:element name="FreeDBServer" type="xs:string" minOccurs="0" />
+                <xs:element name="FreeDBPort" type="xs:integer" minOccurs="0" />
+                <xs:element name="FreeDBProxyUse" type="xs:boolean" minOccurs="0" />
+                <xs:element name="FreeDBProxyServer" type="xs:string" minOccurs="0" />
+                <xs:element name="FreeDBProxyPort" type="xs:integer" minOccurs="0" />
+                <xs:element name="FreeDBProxyUser" type="xs:string" minOccurs="0" />
+                <xs:element name="FreeDBProxyPassword" type="xs:string" minOccurs="0" /> 
+                <xs:element name="SearchSearchText" type="xs:string" minOccurs="0" />
+                <xs:element name="SearchReplaceText" type="xs:string" minOccurs="0" />
+                <xs:element name="SearchVer1" type="xs:boolean" minOccurs="0" />
+                <xs:element name="SearchVer2" type="xs:boolean" minOccurs="0" />
+                <xs:element name="SearchCase" type="xs:boolean" minOccurs="0" />
+                <xs:element name="SearchRegExpression" type="xs:boolean" minOccurs="0" />
+                <xs:element name="SearchSelected" type="xs:boolean" minOccurs="0" />
+                <xs:element name="SearchAndOr" type="xs:boolean" minOccurs="0" />
+                <xs:element name="SearchFilename" type="xs:boolean" minOccurs="0" />
+                <xs:element name="SearchArtist" type="xs:boolean" minOccurs="0" />
+                <xs:element name="SearchTitle" type="xs:boolean" minOccurs="0" />
+                <xs:element name="SearchAlbum" type="xs:boolean" minOccurs="0" />
+                <xs:element name="SearchComment" type="xs:boolean" minOccurs="0" />
+                <xs:element name="SearchTracknumber" type="xs:boolean" minOccurs="0" />
+                <xs:element name="SearchYear" type="xs:boolean" minOccurs="0" />
+                <xs:element name="SearchGenre" type="xs:boolean" minOccurs="0" />
+                <xs:element name="ConvertFilename" type="xs:boolean" minOccurs="0" />
+                <xs:element name="ConvertVer1" type="xs:boolean" minOccurs="0" />
+                <xs:element name="ConvertVer2" type="xs:boolean" minOccurs="0" />
+                <xs:element name="ConvertArtist" type="xs:boolean" minOccurs="0" />
+                <xs:element name="ConvertTitle" type="xs:boolean" minOccurs="0" />
+                <xs:element name="ConvertAlbum" type="xs:boolean" minOccurs="0" />
+                <xs:element name="ConvertComment" type="xs:boolean" minOccurs="0" />
+                <xs:element name="ConvertMethod" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="ConvertSeparat" type="xs:boolean" minOccurs="0" />
+                <xs:element name="ConvertSeparator" type="xs:string" minOccurs="0" />
+                <xs:element name="ConvertReplaceSpace20" type="xs:boolean" minOccurs="0" />
+                <xs:element name="ConvertReplaceSpaceUnder" type="xs:boolean" minOccurs="0" />
+                <xs:element name="ConvertReplace20Space" type="xs:boolean" minOccurs="0" />
+                <xs:element name="ConvertReplaceUnderSpace" type="xs:boolean" minOccurs="0" />
+                <xs:element name="ConvertAlwaysFirst" type="xs:boolean" minOccurs="0" />
+                <xs:element name="TransferMethod" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="TransferArtist12" type="xs:boolean" minOccurs="0" />
+                <xs:element name="TransferTitle12" type="xs:boolean" minOccurs="0" />
+                <xs:element name="TransferAlbum12" type="xs:boolean" minOccurs="0" />
+                <xs:element name="TransferGenre12" type="xs:boolean" minOccurs="0" />
+                <xs:element name="TransferTrack12" type="xs:boolean" minOccurs="0" />
+                <xs:element name="TransferYear12" type="xs:boolean" minOccurs="0" />
+                <xs:element name="TransferComment12" type="xs:boolean" minOccurs="0" />
+                <xs:element name="TransferCommentD" type="xs:string" minOccurs="0" />
+                <xs:element name="TransferKeep12" type="xs:boolean" minOccurs="0" />
+                <xs:element name="TransferArtist21" type="xs:boolean" minOccurs="0" />
+                <xs:element name="TransferTitle21" type="xs:boolean" minOccurs="0" />
+                <xs:element name="TransferAlbum21" type="xs:boolean" minOccurs="0" />
+                <xs:element name="TransferGenre21" type="xs:boolean" minOccurs="0" />
+                <xs:element name="TransferTrack21" type="xs:boolean" minOccurs="0" />
+                <xs:element name="TransferYear21" type="xs:boolean" minOccurs="0" />
+                <xs:element name="TransferComment21" type="xs:boolean" minOccurs="0" />
+                <xs:element name="TransferKeep21" type="xs:boolean" minOccurs="0" />
+                <xs:element name="ListStyle" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="ListPath" type="xs:string" minOccurs="0" />
+                <xs:element name="ListColumns" type="xs:string" minOccurs="0" />
+                <xs:element name="ListExtInfo" type="xs:string" minOccurs="0" />
+                <xs:element name="HTMLListTitle" type="xs:string" minOccurs="0" />
+                <xs:element name="HTMLListWidth" type="xs:string" minOccurs="0" />
+                <xs:element name="HTMLListWidthUnit" type="xs:string" minOccurs="0" />
+                <xs:element name="HTMLTAGVersion" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="HTMLGridlines" type="xs:boolean" minOccurs="0" />
+                <xs:element name="HTMLColored" type="xs:boolean" minOccurs="0" />
+                <xs:element name="PlaylistRelPath" type="xs:boolean" minOccurs="0" />
+                <xs:element name="SplitSeparator" type="xs:string" minOccurs="0" />
+                <xs:element name="CompareMethod" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="CompareTAGVersion" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="CompareFileTAGVersion" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="CompareFileTAGReplace" type="xs:boolean" minOccurs="0" />
+                <xs:element name="CompareFileTAGIgnoreCase" type="xs:boolean" minOccurs="0" />
+                <xs:element name="ColorChangedBack" type="xs:integer" minOccurs="0" />
+                <xs:element name="ColorChangedText" type="xs:integer" minOccurs="0" />
+                <xs:element name="ColorDoubleBack" type="xs:integer" minOccurs="0" />
+                <xs:element name="ColorDoubleText" type="xs:integer" minOccurs="0" />
+                <xs:element name="ColorCompareBack" type="xs:integer" minOccurs="0" />
+                <xs:element name="ColorCompareText" type="xs:integer" minOccurs="0" />
+                <xs:element name="UseThemes" type="xs:boolean" minOccurs="0" />
+                <xs:element name="RebuildOFilename" type="xs:boolean" minOccurs="0" />
+                <xs:element name="SaveOFilename" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Language" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="NavPanWidth" type="xs:int" minOccurs="0" />
+                <xs:element name="SideBarWidth" type="xs:int" minOccurs="0" />
+                <xs:element name="ErrorHeight" type="xs:int" minOccurs="0" />
+                <xs:element name="NavPanExpanded" type="xs:boolean" minOccurs="0" />
+                <xs:element name="SideBarExpanded" type="xs:boolean" minOccurs="0" />
+                <xs:element name="ErrorExpanded" type="xs:boolean" minOccurs="0" />
+                <xs:element name="AudioChecksumCalc" type="xs:boolean" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Forms">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Name" type="xs:string" minOccurs="0" />
+                <xs:element name="State" type="xs:string" minOccurs="0" />
+                <xs:element name="Top" type="xs:int" minOccurs="0" />
+                <xs:element name="Left" type="xs:int" minOccurs="0" />
+                <xs:element name="Height" type="xs:int" minOccurs="0" />
+                <xs:element name="Width" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <Settings>
+    <Path>C:\</Path>
+    <MoveCopyPath>C:\</MoveCopyPath>
+    <OrganizePath>C:\</OrganizePath>
+    <OrganizeFormat>&lt;A&gt;\&lt;B&gt;</OrganizeFormat>
+    <OrganizeVersion>2</OrganizeVersion>
+    <OrganizeOverwrite>true</OrganizeOverwrite>
+    <OrganizeCopy>false</OrganizeCopy>
+    <VersionToShow>2</VersionToShow>
+    <ScanSubDirs>false</ScanSubDirs>
+    <SynchronizeTAGs>false</SynchronizeTAGs>
+    <Play>open</Play>
+    <ExplorerContext>true</ExplorerContext>
+    <EditDialog>2</EditDialog>
+    <SelectionMode>1</SelectionMode>
+    <EnumFile>false</EnumFile>
+    <EnumVer1>false</EnumVer1>
+    <EnumVer2>false</EnumVer2>
+    <EnumSeparator> - </EnumSeparator>
+    <NewV2Version>3</NewV2Version>
+    <V23Encoding>0</V23Encoding>
+    <V24Encoding>0</V24Encoding>
+    <V2YearOnly>0</V2YearOnly>
+    <WriteUnsync>false</WriteUnsync>
+    <RestoreDate>false</RestoreDate>
+    <SingleGC>false</SingleGC>
+    <SaveFolder>true</SaveFolder>
+    <IgnoreWrite>false</IgnoreWrite>
+    <OwnGenreOnly>false</OwnGenreOnly>
+    <QuickFilenameEditing>true</QuickFilenameEditing>
+    <MouseFilenameEditing>true</MouseFilenameEditing>
+    <T1FFormat>&lt;A&gt; - &lt;B&gt; - &lt;K&gt; - &lt;T&gt;</T1FFormat>
+    <FT1Format>&lt;A&gt; - &lt;B&gt; - &lt;K&gt; - &lt;T&gt;</FT1Format>
+    <T2FFormat>&lt;A&gt; - &lt;B&gt; - &lt;K&gt; - &lt;T&gt;</T2FFormat>
+    <FT2Format>&lt;A&gt; - &lt;B&gt; - &lt;K&gt; - &lt;T&gt;</FT2Format>
+    <V2Language>104</V2Language>
+    <SelectFormat>&lt;ABC&gt; - &lt;ABC&gt; - &lt;123&gt; - &lt;ABC&gt;</SelectFormat>
+    <CompareFormat>&lt;A&gt; - &lt;B&gt; - &lt;K&gt; - &lt;T&gt;</CompareFormat>
+    <TracknumberDigitsFilename>2</TracknumberDigitsFilename>
+    <TracknumberDigitsTAG>2</TracknumberDigitsTAG>
+    <FilenumberStart>1</FilenumberStart>
+    <FilenumberDigits>2</FilenumberDigits>
+    <FreeDBLastSearch />
+    <FreeDBSearchOptions>0</FreeDBSearchOptions>
+    <FreeDBSingleArtist>true</FreeDBSingleArtist>
+    <FreeDBWrite1>false</FreeDBWrite1>
+    <FreeDBWrite2>true</FreeDBWrite2>
+    <FreeDBUser>ID3-TagIT-User</FreeDBUser>
+    <FreeDBServer>freedb.freedb.org</FreeDBServer>
+    <FreeDBPort>8880</FreeDBPort>  
+    <FreeDBProxyUse>false</FreeDBProxyUse>
+    <FreeDBProxyServer />
+    <FreeDBProxyPort>0</FreeDBProxyPort>
+    <FreeDBProxyUser />
+    <FreeDBProxyPassword />
+    <SearchSearchText />
+    <SearchReplaceText />
+    <SearchVer1>false</SearchVer1>
+    <SearchVer2>true</SearchVer2>
+    <SearchCase>false</SearchCase>
+    <SearchRegExpression>false</SearchRegExpression>
+    <SearchSelected>false</SearchSelected>
+    <SearchAndOr>false</SearchAndOr>
+    <SearchFilename>true</SearchFilename>
+    <SearchArtist>true</SearchArtist>
+    <SearchTitle>true</SearchTitle>
+    <SearchAlbum>true</SearchAlbum>
+    <SearchComment>false</SearchComment>
+    <SearchTracknumber>false</SearchTracknumber>
+    <SearchYear>false</SearchYear>
+    <SearchGenre>false</SearchGenre>
+    <ConvertFilename>true</ConvertFilename>
+    <ConvertVer1>false</ConvertVer1>
+    <ConvertVer2>true</ConvertVer2>
+    <ConvertArtist>true</ConvertArtist>
+    <ConvertTitle>true</ConvertTitle>
+    <ConvertAlbum>true</ConvertAlbum>
+    <ConvertComment>true</ConvertComment>
+    <ConvertMethod>4</ConvertMethod>
+    <ConvertSeparat>true</ConvertSeparat>
+    <ConvertSeparator> - </ConvertSeparator>
+    <ConvertReplaceSpace20>false</ConvertReplaceSpace20>
+    <ConvertReplaceSpaceUnder>false</ConvertReplaceSpaceUnder>
+    <ConvertReplace20Space>false</ConvertReplace20Space>
+    <ConvertReplaceUnderSpace>false</ConvertReplaceUnderSpace>
+    <ConvertAlwaysFirst>true</ConvertAlwaysFirst>
+    <TransferMethod>1</TransferMethod>
+    <TransferArtist12>true</TransferArtist12>
+    <TransferTitle12>true</TransferTitle12>
+    <TransferAlbum12>true</TransferAlbum12>
+    <TransferGenre12>true</TransferGenre12>
+    <TransferTrack12>true</TransferTrack12>
+    <TransferYear12>true</TransferYear12>
+    <TransferComment12>true</TransferComment12>
+    <TransferCommentD>Descriptor</TransferCommentD>
+    <TransferKeep12>true</TransferKeep12>
+    <TransferArtist21>true</TransferArtist21>
+    <TransferTitle21>true</TransferTitle21>
+    <TransferAlbum21>true</TransferAlbum21>
+    <TransferGenre21>false</TransferGenre21>
+    <TransferTrack21>true</TransferTrack21>
+    <TransferYear21>false</TransferYear21>
+    <TransferComment21>false</TransferComment21>
+    <TransferKeep21>true</TransferKeep21>
+    <ListStyle>2</ListStyle>
+    <ListPath>C:\List.html</ListPath>
+    <ListColumns />
+    <ListExtInfo>&lt;A&gt; - &lt;T&gt;</ListExtInfo>
+    <HTMLListTitle>ID3-TagIT HTML-List</HTMLListTitle>
+    <HTMLListWidth>80</HTMLListWidth>
+    <HTMLListWidthUnit>%</HTMLListWidthUnit>
+    <HTMLTAGVersion>2</HTMLTAGVersion>
+    <HTMLGridlines>true</HTMLGridlines>
+    <HTMLColored>true</HTMLColored>
+    <PlaylistRelPath>true</PlaylistRelPath>
+    <SplitSeparator> - </SplitSeparator>
+    <CompareMethod>3</CompareMethod>
+    <CompareTAGVersion>2</CompareTAGVersion>
+    <CompareFileTAGVersion>2</CompareFileTAGVersion>
+    <CompareFileTAGReplace>false</CompareFileTAGReplace>
+    <CompareFileTAGIgnoreCase>false</CompareFileTAGIgnoreCase>
+    <ColorChangedBack>-128</ColorChangedBack>
+    <ColorChangedText>-16777216</ColorChangedText>
+    <ColorDoubleBack>-32640</ColorDoubleBack>
+    <ColorDoubleText>-16777216</ColorDoubleText>
+    <ColorCompareBack>-8323200</ColorCompareBack>
+    <ColorCompareText>-16777216</ColorCompareText>
+    <UseThemes>true</UseThemes>
+    <FreeDBLastSearch />
+    <FreeDBSearchOptions>1</FreeDBSearchOptions>
+    <RebuildOFilename>false</RebuildOFilename>
+    <SaveOFilename>false</SaveOFilename>
+    <Language>0</Language>
+    <NavPanWidth>236</NavPanWidth>
+    <SideBarWidth>212</SideBarWidth>
+    <ErrorHeight>120</ErrorHeight>
+    <NavPanExpanded>true</NavPanExpanded>
+    <SideBarExpanded>true</SideBarExpanded>
+    <ErrorExpanded>true</ErrorExpanded>
+    <AudioChecksumCalc>true</AudioChecksumCalc>
+  </Settings>
+  <Forms>
+    <Name>frmMain</Name>
+    <State>Normal</State>
+    <Top>50</Top>
+    <Left>50</Left>
+    <Height>568</Height>
+    <Width>808</Width>
+  </Forms>
+  <Forms>
+    <Name>frmOrganize</Name>
+    <State>Normal</State>
+    <Top>50</Top>
+    <Left>50</Left>
+    <Height>408</Height>
+    <Width>520</Width>
+  </Forms>
+  <Forms>
+    <Name>frmSearch</Name>
+    <State>Normal</State>
+    <Top>50</Top>
+    <Left>50</Left>
+    <Height>376</Height>
+    <Width>456</Width>
+  </Forms>
+  <Forms>
+    <Name>frmTAG1</Name>
+    <State>Normal</State>
+    <Top>50</Top>
+    <Left>50</Left>
+    <Height>288</Height>
+    <Width>528</Width>
+  </Forms>
+  <Forms>
+    <Name>frmTAG2</Name>
+    <State>Normal</State>
+    <Top>50</Top>
+    <Left>50</Left>
+    <Height>592</Height>
+    <Width>760</Width>
+  </Forms>
+  <Forms>
+    <Name>frmTAG1Multi</Name>
+    <State>Normal</State>
+    <Top>50</Top>
+    <Left>50</Left>
+    <Height>256</Height>
+    <Width>536</Width>
+  </Forms>
+  <Forms>
+    <Name>frmTAG2Multi</Name>
+    <State>Normal</State>
+    <Top>50</Top>
+    <Left>50</Left>
+    <Height>536</Height>
+    <Width>760</Width>
+  </Forms>
+  <Forms>
+    <Name>frmFilenameToTAG1</Name>
+    <State>Normal</State>
+    <Top>50</Top>
+    <Left>50</Left>
+    <Height>280</Height>
+    <Width>520</Width>
+  </Forms>
+  <Forms>
+    <Name>frmFilenameToTAG2</Name>
+    <State>Normal</State>
+    <Top>50</Top>
+    <Left>50</Left>
+    <Height>384</Height>
+    <Width>520</Width>
+  </Forms>
+  <Forms>
+    <Name>frmTAG1ToFilename</Name>
+    <State>Normal</State>
+    <Top>50</Top>
+    <Left>50</Left>
+    <Height>368</Height>
+    <Width>520</Width>
+  </Forms>
+  <Forms>
+    <Name>frmTAG2ToFilename</Name>
+    <State>Normal</State>
+    <Top>50</Top>
+    <Left>50</Left>
+    <Height>416</Height>
+    <Width>520</Width>
+  </Forms>
+  <Forms>
+    <Name>frmSelectFormat</Name>
+    <State>Normal</State>
+    <Top>50</Top>
+    <Left>50</Left>
+    <Height>248</Height>
+    <Width>520</Width>
+  </Forms>
+  <Forms>
+    <Name>frmCaseConv</Name>
+    <State>Normal</State>
+    <Top>50</Top>
+    <Left>50</Left>
+    <Height>416</Height>
+    <Width>472</Width>
+  </Forms>
+</Settings>

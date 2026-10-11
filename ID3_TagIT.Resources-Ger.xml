@@ -31,6 +31,7 @@
 								<xs:element name="ThemeSystem" type="xs:string" minOccurs="0" />
 								<xs:element name="ThemeLight" type="xs:string" minOccurs="0" />
 								<xs:element name="ThemeDark" type="xs:string" minOccurs="0" />
+								<xs:element name="SettingsReadOnly" type="xs:string" minOccurs="0" />
 								<xs:element name="Col22" type="xs:string" minOccurs="0" />
 								<xs:element name="Col23" type="xs:string" minOccurs="0" />
 								<xs:element name="Col24" type="xs:string" minOccurs="0" />
@@ -1039,6 +1040,7 @@
 		<ThemeSystem>Windows-Einstellung verwenden</ThemeSystem>
 		<ThemeLight>Hell</ThemeLight>
 		<ThemeDark>Dunkel</ThemeDark>
+		<SettingsReadOnly>Die Einstellungen können nicht in %P gespeichert werden. ID3-TagIT verwendet die Standardeinstellungen.</SettingsReadOnly>
 		<Col22>Dateigröße (KB)</Col22>
 		<Col23>BPM</Col23>
 		<Col24>Anzahl Bilder</Col24>

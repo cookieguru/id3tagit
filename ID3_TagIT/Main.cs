@@ -171,104 +171,29 @@ namespace ID3_TagIT
       Declarations.Declaration();
       CommandLine line = new CommandLine();
 
-      string sLeft = "";
-      string sRight = Application.ProductVersion.ToString().Substring(0, Application.ProductVersion.ToString().LastIndexOf("."));
+      Version previous = null;
+      bool settingsReadOnly = false;
 
       try
       {
-        if (!Directory.Exists(Declarations.vstrUserAppData))
-        {
-          Directory.CreateDirectory(Declarations.vstrUserAppData);
-          Directory.CreateDirectory(Path.Combine(Declarations.vstrUserAppData, "Libraries"));
-          DirectoryInfo info = new DirectoryInfo(Declarations.vstrCommonAppData);
-          DirectoryInfo info2 = new DirectoryInfo(Path.Combine(Declarations.vstrCommonAppData, "Libraries"));
-
-          foreach (FileInfo info3 in info.GetFiles())
-            info3.CopyTo(Path.Combine(Declarations.vstrUserAppData, info3.Name), true);
-
-          foreach (FileInfo info3 in info2.GetFiles())
-            info3.CopyTo(Path.Combine(Path.Combine(Declarations.vstrUserAppData, "Libraries"), info3.Name), true);
-        }
-        else
-        {
-          if (!File.Exists(Path.Combine(Declarations.vstrUserAppData, "VersionInfo.txt")))
-          {
-            Directory.CreateDirectory(Declarations.vstrUserAppData);
-            Directory.CreateDirectory(Path.Combine(Declarations.vstrUserAppData, "Libraries"));
-            DirectoryInfo info4 = new DirectoryInfo(Declarations.vstrCommonAppData);
-            DirectoryInfo info5 = new DirectoryInfo(Path.Combine(Declarations.vstrCommonAppData, "Libraries"));
-
-            foreach (FileInfo info6 in info4.GetFiles())
-              info6.CopyTo(Path.Combine(Declarations.vstrUserAppData, info6.Name), true);
-
-            foreach (FileInfo info6 in info5.GetFiles())
-              info6.CopyTo(Path.Combine(Path.Combine(Declarations.vstrUserAppData, "Libraries"), info6.Name), true);
-          }
-          else
-          {
-            FileStream stream = new FileStream(Path.Combine(Declarations.vstrUserAppData, "VersionInfo.txt"), FileMode.Open);
-            StreamReader reader = new StreamReader(stream);
-
-            sLeft = reader.ReadLine();
-            stream.Close();
-            reader.Close();
-
-            if (StringType.StrCmp(sLeft, sRight, false) < 0)
-            {
-              Directory.CreateDirectory(Declarations.vstrUserAppData);
-              Directory.CreateDirectory(Path.Combine(Declarations.vstrUserAppData, "Libraries"));
-              DirectoryInfo info7 = new DirectoryInfo(Declarations.vstrCommonAppData);
-              DirectoryInfo info8 = new DirectoryInfo(Path.Combine(Declarations.vstrCommonAppData, "Libraries"));
-
-              if (StringType.StrCmp(sLeft, "3.0.7", false) < 0)
-              {
-                foreach (FileInfo info9 in info7.GetFiles())
-                  info9.CopyTo(Path.Combine(Declarations.vstrUserAppData, info9.Name), true);
-
-                File.Copy(Path.Combine(Declarations.vstrCommonAppData, @"Libraries\Library-Columns.xml"), Path.Combine(Declarations.vstrUserAppData, @"Libraries\Library-Columns.xml"), true);
-              }
-
-              if (StringType.StrCmp(sLeft, "3.1.3", false) < 0)
-              {
-                File.Copy(Path.Combine(Declarations.vstrCommonAppData, @"Libraries\Library-CommDescriptors.xml"), Path.Combine(Declarations.vstrUserAppData, @"Libraries\Library-CommDescriptors.xml"), true);
-                File.Copy(Path.Combine(Declarations.vstrCommonAppData, "Interface.xml"), Path.Combine(Declarations.vstrUserAppData, "Interface.xml"), true);
-              }
-
-              if (StringType.StrCmp(sLeft, "3.1.8", false) < 0)
-                File.Copy(Path.Combine(Declarations.vstrCommonAppData, "Toolbar.xml"), Path.Combine(Declarations.vstrUserAppData, "Toolbar.xml"), true);
-
-              if (StringType.StrCmp(sLeft, "3.2.1", false) < 0)
-              {
-                File.Copy(Path.Combine(Declarations.vstrCommonAppData, "Toolbar.xml"), Path.Combine(Declarations.vstrUserAppData, "Toolbar.xml"), true);
-                File.Copy(Path.Combine(Declarations.vstrCommonAppData, "Interface.xml"), Path.Combine(Declarations.vstrUserAppData, "Interface.xml"), true);
-                File.Copy(Path.Combine(Declarations.vstrCommonAppData, "ExtToolbar.xml"), Path.Combine(Declarations.vstrUserAppData, "ExtToolbar.xml"), true);
-                File.Copy(Path.Combine(Declarations.vstrCommonAppData, "Navpanel.xml"), Path.Combine(Declarations.vstrUserAppData, "Navpanel.xml"), true);
-              }
-
-              if (StringType.StrCmp(sLeft, "3.3.0", false) < 0 || StringType.StrCmp(sLeft, "3.4.0", false) < 0)
-              {
-                File.Copy(Path.Combine(Declarations.vstrCommonAppData, "Toolbar.xml"), Path.Combine(Declarations.vstrUserAppData, "Toolbar.xml"), true);
-                File.Copy(Path.Combine(Declarations.vstrCommonAppData, "Interface.xml"), Path.Combine(Declarations.vstrUserAppData, "Interface.xml"), true);
-                File.Copy(Path.Combine(Declarations.vstrCommonAppData, "ExtToolbar.xml"), Path.Combine(Declarations.vstrUserAppData, "ExtToolbar.xml"), true);
-                File.Copy(Path.Combine(Declarations.vstrCommonAppData, "Navpanel.xml"), Path.Combine(Declarations.vstrUserAppData, "Navpanel.xml"), true);
-                File.Copy(Path.Combine(Declarations.vstrCommonAppData, @"Libraries\Library-Columns.xml"), Path.Combine(Declarations.vstrUserAppData, @"Libraries\Library-Columns.xml"), true);
-              }
-            }
-          }
-
-          File.Copy(Path.Combine(Declarations.vstrCommonAppData, "VersionInfo.txt"), Path.Combine(Declarations.vstrUserAppData, "VersionInfo.txt"), true);
-        }
+        Version version = new Version(Application.ProductVersion);
+        previous = SettingsMigration.Run(Declarations.vstrUserAppData, new Version(version.Major, version.Minor, version.Build));
       }
-      catch (Exception exception1)
+      // Typically a portable copy on read-only media: run on the built-in defaults.
+      catch (IOException)
       {
-        ProjectData.SetProjectError(exception1);
-        Exception exception = exception1;
-        ProjectData.ClearProjectError();
+        settingsReadOnly = true;
       }
+      catch (UnauthorizedAccessException)
+      {
+        settingsReadOnly = true;
+      }
+
+      Declarations.objSettings.ReadOnly = settingsReadOnly;
 
       Declarations.objSettings.ReadSettings();
 
-      if (StringType.StrCmp(sLeft, "", false) != 0)
+      if (previous != null)
       {
         DataColumn column;
 
@@ -496,6 +421,10 @@ namespace ID3_TagIT
       }
 
       Declarations.objResources.ReadResources();
+
+      if (settingsReadOnly)
+        MessageBox.Show(StringType.FromObject(Declarations.objResources.ResStrings["SettingsReadOnly"]).Replace("%P", Declarations.vstrUserAppData), "ID3-TagIT", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
       Declarations.objSettings.AddNewColumns();
       ThemeManager.Initialize();
       line.Resolve();

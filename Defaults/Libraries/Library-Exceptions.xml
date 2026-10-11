@@ -1,0 +1,72 @@
+<?xml version="1.0" standalone="yes"?>
+<ExceptionsLibrary>
+  <xs:schema id="ExceptionsLibrary" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="ExceptionsLibrary" msdata:IsDataSet="true" msdata:Locale="de-DE">
+      <xs:complexType>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element name="Exceptions">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Name" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <Exceptions>
+    <Name>I</Name>
+  </Exceptions>
+  <Exceptions>
+    <Name>II</Name>
+  </Exceptions>
+  <Exceptions>
+    <Name>III</Name>
+  </Exceptions>
+  <Exceptions>
+    <Name>IV</Name>
+  </Exceptions>
+  <Exceptions>
+    <Name>V</Name>
+  </Exceptions>
+  <Exceptions>
+    <Name>VI</Name>
+  </Exceptions>
+  <Exceptions>
+    <Name>VII</Name>
+  </Exceptions>
+  <Exceptions>
+    <Name>VIII</Name>
+  </Exceptions>
+  <Exceptions>
+    <Name>IX</Name>
+  </Exceptions>
+  <Exceptions>
+    <Name>X</Name>
+  </Exceptions>
+  <Exceptions>
+    <Name>XI</Name>
+  </Exceptions>
+  <Exceptions>
+    <Name>XII</Name>
+  </Exceptions>
+  <Exceptions>
+    <Name>feat.</Name>
+  </Exceptions>
+  <Exceptions>
+    <Name>vs.</Name>
+  </Exceptions>
+  <Exceptions>
+    <Name>DJ</Name>
+  </Exceptions>
+  <Exceptions>
+    <Name>I'm</Name>
+  </Exceptions>
+  <Exceptions>
+    <Name>I'll</Name>
+  </Exceptions>
+  <Exceptions>
+    <Name>I'd</Name>
+  </Exceptions>
+</ExceptionsLibrary>
