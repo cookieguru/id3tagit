@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ID3-TagIT", "ID3-TagIT.csproj", "{D206D600-C939-4592-A0D8-A3641273E2E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ID3-TagIT.Tests", "ID3-TagIT.Tests\ID3-TagIT.Tests.csproj", "{6B1E3F52-7C2A-4D8E-9A41-3F0C5E7B2D19}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{51CFB17B-4C1A-48B7-862F-9FDB825E40AA}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
@@ -26,6 +28,14 @@ Global
 		{D206D600-C939-4592-A0D8-A3641273E2E9}.Release|Any CPU.Build.0 = Release|x86
 		{D206D600-C939-4592-A0D8-A3641273E2E9}.Release|x86.ActiveCfg = Release|x86
 		{D206D600-C939-4592-A0D8-A3641273E2E9}.Release|x86.Build.0 = Release|x86
+		{6B1E3F52-7C2A-4D8E-9A41-3F0C5E7B2D19}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{6B1E3F52-7C2A-4D8E-9A41-3F0C5E7B2D19}.Debug|Any CPU.Build.0 = Debug|x86
+		{6B1E3F52-7C2A-4D8E-9A41-3F0C5E7B2D19}.Debug|x86.ActiveCfg = Debug|x86
+		{6B1E3F52-7C2A-4D8E-9A41-3F0C5E7B2D19}.Debug|x86.Build.0 = Debug|x86
+		{6B1E3F52-7C2A-4D8E-9A41-3F0C5E7B2D19}.Release|Any CPU.ActiveCfg = Release|x86
+		{6B1E3F52-7C2A-4D8E-9A41-3F0C5E7B2D19}.Release|Any CPU.Build.0 = Release|x86
+		{6B1E3F52-7C2A-4D8E-9A41-3F0C5E7B2D19}.Release|x86.ActiveCfg = Release|x86
+		{6B1E3F52-7C2A-4D8E-9A41-3F0C5E7B2D19}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

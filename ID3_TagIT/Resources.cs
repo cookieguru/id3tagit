@@ -100,16 +100,16 @@ namespace ID3_TagIT
           break;
       }
 
-      Assembly entryAssembly = Assembly.GetEntryAssembly();
+      Assembly appAssembly = typeof(Resources).Assembly;
 
       if (!string.IsNullOrEmpty(str2))
-        this.ID3TagITRes.ReadXml(entryAssembly.GetManifestResourceStream(str2));
+        this.ID3TagITRes.ReadXml(appAssembly.GetManifestResourceStream(str2));
 
       if (!string.IsNullOrEmpty(str3))
-        this.ID3TagITToolTips.ReadXml(entryAssembly.GetManifestResourceStream(str3));
+        this.ID3TagITToolTips.ReadXml(appAssembly.GetManifestResourceStream(str3));
 
       if (!string.IsNullOrEmpty(str))
-        this.ID3TagITMenus.ReadXml(entryAssembly.GetManifestResourceStream(str));
+        this.ID3TagITMenus.ReadXml(appAssembly.GetManifestResourceStream(str));
 
       if (this.ID3TagITRes.Tables.Count > 1)
         this.ResStringsRow = this.ID3TagITRes.Tables[0].Rows[0];

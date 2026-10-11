@@ -9,3 +9,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct("ID3-TagIT")]
 [assembly: AssemblyDescription("ID3-TagIT is a program for editing, adding, or deleting ID3 TAGs in MP3 files. Single file and batch editing are both supported. Edit one, ten or all your MP3 files at once. ID3-TagIT has many functions to help you achieve your goal as quickly as possible.")]
 [assembly: AssemblyCompany("Original version by Michael Pluemper. Updates past 3.3.0 by Chris Skaryd")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("ID3-TagIT.Tests")]
