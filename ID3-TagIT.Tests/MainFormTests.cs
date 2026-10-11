@@ -166,6 +166,34 @@ namespace ID3_TagIT.Tests
     }
 
     [Fact]
+    public void AFailedSaveOpensTheErrorPane()
+    {
+      Sta.Run(delegate ()
+      {
+        using (TempFolder folder = new TempFolder())
+        using (MainForm main = new MainForm())
+        {
+          // The grip is created in frmMain_Load, which never runs here.
+          SplitterGrip grip = new SplitterGrip(main.Get<SplitContainer>("spltMiddle"), FixedPanel.Panel2);
+          typeof(frmMain).GetField("gripErrors", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(main.Form, grip);
+          grip.Expanded = false;
+
+          List<string> files = MakeFiles(folder, 2);
+          File.SetAttributes(files[1], FileAttributes.ReadOnly);
+          main.Call("ReadFiles", new ArrayList(files));
+          main.ShowFiles(Declarations.MP3s);
+
+          foreach (MP3 mp3 in Declarations.MP3s)
+            mp3.Changed = true;
+
+          main.Call("SaveChanges");
+
+          Assert.True(grip.Expanded);
+        }
+      });
+    }
+
+    [Fact]
     public void AudioChecksumsAreCalculatedInTheBackground()
     {
       Sta.Run(delegate ()

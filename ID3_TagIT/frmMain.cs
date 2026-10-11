@@ -4099,7 +4099,9 @@ Label_23AA:
             resStrings[str] = RuntimeHelpers.GetObjectValue(args[0]);
 
           this.ErrorMsg.Items.Insert(0, item2);
-          // FIXME - Exp this.SplitterBottom.Expanded = true;
+
+          if (this.gripErrors != null)
+            this.gripErrors.Expanded = true;
         }
       };
 
