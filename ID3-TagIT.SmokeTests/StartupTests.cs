@@ -68,7 +68,8 @@ namespace ID3_TagIT.SmokeTests
       {
         Mp3Files.WriteTagless(app.Music("tagless.mp3"));
         app.Launch(1);
-        Assert.Contains(Headers(app), h => h == "Publisher");
+        string[] headers = Headers(app);
+        Assert.Equal(System.Array.IndexOf(headers, "Composer") + 1, System.Array.IndexOf(headers, "Publisher"));
 
         app.Shortcut(FlaUI.Core.WindowsAPI.VirtualKeyShort.F9, FlaUI.Core.WindowsAPI.VirtualKeyShort.ALT);
         app.Close();

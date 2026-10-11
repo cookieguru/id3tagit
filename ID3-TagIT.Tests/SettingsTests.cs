@@ -73,5 +73,38 @@ namespace ID3_TagIT.Tests
       Assert.Empty(columns.Select("ID = 27"));
       this.RemoveColumn("KnownColumns");
     }
+
+    // A column list with these IDs in this (display) order.
+    private DataTable UseColumns(params int[] ids)
+    {
+      DataTable columns = new DataTable("Columns");
+      columns.Columns.Add("ID", typeof(int));
+      columns.Columns.Add("Width", typeof(int));
+      columns.Columns.Add("Alignment", typeof(string));
+
+      foreach (int id in ids)
+        columns.Rows.Add(id, 100 + id, "Left");
+
+      typeof(Settings).GetField("ColumnsTable", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.settings, columns);
+      return columns;
+    }
+
+    private static int[] Ids(DataTable columns)
+    {
+      return System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Select(System.Linq.Enumerable.Cast<DataRow>(columns.Rows), r => (int)r["ID"]));
+    }
+
+    // The column list's row order is the display order. 21 is Composer, 27 Publisher.
+    [Fact]
+    public void PublisherIsShownNextToComposer()
+    {
+      this.RemoveColumn("KnownColumns");
+      DataTable columns = this.UseColumns(1, 21, 24);
+
+      this.settings.AddNewColumns();
+
+      Assert.Equal(new[] { 1, 21, 27, 24 }, Ids(columns));
+      this.RemoveColumn("KnownColumns");
+    }
   }
 }

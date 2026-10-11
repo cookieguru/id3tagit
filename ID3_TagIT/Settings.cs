@@ -2069,7 +2069,14 @@ namespace ID3_TagIT
         row["ID"] = 0x1b;
         row["Width"] = 150;
         row["Alignment"] = "Left";
-        this.ColumnsTable.Rows.Add(row);
+
+        // Row order is display order: put Publisher next to Composer (21) when it is shown.
+        DataRow[] composer = this.ColumnsTable.Select("ID = 21");
+
+        if (composer.Length > 0)
+          this.ColumnsTable.Rows.InsertAt(row, this.ColumnsTable.Rows.IndexOf(composer[0]) + 1);
+        else
+          this.ColumnsTable.Rows.Add(row);
       }
 
       this.KnownColumns = 0x1b;
