@@ -551,180 +551,180 @@
     </xs:element>
   </xs:schema>
   <frmCaseConv>
-    <chkAlwaysFirst>Zmiana pierwszej litery ka¿dego pola/nazwy pliku na wielk¹, poza wyj¹tkami</chkAlwaysFirst>
-    <chkReplaceSpaceUnder>Zast¹pienie spacji znakiem podkreœlenia</chkReplaceSpaceUnder>
-    <chkReplaceSpace20>Zast¹pienie spacji ci¹giem %20</chkReplaceSpace20>
-    <chkReplaceUnderSpace>Zast¹pienie znaku podkreœlenia spacj¹</chkReplaceUnderSpace>
-    <chkReplace20Space>Zast¹pienie ci¹gu %20 spacj¹</chkReplace20Space>
-    <txtSeparator>Tu wprowadŸ separator</txtSeparator>
-    <chkSeparator>U¿ycie separatora</chkSeparator>
+    <chkAlwaysFirst>Zmiana pierwszej litery kaÅ¼dego pola/nazwy pliku na wielkÄ…, poza wyjÄ…tkami</chkAlwaysFirst>
+    <chkReplaceSpaceUnder>ZastÄ…pienie spacji znakiem podkreÅ›lenia</chkReplaceSpaceUnder>
+    <chkReplaceSpace20>ZastÄ…pienie spacji ciÄ…giem %20</chkReplaceSpace20>
+    <chkReplaceUnderSpace>ZastÄ…pienie znaku podkreÅ›lenia spacjÄ…</chkReplaceUnderSpace>
+    <chkReplace20Space>ZastÄ…pienie ciÄ…gu %20 spacjÄ…</chkReplace20Space>
+    <txtSeparator>Tu wprowadÅº separator</txtSeparator>
+    <chkSeparator>UÅ¼ycie separatora</chkSeparator>
     <optAllFirstUp>Zmiana Wszystkich Pierwszych Liter Na Wielkie</optAllFirstUp>
-    <optFirstUp>Zmiana pierwszej litery na wielk¹</optFirstUp>
+    <optFirstUp>Zmiana pierwszej litery na wielkÄ…</optFirstUp>
     <optAllUp>ZMIANA WSZYSTKICH LITER NA WIELKIE</optAllUp>
-    <optAllLow>zmiana wszystkich liter na ma³e</optAllLow>
-    <chkVer1>U¿ycie opcji konwersji dla tagów ID3 v.1</chkVer1>
-    <chkVer2>U¿ycie opcji konwersji dla tagów ID3 v.2</chkVer2>
-    <chkFilename>U¿ycie opcji konwersji dla nazw plików</chkFilename>
+    <optAllLow>zmiana wszystkich liter na maÅ‚e</optAllLow>
+    <chkVer1>UÅ¼ycie opcji konwersji dla tagÃ³w ID3 v.1</chkVer1>
+    <chkVer2>UÅ¼ycie opcji konwersji dla tagÃ³w ID3 v.2</chkVer2>
+    <chkFilename>UÅ¼ycie opcji konwersji dla nazw plikÃ³w</chkFilename>
     <chkArtist>Zmodyfikowanie w tagu pola wykonawcy</chkArtist>
-    <chkTitle>Zmodyfikowanie w tagu pola tytu³u</chkTitle>
+    <chkTitle>Zmodyfikowanie w tagu pola tytuÅ‚u</chkTitle>
     <chkAlbum>Zmodyfikowanie w tagu pola albumu</chkAlbum>
     <chkComment>Zmodyfikowanie w tagu pola komentarza</chkComment>
-    <btnRemove>Usuwa wybrany wyj¹tek z listy</btnRemove>
-    <btnAdd>Dodaje wprowadzony wyj¹tek do listy</btnAdd>
-    <lstExceptions>Lista wyj¹tków</lstExceptions>
-    <txtException>Tu wprowadŸ wyj¹tek</txtException>
+    <btnRemove>Usuwa wybrany wyjÄ…tek z listy</btnRemove>
+    <btnAdd>Dodaje wprowadzony wyjÄ…tek do listy</btnAdd>
+    <lstExceptions>Lista wyjÄ…tkÃ³w</lstExceptions>
+    <txtException>Tu wprowadÅº wyjÄ…tek</txtException>
   </frmCaseConv>
   <frmCompareFileTAG>
-    <txtDigits>Liczba cyfr do zapisania numeru œcie¿ki</txtDigits>
+    <txtDigits>Liczba cyfr do zapisania numeru Å›cieÅ¼ki</txtDigits>
     <btnRemove>Usuwa wybrany format z listy</btnRemove>
     <btnAdd>Dodaje wprowadzony format do listy</btnAdd>
-    <cmbFormat>WprowadŸ format lub okreœl postaæ nazwy pliku</cmbFormat>
-    <optTAGV1>U¿ycie tagów v.1 podczas porównania</optTAGV1>
-    <optTAGV2>U¿ycie tagów v.2 podczas porównania</optTAGV2>
-    <chkReplaceUnderScore>Traktowanie znaków niedozwolonych w nazwach plików jak znaków '_'</chkReplaceUnderScore>
-    <chkIgnoreCase>Ignorowanie wielkoœci liter</chkIgnoreCase>
+    <cmbFormat>WprowadÅº format lub okreÅ›l postaÄ‡ nazwy pliku</cmbFormat>
+    <optTAGV1>UÅ¼ycie tagÃ³w v.1 podczas porÃ³wnania</optTAGV1>
+    <optTAGV2>UÅ¼ycie tagÃ³w v.2 podczas porÃ³wnania</optTAGV2>
+    <chkReplaceUnderScore>Traktowanie znakÃ³w niedozwolonych w nazwach plikÃ³w jak znakÃ³w '_'</chkReplaceUnderScore>
+    <chkIgnoreCase>Ignorowanie wielkoÅ›ci liter</chkIgnoreCase>
   </frmCompareFileTAG>
   <frmDouble>
-    <optTAGV1>U¿ycie tagów v.1 podczas porównania</optTAGV1>
-    <optTAGV2>U¿ycie tagów v.2 podczas porównania</optTAGV2>
-    <optAD>Ignorowanie danych tagów i u¿ycie w porównaniu danych dŸwiêkowych</optAD>
-    <optATA>U¿ycie w porównaniu pól wykonawcy, tytu³u i albumu</optATA>
-    <optAT>U¿ycie w porównaniu tylko pól wykonawcy i tytu³u</optAT>
+    <optTAGV1>UÅ¼ycie tagÃ³w v.1 podczas porÃ³wnania</optTAGV1>
+    <optTAGV2>UÅ¼ycie tagÃ³w v.2 podczas porÃ³wnania</optTAGV2>
+    <optAD>Ignorowanie danych tagÃ³w i uÅ¼ycie w porÃ³wnaniu danych dÅºwiÄ™kowych</optAD>
+    <optATA>UÅ¼ycie w porÃ³wnaniu pÃ³l wykonawcy, tytuÅ‚u i albumu</optATA>
+    <optAT>UÅ¼ycie w porÃ³wnaniu tylko pÃ³l wykonawcy i tytuÅ‚u</optAT>
   </frmDouble>
   <frmFilenameToTAG1>
-    <btnRemove>Usuwa wprowadzony format z listy dostêpnych formatów</btnRemove>
-    <btnAdd>Zapisuje wprowadzony format na liœcie dostêpnych formatów</btnAdd>
-    <cmbFormat>Okreœla format nazwy pliku</cmbFormat>
+    <btnRemove>Usuwa wprowadzony format z listy dostÄ™pnych formatÃ³w</btnRemove>
+    <btnAdd>Zapisuje wprowadzony format na liÅ›cie dostÄ™pnych formatÃ³w</btnAdd>
+    <cmbFormat>OkreÅ›la format nazwy pliku</cmbFormat>
   </frmFilenameToTAG1>
   <frmFilenameToTAG2>
-    <txtDigits>Liczba cyfr w numerach œcie¿ek dodawanych do tagów</txtDigits>
-    <btnRemove>Usuwa wprowadzony format z listy dostêpnych formatów</btnRemove>
-    <btnAdd>Zapisuje wprowadzony format na liœcie dostêpnych formatów</btnAdd>
-    <cmbFormat>Okreœla format nazwy pliku</cmbFormat>
-    <chkSaveName>Zapisanie bie¿¹cej nazwy pliku do ramki 'Oryginalna nazwa pliku' w tagu</chkSaveName>
+    <txtDigits>Liczba cyfr w numerach Å›cieÅ¼ek dodawanych do tagÃ³w</txtDigits>
+    <btnRemove>Usuwa wprowadzony format z listy dostÄ™pnych formatÃ³w</btnRemove>
+    <btnAdd>Zapisuje wprowadzony format na liÅ›cie dostÄ™pnych formatÃ³w</btnAdd>
+    <cmbFormat>OkreÅ›la format nazwy pliku</cmbFormat>
+    <chkSaveName>Zapisanie bieÅ¼Ä…cej nazwy pliku do ramki 'Oryginalna nazwa pliku' w tagu</chkSaveName>
   </frmFilenameToTAG2>
   <frmFreeDB>
     <btnQuery>Wyszukuje wszystkie dyski CD w bazie FreeDB zgodne z wybranymi plikami</btnQuery>
-    <optVariousArtist>Tej opcji nale¿y u¿yæ, jeœli ka¿da œcie¿ka albumu ma innego wykonawcê</optVariousArtist>
-    <optSingleArtist>Tej opcji nale¿y u¿yæ, jeœli ca³y album ma tylko jednego wykonawcê</optSingleArtist>
-    <chkTrack>Wyszukiwanie wprowadzonego tekstu w polach œcie¿ek</chkTrack>
-    <chkTitle>Wyszukiwanie wprowadzonego tekstu w polu tytu³u albumu</chkTitle>
-    <btnSearch>Wyszukuje wszystkie dyski CD w bazie FreeDB zawieraj¹ce w danych jedno z podanych s³ów</btnSearch>
-    <chkArtistExact>Wyszukiwany tekst musi byæ dok³adnie zgodny z danymi pola wykonawcy</chkArtistExact>
+    <optVariousArtist>Tej opcji naleÅ¼y uÅ¼yÄ‡, jeÅ›li kaÅ¼da Å›cieÅ¼ka albumu ma innego wykonawcÄ™</optVariousArtist>
+    <optSingleArtist>Tej opcji naleÅ¼y uÅ¼yÄ‡, jeÅ›li caÅ‚y album ma tylko jednego wykonawcÄ™</optSingleArtist>
+    <chkTrack>Wyszukiwanie wprowadzonego tekstu w polach Å›cieÅ¼ek</chkTrack>
+    <chkTitle>Wyszukiwanie wprowadzonego tekstu w polu tytuÅ‚u albumu</chkTitle>
+    <btnSearch>Wyszukuje wszystkie dyski CD w bazie FreeDB zawierajÄ…ce w danych jedno z podanych sÅ‚Ã³w</btnSearch>
+    <chkArtistExact>Wyszukiwany tekst musi byÄ‡ dokÅ‚adnie zgodny z danymi pola wykonawcy</chkArtistExact>
     <chkArtist>Wyszukiwanie wprowadzonego tekstu w polu wykonawcy</chkArtist>
-    <chkComplete>Ca³y podany ci¹g musi byæ znaleziony w przeszukiwanych polach</chkComplete>
+    <chkComplete>CaÅ‚y podany ciÄ…g musi byÄ‡ znaleziony w przeszukiwanych polach</chkComplete>
   </frmFreeDB>
   <frmLibraries>
-    <txtDir>WprowadŸ œcie¿kê katalogu do dodania do aktualnie wybranej zak³adki</txtDir>
-    <txtName>WprowadŸ nazwê zak³adki</txtName>
-    <chkOnlyOwn>U¿ywanie tylko zdefiniowanych gatunków</chkOnlyOwn>
+    <txtDir>WprowadÅº Å›cieÅ¼kÄ™ katalogu do dodania do aktualnie wybranej zakÅ‚adki</txtDir>
+    <txtName>WprowadÅº nazwÄ™ zakÅ‚adki</txtName>
+    <chkOnlyOwn>UÅ¼ywanie tylko zdefiniowanych gatunkÃ³w</chkOnlyOwn>
     <cmbV2V1>Gatunek v.2 dla transferu v.2 -&gt; v.1</cmbV2V1>
     <cmbV1V2>Gatunek v.1 dla transferu v.1 -&gt; v.2</cmbV1V2>
-    <btnDeleteG>Usuñ wybrany gatunek z listy</btnDeleteG>
+    <btnDeleteG>UsuÅ„ wybrany gatunek z listy</btnDeleteG>
     <btnAddG>Dodaj wprowadzony gatunek do listy</btnAddG>
-    <txtGenreName>WprowadŸ nazwê nowego gatunku v.2</txtGenreName>
-    <GenreList>Lista znanych gatunków</GenreList>
-    <btnClearA>Wyczyœæ ca³¹ listê wykonawców</btnClearA>
-    <btnDeleteA>Usuñ wybranego wykonawcê z listy</btnDeleteA>
-    <btnAdd>Dodaj wprowadzonego wykonawcê do listy</btnAdd>
-    <txtArtistName>WprowadŸ nazwê nowego wykonawcy</txtArtistName>
-    <btnGetArtistV1>Pobierz wykonawców z tagów ID3 v.1 przegl¹danych plików</btnGetArtistV1>
-    <ArtistList>Lista znanych wykonawców</ArtistList>
-    <btnGetArtistV2>Pobierz wykonawców z tagów ID3 v.2 przegl¹danych plików</btnGetArtistV2>
-    <btnClearCommD>Wyczyœæ ca³¹ listê wykonawców</btnClearCommD>
-    <btnRemoveCommD>Usuñ wybranego wykonawcê z listy</btnRemoveCommD>
-    <btnAddCommD>Dodaj wprowadzonego wykonawcê do listy</btnAddCommD>
-    <txtNewCommD>WprowadŸ nazwê nowego wykonawcy</txtNewCommD>
-    <CommDList>Lista znanych wykonawców</CommDList>
+    <txtGenreName>WprowadÅº nazwÄ™ nowego gatunku v.2</txtGenreName>
+    <GenreList>Lista znanych gatunkÃ³w</GenreList>
+    <btnClearA>WyczyÅ›Ä‡ caÅ‚Ä… listÄ™ wykonawcÃ³w</btnClearA>
+    <btnDeleteA>UsuÅ„ wybranego wykonawcÄ™ z listy</btnDeleteA>
+    <btnAdd>Dodaj wprowadzonego wykonawcÄ™ do listy</btnAdd>
+    <txtArtistName>WprowadÅº nazwÄ™ nowego wykonawcy</txtArtistName>
+    <btnGetArtistV1>Pobierz wykonawcÃ³w z tagÃ³w ID3 v.1 przeglÄ…danych plikÃ³w</btnGetArtistV1>
+    <ArtistList>Lista znanych wykonawcÃ³w</ArtistList>
+    <btnGetArtistV2>Pobierz wykonawcÃ³w z tagÃ³w ID3 v.2 przeglÄ…danych plikÃ³w</btnGetArtistV2>
+    <btnClearCommD>WyczyÅ›Ä‡ caÅ‚Ä… listÄ™ wykonawcÃ³w</btnClearCommD>
+    <btnRemoveCommD>UsuÅ„ wybranego wykonawcÄ™ z listy</btnRemoveCommD>
+    <btnAddCommD>Dodaj wprowadzonego wykonawcÄ™ do listy</btnAddCommD>
+    <txtNewCommD>WprowadÅº nazwÄ™ nowego wykonawcy</txtNewCommD>
+    <CommDList>Lista znanych wykonawcÃ³w</CommDList>
   </frmLibraries>
   <frmLists>
-    <chkRelativ>Umieszczenie na liœcie odtwarzania œcie¿ek wzglêdnych</chkRelativ>
-    <btnPath>Wybiera œcie¿kê i nazwê pliku listy odtwarzania/plików</btnPath>
-    <txtPath>WprowadŸ œcie¿kê i nazwê pliku dla listy odtwarzania/plików, zawieraj¹cej wybrane pliki</txtPath>
+    <chkRelativ>Umieszczenie na liÅ›cie odtwarzania Å›cieÅ¼ek wzglÄ™dnych</chkRelativ>
+    <btnPath>Wybiera Å›cieÅ¼kÄ™ i nazwÄ™ pliku listy odtwarzania/plikÃ³w</btnPath>
+    <txtPath>WprowadÅº Å›cieÅ¼kÄ™ i nazwÄ™ pliku dla listy odtwarzania/plikÃ³w, zawierajÄ…cej wybrane pliki</txtPath>
     <chkColor>Kolorowanie parzystych/nieparzystych wierszy</chkColor>
     <chkGridlines>Rozdzielanie pozycji listy liniami</chkGridlines>
-    <txtWidth>Wybierz szerokoœæ listy</txtWidth>
-    <cmbWidth>Wybierz skalê dla szerokoœci (piksele / %)</cmbWidth>
-    <optID3V1>U¿ycie tagów v.1 do tworzenia listy</optID3V1>
-    <optID3V2>U¿ycie tagów v.2 do tworzenia listy</optID3V2>
-    <txtTitleHTML>Definiowanie tytu³u listy</txtTitleHTML>
-    <ColumnsList>Zaznacz pola kolumn do umieszczenia na liœcie</ColumnsList>
-    <btnUp>Zmienia kolejnoœæ na liœcie. Przenosi wybran¹ kolumnê do góry.</btnUp>
-    <btnDown>Zmienia kolejnoœæ na liœcie. Przenosi wybran¹ kolumnê w dó³.</btnDown>
+    <txtWidth>Wybierz szerokoÅ›Ä‡ listy</txtWidth>
+    <cmbWidth>Wybierz skalÄ™ dla szerokoÅ›ci (piksele / %)</cmbWidth>
+    <optID3V1>UÅ¼ycie tagÃ³w v.1 do tworzenia listy</optID3V1>
+    <optID3V2>UÅ¼ycie tagÃ³w v.2 do tworzenia listy</optID3V2>
+    <txtTitleHTML>Definiowanie tytuÅ‚u listy</txtTitleHTML>
+    <ColumnsList>Zaznacz pola kolumn do umieszczenia na liÅ›cie</ColumnsList>
+    <btnUp>Zmienia kolejnoÅ›Ä‡ na liÅ›cie. Przenosi wybranÄ… kolumnÄ™ do gÃ³ry.</btnUp>
+    <btnDown>Zmienia kolejnoÅ›Ä‡ na liÅ›cie. Przenosi wybranÄ… kolumnÄ™ w dÃ³Å‚.</btnDown>
   </frmLists>
   <frmOrganize>
-    <txtPath>Podaj œcie¿kê g³ówn¹, w której bêd¹ organizowane pliki</txtPath>
-    <btnBrowse>Wybiera œcie¿kê</btnBrowse>
-    <cmbFormat>WprowadŸ format do u¿ycia</cmbFormat>
+    <txtPath>Podaj Å›cieÅ¼kÄ™ gÅ‚Ã³wnÄ…, w ktÃ³rej bÄ™dÄ… organizowane pliki</txtPath>
+    <btnBrowse>Wybiera Å›cieÅ¼kÄ™</btnBrowse>
+    <cmbFormat>WprowadÅº format do uÅ¼ycia</cmbFormat>
     <btnAdd>Dodaje wprowadzony format do listy</btnAdd>
     <btnRemove>Usuwa wybrany format z listy</btnRemove>
-    <optID3V2>U¿ycie tagów v.2 do organizowania plików</optID3V2>
-    <optID3V1>U¿ycie tagów v.1 do organizowania plików</optID3V1>
-    <txtDigits>Liczba cyfr do zapisania numeru œcie¿ki</txtDigits>
+    <optID3V2>UÅ¼ycie tagÃ³w v.2 do organizowania plikÃ³w</optID3V2>
+    <optID3V1>UÅ¼ycie tagÃ³w v.1 do organizowania plikÃ³w</optID3V1>
+    <txtDigits>Liczba cyfr do zapisania numeru Å›cieÅ¼ki</txtDigits>
   </frmOrganize>
   <frmPreferences>
-    <cmbPlay>Dzia³anie do wykonania przez odtwarzacz MP3</cmbPlay>
-    <chkExplorerContext>Wyœwietlanie opcji ID3-TagIT w menu kontekstowym Eksploratora Windows</chkExplorerContext>
-    <txtFDigits>Liczba cyfr do u¿ycia przy numerowaniu plików</txtFDigits>
-    <txtEnumSep>WprowadŸ separator umieszczany pomiêdzy numerem a nazw¹ pliku</txtEnumSep>
-    <txtStartNr>WprowadŸ liczbê pocz¹tkowa dla numerowania</txtStartNr>
-    <chkMouseRenaming>Edycja nazwy po klikniêciu lewym przyciskiem myszy</chkMouseRenaming>
+    <cmbPlay>DziaÅ‚anie do wykonania przez odtwarzacz MP3</cmbPlay>
+    <chkExplorerContext>WyÅ›wietlanie opcji ID3-TagIT w menu kontekstowym Eksploratora Windows</chkExplorerContext>
+    <txtFDigits>Liczba cyfr do uÅ¼ycia przy numerowaniu plikÃ³w</txtFDigits>
+    <txtEnumSep>WprowadÅº separator umieszczany pomiÄ™dzy numerem a nazwÄ… pliku</txtEnumSep>
+    <txtStartNr>WprowadÅº liczbÄ™ poczÄ…tkowa dla numerowania</txtStartNr>
+    <chkMouseRenaming>Edycja nazwy po klikniÄ™ciu lewym przyciskiem myszy</chkMouseRenaming>
     <chkRestore>Odtworzenie daty pliku po zmianie jego tagu</chkRestore>
-    <txtTFDigits>Wybierz liczbê cyfr dla numeru œcie¿ki w nazwie pliku</txtTFDigits>
-    <optAdd>Wybranie pliku dodaje plik do bie¿¹cego wyboru</optAdd>
+    <txtTFDigits>Wybierz liczbÄ™ cyfr dla numeru Å›cieÅ¼ki w nazwie pliku</txtTFDigits>
+    <optAdd>Wybranie pliku dodaje plik do bieÅ¼Ä…cego wyboru</optAdd>
     <optSingle>Wybranie pliku wybiera tylko ten plik</optSingle>
-    <chkSaveOnExit>Zapisywanie œcie¿ki ostatnio otwartego foldera, co umo¿liwia ponowne uruchomienie programu z tym folderem otwartym</chkSaveOnExit>
-    <optEditCur>Dwukrotne klikniêcie pliku otwiera okno edycji tagu v.X, odpowiednie do bie¿¹cego widoku</optEditCur>
-    <optEditV1>Dwukrotne klikniêcie pliku otwiera okno edycji tagu v.2</optEditV1>
-    <optEditV2>Dwukrotne klikniêcie pliku otwiera okno edycji tagu v.1</optEditV2>
-    <chkIgnoreWrite>Ignorowanie atrybutu Tylko do odczytu plików</chkIgnoreWrite>
-    <ColumnsList>Kolumny do wyœwietlania w oknie programu ID3-TagIT</ColumnsList>
-    <btnUp>Przenosi wybran¹ kolumnê w górê</btnUp>
-    <btnDown>Przenosi wybran¹ kolumnê w dó³</btnDown>
+    <chkSaveOnExit>Zapisywanie Å›cieÅ¼ki ostatnio otwartego foldera, co umoÅ¼liwia ponowne uruchomienie programu z tym folderem otwartym</chkSaveOnExit>
+    <optEditCur>Dwukrotne klikniÄ™cie pliku otwiera okno edycji tagu v.X, odpowiednie do bieÅ¼Ä…cego widoku</optEditCur>
+    <optEditV1>Dwukrotne klikniÄ™cie pliku otwiera okno edycji tagu v.2</optEditV1>
+    <optEditV2>Dwukrotne klikniÄ™cie pliku otwiera okno edycji tagu v.1</optEditV2>
+    <chkIgnoreWrite>Ignorowanie atrybutu Tylko do odczytu plikÃ³w</chkIgnoreWrite>
+    <ColumnsList>Kolumny do wyÅ›wietlania w oknie programu ID3-TagIT</ColumnsList>
+    <btnUp>Przenosi wybranÄ… kolumnÄ™ w gÃ³rÄ™</btnUp>
+    <btnDown>Przenosi wybranÄ… kolumnÄ™ w dÃ³Å‚</btnDown>
     <cmbYearFormat>Format roku w tagach v.2</cmbYearFormat>
-    <txtTTDigits>WprowadŸ liczbê cyfr dla numerów œcie¿ek w tagach v.2</txtTTDigits>
+    <txtTTDigits>WprowadÅº liczbÄ™ cyfr dla numerÃ³w Å›cieÅ¼ek w tagach v.2</txtTTDigits>
     <cmbV24Enc>Kodowanie tekstu w tagach v.2.4</cmbV24Enc>
     <cmbV23Enc>Kodowanie tekstu w tagach v.2.3</cmbV23Enc>
-    <chkSingle>Mo¿liwy tylko 1 gatunek i komentarz w tagu v.2</chkSingle>
-    <chkUnSync>Zapisywanie tagów v.2 tak, aby nigdy nie imitowa³y nag³ówka synchronizacji danych dŸwiêkowych</chkUnSync>
-    <optUse24>Tworzenie tagów v.2.4 przy tworzeniu nowych tagów v.2</optUse24>
-    <optUse23>Tworzenie tagów v.2.3 przy tworzeniu nowych tagów v.2</optUse23>
-    <ColorCompareText>Kliknij, aby wybraæ kolor</ColorCompareText>
-    <ColorCompareBack>Kliknij, aby wybraæ kolor</ColorCompareBack>
-    <ColorChangedBack>Kliknij, aby wybraæ kolor</ColorChangedBack>
-    <ColorDoubleText>Kliknij, aby wybraæ kolor</ColorDoubleText>
-    <ColorDoubleBack>Kliknij, aby wybraæ kolor</ColorDoubleBack>
-    <ColorChangedText>Kliknij, aby wybraæ kolor</ColorChangedText>
-    <btnRemove>Usuwa wybrane narzêdzie z listy</btnRemove>
-    <btnAdd>Dodaje narzêdzie do listy</btnAdd>
-    <btnBrowse>Umo¿liwia wybranie narzêdzia</btnBrowse>
-    <cmbShell>Dzia³anie, które odtwarzacz MP3 wykonuje dla pliku</cmbShell>
-    <txtParameters>WprowadŸ parametry uruchamiania narzêdzia</txtParameters>
-    <txtPath>WprowadŸ œcie¿kê narzêdzia zewnêtrznego</txtPath>
-    <txtDescription>WprowadŸ opis narzêdzia zewnêtrznego (np. Edytor tekstu)</txtDescription>
-    <chkDefault>U¿ycie domyœlnego odtwarzacza MP3 systemu Windows (np. Windows Media Player / Winamp)</chkDefault>
+    <chkSingle>MoÅ¼liwy tylko 1 gatunek i komentarz w tagu v.2</chkSingle>
+    <chkUnSync>Zapisywanie tagÃ³w v.2 tak, aby nigdy nie imitowaÅ‚y nagÅ‚Ã³wka synchronizacji danych dÅºwiÄ™kowych</chkUnSync>
+    <optUse24>Tworzenie tagÃ³w v.2.4 przy tworzeniu nowych tagÃ³w v.2</optUse24>
+    <optUse23>Tworzenie tagÃ³w v.2.3 przy tworzeniu nowych tagÃ³w v.2</optUse23>
+    <ColorCompareText>Kliknij, aby wybraÄ‡ kolor</ColorCompareText>
+    <ColorCompareBack>Kliknij, aby wybraÄ‡ kolor</ColorCompareBack>
+    <ColorChangedBack>Kliknij, aby wybraÄ‡ kolor</ColorChangedBack>
+    <ColorDoubleText>Kliknij, aby wybraÄ‡ kolor</ColorDoubleText>
+    <ColorDoubleBack>Kliknij, aby wybraÄ‡ kolor</ColorDoubleBack>
+    <ColorChangedText>Kliknij, aby wybraÄ‡ kolor</ColorChangedText>
+    <btnRemove>Usuwa wybrane narzÄ™dzie z listy</btnRemove>
+    <btnAdd>Dodaje narzÄ™dzie do listy</btnAdd>
+    <btnBrowse>UmoÅ¼liwia wybranie narzÄ™dzia</btnBrowse>
+    <cmbShell>DziaÅ‚anie, ktÃ³re odtwarzacz MP3 wykonuje dla pliku</cmbShell>
+    <txtParameters>WprowadÅº parametry uruchamiania narzÄ™dzia</txtParameters>
+    <txtPath>WprowadÅº Å›cieÅ¼kÄ™ narzÄ™dzia zewnÄ™trznego</txtPath>
+    <txtDescription>WprowadÅº opis narzÄ™dzia zewnÄ™trznego (np. Edytor tekstu)</txtDescription>
+    <chkDefault>UÅ¼ycie domyÅ›lnego odtwarzacza MP3 systemu Windows (np. Windows Media Player / Winamp)</chkDefault>
   </frmPreferences>
   <frmRemoveFolders>
-    <btnBrowse>Umo¿liwia wybranie œcie¿ki</btnBrowse>
-    <txtPath>Podaj œcie¿kê g³ówn¹, w której bêd¹ organizowane pliki</txtPath>
+    <btnBrowse>UmoÅ¼liwia wybranie Å›cieÅ¼ki</btnBrowse>
+    <txtPath>Podaj Å›cieÅ¼kÄ™ gÅ‚Ã³wnÄ…, w ktÃ³rej bÄ™dÄ… organizowane pliki</txtPath>
   </frmRemoveFolders>
   <frmSearch>
-    <txtSearch>WprowadŸ ci¹g do wyszukania</txtSearch>
-    <txtReplace>WprowadŸ ci¹g, który zast¹pi ci¹g wyszukiwany</txtReplace>
-    <btnSelect>Wyszukuje i wybiera pliki (zmiany nie s¹ zapisywane do plików)</btnSelect>
-    <btnReplace>Wyszukuje i zastêpuje (wprowadzane s¹ zmiany)</btnReplace>
-    <chkFilename>Wyszukiwanie w nazwach plików</chkFilename>
+    <txtSearch>WprowadÅº ciÄ…g do wyszukania</txtSearch>
+    <txtReplace>WprowadÅº ciÄ…g, ktÃ³ry zastÄ…pi ciÄ…g wyszukiwany</txtReplace>
+    <btnSelect>Wyszukuje i wybiera pliki (zmiany nie sÄ… zapisywane do plikÃ³w)</btnSelect>
+    <btnReplace>Wyszukuje i zastÄ™puje (wprowadzane sÄ… zmiany)</btnReplace>
+    <chkFilename>Wyszukiwanie w nazwach plikÃ³w</chkFilename>
     <chkVer1>Wyszukiwanie w tagach v.1</chkVer1>
     <chkVer2>Wyszukiwanie w tagach v.2</chkVer2>
-    <chkRegExpress>Wyszukiwany ci¹g mo¿na okreœliæ przy u¿yciu wyra¿eñ regularnych</chkRegExpress>
-    <chkSelected>Przeszukiwane s¹ tylko wybrane pliki</chkSelected>
-    <chkCase>Wyszukiwanie uwzglêdnia wielkoœæ liter (ma³e i wielkie litery s¹ traktowane jako ró¿ne)</chkCase>
-    <optAND>WSZYSTKIE przeszukiwane pola MUSZ¥ zawieraæ wyszukiwany ci¹g</optAND>
-    <optOR>Tylko jedno przeszukiwane pole musi zawieraæ wyszukiwany ci¹g</optOR>
+    <chkRegExpress>Wyszukiwany ciÄ…g moÅ¼na okreÅ›liÄ‡ przy uÅ¼yciu wyraÅ¼eÅ„ regularnych</chkRegExpress>
+    <chkSelected>Przeszukiwane sÄ… tylko wybrane pliki</chkSelected>
+    <chkCase>Wyszukiwanie uwzglÄ™dnia wielkoÅ›Ä‡ liter (maÅ‚e i wielkie litery sÄ… traktowane jako rÃ³Å¼ne)</chkCase>
+    <optAND>WSZYSTKIE przeszukiwane pola MUSZÄ„ zawieraÄ‡ wyszukiwany ciÄ…g</optAND>
+    <optOR>Tylko jedno przeszukiwane pole musi zawieraÄ‡ wyszukiwany ciÄ…g</optOR>
     <chkArtist>Wyszukiwanie w polu wykonawcy taga</chkArtist>
-    <chkTitle>Wyszukiwanie w polu tytu³u taga</chkTitle>
+    <chkTitle>Wyszukiwanie w polu tytuÅ‚u taga</chkTitle>
     <chkAlbum>Wyszukiwanie w polu albumu taga</chkAlbum>
-    <chkTracknumber>Wyszukiwanie w polu numeru œcie¿ki taga</chkTracknumber>
+    <chkTracknumber>Wyszukiwanie w polu numeru Å›cieÅ¼ki taga</chkTracknumber>
     <chkYear>Wyszukiwanie w polu roku taga</chkYear>
     <chkGenre>Wyszukiwanie w polu gatunku taga</chkGenre>
     <chkComment>Wyszukiwanie w polu komentarza taga</chkComment>
@@ -736,50 +736,50 @@
   </frmSelectFormat>
   <frmTAG1>
     <btnPrev>Przechodzi do poprzedniego pliku</btnPrev>
-    <btnNext>Przechodzi do nastêpnego pliku</btnNext>
-    <txtAlbum>WprowadŸ album dla taga v.1</txtAlbum>
-    <txtComment>WprowadŸ komentarz dla taga v.1</txtComment>
-    <txtTitle>WprowadŸ tytu³ dla taga v.1</txtTitle>
-    <cmbArtist>WprowadŸ g³ównego wykonawcê dla taga v.1</cmbArtist>
-    <cmbGenre>WprowadŸ gatunek dla taga v.1</cmbGenre>
+    <btnNext>Przechodzi do nastÄ™pnego pliku</btnNext>
+    <txtAlbum>WprowadÅº album dla taga v.1</txtAlbum>
+    <txtComment>WprowadÅº komentarz dla taga v.1</txtComment>
+    <txtTitle>WprowadÅº tytuÅ‚ dla taga v.1</txtTitle>
+    <cmbArtist>WprowadÅº gÅ‚Ã³wnego wykonawcÄ™ dla taga v.1</cmbArtist>
+    <cmbGenre>WprowadÅº gatunek dla taga v.1</cmbGenre>
   </frmTAG1>
   <frmTAG1Multi>
-    <txtAlbum>WprowadŸ album dla wszystkich wybranych plików</txtAlbum>
-    <txtComment>WprowadŸ komentarz dla wszystkich wybranych plików</txtComment>
-    <txtTitle>WprowadŸ tytu³ dla wszystkich wybranych plików</txtTitle>
-    <CheckBox1>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.1. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox1>
-    <CheckBox2>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.1. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox2>
-    <CheckBox3>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.1. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox3>
-    <CheckBox4>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.1. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox4>
-    <CheckBox5>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.1. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox5>
-    <CheckBox6>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.1. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox6>
-    <CheckBox7>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.1. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox7>
-    <cmbGenre>WprowadŸ gatunek dla taga v.1</cmbGenre>
-    <cmbArtist>WprowadŸ g³ównego wykonawcê dla taga v.1</cmbArtist>
+    <txtAlbum>WprowadÅº album dla wszystkich wybranych plikÃ³w</txtAlbum>
+    <txtComment>WprowadÅº komentarz dla wszystkich wybranych plikÃ³w</txtComment>
+    <txtTitle>WprowadÅº tytuÅ‚ dla wszystkich wybranych plikÃ³w</txtTitle>
+    <CheckBox1>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.1. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox1>
+    <CheckBox2>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.1. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox2>
+    <CheckBox3>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.1. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox3>
+    <CheckBox4>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.1. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox4>
+    <CheckBox5>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.1. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox5>
+    <CheckBox6>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.1. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox6>
+    <CheckBox7>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.1. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox7>
+    <cmbGenre>WprowadÅº gatunek dla taga v.1</cmbGenre>
+    <cmbArtist>WprowadÅº gÅ‚Ã³wnego wykonawcÄ™ dla taga v.1</cmbArtist>
   </frmTAG1Multi>
   <frmTAG1ToFilename>
-    <txtDigits>Liczba cyfr do zapisania numeru œcie¿ki</txtDigits>
-    <txtFDigits>Numerowanie plików: Liczba cyfr numeru</txtFDigits>
-    <txtStartNr>Numerowanie plików: Numerowanie rozpoczyna siê od podanej liczby</txtStartNr>
+    <txtDigits>Liczba cyfr do zapisania numeru Å›cieÅ¼ki</txtDigits>
+    <txtFDigits>Numerowanie plikÃ³w: Liczba cyfr numeru</txtFDigits>
+    <txtStartNr>Numerowanie plikÃ³w: Numerowanie rozpoczyna siÄ™ od podanej liczby</txtStartNr>
     <btnRemove>Usuwa wybrany format z listy</btnRemove>
     <btnAdd>Dodaje wprowadzony format do listy</btnAdd>
-    <cmbFormat>WprowadŸ format lub okreœl postaæ nazwy pliku</cmbFormat>
+    <cmbFormat>WprowadÅº format lub okreÅ›l postaÄ‡ nazwy pliku</cmbFormat>
   </frmTAG1ToFilename>
   <frmTAG2>
     <txtSelected>Nazwa wybranego pliku</txtSelected>
     <btnV1Comment>Pobiera dane z taga v.1</btnV1Comment>
-    <btnMoveComment>Przenosi wybrany komentarz na pocz¹tek listy komentarzy pliku</btnMoveComment>
+    <btnMoveComment>Przenosi wybrany komentarz na poczÄ…tek listy komentarzy pliku</btnMoveComment>
     <btnRemoveComment>Usuwa wybrany komentarz z listy komentarzy pliku</btnRemoveComment>
     <btnAddComment>Dodaje wprowadzony komentarz do listy komentarzy pliku</btnAddComment>
-    <cmbCLanguage>Jêzyk komentarza</cmbCLanguage>
-    <txtComment>WprowadŸ opis / komentarz dla pliku</txtComment>
+    <cmbCLanguage>JÄ™zyk komentarza</cmbCLanguage>
+    <txtComment>WprowadÅº opis / komentarz dla pliku</txtComment>
     <btnV1Genre>Pobiera dane z taga v.1</btnV1Genre>
-    <btnMoveGenre>Przenosi wybrany gatunek na pocz¹tek listy</btnMoveGenre>
+    <btnMoveGenre>Przenosi wybrany gatunek na poczÄ…tek listy</btnMoveGenre>
     <btnRemoveGenre>Usuwa wybrany gatunek z listy</btnRemoveGenre>
     <btnAddGenre>Dodaje wprowadzony gatunek do listy</btnAddGenre>
-    <GenreList>Lista gatunków</GenreList>
-    <btnTLEN>Oblicza d³ugoœæ œcie¿ki w milisekundach</btnTLEN>
-    <txtTLEN>WprowadŸ d³ugoœæ œcie¿ki w milisekundach</txtTLEN>
+    <GenreList>Lista gatunkÃ³w</GenreList>
+    <btnTLEN>Oblicza dÅ‚ugoÅ›Ä‡ Å›cieÅ¼ki w milisekundach</btnTLEN>
+    <txtTLEN>WprowadÅº dÅ‚ugoÅ›Ä‡ Å›cieÅ¼ki w milisekundach</txtTLEN>
     <txtYear>Rok lub data w formacie rrrr-mm-dd</txtYear>
     <txtBPM>Dane tempa</txtBPM>
     <btnV1Title>Pobiera dane z taga v.1</btnV1Title>
@@ -787,229 +787,229 @@
     <btnV1Track>Pobiera dane z taga v.1</btnV1Track>
     <btnV1Year>Pobiera dane z taga v.1</btnV1Year>
     <btnV1Artist>Pobiera dane z taga v.1</btnV1Artist>
-    <cmbMedia>Typ noœnika z którego skopiowano wybran¹ œcie¿kê</cmbMedia>
-    <txtAlbum>WprowadŸ album dla wybranego pliku</txtAlbum>
-    <txtTitle>WprowadŸ tytu³ dla wybranego pliku</txtTitle>
-    <txtSortArtist>WprowadŸ nazwê wykonawcy u¿ywan¹ przy sortowaniu (np. Police, The)</txtSortArtist>
-    <txtSortTitle>WprowadŸ nazwê tytu³u u¿ywan¹ przy sortowaniu</txtSortTitle>
-    <txtSortAlbum>WprowadŸ nazwê albumu u¿ywan¹ przy sortowaniu</txtSortAlbum>
+    <cmbMedia>Typ noÅ›nika z ktÃ³rego skopiowano wybranÄ… Å›cieÅ¼kÄ™</cmbMedia>
+    <txtAlbum>WprowadÅº album dla wybranego pliku</txtAlbum>
+    <txtTitle>WprowadÅº tytuÅ‚ dla wybranego pliku</txtTitle>
+    <txtSortArtist>WprowadÅº nazwÄ™ wykonawcy uÅ¼ywanÄ… przy sortowaniu (np. Police, The)</txtSortArtist>
+    <txtSortTitle>WprowadÅº nazwÄ™ tytuÅ‚u uÅ¼ywanÄ… przy sortowaniu</txtSortTitle>
+    <txtSortAlbum>WprowadÅº nazwÄ™ albumu uÅ¼ywanÄ… przy sortowaniu</txtSortAlbum>
     <txtTORY>Rok lub data oryginalnego wydania w formacie rrrr-mm-dd</txtTORY>
-    <txtOOwner>WprowadŸ oryginalnego w³aœciciela (podmiotu posiadaj¹cego prawa do oryginalnego utworu)</txtOOwner>
-    <txtOArtist>WprowadŸ oryginalnego wykonawcê (dla interpretacji)</txtOArtist>
-    <txtOAlbum>WprowadŸ album oryginalnego utworu (dla interpretacji)</txtOAlbum>
-    <txtOLyWriter>WprowadŸ autora oryginalnego utworu (dla interpretacji)</txtOLyWriter>
-    <txtOFilename>WprowadŸ nazwê pliku oryginalnego utworu (dla interpretacji)</txtOFilename>
-    <txtContent>WprowadŸ rodzaj (dla muzyki klasycznej mo¿e to byæ koncert fortepianowy)</txtContent>
-    <txtSubTitle>WprowadŸ podtytu³ (np. Live in Athens)</txtSubTitle>
-    <txtComposer>WprowadŸ kompozytora</txtComposer>
-    <txtBand>WprowadŸ zespó³ / orkiestrê, g³ównego wykonawcê</txtBand>
-    <txtModified>WprowadŸ wykonawcê remiksu / modyfikacji</txtModified>
-    <txtConductor>WprowadŸ dyrygenta</txtConductor>
-    <txtMusicianName>WprowadŸ muzyka</txtMusicianName>
+    <txtOOwner>WprowadÅº oryginalnego wÅ‚aÅ›ciciela (podmiotu posiadajÄ…cego prawa do oryginalnego utworu)</txtOOwner>
+    <txtOArtist>WprowadÅº oryginalnego wykonawcÄ™ (dla interpretacji)</txtOArtist>
+    <txtOAlbum>WprowadÅº album oryginalnego utworu (dla interpretacji)</txtOAlbum>
+    <txtOLyWriter>WprowadÅº autora oryginalnego utworu (dla interpretacji)</txtOLyWriter>
+    <txtOFilename>WprowadÅº nazwÄ™ pliku oryginalnego utworu (dla interpretacji)</txtOFilename>
+    <txtContent>WprowadÅº rodzaj (dla muzyki klasycznej moÅ¼e to byÄ‡ koncert fortepianowy)</txtContent>
+    <txtSubTitle>WprowadÅº podtytuÅ‚ (np. Live in Athens)</txtSubTitle>
+    <txtComposer>WprowadÅº kompozytora</txtComposer>
+    <txtBand>WprowadÅº zespÃ³Å‚ / orkiestrÄ™, gÅ‚Ã³wnego wykonawcÄ™</txtBand>
+    <txtModified>WprowadÅº wykonawcÄ™ remiksu / modyfikacji</txtModified>
+    <txtConductor>WprowadÅº dyrygenta</txtConductor>
+    <txtMusicianName>WprowadÅº muzyka</txtMusicianName>
     <btnRemoveMusician>Usuwa wybranego muzyka z listy</btnRemoveMusician>
     <btnAddMusician>Dodaje wprowadzonego muzyka do listy</btnAddMusician>
-    <txtMusicianInst>WprowadŸ instrument muzyka</txtMusicianInst>
-    <txtInvPerson>WprowadŸ nazwê wspó³pracownika</txtInvPerson>
-    <btnRemoveInv>Usuwa wybran¹ osobê z listy</btnRemoveInv>
-    <btnAddInv>Dodaje wprowadzon¹ osobê do listy</btnAddInv>
-    <txtInvFunction>WprowadŸ funkcjê pe³nion¹ przez osobê</txtInvFunction>
-    <txtCopyright>WprowadŸ informacje o prawach autorskich</txtCopyright>
-    <txtLyWriter>WprowadŸ autora dla pliku</txtLyWriter>
-    <txtEncoded>WprowadŸ osobê, która kodowa³a ten plik</txtEncoded>
-    <txtPublisher>WprowadŸ wydawcê</txtPublisher>
+    <txtMusicianInst>WprowadÅº instrument muzyka</txtMusicianInst>
+    <txtInvPerson>WprowadÅº nazwÄ™ wspÃ³Å‚pracownika</txtInvPerson>
+    <btnRemoveInv>Usuwa wybranÄ… osobÄ™ z listy</btnRemoveInv>
+    <btnAddInv>Dodaje wprowadzonÄ… osobÄ™ do listy</btnAddInv>
+    <txtInvFunction>WprowadÅº funkcjÄ™ peÅ‚nionÄ… przez osobÄ™</txtInvFunction>
+    <txtCopyright>WprowadÅº informacje o prawach autorskich</txtCopyright>
+    <txtLyWriter>WprowadÅº autora dla pliku</txtLyWriter>
+    <txtEncoded>WprowadÅº osobÄ™, ktÃ³ra kodowaÅ‚a ten plik</txtEncoded>
+    <txtPublisher>WprowadÅº wydawcÄ™</txtPublisher>
     <btnRemovePicture>Usuwa wybrany obraz z listy</btnRemovePicture>
     <btnAddPicture>Dodaje obraz do listy</btnAddPicture>
-    <btnGetPic>£aduje nowy obraz</btnGetPic>
+    <btnGetPic>Åaduje nowy obraz</btnGetPic>
     <btnExPic>Zapisuje obraz wydzielony z pliku MP3 do nowego pliku</btnExPic>
-    <txtPicPath>Œcie¿ka pliku</txtPicPath>
+    <txtPicPath>ÅšcieÅ¼ka pliku</txtPicPath>
     <cmbPicType>Typ obrazu</cmbPicType>
-    <txtPDescriptor>WprowadŸ opis obrazu</txtPDescriptor>
+    <txtPDescriptor>WprowadÅº opis obrazu</txtPDescriptor>
     <APICView>Obraz osadzony w pliku</APICView>
-    <cmbLLanguage>Jêzyk s³ów</cmbLLanguage>
-    <txtLDescriptor>WprowadŸ opis s³ów</txtLDescriptor>
-    <btnMoveRating>Przenosi wybran¹ ocenê na pocz¹tek listy</btnMoveRating>
-    <btnRemoveRating>Usuwa wybran¹ ocenê z listy</btnRemoveRating>
-    <btnAddRating>Dodaje wprowadzon¹ ocenê do listy</btnAddRating>
-    <txtRatingCounter>Iloœæ odtworzeñ pliku</txtRatingCounter>
-    <txtRatingRating>Ocena w³asna (1- najni¿sza, 255- najwy¿sza)</txtRatingRating>
-    <txtRatingUser>WprowadŸ nazwê u¿ytkownika</txtRatingUser>
-    <txtCOMMInfURL>WprowadŸ adres URL informacji komercyjnych</txtCOMMInfURL>
-    <txtPubURL>WprowadŸ adres URL strony g³ównej wydawcy</txtPubURL>
-    <txtPayURL>WprowadŸ adres URL oficjalnej p³atnoœci</txtPayURL>
-    <txtINetRadioURL>WprowadŸ adres URL internetowej stacji radiowej</txtINetRadioURL>
-    <txtAudioSRCURL>WprowadŸ adres URL Ÿród³a dŸwiêku</txtAudioSRCURL>
-    <txtCopyInfURL>WprowadŸ adres URL informacji o prawach autorskich</txtCopyInfURL>
-    <txtArtistURL>WprowadŸ adres URL strony Ÿród³a dŸwiêku</txtArtistURL>
-    <txtAudioFileURL>WprowadŸ adres URL pliku dŸwiêkowego</txtAudioFileURL>
-    <txtWXXXContent>WprowadŸ zawartoœæ ramki WWW</txtWXXXContent>
-    <btnRemoveWXXX>Usuwa wybran¹ ramkê WWW z listy</btnRemoveWXXX>
-    <btnAddWXXX>Dodaje wprowadzon¹ ramkê WWW do listy</btnAddWXXX>
-    <txtWXXXDesc>WprowadŸ opis ramki WWW</txtWXXXDesc>
-    <txtTXXXContent>WprowadŸ zawartoœæ ramki tekstowej</txtTXXXContent>
-    <btnRemoveTXXX>Usuwa wybran¹ ramkê tekstow¹ z listy</btnRemoveTXXX>
-    <btnAddTXXX>Dodaje wybran¹ ramkê tekstow¹ do listy</btnAddTXXX>
-    <txtTXXXDesc>WprowadŸ opis ramki tekstowej</txtTXXXDesc>
-    <cmbArtist>G³ówny wykonawca</cmbArtist>
+    <cmbLLanguage>JÄ™zyk sÅ‚Ã³w</cmbLLanguage>
+    <txtLDescriptor>WprowadÅº opis sÅ‚Ã³w</txtLDescriptor>
+    <btnMoveRating>Przenosi wybranÄ… ocenÄ™ na poczÄ…tek listy</btnMoveRating>
+    <btnRemoveRating>Usuwa wybranÄ… ocenÄ™ z listy</btnRemoveRating>
+    <btnAddRating>Dodaje wprowadzonÄ… ocenÄ™ do listy</btnAddRating>
+    <txtRatingCounter>IloÅ›Ä‡ odtworzeÅ„ pliku</txtRatingCounter>
+    <txtRatingRating>Ocena wÅ‚asna (1- najniÅ¼sza, 255- najwyÅ¼sza)</txtRatingRating>
+    <txtRatingUser>WprowadÅº nazwÄ™ uÅ¼ytkownika</txtRatingUser>
+    <txtCOMMInfURL>WprowadÅº adres URL informacji komercyjnych</txtCOMMInfURL>
+    <txtPubURL>WprowadÅº adres URL strony gÅ‚Ã³wnej wydawcy</txtPubURL>
+    <txtPayURL>WprowadÅº adres URL oficjalnej pÅ‚atnoÅ›ci</txtPayURL>
+    <txtINetRadioURL>WprowadÅº adres URL internetowej stacji radiowej</txtINetRadioURL>
+    <txtAudioSRCURL>WprowadÅº adres URL ÅºrÃ³dÅ‚a dÅºwiÄ™ku</txtAudioSRCURL>
+    <txtCopyInfURL>WprowadÅº adres URL informacji o prawach autorskich</txtCopyInfURL>
+    <txtArtistURL>WprowadÅº adres URL strony ÅºrÃ³dÅ‚a dÅºwiÄ™ku</txtArtistURL>
+    <txtAudioFileURL>WprowadÅº adres URL pliku dÅºwiÄ™kowego</txtAudioFileURL>
+    <txtWXXXContent>WprowadÅº zawartoÅ›Ä‡ ramki WWW</txtWXXXContent>
+    <btnRemoveWXXX>Usuwa wybranÄ… ramkÄ™ WWW z listy</btnRemoveWXXX>
+    <btnAddWXXX>Dodaje wprowadzonÄ… ramkÄ™ WWW do listy</btnAddWXXX>
+    <txtWXXXDesc>WprowadÅº opis ramki WWW</txtWXXXDesc>
+    <txtTXXXContent>WprowadÅº zawartoÅ›Ä‡ ramki tekstowej</txtTXXXContent>
+    <btnRemoveTXXX>Usuwa wybranÄ… ramkÄ™ tekstowÄ… z listy</btnRemoveTXXX>
+    <btnAddTXXX>Dodaje wybranÄ… ramkÄ™ tekstowÄ… do listy</btnAddTXXX>
+    <txtTXXXDesc>WprowadÅº opis ramki tekstowej</txtTXXXDesc>
+    <cmbArtist>GÅ‚Ã³wny wykonawca</cmbArtist>
     <cmbGenre>Gatunek utworu</cmbGenre>
     <cmbCDescriptor>Opis komentarza</cmbCDescriptor>
     <txtPos1>Numer w zestawie, 0 usuwa to pole</txtPos1>
-    <txtPos2>£¹czna liczba noœników, 0 usuwa to pole</txtPos2>
-    <txtTrack1>Numer œcie¿ki w albumie, 0 usuwa to pole</txtTrack1>
-    <txtTrack2>£¹czna liczba œcie¿ek albumu, 0 usuwa to pole</txtTrack2>
+    <txtPos2>ÅÄ…czna liczba noÅ›nikÃ³w, 0 usuwa to pole</txtPos2>
+    <txtTrack1>Numer Å›cieÅ¼ki w albumie, 0 usuwa to pole</txtTrack1>
+    <txtTrack2>ÅÄ…czna liczba Å›cieÅ¼ek albumu, 0 usuwa to pole</txtTrack2>
   </frmTAG2>
   <frmTAG2Multi>
-    <TabControl>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</TabControl>
-    <CheckBox38>Usuwa wszystkie istniej¹ce komentarze przed dodaniem nowego do taga v.2.</CheckBox38>
-    <CheckBox10>Usuwa wszystkie istniej¹ce komentarze przed dodaniem nowego do taga v.2.</CheckBox10>
-    <btnMoveComment>Przenosi wybrany komentarz na pocz¹tek listy</btnMoveComment>
+    <TabControl>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</TabControl>
+    <CheckBox38>Usuwa wszystkie istniejÄ…ce komentarze przed dodaniem nowego do taga v.2.</CheckBox38>
+    <CheckBox10>Usuwa wszystkie istniejÄ…ce komentarze przed dodaniem nowego do taga v.2.</CheckBox10>
+    <btnMoveComment>Przenosi wybrany komentarz na poczÄ…tek listy</btnMoveComment>
     <btnRemoveComment>Usuwa wybrany komentarz z listy</btnRemoveComment>
     <btnAddComment>Dodaje wprowadzony komentarz do listy komentarzy</btnAddComment>
-    <cmbCLanguage>Jêzyk komentarza</cmbCLanguage>
-    <txtComment>WprowadŸ komentarz dla plików</txtComment>
-    <CheckBox9>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox9>
-    <btnMoveGenre>Przenosi wybrany gatunek na pocz¹tek listy</btnMoveGenre>
+    <cmbCLanguage>JÄ™zyk komentarza</cmbCLanguage>
+    <txtComment>WprowadÅº komentarz dla plikÃ³w</txtComment>
+    <CheckBox9>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox9>
+    <btnMoveGenre>Przenosi wybrany gatunek na poczÄ…tek listy</btnMoveGenre>
     <btnRemoveGenre>Usuwa wybrany gatunek z listy</btnRemoveGenre>
     <btnAddGenre>Dodaje wprowadzony gatunek do listy</btnAddGenre>
-    <GenreList>Lista gatunków</GenreList>
-    <chkTLEN>Umieszczenie w ka¿dym tagu pola z d³ugoœci¹ œcie¿ki w milisekundach.</chkTLEN>
+    <GenreList>Lista gatunkÃ³w</GenreList>
+    <chkTLEN>Umieszczenie w kaÅ¼dym tagu pola z dÅ‚ugoÅ›ciÄ… Å›cieÅ¼ki w milisekundach.</chkTLEN>
     <txtYear>Rok lub data w formacie rrrr-mm-dd</txtYear>
     <txtBPM>Dane tempa</txtBPM>
-    <CheckBox8>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox8>
-    <CheckBox7>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox7>
-    <CheckBox6>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox6>
-    <CheckBox5>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox5>
-    <CheckBox4>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox4>
-    <CheckBox3>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox3>
-    <CheckBox2>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox2>
-    <CheckBox1>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox1>
+    <CheckBox8>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox8>
+    <CheckBox7>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox7>
+    <CheckBox6>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox6>
+    <CheckBox5>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox5>
+    <CheckBox4>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox4>
+    <CheckBox3>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox3>
+    <CheckBox2>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox2>
+    <CheckBox1>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox1>
     <YearFormat>Format dla danych daty</YearFormat>
-    <cmbMedia>Typ noœnika, z którego skopiowano wybrane pliki</cmbMedia>
-    <txtAlbum>WprowadŸ album dla wybranych plików</txtAlbum>
-    <txtTitle>WprowadŸ tytu³ dla wybranych plików</txtTitle>
-    <CheckBox41>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox41>
-    <CheckBox42>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox42>
-    <CheckBox43>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox43>
-    <txtSortArtist>WprowadŸ nazwê wykonawcy u¿ywan¹ przy sortowaniu (np. Police, The)</txtSortArtist>
-    <txtSortTitle>WprowadŸ nazwê tytu³u u¿ywan¹ przy sortowaniu</txtSortTitle>
-    <txtSortAlbum>WprowadŸ nazwê albumu u¿ywan¹ przy sortowaniu</txtSortAlbum>
+    <cmbMedia>Typ noÅ›nika, z ktÃ³rego skopiowano wybrane pliki</cmbMedia>
+    <txtAlbum>WprowadÅº album dla wybranych plikÃ³w</txtAlbum>
+    <txtTitle>WprowadÅº tytuÅ‚ dla wybranych plikÃ³w</txtTitle>
+    <CheckBox41>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox41>
+    <CheckBox42>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox42>
+    <CheckBox43>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox43>
+    <txtSortArtist>WprowadÅº nazwÄ™ wykonawcy uÅ¼ywanÄ… przy sortowaniu (np. Police, The)</txtSortArtist>
+    <txtSortTitle>WprowadÅº nazwÄ™ tytuÅ‚u uÅ¼ywanÄ… przy sortowaniu</txtSortTitle>
+    <txtSortAlbum>WprowadÅº nazwÄ™ albumu uÅ¼ywanÄ… przy sortowaniu</txtSortAlbum>
     <txtTORY>Rok lub data oryginalnego wydania w formacie rrrr-mm-dd</txtTORY>
-    <CheckBox39>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox39>
-    <CheckBox24>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox24>
-    <CheckBox23>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox23>
-    <CheckBox22>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox22>
-    <CheckBox21>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox21>
-    <CheckBox20>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox20>
-    <txtOOwner>WprowadŸ oryginalnego w³aœciciela (podmiotu posiadaj¹cego prawa do oryginalnych utworów)</txtOOwner>
-    <txtOArtist>WprowadŸ oryginalnego wykonawcê utworów (dla interpretacji)</txtOArtist>
-    <txtOAlbum>WprowadŸ oryginalny album utworów (dla interpretacji)</txtOAlbum>
-    <txtOLyWriter>WprowadŸ oryginalnego autora s³ów utworów (dla interpretacji)</txtOLyWriter>
-    <txtOFilename>WprowadŸ nazwy plików oryginalnych utworów (dla interpretacji)</txtOFilename>
-    <CheckBox16>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox16>
-    <CheckBox15>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox15>
-    <txtContent>WprowadŸ rodzaj (dla muzyki klasycznej mo¿e to byæ koncert fortepianowy)</txtContent>
-    <txtSubTitle>WprowadŸ podtytu³ (np. Live in Athens)</txtSubTitle>
-    <CheckBox14>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox14>
-    <CheckBox13>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox13>
-    <CheckBox12>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox12>
-    <CheckBox11>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox11>
-    <txtComposer>WprowadŸ kompozytora</txtComposer>
-    <txtBand>WprowadŸ zespó³ / orkiestrê, g³ównego wykonawcê</txtBand>
-    <txtModified>WprowadŸ wykonawcê remiksów / modyfikacji utworów:</txtModified>
-    <txtConductor>WprowadŸ dyrygenta</txtConductor>
-    <CheckBox40>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox40>
-    <txtCopyright>WprowadŸ informacje o prawach autorskich</txtCopyright>
-    <CheckBox19>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox19>
-    <CheckBox18>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox18>
-    <CheckBox17>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox17>
-    <txtLyWriter>WprowadŸ autora</txtLyWriter>
-    <txtEncoded>WprowadŸ osobê, która kodowa³a te pliki</txtEncoded>
-    <txtPublisher>WprowadŸ wydawcê</txtPublisher>
-    <CheckBox45>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox45>
-    <txtMusicianName>WprowadŸ muzyka</txtMusicianName>
+    <CheckBox39>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox39>
+    <CheckBox24>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox24>
+    <CheckBox23>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox23>
+    <CheckBox22>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox22>
+    <CheckBox21>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox21>
+    <CheckBox20>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox20>
+    <txtOOwner>WprowadÅº oryginalnego wÅ‚aÅ›ciciela (podmiotu posiadajÄ…cego prawa do oryginalnych utworÃ³w)</txtOOwner>
+    <txtOArtist>WprowadÅº oryginalnego wykonawcÄ™ utworÃ³w (dla interpretacji)</txtOArtist>
+    <txtOAlbum>WprowadÅº oryginalny album utworÃ³w (dla interpretacji)</txtOAlbum>
+    <txtOLyWriter>WprowadÅº oryginalnego autora sÅ‚Ã³w utworÃ³w (dla interpretacji)</txtOLyWriter>
+    <txtOFilename>WprowadÅº nazwy plikÃ³w oryginalnych utworÃ³w (dla interpretacji)</txtOFilename>
+    <CheckBox16>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox16>
+    <CheckBox15>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox15>
+    <txtContent>WprowadÅº rodzaj (dla muzyki klasycznej moÅ¼e to byÄ‡ koncert fortepianowy)</txtContent>
+    <txtSubTitle>WprowadÅº podtytuÅ‚ (np. Live in Athens)</txtSubTitle>
+    <CheckBox14>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox14>
+    <CheckBox13>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox13>
+    <CheckBox12>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox12>
+    <CheckBox11>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox11>
+    <txtComposer>WprowadÅº kompozytora</txtComposer>
+    <txtBand>WprowadÅº zespÃ³Å‚ / orkiestrÄ™, gÅ‚Ã³wnego wykonawcÄ™</txtBand>
+    <txtModified>WprowadÅº wykonawcÄ™ remiksÃ³w / modyfikacji utworÃ³w:</txtModified>
+    <txtConductor>WprowadÅº dyrygenta</txtConductor>
+    <CheckBox40>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox40>
+    <txtCopyright>WprowadÅº informacje o prawach autorskich</txtCopyright>
+    <CheckBox19>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox19>
+    <CheckBox18>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox18>
+    <CheckBox17>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox17>
+    <txtLyWriter>WprowadÅº autora</txtLyWriter>
+    <txtEncoded>WprowadÅº osobÄ™, ktÃ³ra kodowaÅ‚a te pliki</txtEncoded>
+    <txtPublisher>WprowadÅº wydawcÄ™</txtPublisher>
+    <CheckBox45>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox45>
+    <txtMusicianName>WprowadÅº muzyka</txtMusicianName>
     <btnRemoveMusician>Usuwa wybranego muzyka z listy</btnRemoveMusician>
     <btnAddMusician>Dodaje wprowadzonego muzyka do listy</btnAddMusician>
-    <txtMusicianInst>WprowadŸ instrument muzyka</txtMusicianInst>
-    <CheckBox44>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox44>
-    <txtInvPerson>WprowadŸ nazwê wspó³pracownika</txtInvPerson>
-    <btnRemoveInv>Usuwa wybran¹ osobê z listy</btnRemoveInv>
-    <btnAddInv>Dodaje wprowadzon¹ osobê do listy</btnAddInv>
-    <txtInvFunction>WprowadŸ funkcjê pe³nion¹ przez osobê</txtInvFunction>
-    <CheckBox34>Usuniêcie wszystkich istniej¹cych obrazów przed dodaniem nowych</CheckBox34>
+    <txtMusicianInst>WprowadÅº instrument muzyka</txtMusicianInst>
+    <CheckBox44>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox44>
+    <txtInvPerson>WprowadÅº nazwÄ™ wspÃ³Å‚pracownika</txtInvPerson>
+    <btnRemoveInv>Usuwa wybranÄ… osobÄ™ z listy</btnRemoveInv>
+    <btnAddInv>Dodaje wprowadzonÄ… osobÄ™ do listy</btnAddInv>
+    <txtInvFunction>WprowadÅº funkcjÄ™ peÅ‚nionÄ… przez osobÄ™</txtInvFunction>
+    <CheckBox34>UsuniÄ™cie wszystkich istniejÄ…cych obrazÃ³w przed dodaniem nowych</CheckBox34>
     <btnRemovePicture>Usuwa wybrany obraz z listy</btnRemovePicture>
     <btnAddPicture>Dodaje obraz do listy</btnAddPicture>
-    <btnGetPic>£aduje nowy obraz</btnGetPic>
+    <btnGetPic>Åaduje nowy obraz</btnGetPic>
     <chkPicInclude>Umieszczenie obrazu w pliku przy jego zapisywaniu</chkPicInclude>
-    <txtPicPath>Œcie¿ka pliku</txtPicPath>
+    <txtPicPath>ÅšcieÅ¼ka pliku</txtPicPath>
     <cmbPicType>Typ obrazu</cmbPicType>
-    <txtPDescriptor>WprowadŸ opis obrazu</txtPDescriptor>
-    <CheckBox35>Usuniêcie wszystkich istniej¹cych s³ów przed dodaniem nowych</CheckBox35>
-    <cmbLLanguage>Jêzyk s³ów</cmbLLanguage>
-    <txtLDescriptor>WprowadŸ opis s³ów</txtLDescriptor>
-    <CheckBox33>Usuniêcie wszystkich istniej¹cych ocen przed dodaniem nowych</CheckBox33>
-    <btnMoveRating>Przenosi wybran¹ ocenê na pocz¹tek listy</btnMoveRating>
-    <btnRemoveRating>Usuwa wybran¹ ocenê z listy</btnRemoveRating>
-    <btnAddRating>Dodaje wprowadzon¹ ocenê do listy</btnAddRating>
-    <txtRatingCounter>Iloœæ odtworzeñ pliku</txtRatingCounter>
-    <txtRatingRating>Ocena w³asna (1- najni¿sza, 255- najwy¿sza)</txtRatingRating>
-    <txtRatingUser>WprowadŸ nazwê u¿ytkownika</txtRatingUser>
-    <CheckBox32>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox32>
-    <CheckBox31>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox31>
-    <CheckBox30>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox30>
-    <CheckBox29>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox29>
-    <CheckBox28>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox28>
-    <CheckBox27>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox27>
-    <CheckBox26>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox26>
-    <CheckBox25>Zapisanie danych znajduj¹cych siê w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox25>
-    <txtCOMMInfURL>WprowadŸ adres URL informacji komercyjnych</txtCOMMInfURL>
-    <txtPubURL>WprowadŸ adres URL strony g³ównej wydawcy</txtPubURL>
-    <txtPayURL>WprowadŸ adres URL oficjalnej p³atnoœci</txtPayURL>
-    <txtINetRadioURL>WprowadŸ adres URL internetowej stacji radiowej</txtINetRadioURL>
-    <txtAudioSRCURL>WprowadŸ adres URL Ÿród³a dŸwiêku</txtAudioSRCURL>
-    <txtCopyInfURL>WprowadŸ adres URL informacji o prawach autorskich</txtCopyInfURL>
-    <txtArtistURL>WprowadŸ adres URL strony Ÿród³a dŸwiêku</txtArtistURL>
-    <txtAudioFileURL>WprowadŸ adres URL pliku dŸwiêkowego</txtAudioFileURL>
-    <CheckBox37>Usuniêcie wszystkich ramek WWW przed dodaniem nowych</CheckBox37>
-    <txtWXXXContent>WprowadŸ zawartoœæ ramki WWW</txtWXXXContent>
-    <btnRemoveWXXX>Usuwa wybran¹ ramkê WWW z listy</btnRemoveWXXX>
-    <btnAddWXXX>Dodaje wprowadzon¹ ramkê WWW do listy</btnAddWXXX>
-    <txtWXXXDesc>WprowadŸ opis ramki WWW</txtWXXXDesc>
-    <CheckBox36>Usuniêcie wszystkich ramek tekstowych przed dodaniem nowych</CheckBox36>
-    <txtTXXXContent>WprowadŸ zawartoœæ ramki tekstowej</txtTXXXContent>
-    <btnRemoveTXXX>Usuwa wybran¹ ramkê tekstow¹ z listy</btnRemoveTXXX>
-    <btnAddTXXX>Dodaje wybran¹ ramkê tekstow¹ do listy</btnAddTXXX>
-    <txtTXXXDesc>WprowadŸ opis ramki tekstowej</txtTXXXDesc>
-    <txtDigits>Liczba cyfr do zapisania numerów œcie¿ek</txtDigits>
-    <chkRemoveAllNOT>Usuniêcie wszystkich pól taga v.2 nie obs³ugiwanych przez ID3-TagIT</chkRemoveAllNOT>
-    <cmbArtist>G³ówny wykonawca</cmbArtist>
+    <txtPDescriptor>WprowadÅº opis obrazu</txtPDescriptor>
+    <CheckBox35>UsuniÄ™cie wszystkich istniejÄ…cych sÅ‚Ã³w przed dodaniem nowych</CheckBox35>
+    <cmbLLanguage>JÄ™zyk sÅ‚Ã³w</cmbLLanguage>
+    <txtLDescriptor>WprowadÅº opis sÅ‚Ã³w</txtLDescriptor>
+    <CheckBox33>UsuniÄ™cie wszystkich istniejÄ…cych ocen przed dodaniem nowych</CheckBox33>
+    <btnMoveRating>Przenosi wybranÄ… ocenÄ™ na poczÄ…tek listy</btnMoveRating>
+    <btnRemoveRating>Usuwa wybranÄ… ocenÄ™ z listy</btnRemoveRating>
+    <btnAddRating>Dodaje wprowadzonÄ… ocenÄ™ do listy</btnAddRating>
+    <txtRatingCounter>IloÅ›Ä‡ odtworzeÅ„ pliku</txtRatingCounter>
+    <txtRatingRating>Ocena wÅ‚asna (1- najniÅ¼sza, 255- najwyÅ¼sza)</txtRatingRating>
+    <txtRatingUser>WprowadÅº nazwÄ™ uÅ¼ytkownika</txtRatingUser>
+    <CheckBox32>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox32>
+    <CheckBox31>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox31>
+    <CheckBox30>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox30>
+    <CheckBox29>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox29>
+    <CheckBox28>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox28>
+    <CheckBox27>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox27>
+    <CheckBox26>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox26>
+    <CheckBox25>Zapisanie danych znajdujÄ…cych siÄ™ w polu po lewej do taga v.2. Zaznaczenie tego pola i pozostawienie pustego pola po lewej usuwa dane z taga.</CheckBox25>
+    <txtCOMMInfURL>WprowadÅº adres URL informacji komercyjnych</txtCOMMInfURL>
+    <txtPubURL>WprowadÅº adres URL strony gÅ‚Ã³wnej wydawcy</txtPubURL>
+    <txtPayURL>WprowadÅº adres URL oficjalnej pÅ‚atnoÅ›ci</txtPayURL>
+    <txtINetRadioURL>WprowadÅº adres URL internetowej stacji radiowej</txtINetRadioURL>
+    <txtAudioSRCURL>WprowadÅº adres URL ÅºrÃ³dÅ‚a dÅºwiÄ™ku</txtAudioSRCURL>
+    <txtCopyInfURL>WprowadÅº adres URL informacji o prawach autorskich</txtCopyInfURL>
+    <txtArtistURL>WprowadÅº adres URL strony ÅºrÃ³dÅ‚a dÅºwiÄ™ku</txtArtistURL>
+    <txtAudioFileURL>WprowadÅº adres URL pliku dÅºwiÄ™kowego</txtAudioFileURL>
+    <CheckBox37>UsuniÄ™cie wszystkich ramek WWW przed dodaniem nowych</CheckBox37>
+    <txtWXXXContent>WprowadÅº zawartoÅ›Ä‡ ramki WWW</txtWXXXContent>
+    <btnRemoveWXXX>Usuwa wybranÄ… ramkÄ™ WWW z listy</btnRemoveWXXX>
+    <btnAddWXXX>Dodaje wprowadzonÄ… ramkÄ™ WWW do listy</btnAddWXXX>
+    <txtWXXXDesc>WprowadÅº opis ramki WWW</txtWXXXDesc>
+    <CheckBox36>UsuniÄ™cie wszystkich ramek tekstowych przed dodaniem nowych</CheckBox36>
+    <txtTXXXContent>WprowadÅº zawartoÅ›Ä‡ ramki tekstowej</txtTXXXContent>
+    <btnRemoveTXXX>Usuwa wybranÄ… ramkÄ™ tekstowÄ… z listy</btnRemoveTXXX>
+    <btnAddTXXX>Dodaje wybranÄ… ramkÄ™ tekstowÄ… do listy</btnAddTXXX>
+    <txtTXXXDesc>WprowadÅº opis ramki tekstowej</txtTXXXDesc>
+    <txtDigits>Liczba cyfr do zapisania numerÃ³w Å›cieÅ¼ek</txtDigits>
+    <chkRemoveAllNOT>UsuniÄ™cie wszystkich pÃ³l taga v.2 nie obsÅ‚ugiwanych przez ID3-TagIT</chkRemoveAllNOT>
+    <cmbArtist>GÅ‚Ã³wny wykonawca</cmbArtist>
     <cmbGenre>Gatunek utworu</cmbGenre>
     <cmbCDescriptor>Opis komentarza</cmbCDescriptor>
     <txtPos1>Numer w zestawie, 0 usuwa to pole</txtPos1>
-    <txtPos2>£¹czna liczba noœników, 0 usuwa to pole</txtPos2>
-    <txtTrack1>Numer œcie¿ki w albumie, 0 usuwa to pole</txtTrack1>
-    <txtTrack2>£¹czna liczba œcie¿ek albumu, 0 usuwa to pole</txtTrack2>
+    <txtPos2>ÅÄ…czna liczba noÅ›nikÃ³w, 0 usuwa to pole</txtPos2>
+    <txtTrack1>Numer Å›cieÅ¼ki w albumie, 0 usuwa to pole</txtTrack1>
+    <txtTrack2>ÅÄ…czna liczba Å›cieÅ¼ek albumu, 0 usuwa to pole</txtTrack2>
   </frmTAG2Multi>
   <frmTAG2ToFilename>
-    <txtDigits>Liczba cyfr do zapisania numeru œcie¿ki</txtDigits>
-    <txtFDigits>Numerowanie plików: Liczba cyfr numeru</txtFDigits>
-    <txtStartNr>Numerowanie plików: Numerowanie rozpoczyna siê od podanej liczby</txtStartNr>
+    <txtDigits>Liczba cyfr do zapisania numeru Å›cieÅ¼ki</txtDigits>
+    <txtFDigits>Numerowanie plikÃ³w: Liczba cyfr numeru</txtFDigits>
+    <txtStartNr>Numerowanie plikÃ³w: Numerowanie rozpoczyna siÄ™ od podanej liczby</txtStartNr>
     <btnRemove>Usuwa wybrany format z listy</btnRemove>
     <btnAdd>Dodaje wprowadzony format do listy</btnAdd>
-    <cmbFormat>WprowadŸ format lub okreœl postaæ nazwy pliku</cmbFormat>
-    <chkRebuildName>Jeœli tag zawiera ramkê 'Oryginalna nazwa pliku', jej zawartoœæ zostanie u¿yta jako nazwa pliku</chkRebuildName>
+    <cmbFormat>WprowadÅº format lub okreÅ›l postaÄ‡ nazwy pliku</cmbFormat>
+    <chkRebuildName>JeÅ›li tag zawiera ramkÄ™ 'Oryginalna nazwa pliku', jej zawartoÅ›Ä‡ zostanie uÅ¼yta jako nazwa pliku</chkRebuildName>
   </frmTAG2ToFilename>
   <frmTransfer>
-    <opt12>Transferowanie danych z tagów v.1 do tagów v.2</opt12>
-    <opt21>Transferowanie danych z tagów v.2 do tagów v.1</opt21>
-    <optConvert34>Konwertowanie tagów z v.2.3 do v.2.4</optConvert34>
-    <optConvert43>Konwertowanie tagów z v.2.4 do v.2.3</optConvert43>
-    <chkExists>Program ID3-TagIT nie zastêpuje danych znajduj¹cych siê w tagach</chkExists>
-    <txtCommentD>WprowadŸ deskryptor komentarza dla tagów v.2</txtCommentD>
-    <chkYear>Transferowane s¹ dane z pola roku</chkYear>
-    <chkGenre>Transferowane s¹ dane z pola gatunku</chkGenre>
-    <chkTrack>Transferowane s¹ dane z pola numeru œcie¿ki</chkTrack>
-    <chkComment>Transferowane s¹ dane z pola komentarza</chkComment>
-    <chkAlbum>Transferowane s¹ dane z pola albumu</chkAlbum>
-    <chkTitle>Transferowane s¹ dane z pola tytu³u</chkTitle>
-    <chkArtist>Transferowane s¹ dane z pola wykonawcy</chkArtist>
+    <opt12>Transferowanie danych z tagÃ³w v.1 do tagÃ³w v.2</opt12>
+    <opt21>Transferowanie danych z tagÃ³w v.2 do tagÃ³w v.1</opt21>
+    <optConvert34>Konwertowanie tagÃ³w z v.2.3 do v.2.4</optConvert34>
+    <optConvert43>Konwertowanie tagÃ³w z v.2.4 do v.2.3</optConvert43>
+    <chkExists>Program ID3-TagIT nie zastÄ™puje danych znajdujÄ…cych siÄ™ w tagach</chkExists>
+    <txtCommentD>WprowadÅº deskryptor komentarza dla tagÃ³w v.2</txtCommentD>
+    <chkYear>Transferowane sÄ… dane z pola roku</chkYear>
+    <chkGenre>Transferowane sÄ… dane z pola gatunku</chkGenre>
+    <chkTrack>Transferowane sÄ… dane z pola numeru Å›cieÅ¼ki</chkTrack>
+    <chkComment>Transferowane sÄ… dane z pola komentarza</chkComment>
+    <chkAlbum>Transferowane sÄ… dane z pola albumu</chkAlbum>
+    <chkTitle>Transferowane sÄ… dane z pola tytuÅ‚u</chkTitle>
+    <chkArtist>Transferowane sÄ… dane z pola wykonawcy</chkArtist>
   </frmTransfer>
 </ID3TagITToolTips>

@@ -115,19 +115,19 @@
     <mnuAnalyse>&amp;Analiza</mnuAnalyse>
     <mnuOptions>&amp;Opcje</mnuOptions>
     <mnuHelp>&amp;Pomoc</mnuHelp>
-    <btnV1V2View>Wyœwietlana wersja tagów</btnV1V2View>
+    <btnV1V2View>WyÅ›wietlana wersja tagÃ³w</btnV1V2View>
     <mnubtnAbout>&amp;O programie ...</mnubtnAbout>
     <mnubtnAddDir>&amp;Dodaj folder</mnubtnAddDir>
-    <mnubtnCaseConversion>&amp;Konwersja wielkoœci liter</mnubtnCaseConversion>
-    <mnubtnChangeTextEnc>Zmie&amp;ñ kodowanie tagów v.2</mnubtnChangeTextEnc>
-    <mnubtnCompareFileTAG>&amp;Porównaj nazwê pliku z danymi w tagu</mnubtnCompareFileTAG>
+    <mnubtnCaseConversion>&amp;Konwersja wielkoÅ›ci liter</mnubtnCaseConversion>
+    <mnubtnChangeTextEnc>Zmie&amp;Å„ kodowanie tagÃ³w v.2</mnubtnChangeTextEnc>
+    <mnubtnCompareFileTAG>&amp;PorÃ³wnaj nazwÄ™ pliku z danymi w tagu</mnubtnCompareFileTAG>
     <mnubtnCopy>&amp;Kopiuj dane taga</mnubtnCopy>
     <mnubtnCopyV1>Tylko dane v.&amp;1</mnubtnCopyV1>
     <mnubtnCopyV2>Tylko dane v.&amp;2</mnubtnCopyV2>
     <mnubtnCopyV1V2>&amp;Dane v.1 i v.2</mnubtnCopyV1V2>
     <mnubtnCopyFiles>&amp;Kopiuj pliki</mnubtnCopyFiles>
-    <mnubtnDeleteFiles>&amp;Usuñ pliki</mnubtnDeleteFiles>
-    <mnubtnDouble>Szukaj z&amp;duplikowanych plików</mnubtnDouble>
+    <mnubtnDeleteFiles>&amp;UsuÅ„ pliki</mnubtnDeleteFiles>
+    <mnubtnDouble>Szukaj z&amp;duplikowanych plikÃ³w</mnubtnDouble>
     <mnubtnE1>Edytuj tagi v.&amp;1</mnubtnE1>
     <mnubtnE2>Edytuj tagi v.&amp;2</mnubtnE2>
     <mnubtnEditLibraries>Edytuj &amp;biblioteki</mnubtnEditLibraries>
@@ -138,67 +138,67 @@
     <mnubtnEnumV2>Numeruj w tagach v.&amp;2</mnubtnEnumV2>
     <mnubtnEnumMinus>-</mnubtnEnumMinus>
     <mnubtnEnumPlus>+</mnubtnEnumPlus>
-    <mnubtnErrors>Poka¿/Ukryj pan&amp;el b³êdów</mnubtnErrors>
+    <mnubtnErrors>PokaÅ¼/Ukryj pan&amp;el bÅ‚Ä™dÃ³w</mnubtnErrors>
     <mnubtnFilterAlbum>Album</mnubtnFilterAlbum>
     <mnubtnFilterNumber>#</mnubtnFilterNumber>
     <mnubtnFilterEmpty>''</mnubtnFilterEmpty>
     <mnubtnFilterOther>@</mnubtnFilterOther>
     <mnubtnFilterArtist>Wykonawca</mnubtnFilterArtist>
-    <mnubtnFilterTitle>Tytu³</mnubtnFilterTitle>
+    <mnubtnFilterTitle>TytuÅ‚</mnubtnFilterTitle>
     <mnubtnFreeDB>&amp;Zapytanie do FreeDB</mnubtnFreeDB>
     <mnubtnFT1>&amp;Nazwa pliku -&gt; tag v.1</mnubtnFT1>
     <mnubtnFT2>Nazwa &amp;pliku -&gt; tag v.2</mnubtnFT2>
     <mnubtnHelp>&amp;Pomoc ...</mnubtnHelp>
-    <mnubtnLists>&amp;Utwórz listê plików / odtwarzania</mnubtnLists>
+    <mnubtnLists>&amp;UtwÃ³rz listÄ™ plikÃ³w / odtwarzania</mnubtnLists>
     <mnubtnME1>&amp;Edytuj tagi v.1</mnubtnME1>
     <mnubtnME2>Edytuj &amp;tagi v.2</mnubtnME2>
-    <mnubtnMoveFiles>&amp;Przenieœ pliki</mnubtnMoveFiles>
-    <mnubtnNavigation>Poka¿/Ukryj panel &amp;nawigacji</mnubtnNavigation>
+    <mnubtnMoveFiles>&amp;PrzenieÅ› pliki</mnubtnMoveFiles>
+    <mnubtnNavigation>PokaÅ¼/Ukryj panel &amp;nawigacji</mnubtnNavigation>
     <mnubtnOrganizeFiles>&amp;Organizuj pliki</mnubtnOrganizeFiles>
     <mnubtnPaste>&amp;Wklej dane taga</mnubtnPaste>
-    <mnubtnPlay>&amp;Odtwórz</mnubtnPlay>
+    <mnubtnPlay>&amp;OdtwÃ³rz</mnubtnPlay>
     <mnubtnPreferences>&amp;Konfiguracja ...</mnubtnPreferences>
-    <mnubtnProperties>&amp;W³aœciwoœci pliku</mnubtnProperties>
-    <mnubtnQuit>&amp;Zakoñcz</mnubtnQuit>
-    <mnubtnRedo>&amp;Powtórz</mnubtnRedo>
-    <mnubtnRefresh>&amp;Odœwie¿</mnubtnRefresh>
-    <mnubtnRemove>&amp;Usuñ wybrane pliki z listy</mnubtnRemove>
-    <mnubtnRemoveFilter>Usuñ filtr</mnubtnRemoveFilter>
-    <mnubtnRemoveFolders>Usuñ &amp;puste foldery</mnubtnRemoveFolders>
-    <mnubtnRemoveV1>&amp;Usuñ tag v.1</mnubtnRemoveV1>
-    <mnubtnRemoveV2>U&amp;suñ tag v.2</mnubtnRemoveV2>
-    <mnubtnRename>&amp;Zmieñ nazwê pliku/foldera</mnubtnRename>
+    <mnubtnProperties>&amp;WÅ‚aÅ›ciwoÅ›ci pliku</mnubtnProperties>
+    <mnubtnQuit>&amp;ZakoÅ„cz</mnubtnQuit>
+    <mnubtnRedo>&amp;PowtÃ³rz</mnubtnRedo>
+    <mnubtnRefresh>&amp;OdÅ›wieÅ¼</mnubtnRefresh>
+    <mnubtnRemove>&amp;UsuÅ„ wybrane pliki z listy</mnubtnRemove>
+    <mnubtnRemoveFilter>UsuÅ„ filtr</mnubtnRemoveFilter>
+    <mnubtnRemoveFolders>UsuÅ„ &amp;puste foldery</mnubtnRemoveFolders>
+    <mnubtnRemoveV1>&amp;UsuÅ„ tag v.1</mnubtnRemoveV1>
+    <mnubtnRemoveV2>U&amp;suÅ„ tag v.2</mnubtnRemoveV2>
+    <mnubtnRename>&amp;ZmieÅ„ nazwÄ™ pliku/foldera</mnubtnRename>
     <mnubtnSave>&amp;Zapisz</mnubtnSave>
-    <mnubtnSearchReplace>&amp;Szukaj (i zast¹p)</mnubtnSearchReplace>
+    <mnubtnSearchReplace>&amp;Szukaj (i zastÄ…p)</mnubtnSearchReplace>
     <mnubtnSelectAll>&amp;Wybierz wszystko</mnubtnSelectAll>
     <mnubtnSelectChanged>Wybierz &amp;zmienione pliki</mnubtnSelectChanged>
-    <mnubtnSelectCompare>Wybierz pliki z &amp;niezgodnoœci¹ nazwa pliku &lt;-&gt; tag</mnubtnSelectCompare>
+    <mnubtnSelectCompare>Wybierz pliki z &amp;niezgodnoÅ›ciÄ… nazwa pliku &lt;-&gt; tag</mnubtnSelectCompare>
     <mnubtnSelectDouble>&amp;Wybierz pliki zduplikowane</mnubtnSelectDouble>
     <mnubtnSelectFormat>Wybierz pliki wg &amp;formatu</mnubtnSelectFormat>
     <mnubtnSelectGroup>&amp;Grupuj wybrane</mnubtnSelectGroup>
-    <mnubtnSelectInvert>&amp;Odwróæ wybór</mnubtnSelectInvert>
-    <mnubtnShortcuts>&amp;Skróty ...</mnubtnShortcuts>
-    <mnubtnSplitArtist1>&amp;Rozdziel wykonawcê z taga v.1 na wykonawcê i tytu³</mnubtnSplitArtist1>
-    <mnubtnSplitArtist2>R&amp;ozdziel wykonawcê z taga v.2 na wykonawcê i tytu³</mnubtnSplitArtist2>
-    <mnubtnSwapV1>Z&amp;amieñ dane taga v.1</mnubtnSwapV1>
-    <mnubtnSwapV1AT>Wykonawca &lt;-&gt; Tytu³</mnubtnSwapV1AT>
+    <mnubtnSelectInvert>&amp;OdwrÃ³Ä‡ wybÃ³r</mnubtnSelectInvert>
+    <mnubtnShortcuts>&amp;SkrÃ³ty ...</mnubtnShortcuts>
+    <mnubtnSplitArtist1>&amp;Rozdziel wykonawcÄ™ z taga v.1 na wykonawcÄ™ i tytuÅ‚</mnubtnSplitArtist1>
+    <mnubtnSplitArtist2>R&amp;ozdziel wykonawcÄ™ z taga v.2 na wykonawcÄ™ i tytuÅ‚</mnubtnSplitArtist2>
+    <mnubtnSwapV1>Z&amp;amieÅ„ dane taga v.1</mnubtnSwapV1>
+    <mnubtnSwapV1AT>Wykonawca &lt;-&gt; TytuÅ‚</mnubtnSwapV1AT>
     <mnubtnSwapV1AA>Wykonawca &lt;-&gt; Album</mnubtnSwapV1AA>
-    <mnubtnSwapV1TA>Tytu³ &lt;-&gt; Album</mnubtnSwapV1TA>
-    <mnubtnSwapV2>Za&amp;mieñ dane taga v.2</mnubtnSwapV2>
-    <mnubtnSwapV2AT>Wykonawca &lt;-&gt; Tytu³</mnubtnSwapV2AT>
+    <mnubtnSwapV1TA>TytuÅ‚ &lt;-&gt; Album</mnubtnSwapV1TA>
+    <mnubtnSwapV2>Za&amp;mieÅ„ dane taga v.2</mnubtnSwapV2>
+    <mnubtnSwapV2AT>Wykonawca &lt;-&gt; TytuÅ‚</mnubtnSwapV2AT>
     <mnubtnSwapV2AA>Wykonawca &lt;-&gt; Album</mnubtnSwapV2AA>
-    <mnubtnSwapV2TA>Tytu³ &lt;-&gt; Album</mnubtnSwapV2TA>
+    <mnubtnSwapV2TA>TytuÅ‚ &lt;-&gt; Album</mnubtnSwapV2TA>
     <mnubtnT1F>&amp;Tag v.1 -&gt; Nazwa pliku</mnubtnT1F>
     <mnubtnT2F>Ta&amp;g v.2 -&gt; Nazwa pliku</mnubtnT2F>
     <mnubtnTransfer>Transferuj/Konwertuj tagi</mnubtnTransfer>
-    <mnubtnViewVer1>Wyœwietlaj tagi v.&amp;1</mnubtnViewVer1>
-    <mnubtnViewVer2>Wyœwietlaj tagi v.&amp;2</mnubtnViewVer2>
+    <mnubtnViewVer1>WyÅ›wietlaj tagi v.&amp;1</mnubtnViewVer1>
+    <mnubtnViewVer2>WyÅ›wietlaj tagi v.&amp;2</mnubtnViewVer2>
     <mnubtnUndo>Co&amp;fnij</mnubtnUndo>
-    <mnubtnScanSubDirs>&amp;Przegl¹daj podfoldery</mnubtnScanSubDirs>
-    <mnubtnQuickFilename>&amp;Szybka edycja nazw plików</mnubtnQuickFilename>
-    <mnubtnSynchronize>S&amp;ynchronizuj edycjê tagów v.1 i v.2</mnubtnSynchronize>
-    <TAGV1>Funkcje tagów v.1</TAGV1> 
-    <TAGV2>Funkcje tagów v.2</TAGV2>
+    <mnubtnScanSubDirs>&amp;PrzeglÄ…daj podfoldery</mnubtnScanSubDirs>
+    <mnubtnQuickFilename>&amp;Szybka edycja nazw plikÃ³w</mnubtnQuickFilename>
+    <mnubtnSynchronize>S&amp;ynchronizuj edycjÄ™ tagÃ³w v.1 i v.2</mnubtnSynchronize>
+    <TAGV1>Funkcje tagÃ³w v.1</TAGV1> 
+    <TAGV2>Funkcje tagÃ³w v.2</TAGV2>
   </Menus>
   <Menus>
     <mnuFile />
@@ -209,53 +209,53 @@
     <mnuAnalyse />
     <mnuOptions />
     <mnuHelp />
-    <btnV1V2View>Zmienia wyœwietlan¹ wersjê tagów</btnV1V2View>
+    <btnV1V2View>Zmienia wyÅ›wietlanÄ… wersjÄ™ tagÃ³w</btnV1V2View>
     <mnubtnAbout>Informacje o programie ID3-TagIT</mnubtnAbout>
-    <mnubtnAddDir>Wybieranie foldera i dodawanie plików do listy</mnubtnAddDir>
-    <mnubtnCaseConversion>Konwertuje wielkoœci liter</mnubtnCaseConversion>
+    <mnubtnAddDir>Wybieranie foldera i dodawanie plikÃ³w do listy</mnubtnAddDir>
+    <mnubtnCaseConversion>Konwertuje wielkoÅ›ci liter</mnubtnCaseConversion>
     <mnubtnChangeTextEnc>Zmienia kodowanie tekstu taga v.2 (ANSI/Unicode)</mnubtnChangeTextEnc>
-    <mnubtnCompareFileTAG>Porównuje nazwy plików z nazwami utworzonymi z danych tagów</mnubtnCompareFileTAG>
+    <mnubtnCompareFileTAG>PorÃ³wnuje nazwy plikÃ³w z nazwami utworzonymi z danych tagÃ³w</mnubtnCompareFileTAG>
     <mnubtnCopy />
-    <mnubtnCopyV1>Kopiuje dane tagów v.1 z wybranych plików</mnubtnCopyV1>
-    <mnubtnCopyV2>Kopiuje dane tagów v.2 z wybranych plików</mnubtnCopyV2>
-    <mnubtnCopyV1V2>Kopiuje dane tagów obu wersji z wybranych plików</mnubtnCopyV1V2>
+    <mnubtnCopyV1>Kopiuje dane tagÃ³w v.1 z wybranych plikÃ³w</mnubtnCopyV1>
+    <mnubtnCopyV2>Kopiuje dane tagÃ³w v.2 z wybranych plikÃ³w</mnubtnCopyV2>
+    <mnubtnCopyV1V2>Kopiuje dane tagÃ³w obu wersji z wybranych plikÃ³w</mnubtnCopyV1V2>
     <mnubtnCopyFiles>Kopiuje wybrane pliki do katalogu</mnubtnCopyFiles>
     <mnubtnDeleteFiles>Usuwa wybrane pliki</mnubtnDeleteFiles>
-    <mnubtnDouble>Wyszukiwanie zduplikowanych plików wg danych tagów lub dŸwiêkowych</mnubtnDouble>
+    <mnubtnDouble>Wyszukiwanie zduplikowanych plikÃ³w wg danych tagÃ³w lub dÅºwiÄ™kowych</mnubtnDouble>
     <mnubtnE1>Edycja tagu v.1</mnubtnE1>
     <mnubtnE2>Edycja tagu v.2</mnubtnE2>
     <mnubtnEditLibraries>Edycja bibliotek programu ID3-TagIT</mnubtnEditLibraries>
     <mnubtnEnumCounter>Licznik numeracji</mnubtnEnumCounter>
-    <mnubtnEnumerate>Wybiera funkcjê numeracji</mnubtnEnumerate>
+    <mnubtnEnumerate>Wybiera funkcjÄ™ numeracji</mnubtnEnumerate>
     <mnubtnEnumFilename>Numerowanie w nazwie pliku</mnubtnEnumFilename>
-    <mnubtnEnumV1>Numerowanie w polu numeru œcie¿ki taga v.1</mnubtnEnumV1>
-    <mnubtnEnumV2>Numerowanie w polu numeru œcie¿ki taga v.2</mnubtnEnumV2>
-    <mnubtnEnumMinus>Zwiêksza licznik numeracji</mnubtnEnumMinus>
+    <mnubtnEnumV1>Numerowanie w polu numeru Å›cieÅ¼ki taga v.1</mnubtnEnumV1>
+    <mnubtnEnumV2>Numerowanie w polu numeru Å›cieÅ¼ki taga v.2</mnubtnEnumV2>
+    <mnubtnEnumMinus>ZwiÄ™ksza licznik numeracji</mnubtnEnumMinus>
     <mnubtnEnumPlus>Zmniejsza licznik numeracji</mnubtnEnumPlus>
-    <mnubtnErrors>Pokazuje/ukrywa panel b³êdów</mnubtnErrors>
-    <mnubtnFilterAlbum>Wybranie pozycji filtruje wyœwietlane pliki</mnubtnFilterAlbum>
+    <mnubtnErrors>Pokazuje/ukrywa panel bÅ‚Ä™dÃ³w</mnubtnErrors>
+    <mnubtnFilterAlbum>Wybranie pozycji filtruje wyÅ›wietlane pliki</mnubtnFilterAlbum>
     <mnubtnFilterNumber>Liczby</mnubtnFilterNumber>
     <mnubtnFilterEmpty>Puste pozycje</mnubtnFilterEmpty>
     <mnubtnFilterOther>Inne</mnubtnFilterOther>
-    <mnubtnFilterArtist>Wybranie pozycji filtruje wyœwietlane pliki</mnubtnFilterArtist>
-    <mnubtnFilterTitle>Wybranie pozycji filtruje wyœwietlane pliki</mnubtnFilterTitle>
+    <mnubtnFilterArtist>Wybranie pozycji filtruje wyÅ›wietlane pliki</mnubtnFilterArtist>
+    <mnubtnFilterTitle>Wybranie pozycji filtruje wyÅ›wietlane pliki</mnubtnFilterTitle>
     <mnubtnFreeDB>Zapytanie do serwisu FreeDB</mnubtnFreeDB>
     <mnubtnFT1>Kopiuje dane z nazwy pliku do taga v.1</mnubtnFT1>
     <mnubtnFT2>Kopiuje dane z nazwy pliku do taga v.2</mnubtnFT2>
-    <mnubtnHelp>Wyœwietla pomocy programu ID3-TagIT</mnubtnHelp>
-    <mnubtnLists>Tworzy listê wybranych plików</mnubtnLists>
-    <mnubtnME1>Edycja tagów v.1 w wielu plikach</mnubtnME1>
-    <mnubtnME2>Edycja tagów v.2 w wielu plikach</mnubtnME2>
+    <mnubtnHelp>WyÅ›wietla pomocy programu ID3-TagIT</mnubtnHelp>
+    <mnubtnLists>Tworzy listÄ™ wybranych plikÃ³w</mnubtnLists>
+    <mnubtnME1>Edycja tagÃ³w v.1 w wielu plikach</mnubtnME1>
+    <mnubtnME2>Edycja tagÃ³w v.2 w wielu plikach</mnubtnME2>
     <mnubtnMoveFiles>Przenosi wybrane pliki do katalogu</mnubtnMoveFiles>
     <mnubtnNavigation>Pokazuje/ukrywa panel nawigacji</mnubtnNavigation>
     <mnubtnOrganizeFiles>Organizuje wybrane pliki w podfoldery wg danych w tagach</mnubtnOrganizeFiles>
-    <mnubtnPaste>Wkleja dane z tagów do wybranych plików</mnubtnPaste>
+    <mnubtnPaste>Wkleja dane z tagÃ³w do wybranych plikÃ³w</mnubtnPaste>
     <mnubtnPlay>Odtwarza pliki</mnubtnPlay>
-    <mnubtnPreferences>Konfigurowanie wszystkich parametrów programu ID3-TagIT</mnubtnPreferences>
-    <mnubtnProperties>Wyœwietla w³aœciwoœci plików</mnubtnProperties>
+    <mnubtnPreferences>Konfigurowanie wszystkich parametrÃ³w programu ID3-TagIT</mnubtnPreferences>
+    <mnubtnProperties>WyÅ›wietla wÅ‚aÅ›ciwoÅ›ci plikÃ³w</mnubtnProperties>
     <mnubtnQuit>Zamyka program ID3-TagIT</mnubtnQuit>
-    <mnubtnRedo>Powtarza ostatnie dzia³anie</mnubtnRedo>
-    <mnubtnRefresh>Odœwie¿a listê</mnubtnRefresh>
+    <mnubtnRedo>Powtarza ostatnie dziaÅ‚anie</mnubtnRedo>
+    <mnubtnRefresh>OdÅ›wieÅ¼a listÄ™</mnubtnRefresh>
     <mnubtnRemove>Usuwa wybrane pliki z listy (NIE z twardego dysku)</mnubtnRemove>
     <mnubtnRemoveFilter>Usuwa zastosowany filtr</mnubtnRemoveFilter>
     <mnubtnRemoveFolders>Usuwa wszystkie puste foldery</mnubtnRemoveFolders>
@@ -263,34 +263,34 @@
     <mnubtnRemoveV2>Usuwa tagi v.2</mnubtnRemoveV2>
     <mnubtnRename>Zmiana nazwy wybranego foldera lub pliku</mnubtnRename>
     <mnubtnSave>Zapisuje zmiany</mnubtnSave>
-    <mnubtnSearchReplace>Wyszukiwanie i zastêpowanie</mnubtnSearchReplace>
+    <mnubtnSearchReplace>Wyszukiwanie i zastÄ™powanie</mnubtnSearchReplace>
     <mnubtnSelectAll>Wybiera wszystkie pliki</mnubtnSelectAll>
-    <mnubtnSelectChanged>Wybiera wszystkie ju¿ zmienione pliki</mnubtnSelectChanged>
-    <mnubtnSelectCompare>Wybiera wszystkie wyszukane niezgodnoœci</mnubtnSelectCompare>
+    <mnubtnSelectChanged>Wybiera wszystkie juÅ¼ zmienione pliki</mnubtnSelectChanged>
+    <mnubtnSelectCompare>Wybiera wszystkie wyszukane niezgodnoÅ›ci</mnubtnSelectCompare>
     <mnubtnSelectDouble>Wybiera wszystkie zduplikowane pliki</mnubtnSelectDouble>
-    <mnubtnSelectFormat>Wybieranie plików zgodnych z wprowadzonym formatem</mnubtnSelectFormat>
-    <mnubtnSelectGroup>Grupuje wszystkie wybrane pliki na pocz¹tku listy</mnubtnSelectGroup>
-    <mnubtnSelectInvert>Odwraca wybór</mnubtnSelectInvert>
-    <mnubtnShortcuts>Wyœwietla listê skrótów u¿ywanych w programie ID3-TagIT</mnubtnShortcuts>
-    <mnubtnSplitArtist1>Rozdziela dane wykonawcy z taga v.1 na wykonawcê i tytu³</mnubtnSplitArtist1>
-    <mnubtnSplitArtist2>Rozdziela dane wykonawcy z taga v.2 na wykonawcê i tytu³</mnubtnSplitArtist2>
+    <mnubtnSelectFormat>Wybieranie plikÃ³w zgodnych z wprowadzonym formatem</mnubtnSelectFormat>
+    <mnubtnSelectGroup>Grupuje wszystkie wybrane pliki na poczÄ…tku listy</mnubtnSelectGroup>
+    <mnubtnSelectInvert>Odwraca wybÃ³r</mnubtnSelectInvert>
+    <mnubtnShortcuts>WyÅ›wietla listÄ™ skrÃ³tÃ³w uÅ¼ywanych w programie ID3-TagIT</mnubtnShortcuts>
+    <mnubtnSplitArtist1>Rozdziela dane wykonawcy z taga v.1 na wykonawcÄ™ i tytuÅ‚</mnubtnSplitArtist1>
+    <mnubtnSplitArtist2>Rozdziela dane wykonawcy z taga v.2 na wykonawcÄ™ i tytuÅ‚</mnubtnSplitArtist2>
     <mnubtnSwapV1>Zamienia dane taga v.1</mnubtnSwapV1>
-    <mnubtnSwapV1AT>Zamienia wykonawcê i tytu³ w tagu v.1</mnubtnSwapV1AT>
-    <mnubtnSwapV1AA>Zamienia wykonawcê i album w tagu v.1</mnubtnSwapV1AA>
-    <mnubtnSwapV1TA>Zamienia tytu³ i album w tagu v.1</mnubtnSwapV1TA>
+    <mnubtnSwapV1AT>Zamienia wykonawcÄ™ i tytuÅ‚ w tagu v.1</mnubtnSwapV1AT>
+    <mnubtnSwapV1AA>Zamienia wykonawcÄ™ i album w tagu v.1</mnubtnSwapV1AA>
+    <mnubtnSwapV1TA>Zamienia tytuÅ‚ i album w tagu v.1</mnubtnSwapV1TA>
     <mnubtnSwapV2>Zamienia dane taga v.2</mnubtnSwapV2>
-    <mnubtnSwapV2AT>Zamienia wykonawcê i tytu³ w tagu v.2</mnubtnSwapV2AT>
-    <mnubtnSwapV2AA>Zamienia wykonawcê i album w tagu v.2</mnubtnSwapV2AA>
-    <mnubtnSwapV2TA>Zamienia tytu³ i album w tagu v.2</mnubtnSwapV2TA>
+    <mnubtnSwapV2AT>Zamienia wykonawcÄ™ i tytuÅ‚ w tagu v.2</mnubtnSwapV2AT>
+    <mnubtnSwapV2AA>Zamienia wykonawcÄ™ i album w tagu v.2</mnubtnSwapV2AA>
+    <mnubtnSwapV2TA>Zamienia tytuÅ‚ i album w tagu v.2</mnubtnSwapV2TA>
     <mnubtnT1F>Kopiuje dane taga v.1 do nazwy pliku</mnubtnT1F>
     <mnubtnT2F>Kopiuje dane taga v.2 do nazwy pliku</mnubtnT2F>
-    <mnubtnTransfer>Transferowanie/konwertowanie tagów</mnubtnTransfer>
-    <mnubtnViewVer1>Wyœwietla dane z tagów v.1</mnubtnViewVer1>
-    <mnubtnViewVer2>Wyœwietla dane z tagów v.2</mnubtnViewVer2>
-    <mnubtnUndo>Cofa ostatnie dzia³anie</mnubtnUndo>
-	<mnubtnScanSubDirs>Jeœli zaznaczone, wybrany folder i jego podfoldery s¹ przegl¹dane w poszukiwaniu plików MP3</mnubtnScanSubDirs>
-    <mnubtnQuickFilename>Po zakoñczeniu edycji nazwy pliku, rozpoczynana jest edycja kolejnej</mnubtnQuickFilename>
-    <mnubtnSynchronize>Jeœli zaznaczone, wszystkie zmiany s¹ wprowadzane w  tagach obu wersji</mnubtnSynchronize>
+    <mnubtnTransfer>Transferowanie/konwertowanie tagÃ³w</mnubtnTransfer>
+    <mnubtnViewVer1>WyÅ›wietla dane z tagÃ³w v.1</mnubtnViewVer1>
+    <mnubtnViewVer2>WyÅ›wietla dane z tagÃ³w v.2</mnubtnViewVer2>
+    <mnubtnUndo>Cofa ostatnie dziaÅ‚anie</mnubtnUndo>
+	<mnubtnScanSubDirs>JeÅ›li zaznaczone, wybrany folder i jego podfoldery sÄ… przeglÄ…dane w poszukiwaniu plikÃ³w MP3</mnubtnScanSubDirs>
+    <mnubtnQuickFilename>Po zakoÅ„czeniu edycji nazwy pliku, rozpoczynana jest edycja kolejnej</mnubtnQuickFilename>
+    <mnubtnSynchronize>JeÅ›li zaznaczone, wszystkie zmiany sÄ… wprowadzane w  tagach obu wersji</mnubtnSynchronize>
     <TAGV1 /> 
     <TAGV2 /> 
   </Menus>
