@@ -26,6 +26,7 @@ namespace ID3_TagIT
     private bool vbooAdjusting;
     private bool vbooSplitterPressed;
     private bool vbooDragged;
+    private bool vbooToggleAfterRelease;
     private Point objMouseDown;
     private int vintRestoreSize;
 
@@ -188,18 +189,29 @@ namespace ID3_TagIT
 
       this.vbooSplitterPressed = false;
       Size drag = SystemInformation.DragSize;
-
-      if (Math.Abs(e.X - this.objMouseDown.X) > drag.Width || Math.Abs(e.Y - this.objMouseDown.Y) > drag.Height)
-        return;
+      this.vbooToggleAfterRelease = Math.Abs(e.X - this.objMouseDown.X) <= drag.Width && Math.Abs(e.Y - this.objMouseDown.Y) <= drag.Height;
 
       // SplitContainer finishes its own splitter drag after raising MouseUp, which would
-      // overwrite a distance set here; toggle once it is done.
-      this.objSplit.BeginInvoke(new MethodInvoker(this.Toggle));
+      // overwrite a distance set here; finish once it is done.
+      this.objSplit.BeginInvoke(new MethodInvoker(this.FinishSplitterPress));
     }
 
-    private void Toggle()
+    private void FinishSplitterPress()
     {
-      this.Expanded = !this.Expanded;
+      if (this.vbooToggleAfterRelease)
+        this.Expanded = !this.Expanded;
+
+      this.ReleaseFocus();
+    }
+
+    // A focused splitter draws a dotted focus rectangle but ignores the keyboard, so a click
+    // should not leave it focused.
+    private void ReleaseFocus()
+    {
+      Form form = this.objSplit.FindForm();
+
+      if (form != null && this.objSplit.Focused)
+        form.SelectNextControl(this.objSplit, true, true, true, true);
     }
 
     private void Split_Paint(object sender, PaintEventArgs e)
