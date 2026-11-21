@@ -88,8 +88,6 @@ namespace ID3_TagIT
     private Control FocusControl;
     private HScrollBar TORYFormat;
     private HScrollBar YearFormat;
-    private Label label1;
-    private Label label2;
     private Label lblAlbum;
     private Label lblAlbumSort;
     private Label lblArtist;
@@ -104,7 +102,6 @@ namespace ID3_TagIT
     private Label lblCOMMInfURL;
     private Label lblCOMMLan;
     private Label lblCommDescInfo;
-    private Label lblCommand;
     private Label lblComposer;
     private Label lblConductor;
     private Label lblContent;
@@ -224,10 +221,10 @@ namespace ID3_TagIT
     private Panel panRating;
     private Panel panUser;
     private Panel panWeb;
-    private Panel pnlCommands;
-    private Panel pnlTagInfo;
-    private Panel pnlXferImport;
-    private Panel pnlLeft;
+    private TaskPaneGroup pnlCommands;
+    private TaskPaneGroup pnlTagInfo;
+    private TaskPaneGroup pnlXferImport;
+    private FlowLayoutPanel pnlLeft;
     private PictureBox APICView;
     private RichTextBox txtLyrics;
     private System.Windows.Forms.OpenFileDialog OpenFileDialog;
@@ -505,9 +502,6 @@ namespace ID3_TagIT
       this.btnCancel = new System.Windows.Forms.Button();
       this.btnOK = new System.Windows.Forms.Button();
       this.cboFormat = new System.Windows.Forms.ComboBox();
-      this.label1 = new System.Windows.Forms.Label();
-      this.label2 = new System.Windows.Forms.Label();
-      this.lblCommand = new System.Windows.Forms.Label();
       this.lblDetailedInfo = new System.Windows.Forms.LinkLabel();
       this.lblDigits = new System.Windows.Forms.Label();
       this.lblGetFromFile = new System.Windows.Forms.LinkLabel();
@@ -540,10 +534,10 @@ namespace ID3_TagIT
       this.panRating = new System.Windows.Forms.Panel();
       this.panUser = new System.Windows.Forms.Panel();
       this.panWeb = new System.Windows.Forms.Panel();
-      this.pnlCommands = new System.Windows.Forms.Panel();
-      this.pnlTagInfo = new System.Windows.Forms.Panel();
-      this.pnlXferImport = new System.Windows.Forms.Panel();
-      this.pnlLeft = new System.Windows.Forms.Panel();
+      this.pnlCommands = new ID3_TagIT.TaskPaneGroup();
+      this.pnlTagInfo = new ID3_TagIT.TaskPaneGroup();
+      this.pnlXferImport = new ID3_TagIT.TaskPaneGroup();
+      this.pnlLeft = new System.Windows.Forms.FlowLayoutPanel();
       this.txtDigits = new System.Windows.Forms.NumericUpDown();
       this.txtSelected = new System.Windows.Forms.TextBox();
       ((System.ComponentModel.ISupportInitialize)(this.APICView)).BeginInit();
@@ -2761,43 +2755,13 @@ namespace ID3_TagIT
       // 
       this.cboFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.cboFormat.FormattingEnabled = true;
-      this.cboFormat.Location = new System.Drawing.Point(14, 96);
+      this.cboFormat.Location = new System.Drawing.Point(8, 71);
       this.cboFormat.Name = "cboFormat";
       this.cboFormat.Size = new System.Drawing.Size(131, 21);
       this.cboFormat.TabIndex = 4;
       // 
-      // label1
       // 
-      this.label1.AutoSize = true;
-      this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World);
-      this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.label1.Location = new System.Drawing.Point(11, 9);
-      this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(100, 15);
-      this.label1.TabIndex = 0;
-      this.label1.Text = "TAG Information";
       // 
-      // label2
-      // 
-      this.label2.AutoSize = true;
-      this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World);
-      this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.label2.Location = new System.Drawing.Point(11, 9);
-      this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(118, 15);
-      this.label2.TabIndex = 0;
-      this.label2.Text = "Transfer and Import";
-      // 
-      // lblCommand
-      // 
-      this.lblCommand.AutoSize = true;
-      this.lblCommand.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World);
-      this.lblCommand.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblCommand.Location = new System.Drawing.Point(11, 9);
-      this.lblCommand.Name = "lblCommand";
-      this.lblCommand.Size = new System.Drawing.Size(68, 15);
-      this.lblCommand.TabIndex = 0;
-      this.lblCommand.Text = "Commands";
       // 
       // lblDetailedInfo
       // 
@@ -2805,7 +2769,10 @@ namespace ID3_TagIT
       this.lblDetailedInfo.AutoSize = true;
       this.lblDetailedInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblDetailedInfo.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblDetailedInfo.Location = new System.Drawing.Point(22, 52);
+      this.lblDetailedInfo.Image = PaneIcons.Get("detailed-info");
+      this.lblDetailedInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lblDetailedInfo.Location = new System.Drawing.Point(6, 27);
+      this.lblDetailedInfo.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
       this.lblDetailedInfo.Name = "lblDetailedInfo";
       this.lblDetailedInfo.Size = new System.Drawing.Size(101, 13);
       this.lblDetailedInfo.TabIndex = 2;
@@ -2832,7 +2799,7 @@ namespace ID3_TagIT
       this.lblGetFromFile.AutoSize = true;
       this.lblGetFromFile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblGetFromFile.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblGetFromFile.Location = new System.Drawing.Point(22, 73);
+      this.lblGetFromFile.Location = new System.Drawing.Point(26, 48);
       this.lblGetFromFile.Name = "lblGetFromFile";
       this.lblGetFromFile.Size = new System.Drawing.Size(95, 13);
       this.lblGetFromFile.TabIndex = 3;
@@ -2847,7 +2814,10 @@ namespace ID3_TagIT
       this.lblInvolvedPeople.AutoSize = true;
       this.lblInvolvedPeople.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblInvolvedPeople.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblInvolvedPeople.Location = new System.Drawing.Point(22, 94);
+      this.lblInvolvedPeople.Image = PaneIcons.Get("involved-people");
+      this.lblInvolvedPeople.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lblInvolvedPeople.Location = new System.Drawing.Point(6, 69);
+      this.lblInvolvedPeople.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
       this.lblInvolvedPeople.Name = "lblInvolvedPeople";
       this.lblInvolvedPeople.Size = new System.Drawing.Size(84, 13);
       this.lblInvolvedPeople.TabIndex = 4;
@@ -2862,7 +2832,10 @@ namespace ID3_TagIT
       this.lblLyricsPane.AutoSize = true;
       this.lblLyricsPane.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblLyricsPane.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblLyricsPane.Location = new System.Drawing.Point(22, 157);
+      this.lblLyricsPane.Image = PaneIcons.Get("lyrics");
+      this.lblLyricsPane.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lblLyricsPane.Location = new System.Drawing.Point(6, 132);
+      this.lblLyricsPane.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
       this.lblLyricsPane.Name = "lblLyricsPane";
       this.lblLyricsPane.Size = new System.Drawing.Size(34, 13);
       this.lblLyricsPane.TabIndex = 7;
@@ -2877,7 +2850,10 @@ namespace ID3_TagIT
       this.lblMainEntries.AutoSize = true;
       this.lblMainEntries.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblMainEntries.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblMainEntries.Location = new System.Drawing.Point(22, 31);
+      this.lblMainEntries.Image = PaneIcons.Get("main-entries");
+      this.lblMainEntries.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lblMainEntries.Location = new System.Drawing.Point(6, 6);
+      this.lblMainEntries.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
       this.lblMainEntries.Name = "lblMainEntries";
       this.lblMainEntries.Size = new System.Drawing.Size(65, 13);
       this.lblMainEntries.TabIndex = 1;
@@ -2892,7 +2868,10 @@ namespace ID3_TagIT
       this.lblNext.AutoSize = true;
       this.lblNext.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblNext.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblNext.Location = new System.Drawing.Point(22, 52);
+      this.lblNext.Image = PaneIcons.Get("next");
+      this.lblNext.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lblNext.Location = new System.Drawing.Point(6, 27);
+      this.lblNext.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
       this.lblNext.Name = "lblNext";
       this.lblNext.Size = new System.Drawing.Size(48, 13);
       this.lblNext.TabIndex = 2;
@@ -2919,7 +2898,10 @@ namespace ID3_TagIT
       this.lblOriginalInfo.AutoSize = true;
       this.lblOriginalInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblOriginalInfo.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblOriginalInfo.Location = new System.Drawing.Point(22, 73);
+      this.lblOriginalInfo.Image = PaneIcons.Get("original-info");
+      this.lblOriginalInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lblOriginalInfo.Location = new System.Drawing.Point(6, 48);
+      this.lblOriginalInfo.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
       this.lblOriginalInfo.Name = "lblOriginalInfo";
       this.lblOriginalInfo.Size = new System.Drawing.Size(97, 13);
       this.lblOriginalInfo.TabIndex = 3;
@@ -2934,7 +2916,10 @@ namespace ID3_TagIT
       this.lblPictures.AutoSize = true;
       this.lblPictures.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblPictures.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblPictures.Location = new System.Drawing.Point(22, 136);
+      this.lblPictures.Image = PaneIcons.Get("pictures");
+      this.lblPictures.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lblPictures.Location = new System.Drawing.Point(6, 111);
+      this.lblPictures.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
       this.lblPictures.Name = "lblPictures";
       this.lblPictures.Size = new System.Drawing.Size(45, 13);
       this.lblPictures.TabIndex = 6;
@@ -2949,7 +2934,10 @@ namespace ID3_TagIT
       this.lblPrevious.AutoSize = true;
       this.lblPrevious.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblPrevious.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblPrevious.Location = new System.Drawing.Point(22, 31);
+      this.lblPrevious.Image = PaneIcons.Get("previous");
+      this.lblPrevious.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lblPrevious.Location = new System.Drawing.Point(6, 6);
+      this.lblPrevious.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
       this.lblPrevious.Name = "lblPrevious";
       this.lblPrevious.Size = new System.Drawing.Size(67, 13);
       this.lblPrevious.TabIndex = 1;
@@ -2964,7 +2952,10 @@ namespace ID3_TagIT
       this.lblRating.AutoSize = true;
       this.lblRating.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblRating.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblRating.Location = new System.Drawing.Point(22, 178);
+      this.lblRating.Image = PaneIcons.Get("rating");
+      this.lblRating.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lblRating.Location = new System.Drawing.Point(6, 153);
+      this.lblRating.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
       this.lblRating.Name = "lblRating";
       this.lblRating.Size = new System.Drawing.Size(38, 13);
       this.lblRating.TabIndex = 8;
@@ -2990,7 +2981,7 @@ namespace ID3_TagIT
       this.lblSwapArtAlb.AutoSize = true;
       this.lblSwapArtAlb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblSwapArtAlb.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblSwapArtAlb.Location = new System.Drawing.Point(22, 94);
+      this.lblSwapArtAlb.Location = new System.Drawing.Point(26, 69);
       this.lblSwapArtAlb.Name = "lblSwapArtAlb";
       this.lblSwapArtAlb.Size = new System.Drawing.Size(92, 13);
       this.lblSwapArtAlb.TabIndex = 4;
@@ -3005,7 +2996,7 @@ namespace ID3_TagIT
       this.lblSwapTtlAlb.AutoSize = true;
       this.lblSwapTtlAlb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblSwapTtlAlb.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblSwapTtlAlb.Location = new System.Drawing.Point(22, 115);
+      this.lblSwapTtlAlb.Location = new System.Drawing.Point(26, 90);
       this.lblSwapTtlAlb.Name = "lblSwapTtlAlb";
       this.lblSwapTtlAlb.Size = new System.Drawing.Size(89, 13);
       this.lblSwapTtlAlb.TabIndex = 5;
@@ -3020,7 +3011,7 @@ namespace ID3_TagIT
       this.lblSwapArtTtl.AutoSize = true;
       this.lblSwapArtTtl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblSwapArtTtl.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblSwapArtTtl.Location = new System.Drawing.Point(22, 73);
+      this.lblSwapArtTtl.Location = new System.Drawing.Point(26, 48);
       this.lblSwapArtTtl.Name = "lblSwapArtTtl";
       this.lblSwapArtTtl.Size = new System.Drawing.Size(83, 13);
       this.lblSwapArtTtl.TabIndex = 3;
@@ -3045,7 +3036,10 @@ namespace ID3_TagIT
       this.lblUnsupported.AutoSize = true;
       this.lblUnsupported.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblUnsupported.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblUnsupported.Location = new System.Drawing.Point(22, 220);
+      this.lblUnsupported.Image = PaneIcons.Get("unsupported");
+      this.lblUnsupported.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lblUnsupported.Location = new System.Drawing.Point(6, 195);
+      this.lblUnsupported.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
       this.lblUnsupported.Name = "lblUnsupported";
       this.lblUnsupported.Size = new System.Drawing.Size(102, 13);
       this.lblUnsupported.TabIndex = 10;
@@ -3060,7 +3054,10 @@ namespace ID3_TagIT
       this.lblUserDefined.AutoSize = true;
       this.lblUserDefined.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblUserDefined.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblUserDefined.Location = new System.Drawing.Point(22, 199);
+      this.lblUserDefined.Image = PaneIcons.Get("user-defined");
+      this.lblUserDefined.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lblUserDefined.Location = new System.Drawing.Point(6, 174);
+      this.lblUserDefined.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
       this.lblUserDefined.Name = "lblUserDefined";
       this.lblUserDefined.Size = new System.Drawing.Size(121, 13);
       this.lblUserDefined.TabIndex = 9;
@@ -3075,7 +3072,10 @@ namespace ID3_TagIT
       this.lblWebInfo.AutoSize = true;
       this.lblWebInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblWebInfo.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblWebInfo.Location = new System.Drawing.Point(22, 115);
+      this.lblWebInfo.Image = PaneIcons.Get("web-info");
+      this.lblWebInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lblWebInfo.Location = new System.Drawing.Point(6, 90);
+      this.lblWebInfo.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
       this.lblWebInfo.Name = "lblWebInfo";
       this.lblWebInfo.Size = new System.Drawing.Size(85, 13);
       this.lblWebInfo.TabIndex = 5;
@@ -3090,7 +3090,7 @@ namespace ID3_TagIT
       this.lblXferFromV1.AutoSize = true;
       this.lblXferFromV1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblXferFromV1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblXferFromV1.Location = new System.Drawing.Point(22, 31);
+      this.lblXferFromV1.Location = new System.Drawing.Point(26, 6);
       this.lblXferFromV1.Name = "lblXferFromV1";
       this.lblXferFromV1.Size = new System.Drawing.Size(103, 13);
       this.lblXferFromV1.TabIndex = 1;
@@ -3105,7 +3105,7 @@ namespace ID3_TagIT
       this.lblXferToV1.AutoSize = true;
       this.lblXferToV1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblXferToV1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblXferToV1.Location = new System.Drawing.Point(22, 52);
+      this.lblXferToV1.Location = new System.Drawing.Point(26, 27);
       this.lblXferToV1.Name = "lblXferToV1";
       this.lblXferToV1.Size = new System.Drawing.Size(88, 13);
       this.lblXferToV1.TabIndex = 2;
@@ -3203,58 +3203,61 @@ namespace ID3_TagIT
       this.panWeb.Size = new System.Drawing.Size(664, 360);
       this.panWeb.TabIndex = 122;
       // 
-      // pnlCommands
-      // 
-      this.pnlCommands.Controls.Add(this.lblSwapTtlAlb);
-      this.pnlCommands.Controls.Add(this.lblSwapArtAlb);
-      this.pnlCommands.Controls.Add(this.lblSwapArtTtl);
-      this.pnlCommands.Controls.Add(this.lblNext);
-      this.pnlCommands.Controls.Add(this.lblPrevious);
-      this.pnlCommands.Controls.Add(this.lblCommand);
-      this.pnlCommands.Location = new System.Drawing.Point(12, 392);
-      this.pnlCommands.Name = "pnlCommands";
-      this.pnlCommands.Size = new System.Drawing.Size(135, 147);
-      this.pnlCommands.TabIndex = 0;
-      // 
       // pnlTagInfo
       // 
-      this.pnlTagInfo.Controls.Add(this.lblUnsupported);
-      this.pnlTagInfo.Controls.Add(this.lblUserDefined);
-      this.pnlTagInfo.Controls.Add(this.lblRating);
-      this.pnlTagInfo.Controls.Add(this.lblLyricsPane);
-      this.pnlTagInfo.Controls.Add(this.lblPictures);
-      this.pnlTagInfo.Controls.Add(this.lblWebInfo);
-      this.pnlTagInfo.Controls.Add(this.lblInvolvedPeople);
-      this.pnlTagInfo.Controls.Add(this.lblOriginalInfo);
-      this.pnlTagInfo.Controls.Add(this.lblDetailedInfo);
-      this.pnlTagInfo.Controls.Add(this.lblMainEntries);
-      this.pnlTagInfo.Controls.Add(this.label1);
-      this.pnlTagInfo.Location = new System.Drawing.Point(12, 6);
+      this.pnlTagInfo.Body.Controls.Add(this.lblUnsupported);
+      this.pnlTagInfo.Body.Controls.Add(this.lblUserDefined);
+      this.pnlTagInfo.Body.Controls.Add(this.lblRating);
+      this.pnlTagInfo.Body.Controls.Add(this.lblLyricsPane);
+      this.pnlTagInfo.Body.Controls.Add(this.lblPictures);
+      this.pnlTagInfo.Body.Controls.Add(this.lblWebInfo);
+      this.pnlTagInfo.Body.Controls.Add(this.lblInvolvedPeople);
+      this.pnlTagInfo.Body.Controls.Add(this.lblOriginalInfo);
+      this.pnlTagInfo.Body.Controls.Add(this.lblDetailedInfo);
+      this.pnlTagInfo.Body.Controls.Add(this.lblMainEntries);
+      this.pnlTagInfo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
       this.pnlTagInfo.Name = "pnlTagInfo";
-      this.pnlTagInfo.Size = new System.Drawing.Size(145, 243);
+      this.pnlTagInfo.Size = new System.Drawing.Size(156, 245);
       this.pnlTagInfo.TabIndex = 0;
+      this.pnlTagInfo.Text = "TAG Information";
       // 
       // pnlXferImport
       // 
-      this.pnlXferImport.Controls.Add(this.cboFormat);
-      this.pnlXferImport.Controls.Add(this.lblGetFromFile);
-      this.pnlXferImport.Controls.Add(this.lblXferToV1);
-      this.pnlXferImport.Controls.Add(this.lblXferFromV1);
-      this.pnlXferImport.Controls.Add(this.label2);
-      this.pnlXferImport.Location = new System.Drawing.Point(12, 255);
+      this.pnlXferImport.Body.Controls.Add(this.cboFormat);
+      this.pnlXferImport.Body.Controls.Add(this.lblGetFromFile);
+      this.pnlXferImport.Body.Controls.Add(this.lblXferToV1);
+      this.pnlXferImport.Body.Controls.Add(this.lblXferFromV1);
+      this.pnlXferImport.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
       this.pnlXferImport.Name = "pnlXferImport";
-      this.pnlXferImport.Size = new System.Drawing.Size(150, 131);
-      this.pnlXferImport.TabIndex = 0;
+      this.pnlXferImport.Size = new System.Drawing.Size(156, 125);
+      this.pnlXferImport.TabIndex = 1;
+      this.pnlXferImport.Text = "Transfer and Import";
+      // 
+      // pnlCommands
+      // 
+      this.pnlCommands.Body.Controls.Add(this.lblSwapTtlAlb);
+      this.pnlCommands.Body.Controls.Add(this.lblSwapArtAlb);
+      this.pnlCommands.Body.Controls.Add(this.lblSwapArtTtl);
+      this.pnlCommands.Body.Controls.Add(this.lblNext);
+      this.pnlCommands.Body.Controls.Add(this.lblPrevious);
+      this.pnlCommands.Margin = new System.Windows.Forms.Padding(0);
+      this.pnlCommands.Name = "pnlCommands";
+      this.pnlCommands.Size = new System.Drawing.Size(156, 140);
+      this.pnlCommands.TabIndex = 2;
+      this.pnlCommands.Text = "Commands";
       // 
       // pnlLeft
       // 
-      this.pnlLeft.Controls.Add(this.pnlCommands);
-      this.pnlLeft.Controls.Add(this.pnlXferImport);
       this.pnlLeft.Controls.Add(this.pnlTagInfo);
+      this.pnlLeft.Controls.Add(this.pnlXferImport);
+      this.pnlLeft.Controls.Add(this.pnlCommands);
+      this.pnlLeft.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
       this.pnlLeft.Location = new System.Drawing.Point(0, 0);
       this.pnlLeft.Name = "pnlLeft";
+      this.pnlLeft.Padding = new System.Windows.Forms.Padding(6);
       this.pnlLeft.Size = new System.Drawing.Size(168, 544);
       this.pnlLeft.TabIndex = 35;
+      this.pnlLeft.WrapContents = false;
       // 
       // txtDigits
       // 
@@ -3389,6 +3392,7 @@ namespace ID3_TagIT
       this.vbooLyricsMoved = false;
       this.vbooRatingMoved = false;
       this.InitializeComponent();
+      this.pnlXferImport.Expanded = false;
       ThemeManager.Register(this);
       this.MainForm = FormMain;
     }
