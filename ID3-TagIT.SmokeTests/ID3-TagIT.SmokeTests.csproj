@@ -65,6 +65,7 @@
     <Compile Include="Support\Mp3Files.cs" />
     <Compile Include="Support\PortableApp.cs" />
     <Compile Include="Support\Ui.cs" />
+    <Compile Include="TagEditorPaneTests.cs" />
     <Compile Include="TagFileTests.cs" />
     <Compile Include="TagRoundTripTests.cs" />
     <Compile Include="ThemeTests.cs" />
