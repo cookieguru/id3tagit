@@ -188,6 +188,7 @@
     <Compile Include="ID3_TagIT\CommandLine.cs" />
     <Compile Include="ID3_TagIT\ThemeManager.cs" />
     <Compile Include="ID3_TagIT\SplitterGrip.cs" />
+    <Compile Include="ID3_TagIT\PaneIcons.cs" />
     <Compile Include="ID3_TagIT\frmTransfer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -485,6 +486,42 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Defaults\Libraries\Library-Tools.xml">
       <LogicalName>ID3_TagIT.Defaults.Libraries.Library-Tools.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ID3_TagIT\Images\main-entries.png">
+      <LogicalName>ID3_TagIT.Images.main-entries.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ID3_TagIT\Images\detailed-info.png">
+      <LogicalName>ID3_TagIT.Images.detailed-info.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ID3_TagIT\Images\original-info.png">
+      <LogicalName>ID3_TagIT.Images.original-info.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ID3_TagIT\Images\involved-people.png">
+      <LogicalName>ID3_TagIT.Images.involved-people.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ID3_TagIT\Images\web-info.png">
+      <LogicalName>ID3_TagIT.Images.web-info.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ID3_TagIT\Images\pictures.png">
+      <LogicalName>ID3_TagIT.Images.pictures.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ID3_TagIT\Images\lyrics.png">
+      <LogicalName>ID3_TagIT.Images.lyrics.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ID3_TagIT\Images\rating.png">
+      <LogicalName>ID3_TagIT.Images.rating.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ID3_TagIT\Images\user-defined.png">
+      <LogicalName>ID3_TagIT.Images.user-defined.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ID3_TagIT\Images\unsupported.png">
+      <LogicalName>ID3_TagIT.Images.unsupported.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ID3_TagIT\Images\previous.png">
+      <LogicalName>ID3_TagIT.Images.previous.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ID3_TagIT\Images\next.png">
+      <LogicalName>ID3_TagIT.Images.next.png</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
