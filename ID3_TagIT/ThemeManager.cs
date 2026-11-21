@@ -36,6 +36,8 @@ namespace ID3_TagIT
     public static readonly Color DarkDisabledText = Color.FromArgb(150, 150, 150);
     public static readonly Color DarkAccentText = Color.FromArgb(110, 170, 255);
     public static readonly Color DarkSelection = Color.FromArgb(0, 95, 184);
+    public static readonly Color DarkTint = Color.FromArgb(38, 45, 61);
+    public static readonly Color DarkTintBorder = Color.FromArgb(61, 74, 102);
 
     private enum ColorRole
     {
@@ -394,6 +396,12 @@ namespace ID3_TagIT
 
       if (grid != null)
         ApplyDataGrid(grid);
+
+      // Paints its own fill and border from the theme colors, so only a repaint is needed.
+      TaskPaneGroup group = control as TaskPaneGroup;
+
+      if (group != null)
+        group.Invalidate();
     }
 
     // Classic sunken (Fixed3D) borders are drawn with white highlights; use a single line.

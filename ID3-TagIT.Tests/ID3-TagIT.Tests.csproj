@@ -53,6 +53,7 @@
     <Compile Include="Crc32Tests.cs" />
     <Compile Include="FolderTreeTests.cs" />
     <Compile Include="PaneIconsTests.cs" />
+    <Compile Include="TaskPaneGroupTests.cs" />
     <Compile Include="MainFormTests.cs" />
     <Compile Include="Mp3Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

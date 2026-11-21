@@ -189,6 +189,7 @@
     <Compile Include="ID3_TagIT\ThemeManager.cs" />
     <Compile Include="ID3_TagIT\SplitterGrip.cs" />
     <Compile Include="ID3_TagIT\PaneIcons.cs" />
+    <Compile Include="ID3_TagIT\TaskPaneGroup.cs" />
     <Compile Include="ID3_TagIT\frmTransfer.cs">
       <SubType>Form</SubType>
     </Compile>
