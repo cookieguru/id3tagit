@@ -279,7 +279,7 @@ namespace ID3_TagIT
     private ListView WXXXList;
     private HScrollBar YearFormat;
     private IContainer components;
-    private Panel pnlTagInfo;
+    private TaskPaneGroup pnlTagInfo;
     private LinkLabel lblUserDefined;
     private LinkLabel lblRating;
     private LinkLabel lblLyricsPane;
@@ -289,12 +289,11 @@ namespace ID3_TagIT
     private LinkLabel lblOriginalInfo;
     private LinkLabel lblDetailedInfo;
     private LinkLabel lblMainEntries;
-    private Label label1;
-    private Panel pnlCommands;
+    private TaskPaneGroup pnlCommands;
+    private FlowLayoutPanel pnlLeft;
     private LinkLabel lblSwapTtlAlb;
     private LinkLabel lblSwapArtAlb;
     private LinkLabel lblSwapArtTtl;
-    private Label lblCommand;
     private frmMain MainForm;
 
     protected override void Dispose(bool disposing)
@@ -571,7 +570,7 @@ namespace ID3_TagIT
       this.btnOK = new System.Windows.Forms.Button();
       this.btnCancel = new System.Windows.Forms.Button();
       this.pnlBottomPanel = new System.Windows.Forms.Panel();
-      this.pnlTagInfo = new System.Windows.Forms.Panel();
+      this.pnlTagInfo = new ID3_TagIT.TaskPaneGroup();
       this.lblUserDefined = new System.Windows.Forms.LinkLabel();
       this.lblRating = new System.Windows.Forms.LinkLabel();
       this.lblLyricsPane = new System.Windows.Forms.LinkLabel();
@@ -581,12 +580,11 @@ namespace ID3_TagIT
       this.lblOriginalInfo = new System.Windows.Forms.LinkLabel();
       this.lblDetailedInfo = new System.Windows.Forms.LinkLabel();
       this.lblMainEntries = new System.Windows.Forms.LinkLabel();
-      this.label1 = new System.Windows.Forms.Label();
-      this.pnlCommands = new System.Windows.Forms.Panel();
+      this.pnlCommands = new ID3_TagIT.TaskPaneGroup();
+      this.pnlLeft = new System.Windows.Forms.FlowLayoutPanel();
       this.lblSwapTtlAlb = new System.Windows.Forms.LinkLabel();
       this.lblSwapArtAlb = new System.Windows.Forms.LinkLabel();
       this.lblSwapArtTtl = new System.Windows.Forms.LinkLabel();
-      this.lblCommand = new System.Windows.Forms.Label();
       this.panDetail.SuspendLayout();
       this.Panel9.SuspendLayout();
       this.Panel5.SuspendLayout();
@@ -619,6 +617,7 @@ namespace ID3_TagIT
       this.pnlBottomPanel.SuspendLayout();
       this.pnlTagInfo.SuspendLayout();
       this.pnlCommands.SuspendLayout();
+      this.pnlLeft.SuspendLayout();
       this.SuspendLayout();
       // 
       // panDetail
@@ -3310,20 +3309,20 @@ namespace ID3_TagIT
       // 
       // pnlTagInfo
       // 
-      this.pnlTagInfo.Controls.Add(this.lblUserDefined);
-      this.pnlTagInfo.Controls.Add(this.lblRating);
-      this.pnlTagInfo.Controls.Add(this.lblLyricsPane);
-      this.pnlTagInfo.Controls.Add(this.lblPictures);
-      this.pnlTagInfo.Controls.Add(this.lblWebInfo);
-      this.pnlTagInfo.Controls.Add(this.lblInvolvedPeople);
-      this.pnlTagInfo.Controls.Add(this.lblOriginalInfo);
-      this.pnlTagInfo.Controls.Add(this.lblDetailedInfo);
-      this.pnlTagInfo.Controls.Add(this.lblMainEntries);
-      this.pnlTagInfo.Controls.Add(this.label1);
-      this.pnlTagInfo.Location = new System.Drawing.Point(12, 6);
+      this.pnlTagInfo.Body.Controls.Add(this.lblUserDefined);
+      this.pnlTagInfo.Body.Controls.Add(this.lblRating);
+      this.pnlTagInfo.Body.Controls.Add(this.lblLyricsPane);
+      this.pnlTagInfo.Body.Controls.Add(this.lblPictures);
+      this.pnlTagInfo.Body.Controls.Add(this.lblWebInfo);
+      this.pnlTagInfo.Body.Controls.Add(this.lblInvolvedPeople);
+      this.pnlTagInfo.Body.Controls.Add(this.lblOriginalInfo);
+      this.pnlTagInfo.Body.Controls.Add(this.lblDetailedInfo);
+      this.pnlTagInfo.Body.Controls.Add(this.lblMainEntries);
+      this.pnlTagInfo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
       this.pnlTagInfo.Name = "pnlTagInfo";
-      this.pnlTagInfo.Size = new System.Drawing.Size(145, 227);
-      this.pnlTagInfo.TabIndex = 110;
+      this.pnlTagInfo.Size = new System.Drawing.Size(156, 224);
+      this.pnlTagInfo.TabIndex = 0;
+      this.pnlTagInfo.Text = "TAG Information";
       // 
       // lblUserDefined
       // 
@@ -3331,7 +3330,10 @@ namespace ID3_TagIT
       this.lblUserDefined.AutoSize = true;
       this.lblUserDefined.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblUserDefined.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblUserDefined.Location = new System.Drawing.Point(22, 199);
+      this.lblUserDefined.Image = PaneIcons.Get("user-defined");
+      this.lblUserDefined.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lblUserDefined.Location = new System.Drawing.Point(6, 174);
+      this.lblUserDefined.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
       this.lblUserDefined.Name = "lblUserDefined";
       this.lblUserDefined.Size = new System.Drawing.Size(121, 13);
       this.lblUserDefined.TabIndex = 9;
@@ -3346,7 +3348,10 @@ namespace ID3_TagIT
       this.lblRating.AutoSize = true;
       this.lblRating.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblRating.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblRating.Location = new System.Drawing.Point(22, 178);
+      this.lblRating.Image = PaneIcons.Get("rating");
+      this.lblRating.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lblRating.Location = new System.Drawing.Point(6, 153);
+      this.lblRating.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
       this.lblRating.Name = "lblRating";
       this.lblRating.Size = new System.Drawing.Size(38, 13);
       this.lblRating.TabIndex = 8;
@@ -3361,7 +3366,10 @@ namespace ID3_TagIT
       this.lblLyricsPane.AutoSize = true;
       this.lblLyricsPane.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblLyricsPane.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblLyricsPane.Location = new System.Drawing.Point(22, 157);
+      this.lblLyricsPane.Image = PaneIcons.Get("lyrics");
+      this.lblLyricsPane.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lblLyricsPane.Location = new System.Drawing.Point(6, 132);
+      this.lblLyricsPane.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
       this.lblLyricsPane.Name = "lblLyricsPane";
       this.lblLyricsPane.Size = new System.Drawing.Size(34, 13);
       this.lblLyricsPane.TabIndex = 7;
@@ -3376,7 +3384,10 @@ namespace ID3_TagIT
       this.lblPictures.AutoSize = true;
       this.lblPictures.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblPictures.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblPictures.Location = new System.Drawing.Point(22, 136);
+      this.lblPictures.Image = PaneIcons.Get("pictures");
+      this.lblPictures.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lblPictures.Location = new System.Drawing.Point(6, 111);
+      this.lblPictures.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
       this.lblPictures.Name = "lblPictures";
       this.lblPictures.Size = new System.Drawing.Size(45, 13);
       this.lblPictures.TabIndex = 6;
@@ -3391,7 +3402,10 @@ namespace ID3_TagIT
       this.lblWebInfo.AutoSize = true;
       this.lblWebInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblWebInfo.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblWebInfo.Location = new System.Drawing.Point(22, 115);
+      this.lblWebInfo.Image = PaneIcons.Get("web-info");
+      this.lblWebInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lblWebInfo.Location = new System.Drawing.Point(6, 90);
+      this.lblWebInfo.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
       this.lblWebInfo.Name = "lblWebInfo";
       this.lblWebInfo.Size = new System.Drawing.Size(85, 13);
       this.lblWebInfo.TabIndex = 5;
@@ -3406,7 +3420,10 @@ namespace ID3_TagIT
       this.lblInvolvedPeople.AutoSize = true;
       this.lblInvolvedPeople.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblInvolvedPeople.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblInvolvedPeople.Location = new System.Drawing.Point(22, 94);
+      this.lblInvolvedPeople.Image = PaneIcons.Get("involved-people");
+      this.lblInvolvedPeople.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lblInvolvedPeople.Location = new System.Drawing.Point(6, 69);
+      this.lblInvolvedPeople.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
       this.lblInvolvedPeople.Name = "lblInvolvedPeople";
       this.lblInvolvedPeople.Size = new System.Drawing.Size(84, 13);
       this.lblInvolvedPeople.TabIndex = 4;
@@ -3421,7 +3438,10 @@ namespace ID3_TagIT
       this.lblOriginalInfo.AutoSize = true;
       this.lblOriginalInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblOriginalInfo.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblOriginalInfo.Location = new System.Drawing.Point(22, 73);
+      this.lblOriginalInfo.Image = PaneIcons.Get("original-info");
+      this.lblOriginalInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lblOriginalInfo.Location = new System.Drawing.Point(6, 48);
+      this.lblOriginalInfo.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
       this.lblOriginalInfo.Name = "lblOriginalInfo";
       this.lblOriginalInfo.Size = new System.Drawing.Size(97, 13);
       this.lblOriginalInfo.TabIndex = 3;
@@ -3436,7 +3456,10 @@ namespace ID3_TagIT
       this.lblDetailedInfo.AutoSize = true;
       this.lblDetailedInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblDetailedInfo.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblDetailedInfo.Location = new System.Drawing.Point(22, 52);
+      this.lblDetailedInfo.Image = PaneIcons.Get("detailed-info");
+      this.lblDetailedInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lblDetailedInfo.Location = new System.Drawing.Point(6, 27);
+      this.lblDetailedInfo.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
       this.lblDetailedInfo.Name = "lblDetailedInfo";
       this.lblDetailedInfo.Size = new System.Drawing.Size(101, 13);
       this.lblDetailedInfo.TabIndex = 2;
@@ -3451,7 +3474,10 @@ namespace ID3_TagIT
       this.lblMainEntries.AutoSize = true;
       this.lblMainEntries.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblMainEntries.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblMainEntries.Location = new System.Drawing.Point(22, 31);
+      this.lblMainEntries.Image = PaneIcons.Get("main-entries");
+      this.lblMainEntries.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lblMainEntries.Location = new System.Drawing.Point(6, 6);
+      this.lblMainEntries.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
       this.lblMainEntries.Name = "lblMainEntries";
       this.lblMainEntries.Size = new System.Drawing.Size(65, 13);
       this.lblMainEntries.TabIndex = 1;
@@ -3460,27 +3486,29 @@ namespace ID3_TagIT
       this.lblMainEntries.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblMainEntries.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblMainEntries_LinkClicked);
       // 
-      // label1
-      // 
-      this.label1.AutoSize = true;
-      this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World);
-      this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.label1.Location = new System.Drawing.Point(11, 9);
-      this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(100, 15);
-      this.label1.TabIndex = 0;
-      this.label1.Text = "TAG Information";
       // 
       // pnlCommands
       // 
-      this.pnlCommands.Controls.Add(this.lblSwapTtlAlb);
-      this.pnlCommands.Controls.Add(this.lblSwapArtAlb);
-      this.pnlCommands.Controls.Add(this.lblSwapArtTtl);
-      this.pnlCommands.Controls.Add(this.lblCommand);
-      this.pnlCommands.Location = new System.Drawing.Point(12, 235);
+      this.pnlCommands.Body.Controls.Add(this.lblSwapTtlAlb);
+      this.pnlCommands.Body.Controls.Add(this.lblSwapArtAlb);
+      this.pnlCommands.Body.Controls.Add(this.lblSwapArtTtl);
+      this.pnlCommands.Margin = new System.Windows.Forms.Padding(0);
       this.pnlCommands.Name = "pnlCommands";
-      this.pnlCommands.Size = new System.Drawing.Size(135, 102);
-      this.pnlCommands.TabIndex = 111;
+      this.pnlCommands.Size = new System.Drawing.Size(156, 98);
+      this.pnlCommands.TabIndex = 1;
+      this.pnlCommands.Text = "Commands";
+      // 
+      // pnlLeft
+      // 
+      this.pnlLeft.Controls.Add(this.pnlTagInfo);
+      this.pnlLeft.Controls.Add(this.pnlCommands);
+      this.pnlLeft.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+      this.pnlLeft.Location = new System.Drawing.Point(0, 0);
+      this.pnlLeft.Name = "pnlLeft";
+      this.pnlLeft.Padding = new System.Windows.Forms.Padding(6);
+      this.pnlLeft.Size = new System.Drawing.Size(168, 480);
+      this.pnlLeft.TabIndex = 110;
+      this.pnlLeft.WrapContents = false;
       // 
       // lblSwapTtlAlb
       // 
@@ -3488,7 +3516,7 @@ namespace ID3_TagIT
       this.lblSwapTtlAlb.AutoSize = true;
       this.lblSwapTtlAlb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblSwapTtlAlb.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblSwapTtlAlb.Location = new System.Drawing.Point(22, 73);
+      this.lblSwapTtlAlb.Location = new System.Drawing.Point(26, 48);
       this.lblSwapTtlAlb.Name = "lblSwapTtlAlb";
       this.lblSwapTtlAlb.Size = new System.Drawing.Size(89, 13);
       this.lblSwapTtlAlb.TabIndex = 5;
@@ -3503,7 +3531,7 @@ namespace ID3_TagIT
       this.lblSwapArtAlb.AutoSize = true;
       this.lblSwapArtAlb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblSwapArtAlb.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblSwapArtAlb.Location = new System.Drawing.Point(22, 52);
+      this.lblSwapArtAlb.Location = new System.Drawing.Point(26, 27);
       this.lblSwapArtAlb.Name = "lblSwapArtAlb";
       this.lblSwapArtAlb.Size = new System.Drawing.Size(92, 13);
       this.lblSwapArtAlb.TabIndex = 4;
@@ -3518,7 +3546,7 @@ namespace ID3_TagIT
       this.lblSwapArtTtl.AutoSize = true;
       this.lblSwapArtTtl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblSwapArtTtl.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblSwapArtTtl.Location = new System.Drawing.Point(22, 31);
+      this.lblSwapArtTtl.Location = new System.Drawing.Point(26, 6);
       this.lblSwapArtTtl.Name = "lblSwapArtTtl";
       this.lblSwapArtTtl.Size = new System.Drawing.Size(83, 13);
       this.lblSwapArtTtl.TabIndex = 3;
@@ -3527,16 +3555,6 @@ namespace ID3_TagIT
       this.lblSwapArtTtl.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblSwapArtTtl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblSwapArtTtl_LinkClicked);
       // 
-      // lblCommand
-      // 
-      this.lblCommand.AutoSize = true;
-      this.lblCommand.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World);
-      this.lblCommand.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblCommand.Location = new System.Drawing.Point(11, 9);
-      this.lblCommand.Name = "lblCommand";
-      this.lblCommand.Size = new System.Drawing.Size(68, 15);
-      this.lblCommand.TabIndex = 0;
-      this.lblCommand.Text = "Commands";
       // 
       // frmTAG2Multi
       // 
@@ -3545,8 +3563,7 @@ namespace ID3_TagIT
       this.CancelButton = this.btnCancel;
       this.ClientSize = new System.Drawing.Size(859, 576);
       this.ControlBox = false;
-      this.Controls.Add(this.pnlCommands);
-      this.Controls.Add(this.pnlTagInfo);
+      this.Controls.Add(this.pnlLeft);
       this.Controls.Add(this.panMain);
       this.Controls.Add(this.panOriginal);
       this.Controls.Add(this.panLyrics);
@@ -3612,6 +3629,8 @@ namespace ID3_TagIT
       this.pnlTagInfo.PerformLayout();
       this.pnlCommands.ResumeLayout(false);
       this.pnlCommands.PerformLayout();
+      this.pnlLeft.ResumeLayout(false);
+      this.pnlLeft.PerformLayout();
       this.ResumeLayout(false);
 
     }

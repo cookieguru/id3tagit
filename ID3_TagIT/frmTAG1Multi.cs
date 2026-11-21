@@ -40,11 +40,10 @@ namespace ID3_TagIT
     private MaskedTextBox txtTrack;
     private MaskedTextBox txtYear;
     private IContainer components;
-    private Panel pnlCommands;
+    private TaskPaneGroup pnlCommands;
     private LinkLabel lblSwapTtlAlb;
     private LinkLabel lblSwapArtAlb;
     private LinkLabel lblSwapArtTtl;
-    private Label lblCommand;
     private frmMain MainForm;
 
     protected override void Dispose(bool disposing)
@@ -84,11 +83,10 @@ namespace ID3_TagIT
       this.txtYear = new System.Windows.Forms.MaskedTextBox();
       this.txtTrack = new System.Windows.Forms.MaskedTextBox();
       this.lblInfoStar = new System.Windows.Forms.Label();
-      this.pnlCommands = new System.Windows.Forms.Panel();
+      this.pnlCommands = new ID3_TagIT.TaskPaneGroup();
       this.lblSwapTtlAlb = new System.Windows.Forms.LinkLabel();
       this.lblSwapArtAlb = new System.Windows.Forms.LinkLabel();
       this.lblSwapArtTtl = new System.Windows.Forms.LinkLabel();
-      this.lblCommand = new System.Windows.Forms.Label();
       this.pnlCommands.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -331,14 +329,14 @@ namespace ID3_TagIT
       // 
       // pnlCommands
       // 
-      this.pnlCommands.Controls.Add(this.lblSwapTtlAlb);
-      this.pnlCommands.Controls.Add(this.lblSwapArtAlb);
-      this.pnlCommands.Controls.Add(this.lblSwapArtTtl);
-      this.pnlCommands.Controls.Add(this.lblCommand);
-      this.pnlCommands.Location = new System.Drawing.Point(12, 12);
+      this.pnlCommands.Body.Controls.Add(this.lblSwapTtlAlb);
+      this.pnlCommands.Body.Controls.Add(this.lblSwapArtAlb);
+      this.pnlCommands.Body.Controls.Add(this.lblSwapArtTtl);
+      this.pnlCommands.Location = new System.Drawing.Point(6, 12);
       this.pnlCommands.Name = "pnlCommands";
-      this.pnlCommands.Size = new System.Drawing.Size(135, 102);
+      this.pnlCommands.Size = new System.Drawing.Size(148, 98);
       this.pnlCommands.TabIndex = 112;
+      this.pnlCommands.Text = "Commands";
       // 
       // lblSwapTtlAlb
       // 
@@ -346,7 +344,7 @@ namespace ID3_TagIT
       this.lblSwapTtlAlb.AutoSize = true;
       this.lblSwapTtlAlb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblSwapTtlAlb.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblSwapTtlAlb.Location = new System.Drawing.Point(22, 73);
+      this.lblSwapTtlAlb.Location = new System.Drawing.Point(26, 48);
       this.lblSwapTtlAlb.Name = "lblSwapTtlAlb";
       this.lblSwapTtlAlb.Size = new System.Drawing.Size(89, 13);
       this.lblSwapTtlAlb.TabIndex = 5;
@@ -361,7 +359,7 @@ namespace ID3_TagIT
       this.lblSwapArtAlb.AutoSize = true;
       this.lblSwapArtAlb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblSwapArtAlb.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblSwapArtAlb.Location = new System.Drawing.Point(22, 52);
+      this.lblSwapArtAlb.Location = new System.Drawing.Point(26, 27);
       this.lblSwapArtAlb.Name = "lblSwapArtAlb";
       this.lblSwapArtAlb.Size = new System.Drawing.Size(92, 13);
       this.lblSwapArtAlb.TabIndex = 4;
@@ -376,7 +374,7 @@ namespace ID3_TagIT
       this.lblSwapArtTtl.AutoSize = true;
       this.lblSwapArtTtl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblSwapArtTtl.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblSwapArtTtl.Location = new System.Drawing.Point(22, 31);
+      this.lblSwapArtTtl.Location = new System.Drawing.Point(26, 6);
       this.lblSwapArtTtl.Name = "lblSwapArtTtl";
       this.lblSwapArtTtl.Size = new System.Drawing.Size(83, 13);
       this.lblSwapArtTtl.TabIndex = 3;
@@ -385,16 +383,6 @@ namespace ID3_TagIT
       this.lblSwapArtTtl.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
       this.lblSwapArtTtl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblSwapArtTtl_LinkClicked);
       // 
-      // lblCommand
-      // 
-      this.lblCommand.AutoSize = true;
-      this.lblCommand.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World);
-      this.lblCommand.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-      this.lblCommand.Location = new System.Drawing.Point(11, 9);
-      this.lblCommand.Name = "lblCommand";
-      this.lblCommand.Size = new System.Drawing.Size(68, 15);
-      this.lblCommand.TabIndex = 0;
-      this.lblCommand.Text = "Commands";
       // 
       // frmTAG1Multi
       // 
