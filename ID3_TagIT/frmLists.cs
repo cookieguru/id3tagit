@@ -117,7 +117,7 @@ namespace ID3_TagIT
       this.btnUp = new System.Windows.Forms.Button();
       this.btnDown = new System.Windows.Forms.Button();
       this.btnCreateQuickLists = new System.Windows.Forms.Button();
-      this.tabControl2 = new System.Windows.Forms.TabControl();
+      this.tabControl2 = new ThemedTabControl();
       this.tabPage1 = new System.Windows.Forms.TabPage();
       this.tabPage2 = new System.Windows.Forms.TabPage();
       this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -700,7 +700,7 @@ namespace ID3_TagIT
     #region Local variables
 
     private string vstrComparePath;
-    private System.Windows.Forms.TabControl tabControl2;
+    private ThemedTabControl tabControl2;
     private TabPage tabPage1;
     private TabPage tabPage2;
     private TabPage tabPage3;

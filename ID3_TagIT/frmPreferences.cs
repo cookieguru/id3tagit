@@ -123,7 +123,7 @@ namespace ID3_TagIT
     private IContainer components;
     private Button btnCancel;
     private Button btnOK;
-    private System.Windows.Forms.TabControl tabControl1;
+    private ThemedTabControl tabControl1;
     private TabPage tabPage1;
     private TabPage tabPage2;
     private TabPage tabPage3;
@@ -258,7 +258,7 @@ namespace ID3_TagIT
       this.chkAudioChecksumCalc = new System.Windows.Forms.CheckBox();
       this.btnCancel = new System.Windows.Forms.Button();
       this.btnOK = new System.Windows.Forms.Button();
-      this.tabControl1 = new System.Windows.Forms.TabControl();
+      this.tabControl1 = new ThemedTabControl();
       this.tabPage1 = new System.Windows.Forms.TabPage();
       this.tabPage2 = new System.Windows.Forms.TabPage();
       this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -1734,7 +1734,9 @@ namespace ID3_TagIT
       Declarations.objSettings.ColorCompareTextDark = this.ColorCompareTextDark.BackColor.ToArgb();
       Declarations.objSettings.UseThemes = this.chkWinXPThemes.Checked;
 
-      if (this.cmbTheme.SelectedIndex >= 0 && this.cmbTheme.SelectedIndex != Declarations.objSettings.Theme)
+      int shownTheme = Math.Min((int)Declarations.objSettings.Theme, this.cmbTheme.Items.Count - 1);
+
+      if (this.cmbTheme.SelectedIndex >= 0 && this.cmbTheme.SelectedIndex != shownTheme)
       {
         Declarations.objSettings.Theme = (byte)this.cmbTheme.SelectedIndex;
         ThemeManager.Refresh();
@@ -1928,7 +1930,11 @@ namespace ID3_TagIT
       this.cmbTheme.Items.Clear();
       this.cmbTheme.Items.Add(StringType.FromObject(Declarations.objResources.ResStrings["ThemeSystem"]));
       this.cmbTheme.Items.Add(StringType.FromObject(Declarations.objResources.ResStrings["ThemeLight"]));
-      this.cmbTheme.Items.Add(StringType.FromObject(Declarations.objResources.ResStrings["ThemeDark"]));
+
+      // Below the dark mode floor the Dark choice is left out, and a saved Dark setting stays.
+      if (NativeTheme.DarkSupported)
+        this.cmbTheme.Items.Add(StringType.FromObject(Declarations.objResources.ResStrings["ThemeDark"]));
+
       this.cmbTheme.SelectedIndex = Math.Min((int)Declarations.objSettings.Theme, this.cmbTheme.Items.Count - 1);
       this.cmbShell.Enabled = false;
       this.txtPath.Enabled = true;

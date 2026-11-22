@@ -11,17 +11,26 @@ namespace ID3_TagIT.Tests
       public readonly Button Button = new Button();
       public readonly Button Swatch = new Button();
       public readonly TextBox TextBox = new TextBox();
+      public readonly TextBox Notes = new TextBox();
       public readonly Label Heading = new Label();
       public readonly ListView List = new ListView();
+      public readonly TabControl Tabs = new TabControl();
+      public readonly TabPage Page = new TabPage();
 
       public TestForm()
       {
         this.Button.BackColor = SystemColors.Control; // as the designer writes it
+        this.Button.UseVisualStyleBackColor = true;
+        this.Page.BackColor = SystemColors.Control;
+        this.Page.UseVisualStyleBackColor = true;
+        this.Tabs.TabPages.Add(this.Page);
         this.Swatch.BackColor = Color.FromArgb(255, 255, 128); // a user's highlight colour
         this.TextBox.BorderStyle = BorderStyle.Fixed3D;
         this.Heading.ForeColor = Color.FromArgb(33, 93, 198); // dark blue heading
         this.List.GridLines = true;
-        this.Controls.AddRange(new Control[] { this.Button, this.Swatch, this.TextBox, this.Heading, this.List });
+        this.Notes.Multiline = true;
+        this.Notes.BorderStyle = BorderStyle.Fixed3D;
+        this.Controls.AddRange(new Control[] { this.Button, this.Swatch, this.TextBox, this.Notes, this.Heading, this.List, this.Tabs });
       }
     }
 
@@ -96,8 +105,81 @@ namespace ID3_TagIT.Tests
     {
       WithTheme(ThemeManager.THEME_DARK, delegate (TestForm form)
       {
-        Assert.Equal(BorderStyle.FixedSingle, form.TextBox.BorderStyle);
+        Assert.Equal(BorderStyle.FixedSingle, form.Notes.BorderStyle);
         Assert.False(form.List.GridLines);
+      });
+    }
+
+    [Fact]
+    public void DarkModeKeepsTheBorderWindowsDrawsOnSingleLineTextBoxes()
+    {
+      WithTheme(ThemeManager.THEME_DARK, delegate (TestForm form)
+      {
+        Assert.Equal(BorderStyle.Fixed3D, form.TextBox.BorderStyle);
+      });
+    }
+
+    [Fact]
+    public void DarkModePaintsTheTabPageDark()
+    {
+      TestApp.EnsureInitialized();
+      Sta.Run(delegate ()
+      {
+        Application.EnableVisualStyles();
+
+        using (Form form = new Form())
+        {
+          ThemedTabControl tabs = new ThemedTabControl();
+          TabPage page = new TabPage();
+          page.Padding = new Padding(3);
+          page.UseVisualStyleBackColor = true;
+          tabs.TabPages.Add(page);
+          tabs.Dock = DockStyle.Fill;
+          form.Controls.Add(tabs);
+          form.ClientSize = new Size(300, 200);
+
+          SetTheme(ThemeManager.THEME_LIGHT);
+          ThemeManager.Register(form);
+
+          try
+          {
+            SetTheme(ThemeManager.THEME_DARK);
+            form.Show();
+            ThemeManager.Apply(form);
+
+            // With visual styles on, a page using the visual style color reports Transparent.
+            Assert.False(page.UseVisualStyleBackColor);
+            Assert.Equal(ThemeManager.DarkSurface.ToArgb(), page.BackColor.ToArgb());
+          }
+          finally
+          {
+            SetTheme(ThemeManager.THEME_LIGHT);
+          }
+        }
+      });
+    }
+
+    [Fact]
+    public void DarkModeThemesAButtonOnATransparentPanel()
+    {
+      WithTheme(ThemeManager.THEME_DARK, delegate (TestForm form)
+      {
+        TaskPaneGroup group = new TaskPaneGroup();
+        Button button = new Button();
+        button.UseVisualStyleBackColor = true;
+        group.Body.Controls.Add(button);
+        form.Controls.Add(group);
+        ThemeManager.Apply(form);
+
+        Assert.Equal(FlatStyle.Flat, button.FlatStyle);
+        Assert.False(button.UseVisualStyleBackColor);
+        Assert.Equal(ThemeManager.DarkButton.ToArgb(), button.BackColor.ToArgb());
+
+        SetTheme(ThemeManager.THEME_LIGHT);
+        ThemeManager.Apply(form);
+
+        Assert.Equal(FlatStyle.Standard, button.FlatStyle);
+        Assert.True(button.UseVisualStyleBackColor);
       });
     }
 
@@ -113,9 +195,57 @@ namespace ID3_TagIT.Tests
         Assert.Equal(SystemColors.Window, form.TextBox.BackColor);
         Assert.Equal(Color.FromArgb(33, 93, 198).ToArgb(), form.Heading.ForeColor.ToArgb());
         Assert.Equal(FlatStyle.Standard, form.Button.FlatStyle);
-        Assert.Equal(BorderStyle.Fixed3D, form.TextBox.BorderStyle);
+        Assert.Equal(BorderStyle.Fixed3D, form.Notes.BorderStyle);
         Assert.True(form.List.GridLines);
       });
+    }
+
+    [Fact]
+    public void LightModeRestoresVisualStyleBackColor()
+    {
+      WithTheme(ThemeManager.THEME_DARK, delegate (TestForm form)
+      {
+        Assert.False(form.Button.UseVisualStyleBackColor);
+
+        SetTheme(ThemeManager.THEME_LIGHT);
+        ThemeManager.Apply(form);
+
+        Assert.True(form.Button.UseVisualStyleBackColor);
+      });
+    }
+
+    [Fact]
+    public void LightModeRestoresTabPageVisualStyleBackColor()
+    {
+      WithTheme(ThemeManager.THEME_DARK, delegate (TestForm form)
+      {
+        Assert.False(form.Page.UseVisualStyleBackColor);
+
+        SetTheme(ThemeManager.THEME_LIGHT);
+        ThemeManager.Apply(form);
+
+        Assert.True(form.Page.UseVisualStyleBackColor);
+      });
+    }
+
+    [Fact]
+    public void SwatchKeepsItsColorInBothThemes()
+    {
+      WithTheme(ThemeManager.THEME_DARK, delegate (TestForm form)
+      {
+        AssertSwatchIsUntouched(form);
+
+        SetTheme(ThemeManager.THEME_LIGHT);
+        ThemeManager.Apply(form);
+
+        AssertSwatchIsUntouched(form);
+      });
+    }
+
+    private static void AssertSwatchIsUntouched(TestForm form)
+    {
+      Assert.Equal(Color.FromArgb(255, 255, 128).ToArgb(), form.Swatch.BackColor.ToArgb());
+      Assert.False(form.Swatch.UseVisualStyleBackColor);
     }
 
     [Fact]

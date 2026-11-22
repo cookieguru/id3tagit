@@ -18,7 +18,7 @@ namespace ID3_TagIT
 
     private void InitializeComponent()
     {
-      this.tabShortcuts = new System.Windows.Forms.TabControl();
+      this.tabShortcuts = new ThemedTabControl();
       this.tabNormalKeys = new System.Windows.Forms.TabPage();
       this.lvwNormalKeys = new System.Windows.Forms.ListView();
       this.colNormalKey = new System.Windows.Forms.ColumnHeader();
@@ -187,7 +187,7 @@ namespace ID3_TagIT
 
     #endregion
 
-    private TabControl tabShortcuts;
+    private ThemedTabControl tabShortcuts;
     private TabPage tabNormalKeys;
     private ListView lvwNormalKeys;
     private ColumnHeader colNormalKey;

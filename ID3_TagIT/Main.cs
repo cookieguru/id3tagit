@@ -163,6 +163,7 @@ namespace ID3_TagIT
     [STAThread]
     public static void Main()
     {
+      Application.EnableVisualStyles();
       Debug.Listeners.Add(new TextWriterTraceListener(objDebugStream));
       Debug.AutoFlush = true;
 

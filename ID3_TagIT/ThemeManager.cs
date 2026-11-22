@@ -81,6 +81,7 @@ namespace ID3_TagIT
     {
       vbooIsDark = ResolveDark();
       UpdateGlobalRenderer();
+      NativeTheme.SetAppDark(vbooIsDark);
 
       if (!vbooListening)
       {
@@ -101,6 +102,7 @@ namespace ID3_TagIT
 
       vbooIsDark = dark;
       UpdateGlobalRenderer();
+      NativeTheme.SetAppDark(dark);
 
       foreach (Form form in GetRegisteredForms())
         if (form.IsHandleCreated && !form.IsDisposed)
@@ -182,7 +184,7 @@ namespace ID3_TagIT
     private static bool ResolveDark()
     {
       // High contrast themes define their own colors; never override them.
-      if (SystemInformation.HighContrast)
+      if (SystemInformation.HighContrast || !NativeTheme.DarkSupported)
         return false;
 
       byte mode = THEME_SYSTEM;
@@ -345,7 +347,7 @@ namespace ID3_TagIT
       if (control is Button)
         backRole = ColorRole.ButtonBack;
 
-      ThemeColor(control, "BackColor", () => control.BackColor, v => control.BackColor = v, backRole);
+      ThemeBackColor(control, backRole);
       ThemeColor(control, "ForeColor", () => control.ForeColor, v => control.ForeColor = v, ColorRole.Fore);
 
       LinkLabel link = control as LinkLabel;
@@ -372,6 +374,7 @@ namespace ID3_TagIT
       }
 
       ApplyBorderStyle(control);
+      NativeTheme.Apply(control, vbooIsDark);
 
       TreeView tree = control as TreeView;
 
@@ -387,10 +390,25 @@ namespace ID3_TagIT
         AttachPainter(list, () => new DarkHeaderPainter(list));
       }
 
-      TabControl tabs = control as TabControl;
+      ThemedTabControl tabs = control as ThemedTabControl;
 
       if (tabs != null)
-        AttachPainter(tabs, () => new DarkTabPainter(tabs));
+        tabs.DarkPaint = vbooIsDark;
+
+      GroupBox groupBox = control as GroupBox;
+
+      if (groupBox != null)
+        AttachPainter(groupBox, () => new DarkGroupBoxPainter(groupBox));
+
+      TextBoxBase edit = control as TextBoxBase;
+
+      if (edit != null && edit.Multiline)
+        AttachPainter(edit, () => new DarkBorderPainter(edit, true));
+
+      UpDownBase upDown = control as UpDownBase;
+
+      if (upDown != null)
+        AttachPainter(upDown, () => new DarkBorderPainter(upDown, false));
 
       DataGrid grid = control as DataGrid;
 
@@ -404,6 +422,36 @@ namespace ID3_TagIT
         group.Invalidate();
     }
 
+    // Assigning BackColor clears UseVisualStyleBackColor, so dark mode notes the flag before
+    // the assignment and light mode puts it back after the color is restored.
+    private static void ThemeBackColor(Control control, ColorRole role)
+    {
+      if (vbooIsDark)
+        ThemeVisualStyleBackColor(control);
+
+      ThemeColor(control, "BackColor", () => control.BackColor, v => control.BackColor = v, role);
+
+      if (!vbooIsDark)
+        ThemeVisualStyleBackColor(control);
+    }
+
+    private static void ThemeVisualStyleBackColor(Control control)
+    {
+      ButtonBase button = control as ButtonBase;
+      TabPage page = control as TabPage;
+
+      // A page using the visual style color reports Transparent, so its flag is the test.
+      bool usesVisualStyleColor = (page != null && page.UseVisualStyleBackColor);
+
+      if (vbooIsDark && !usesVisualStyleColor && !IsThemeOrSystemColor(control.BackColor))
+        return;
+
+      if (button != null)
+        ThemeValue(button, "UseVisualStyleBackColor", () => button.UseVisualStyleBackColor, v => button.UseVisualStyleBackColor = v, false);
+      else if (page != null)
+        ThemeValue(page, "UseVisualStyleBackColor", () => page.UseVisualStyleBackColor, v => page.UseVisualStyleBackColor = v, false);
+    }
+
     // Classic sunken (Fixed3D) borders are drawn with white highlights; use a single line.
     private static void ApplyBorderStyle(Control control)
     {
@@ -415,6 +463,10 @@ namespace ID3_TagIT
       Label label = control as Label;
       Panel panel = control as Panel;
       UpDownBase upDown = control as UpDownBase;
+
+      // Windows draws a dark border, and a focus border, around single-line text boxes itself.
+      if (textBox != null && NativeTheme.DrawsDarkBorder(textBox))
+        return;
 
       if (textBox != null)
         ThemeValueIf(textBox, "BorderStyle", () => textBox.BorderStyle, v => textBox.BorderStyle = v, BorderStyle.FixedSingle, is3D);
@@ -605,7 +657,7 @@ namespace ID3_TagIT
       if (color.IsSystemColor)
         return true;
 
-      if (color.IsKnownColor && (color.ToKnownColor() == KnownColor.White || color.ToKnownColor() == KnownColor.Black))
+      if (color.IsKnownColor && (color.ToKnownColor() == KnownColor.White || color.ToKnownColor() == KnownColor.Black || color.ToKnownColor() == KnownColor.Transparent))
         return true;
 
       int argb = color.ToArgb();
@@ -616,10 +668,14 @@ namespace ID3_TagIT
     // Returns the dark replacement for a color, or Color.Empty to leave it unchanged.
     private static Color DarkEquivalent(Color color, ColorRole role)
     {
+      KnownColor known = color.IsKnownColor ? color.ToKnownColor() : 0;
+
+      // A button on a transparent panel inherits Transparent, which is not a color a user chose.
+      if (role == ColorRole.ButtonBack && known == KnownColor.Transparent)
+        return DarkButton;
+
       if (color.IsEmpty || color.A < 255)
         return Color.Empty;
-
-      KnownColor known = color.IsKnownColor ? color.ToKnownColor() : 0;
 
       switch (role)
       {
@@ -749,11 +805,20 @@ namespace ID3_TagIT
   }
 
   // Base for the window subclasses that paint native parts WinForms can't recolor (the
-  // ListView column header and the TabControl tab strip). Only active in dark mode.
+  // ListView column header). Only active in dark mode.
   internal abstract class ThemePainter : NativeWindow
   {
     protected const int WM_PAINT = 0xF;
     protected const int WM_ERASEBKGND = 0x14;
+
+    // False for a painter that only draws over what Windows painted.
+    protected virtual bool OwnsPainting
+    {
+      get
+      {
+        return true;
+      }
+    }
 
     public abstract void Attach();
 
@@ -765,7 +830,7 @@ namespace ID3_TagIT
 
     protected override void WndProc(ref Message m)
     {
-      if (ThemeManager.IsDark)
+      if (ThemeManager.IsDark && this.OwnsPainting)
       {
         if (m.Msg == WM_ERASEBKGND)
         {
@@ -1032,73 +1097,6 @@ namespace ID3_TagIT
 
     [DllImport("comctl32.dll")]
     private static extern bool ImageList_GetIconSize(IntPtr himl, out int cx, out int cy);
-  }
-
-  // Paints a TabControl's tab strip and page border; the tab pages paint themselves.
-  internal sealed class DarkTabPainter : ThemePainter
-  {
-    private readonly TabControl objTabControl;
-
-    public DarkTabPainter(TabControl tabControl)
-    {
-      this.objTabControl = tabControl;
-    }
-
-    public override void Attach()
-    {
-      if (this.objTabControl.IsHandleCreated)
-        this.AssignTo(this.objTabControl.Handle);
-    }
-
-    protected override void Paint(Graphics g, Rectangle bounds)
-    {
-      TabControl tabs = this.objTabControl;
-      Color parentBack = (tabs.Parent != null) ? tabs.Parent.BackColor : ThemeManager.DarkSurface;
-      Color pageBack = (tabs.SelectedTab != null) ? tabs.SelectedTab.BackColor : ThemeManager.DarkSurface;
-
-      g.Clear(parentBack);
-
-      Rectangle page = tabs.DisplayRectangle;
-      Rectangle frame = Rectangle.Inflate(page, 2, 2);
-
-      using (SolidBrush pageBrush = new SolidBrush(pageBack))
-      using (SolidBrush tabBrush = new SolidBrush(ThemeManager.DarkRaised))
-      using (Pen border = new Pen(ThemeManager.DarkBorder))
-      {
-        g.FillRectangle(pageBrush, frame);
-        g.DrawRectangle(border, frame.X, frame.Y, frame.Width - 1, frame.Height - 1);
-
-        for (int i = 0; i < tabs.TabCount; i++)
-        {
-          Rectangle tab = tabs.GetTabRect(i);
-          bool selected = (i == tabs.SelectedIndex);
-
-          if (selected)
-            tab = Rectangle.FromLTRB(tab.Left - 2, tab.Top - 2, tab.Right + 2, frame.Top + 1);
-
-          g.FillRectangle(selected ? pageBrush : tabBrush, tab);
-          g.DrawLine(border, tab.Left, tab.Bottom - 1, tab.Left, tab.Top);
-          g.DrawLine(border, tab.Left, tab.Top, tab.Right - 1, tab.Top);
-          g.DrawLine(border, tab.Right - 1, tab.Top, tab.Right - 1, tab.Bottom - 1);
-
-          if (!selected)
-            g.DrawLine(border, tab.Left, tab.Bottom - 1, tab.Right - 1, tab.Bottom - 1);
-
-          TabPage tabPage = tabs.TabPages[i];
-          Rectangle textBounds = tab;
-
-          if (tabs.ImageList != null && tabPage.ImageIndex >= 0 && tabPage.ImageIndex < tabs.ImageList.Images.Count)
-          {
-            Image image = tabs.ImageList.Images[tabPage.ImageIndex];
-            g.DrawImage(image, tab.Left + 4, tab.Top + ((tab.Height - image.Height) / 2));
-            textBounds = Rectangle.FromLTRB(tab.Left + image.Width + 6, tab.Top, tab.Right, tab.Bottom);
-          }
-
-          TextRenderer.DrawText(g, tabPage.Text, tabs.Font, textBounds, ThemeManager.DarkText,
-            TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine | TextFormatFlags.EndEllipsis);
-        }
-      }
-    }
   }
 
   internal sealed class DarkToolStripRenderer : ToolStripProfessionalRenderer

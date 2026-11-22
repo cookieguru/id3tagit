@@ -60,7 +60,7 @@ namespace ID3_TagIT
     private TextBox txtName;
     private TextBox txtNewCommD;
     private IContainer components;
-    private System.Windows.Forms.TabControl tabControl1;
+    private ThemedTabControl tabControl1;
     private TabPage tabPage1;
     private TabPage tabPage2;
     private TabPage tabPage3;
@@ -124,7 +124,7 @@ namespace ID3_TagIT
       this.btnOK = new System.Windows.Forms.Button();
       this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
       this.FolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-      this.tabControl1 = new System.Windows.Forms.TabControl();
+      this.tabControl1 = new ThemedTabControl();
       this.tabPage1 = new System.Windows.Forms.TabPage();
       this.tabPage2 = new System.Windows.Forms.TabPage();
       this.tabPage3 = new System.Windows.Forms.TabPage();

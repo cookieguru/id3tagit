@@ -52,6 +52,7 @@
     <Compile Include="CommandLineTests.cs" />
     <Compile Include="Crc32Tests.cs" />
     <Compile Include="FolderTreeTests.cs" />
+    <Compile Include="NativeThemeTests.cs" />
     <Compile Include="PaneIconsTests.cs" />
     <Compile Include="TagFormPaneTests.cs" />
     <Compile Include="TaskPaneGroupTests.cs" />

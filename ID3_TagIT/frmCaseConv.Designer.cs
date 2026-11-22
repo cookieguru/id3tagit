@@ -37,7 +37,7 @@ namespace ID3_TagIT
     private RadioButton optAllLow;
     private RadioButton optAllUp;
     private RadioButton optFirstUp;
-    private TabControl tabControl1;
+    private ThemedTabControl tabControl1;
     private TabPage tabPage3;
     private TabPage tabPage4;
     private TextBox txtException;
@@ -49,7 +49,7 @@ namespace ID3_TagIT
     {
       this.components = new System.ComponentModel.Container();
       this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
-      this.tabControl1 = new System.Windows.Forms.TabControl();
+      this.tabControl1 = new ThemedTabControl();
       this.tabPage3 = new System.Windows.Forms.TabPage();
       this.frameTAGOptions = new System.Windows.Forms.GroupBox();
       this.chkArtist = new System.Windows.Forms.CheckBox();
