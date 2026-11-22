@@ -68,6 +68,7 @@
     <Compile Include="TagEditorPaneTests.cs" />
     <Compile Include="TagFileTests.cs" />
     <Compile Include="TagRoundTripTests.cs" />
+    <Compile Include="DarkControlsTests.cs" />
     <Compile Include="ThemeTests.cs" />
   </ItemGroup>
   <ItemGroup>
