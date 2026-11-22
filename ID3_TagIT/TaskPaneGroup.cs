@@ -17,6 +17,7 @@ namespace ID3_TagIT
     private const int BORDER = 1;
     private const int HEADER_PADDING = 10;
     private const int TEXT_INDENT = 6;
+    private const int ICON_GAP = 4;
     private const int CHEVRON_SIZE = 17;
     private const int CHEVRON_MARGIN = 4;
     private const int ARROW_WIDTH = 7;
@@ -31,6 +32,7 @@ namespace ID3_TagIT
 
     private readonly Panel objBody = new Panel();
     private Font objHeaderFont;
+    private Image objHeaderImage;
     private bool vbooExpanded = true;
     private int vintExpandedHeight;
 
@@ -65,6 +67,20 @@ namespace ID3_TagIT
       set
       {
         base.Text = value;
+        this.Invalidate();
+      }
+    }
+
+    [DefaultValue(null)]
+    public Image HeaderImage
+    {
+      get
+      {
+        return this.objHeaderImage;
+      }
+      set
+      {
+        this.objHeaderImage = value;
         this.Invalidate();
       }
     }
@@ -226,7 +242,15 @@ namespace ID3_TagIT
           g.DrawLine(border, header.Left, header.Bottom - 1, header.Right - 1, header.Bottom - 1);
       }
 
-      Rectangle textBounds = new Rectangle(header.Left + TEXT_INDENT, header.Top, this.ChevronBounds.Left - header.Left - TEXT_INDENT, header.Height);
+      int textLeft = header.Left + TEXT_INDENT;
+
+      if (this.objHeaderImage != null)
+      {
+        g.DrawImage(this.objHeaderImage, textLeft, header.Top + ((header.Height - this.objHeaderImage.Height) / 2), this.objHeaderImage.Width, this.objHeaderImage.Height);
+        textLeft += this.objHeaderImage.Width + ICON_GAP;
+      }
+
+      Rectangle textBounds = new Rectangle(textLeft, header.Top, this.ChevronBounds.Left - textLeft, header.Height);
       TextRenderer.DrawText(g, this.Text, this.HeaderFont, textBounds, this.TextColor, TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.EndEllipsis | TextFormatFlags.NoPadding);
       this.PaintChevron(g);
     }

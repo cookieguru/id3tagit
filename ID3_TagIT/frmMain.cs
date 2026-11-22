@@ -2443,7 +2443,7 @@ Label_010B:
       }
 
 Label_0B93:
-      if (this.pnlInformation.Tag.ToString() == "Expanded" & (this.MP3View.SelectedItems.Count == 1))
+      if (this.pnlInformation.Expanded & (this.MP3View.SelectedItems.Count == 1))
       {
         MP3 mp5 = (MP3)this.MP3View.SelectedItems[0].Tag;
         this.txtInformation.Text = "";
@@ -2469,7 +2469,7 @@ Label_0B93:
         this.txtInformation.AppendText(this.colHVersion.Text + ":");
       }
 
-      if (pnlPicture.Tag.ToString() == "Expanded" & (this.MP3View.SelectedItems.Count == 1))
+      if (pnlPicture.Expanded & (this.MP3View.SelectedItems.Count == 1))
       {
         MP3 mp6 = (MP3)this.MP3View.SelectedItems[0].Tag;
 
@@ -5361,77 +5361,12 @@ Label_0DA3:
       this.MP3View.Focus();
     }
 
-    private void lnkInfoExpCol_Click(object sender, EventArgs e)
+    private void RightPane_ExpandedChanged(object sender, EventArgs e)
     {
-      if (pnlInformation.Tag.ToString() == "Expanded")
-      {
-        lnkInfoExpCol.Image = global::Properties.Resources.Expand;
-        pnlInformation.Height = 21;
-        pnlInformation.Tag = "Collapsed";
-      }
-      else
-      {
-        lnkInfoExpCol.Image = global::Properties.Resources.Collapse;
-        pnlInformation.Height = 164;
-        pnlInformation.Tag = "Expanded";
-      }
+      TaskPaneGroup[] groups = { this.pnlQuickEdit, this.pnlPicture, this.pnlInformation, this.pnlTools };
 
-      pnlTools.Top = pnlInformation.Top + pnlInformation.Height + 6;
-    }
-
-    private void lnkPictureExpCol_Click(object sender, EventArgs e)
-    {
-      if (pnlPicture.Tag.ToString() == "Expanded")
-      {
-        lnkPictureExpCol.Image = global::Properties.Resources.Expand;
-        pnlPicture.Height = 21;
-        pnlPicture.Tag = "Collapsed";
-      }
-      else
-      {
-        lnkPictureExpCol.Image = global::Properties.Resources.Collapse;
-        pnlPicture.Height = 196;
-        pnlPicture.Tag = "Expanded";
-      }
-
-      pnlInformation.Top = pnlPicture.Top + pnlPicture.Height + 6;
-      pnlTools.Top = pnlInformation.Top + pnlInformation.Height + 6;
-    }
-
-    private void lnkQuickEditExpCol_Click(object sender, EventArgs e)
-    {
-      if (pnlQuickEdit.Tag.ToString() == "Expanded")
-      {
-        lnkQuickEditExpCol.Image = global::Properties.Resources.Expand;
-        pnlQuickEdit.Height = 21;
-        pnlQuickEdit.Tag = "Collapsed";
-      }
-      else
-      {
-        lnkQuickEditExpCol.Image = global::Properties.Resources.Collapse;
-        pnlQuickEdit.Height = 208;
-        pnlQuickEdit.Tag = "Expanded";
-      }
-
-      pnlPicture.Top = pnlQuickEdit.Top + pnlQuickEdit.Height + 6;
-      pnlInformation.Top = pnlPicture.Top + pnlPicture.Height + 6;
-      pnlTools.Top = pnlInformation.Top + pnlInformation.Height + 6;
-    }
-
-    private void lnkToolsExpCol_Click(object sender, EventArgs e)
-    {
-      if (pnlTools.Tag.ToString() == "Expanded")
-      {
-        lnkToolsExpCol.Image = global::Properties.Resources.Expand;
-        pnlTools.Height = 21;
-        pnlTools.Tag = "Collapsed";
-      }
-      else
-      {
-        lnkToolsExpCol.Image = global::Properties.Resources.Collapse;
-        pnlTools.Height = 137;
-        pnlTools.Tag = "Expanded";
-      }
+      for (int i = 1; i < groups.Length; i++)
+        groups[i].Top = groups[i - 1].Bottom + 6;
     }
 
     private void mnuAddFolder_Click(object sender, EventArgs e)

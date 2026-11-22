@@ -324,20 +324,13 @@ namespace ID3_TagIT
     private ToolStripMenuItem zToolStripMenuItem2;
     private ToolStripMenuItem toolStripMenuItem7;
     private ToolStripMenuItem toolStripMenuItem8;
-    private Panel pnlTools;
-    private LinkLabel lnkToolsExpCol;
-    private Label lblTools;
+    private TaskPaneGroup pnlTools;
     private ListView lstTools;
-    private Panel pnlInformation;
-    private LinkLabel lnkInfoExpCol;
+    private TaskPaneGroup pnlInformation;
     private RichTextBox txtInformation;
-    private Label lblInformation;
-    private Panel pnlPicture;
-    private LinkLabel lnkPictureExpCol;
+    private TaskPaneGroup pnlPicture;
     private PictureBox picCover;
-    private Label lblPicture;
-    private Panel pnlQuickEdit;
-    private LinkLabel lnkQuickEditExpCol;
+    private TaskPaneGroup pnlQuickEdit;
     private Button btnQuickEditOK;
     private TextBox txtQETitle;
     private TextBox txtQEAlbum;
@@ -345,9 +338,8 @@ namespace ID3_TagIT
     private Label lblQEAlbum;
     public ComboBox cboQEArtist;
     private Label lblQEArtist;
-    private Label lblQuickEdit;
     private Button btnQuickEditMore;
-    private System.Windows.Forms.TabControl tabControl1;
+    private ThemedTabControl tabControl1;
     private TabPage tabFolders;
     private FolderTreeView FolderTree;
     private TabPage tabFavorites;
@@ -382,7 +374,7 @@ namespace ID3_TagIT
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
       this.spltQuickInfo = new System.Windows.Forms.SplitContainer();
       this.spltTop = new System.Windows.Forms.SplitContainer();
-      this.tabControl1 = new System.Windows.Forms.TabControl();
+      this.tabControl1 = new ThemedTabControl();
       this.tabFolders = new System.Windows.Forms.TabPage();
       this.tabFavorites = new System.Windows.Forms.TabPage();
       this.FavTree = new System.Windows.Forms.TreeView();
@@ -428,21 +420,14 @@ namespace ID3_TagIT
       this.ErrorMsg = new System.Windows.Forms.ListView();
       this.errContext = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.ctxClearErrors = new System.Windows.Forms.ToolStripMenuItem();
-      this.pnlTools = new System.Windows.Forms.Panel();
-      this.lnkToolsExpCol = new System.Windows.Forms.LinkLabel();
-      this.lblTools = new System.Windows.Forms.Label();
+      this.pnlTools = new ID3_TagIT.TaskPaneGroup();
       this.lstTools = new System.Windows.Forms.ListView();
-      this.pnlInformation = new System.Windows.Forms.Panel();
-      this.lnkInfoExpCol = new System.Windows.Forms.LinkLabel();
+      this.pnlInformation = new ID3_TagIT.TaskPaneGroup();
       this.txtInformation = new System.Windows.Forms.RichTextBox();
-      this.lblInformation = new System.Windows.Forms.Label();
-      this.pnlPicture = new System.Windows.Forms.Panel();
-      this.lnkPictureExpCol = new System.Windows.Forms.LinkLabel();
+      this.pnlPicture = new ID3_TagIT.TaskPaneGroup();
       this.picCover = new System.Windows.Forms.PictureBox();
-      this.lblPicture = new System.Windows.Forms.Label();
-      this.pnlQuickEdit = new System.Windows.Forms.Panel();
+      this.pnlQuickEdit = new ID3_TagIT.TaskPaneGroup();
       this.btnQuickEditMore = new System.Windows.Forms.Button();
-      this.lnkQuickEditExpCol = new System.Windows.Forms.LinkLabel();
       this.btnQuickEditOK = new System.Windows.Forms.Button();
       this.txtQETitle = new System.Windows.Forms.TextBox();
       this.txtQEAlbum = new System.Windows.Forms.TextBox();
@@ -450,7 +435,6 @@ namespace ID3_TagIT
       this.lblQEAlbum = new System.Windows.Forms.Label();
       this.cboQEArtist = new System.Windows.Forms.ComboBox();
       this.lblQEArtist = new System.Windows.Forms.Label();
-      this.lblQuickEdit = new System.Windows.Forms.Label();
       this.GroupIcons = new System.Windows.Forms.ImageList(this.components);
       this.ToolsIcons = new System.Windows.Forms.ImageList(this.components);
       this.ColumnHeaderIcons = new System.Windows.Forms.ImageList(this.components);
@@ -1213,267 +1197,177 @@ namespace ID3_TagIT
       this.ctxClearErrors.Size = new System.Drawing.Size(119, 22);
       this.ctxClearErrors.Text = "Clear list";
       this.ctxClearErrors.Click += new System.EventHandler(this.ctxClearErrors_Click);
-      // 
+      //
       // pnlTools
-      // 
-      this.pnlTools.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+      //
+      this.pnlTools.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.pnlTools.Controls.Add(this.lnkToolsExpCol);
-      this.pnlTools.Controls.Add(this.lblTools);
-      this.pnlTools.Controls.Add(this.lstTools);
-      this.pnlTools.Location = new System.Drawing.Point(2, 571);
+      this.pnlTools.HeaderImage = global::Properties.Resources.Tools;
+      this.pnlTools.Location = new System.Drawing.Point(3, 597);
       this.pnlTools.Name = "pnlTools";
-      this.pnlTools.Size = new System.Drawing.Size(195, 137);
+      this.pnlTools.Size = new System.Drawing.Size(195, 140);
       this.pnlTools.TabIndex = 9;
-      this.pnlTools.Tag = "Expanded";
-      // 
-      // lnkToolsExpCol
-      // 
-      this.lnkToolsExpCol.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-      this.lnkToolsExpCol.Image = global::Properties.Resources.Collapse;
-      this.lnkToolsExpCol.Location = new System.Drawing.Point(171, 1);
-      this.lnkToolsExpCol.Name = "lnkToolsExpCol";
-      this.lnkToolsExpCol.Size = new System.Drawing.Size(18, 18);
-      this.lnkToolsExpCol.TabIndex = 4;
-      this.lnkToolsExpCol.Click += new System.EventHandler(this.lnkToolsExpCol_Click);
-      // 
-      // lblTools
-      // 
-      this.lblTools.AutoSize = true;
-      this.lblTools.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblTools.ForeColor = System.Drawing.SystemColors.HotTrack;
-      this.lblTools.Image = global::Properties.Resources.Tools;
-      this.lblTools.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.lblTools.Location = new System.Drawing.Point(3, 1);
-      this.lblTools.Name = "lblTools";
-      this.lblTools.Size = new System.Drawing.Size(67, 16);
-      this.lblTools.TabIndex = 0;
-      this.lblTools.Text = "     Tools";
-      // 
+      this.pnlTools.Text = "Tools";
+      this.pnlTools.ExpandedChanged += new System.EventHandler(this.RightPane_ExpandedChanged);
+      this.pnlTools.Body.Controls.Add(this.lstTools);
+      //
       // lstTools
-      // 
-      this.lstTools.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+      //
+      this.lstTools.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
       this.lstTools.HideSelection = false;
-      this.lstTools.Location = new System.Drawing.Point(6, 22);
+      this.lstTools.Location = new System.Drawing.Point(5, 1);
       this.lstTools.Name = "lstTools";
       this.lstTools.Size = new System.Drawing.Size(183, 108);
       this.lstTools.TabIndex = 2;
       this.lstTools.UseCompatibleStateImageBehavior = false;
-      // 
+      //
       // pnlInformation
-      // 
-      this.pnlInformation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+      //
+      this.pnlInformation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.pnlInformation.Controls.Add(this.lnkInfoExpCol);
-      this.pnlInformation.Controls.Add(this.txtInformation);
-      this.pnlInformation.Controls.Add(this.lblInformation);
-      this.pnlInformation.Location = new System.Drawing.Point(3, 407);
+      this.pnlInformation.Body.Controls.Add(this.txtInformation);
+      this.pnlInformation.HeaderImage = global::Properties.Resources.Info16;
+      this.pnlInformation.Location = new System.Drawing.Point(3, 423);
       this.pnlInformation.Name = "pnlInformation";
-      this.pnlInformation.Size = new System.Drawing.Size(195, 164);
+      this.pnlInformation.Size = new System.Drawing.Size(195, 168);
       this.pnlInformation.TabIndex = 7;
-      this.pnlInformation.Tag = "Expanded";
-      // 
-      // lnkInfoExpCol
-      // 
-      this.lnkInfoExpCol.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-      this.lnkInfoExpCol.Image = global::Properties.Resources.Collapse;
-      this.lnkInfoExpCol.Location = new System.Drawing.Point(171, 1);
-      this.lnkInfoExpCol.Name = "lnkInfoExpCol";
-      this.lnkInfoExpCol.Size = new System.Drawing.Size(18, 18);
-      this.lnkInfoExpCol.TabIndex = 6;
-      this.lnkInfoExpCol.Click += new System.EventHandler(this.lnkInfoExpCol_Click);
-      // 
+      this.pnlInformation.Text = "Information";
+      this.pnlInformation.ExpandedChanged += new System.EventHandler(this.RightPane_ExpandedChanged);
+      //
       // txtInformation
-      // 
-      this.txtInformation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+      //
+      this.txtInformation.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtInformation.Location = new System.Drawing.Point(6, 22);
+      this.txtInformation.Location = new System.Drawing.Point(5, 1);
       this.txtInformation.Name = "txtInformation";
       this.txtInformation.Size = new System.Drawing.Size(183, 136);
       this.txtInformation.TabIndex = 1;
       this.txtInformation.Text = "";
-      // 
-      // lblInformation
-      // 
-      this.lblInformation.AutoSize = true;
-      this.lblInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-      this.lblInformation.ForeColor = System.Drawing.SystemColors.HotTrack;
-      this.lblInformation.Image = global::Properties.Resources.Info16;
-      this.lblInformation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.lblInformation.Location = new System.Drawing.Point(3, 1);
-      this.lblInformation.Name = "lblInformation";
-      this.lblInformation.Size = new System.Drawing.Size(103, 16);
-      this.lblInformation.TabIndex = 0;
-      this.lblInformation.Text = "     Information";
-      // 
+      //
       // pnlPicture
-      // 
-      this.pnlPicture.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+      //
+      this.pnlPicture.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.pnlPicture.Controls.Add(this.lnkPictureExpCol);
-      this.pnlPicture.Controls.Add(this.picCover);
-      this.pnlPicture.Controls.Add(this.lblPicture);
-      this.pnlPicture.Location = new System.Drawing.Point(2, 211);
+      this.pnlPicture.Body.Controls.Add(this.picCover);
+      this.pnlPicture.HeaderImage = global::Properties.Resources.Picture;
+      this.pnlPicture.Location = new System.Drawing.Point(3, 217);
       this.pnlPicture.Name = "pnlPicture";
-      this.pnlPicture.Size = new System.Drawing.Size(195, 196);
+      this.pnlPicture.Size = new System.Drawing.Size(195, 200);
       this.pnlPicture.TabIndex = 8;
-      this.pnlPicture.Tag = "Expanded";
-      // 
-      // lnkPictureExpCol
-      // 
-      this.lnkPictureExpCol.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-      this.lnkPictureExpCol.Image = global::Properties.Resources.Collapse;
-      this.lnkPictureExpCol.Location = new System.Drawing.Point(171, 1);
-      this.lnkPictureExpCol.Name = "lnkPictureExpCol";
-      this.lnkPictureExpCol.Size = new System.Drawing.Size(18, 18);
-      this.lnkPictureExpCol.TabIndex = 5;
-      this.lnkPictureExpCol.Click += new System.EventHandler(this.lnkPictureExpCol_Click);
-      // 
+      this.pnlPicture.Text = "Picture";
+      this.pnlPicture.ExpandedChanged += new System.EventHandler(this.RightPane_ExpandedChanged);
+      //
       // picCover
-      // 
+      //
       this.picCover.BackColor = System.Drawing.SystemColors.ControlLight;
-      this.picCover.Location = new System.Drawing.Point(6, 22);
+      this.picCover.Location = new System.Drawing.Point(5, 1);
       this.picCover.Name = "picCover";
       this.picCover.Size = new System.Drawing.Size(168, 168);
       this.picCover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
       this.picCover.TabIndex = 1;
       this.picCover.TabStop = false;
-      // 
-      // lblPicture
-      // 
-      this.lblPicture.AutoSize = true;
-      this.lblPicture.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-      this.lblPicture.ForeColor = System.Drawing.SystemColors.HotTrack;
-      this.lblPicture.Image = global::Properties.Resources.Picture;
-      this.lblPicture.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.lblPicture.Location = new System.Drawing.Point(3, 1);
-      this.lblPicture.Name = "lblPicture";
-      this.lblPicture.Size = new System.Drawing.Size(75, 16);
-      this.lblPicture.TabIndex = 0;
-      this.lblPicture.Text = "     Picture";
-      // 
+      //
       // pnlQuickEdit
-      // 
-      this.pnlQuickEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+      //
+      this.pnlQuickEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.pnlQuickEdit.Controls.Add(this.btnQuickEditMore);
-      this.pnlQuickEdit.Controls.Add(this.lnkQuickEditExpCol);
-      this.pnlQuickEdit.Controls.Add(this.btnQuickEditOK);
-      this.pnlQuickEdit.Controls.Add(this.txtQETitle);
-      this.pnlQuickEdit.Controls.Add(this.txtQEAlbum);
-      this.pnlQuickEdit.Controls.Add(this.lblQETitle);
-      this.pnlQuickEdit.Controls.Add(this.lblQEAlbum);
-      this.pnlQuickEdit.Controls.Add(this.cboQEArtist);
-      this.pnlQuickEdit.Controls.Add(this.lblQEArtist);
-      this.pnlQuickEdit.Controls.Add(this.lblQuickEdit);
+      this.pnlQuickEdit.Body.Controls.Add(this.btnQuickEditMore);
+      this.pnlQuickEdit.Body.Controls.Add(this.btnQuickEditOK);
+      this.pnlQuickEdit.Body.Controls.Add(this.txtQETitle);
+      this.pnlQuickEdit.Body.Controls.Add(this.txtQEAlbum);
+      this.pnlQuickEdit.Body.Controls.Add(this.lblQETitle);
+      this.pnlQuickEdit.Body.Controls.Add(this.lblQEAlbum);
+      this.pnlQuickEdit.Body.Controls.Add(this.cboQEArtist);
+      this.pnlQuickEdit.Body.Controls.Add(this.lblQEArtist);
+      this.pnlQuickEdit.HeaderImage = global::Properties.Resources.QuickEdit;
       this.pnlQuickEdit.Location = new System.Drawing.Point(3, 3);
       this.pnlQuickEdit.Name = "pnlQuickEdit";
       this.pnlQuickEdit.Size = new System.Drawing.Size(195, 208);
       this.pnlQuickEdit.TabIndex = 6;
-      this.pnlQuickEdit.Tag = "Expanded";
-      // 
+      this.pnlQuickEdit.Text = "Quick Edit";
+      this.pnlQuickEdit.ExpandedChanged += new System.EventHandler(this.RightPane_ExpandedChanged);
+      //
       // btnQuickEditMore
-      // 
-      this.btnQuickEditMore.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+      //
+      this.btnQuickEditMore.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.btnQuickEditMore.Location = new System.Drawing.Point(6, 175);
+      this.btnQuickEditMore.Location = new System.Drawing.Point(5, 154);
       this.btnQuickEditMore.Name = "btnQuickEditMore";
       this.btnQuickEditMore.Size = new System.Drawing.Size(183, 23);
       this.btnQuickEditMore.TabIndex = 5;
       this.btnQuickEditMore.Text = "More ...";
       this.btnQuickEditMore.UseVisualStyleBackColor = true;
       this.btnQuickEditMore.Click += new System.EventHandler(this.btnQuickEditMore_Click);
-      // 
-      // lnkQuickEditExpCol
-      // 
-      this.lnkQuickEditExpCol.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-      this.lnkQuickEditExpCol.Image = global::Properties.Resources.Collapse;
-      this.lnkQuickEditExpCol.Location = new System.Drawing.Point(171, 1);
-      this.lnkQuickEditExpCol.Name = "lnkQuickEditExpCol";
-      this.lnkQuickEditExpCol.Size = new System.Drawing.Size(18, 18);
-      this.lnkQuickEditExpCol.TabIndex = 4;
-      this.lnkQuickEditExpCol.Click += new System.EventHandler(this.lnkQuickEditExpCol_Click);
-      // 
+      //
       // btnQuickEditOK
-      // 
-      this.btnQuickEditOK.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+      //
+      this.btnQuickEditOK.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.btnQuickEditOK.Location = new System.Drawing.Point(6, 147);
+      this.btnQuickEditOK.Location = new System.Drawing.Point(5, 126);
       this.btnQuickEditOK.Name = "btnQuickEditOK";
       this.btnQuickEditOK.Size = new System.Drawing.Size(183, 23);
       this.btnQuickEditOK.TabIndex = 3;
       this.btnQuickEditOK.Text = "OK";
       this.btnQuickEditOK.UseVisualStyleBackColor = true;
       this.btnQuickEditOK.Click += new System.EventHandler(this.btnQuickEditOK_Click);
-      // 
+      //
       // txtQETitle
-      // 
-      this.txtQETitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+      //
+      this.txtQETitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtQETitle.Location = new System.Drawing.Point(6, 80);
+      this.txtQETitle.Location = new System.Drawing.Point(5, 59);
       this.txtQETitle.Name = "txtQETitle";
       this.txtQETitle.Size = new System.Drawing.Size(183, 20);
       this.txtQETitle.TabIndex = 2;
-      // 
+      //
       // txtQEAlbum
-      // 
-      this.txtQEAlbum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+      //
+      this.txtQEAlbum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtQEAlbum.Location = new System.Drawing.Point(6, 120);
+      this.txtQEAlbum.Location = new System.Drawing.Point(5, 99);
       this.txtQEAlbum.Name = "txtQEAlbum";
       this.txtQEAlbum.Size = new System.Drawing.Size(183, 20);
       this.txtQEAlbum.TabIndex = 2;
-      // 
+      //
       // lblQETitle
-      // 
+      //
       this.lblQETitle.AutoSize = true;
-      this.lblQETitle.Location = new System.Drawing.Point(3, 64);
+      this.lblQETitle.Location = new System.Drawing.Point(3, 43);
       this.lblQETitle.Name = "lblQETitle";
       this.lblQETitle.Size = new System.Drawing.Size(27, 13);
       this.lblQETitle.TabIndex = 0;
       this.lblQETitle.Text = "Title";
-      // 
+      //
       // lblQEAlbum
-      // 
+      //
       this.lblQEAlbum.AutoSize = true;
-      this.lblQEAlbum.Location = new System.Drawing.Point(3, 104);
+      this.lblQEAlbum.Location = new System.Drawing.Point(3, 83);
       this.lblQEAlbum.Name = "lblQEAlbum";
       this.lblQEAlbum.Size = new System.Drawing.Size(36, 13);
       this.lblQEAlbum.TabIndex = 0;
       this.lblQEAlbum.Text = "Album";
-      // 
+      //
       // cboQEArtist
-      // 
-      this.cboQEArtist.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+      //
+      this.cboQEArtist.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
       this.cboQEArtist.FormattingEnabled = true;
-      this.cboQEArtist.Location = new System.Drawing.Point(6, 39);
+      this.cboQEArtist.Location = new System.Drawing.Point(5, 18);
       this.cboQEArtist.Name = "cboQEArtist";
       this.cboQEArtist.Size = new System.Drawing.Size(183, 21);
       this.cboQEArtist.TabIndex = 1;
-      // 
+      //
       // lblQEArtist
-      // 
+      //
       this.lblQEArtist.AutoSize = true;
-      this.lblQEArtist.Location = new System.Drawing.Point(3, 22);
+      this.lblQEArtist.Location = new System.Drawing.Point(3, 1);
       this.lblQEArtist.Name = "lblQEArtist";
       this.lblQEArtist.Size = new System.Drawing.Size(30, 13);
       this.lblQEArtist.TabIndex = 0;
       this.lblQEArtist.Text = "Artist";
-      // 
-      // lblQuickEdit
-      // 
-      this.lblQuickEdit.AutoSize = true;
-      this.lblQuickEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblQuickEdit.ForeColor = System.Drawing.SystemColors.HotTrack;
-      this.lblQuickEdit.Image = global::Properties.Resources.QuickEdit;
-      this.lblQuickEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.lblQuickEdit.Location = new System.Drawing.Point(3, 1);
-      this.lblQuickEdit.Name = "lblQuickEdit";
-      this.lblQuickEdit.Size = new System.Drawing.Size(97, 16);
-      this.lblQuickEdit.TabIndex = 0;
-      this.lblQuickEdit.Text = "     Quick Edit";
       // 
       // GroupIcons
       // 
