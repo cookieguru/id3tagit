@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Windows.Forms;
 
 namespace ID3_TagIT
@@ -157,6 +158,7 @@ namespace ID3_TagIT
       if (form.IsHandleCreated)
       {
         SetTitleBar(form);
+        SetClassBackground(form);
         RedrawWindow(form.Handle, IntPtr.Zero, IntPtr.Zero, RDW_INVALIDATE | RDW_ERASE | RDW_ALLCHILDREN | RDW_FRAME);
       }
     }
@@ -244,7 +246,12 @@ namespace ID3_TagIT
     // otherwise appear light until Load returns.
     private static void Form_HandleCreated(object sender, EventArgs e)
     {
-      Apply((Form)sender);
+      Form form = (Form)sender;
+
+      Apply(form);
+
+      if (vbooIsDark && !form.Visible)
+        new CloakUntilPainted(form);
     }
 
     private static void Form_Load(object sender, EventArgs e)
@@ -792,6 +799,67 @@ namespace ID3_TagIT
       }
     }
 
+    // Until a form has painted itself, Windows shows the background brush of its window class,
+    // which is white.  A dark one keeps a form that is opening from flashing white.
+    private static void SetClassBackground(Form form)
+    {
+      string className = GetClassNameOf(form.Handle);
+
+      if (className == null)
+        return;
+
+      IntPtr original;
+      bool known = ClassBrushes.TryGetValue(className, out original);
+
+      if (vbooIsDark)
+      {
+        if (objDarkBrush == IntPtr.Zero)
+          objDarkBrush = CreateSolidBrush(ColorTranslator.ToWin32(DarkSurface));
+
+        IntPtr previous = SetClassLongPtr(form.Handle, GCL_HBRBACKGROUND, objDarkBrush);
+
+        if (!known && previous != objDarkBrush)
+          ClassBrushes[className] = previous;
+      }
+      else if (known)
+      {
+        SetClassLongPtr(form.Handle, GCL_HBRBACKGROUND, original);
+        ClassBrushes.Remove(className);
+      }
+    }
+
+    private static string GetClassNameOf(IntPtr handle)
+    {
+      StringBuilder name = new StringBuilder(256);
+
+      return GetClassName(handle, name, name.Capacity) > 0 ? name.ToString() : null;
+    }
+
+    private static IntPtr SetClassLongPtr(IntPtr handle, int index, IntPtr value)
+    {
+      // user32 exports the pointer sized version only for 64 bit.
+      if (IntPtr.Size == 8)
+        return SetClassLongPtr64(handle, index, value);
+
+      return (IntPtr)SetClassLong32(handle, index, (int)value);
+    }
+
+    private const int GCL_HBRBACKGROUND = -10;
+    private static IntPtr objDarkBrush;
+    private static readonly Dictionary<string, IntPtr> ClassBrushes = new Dictionary<string, IntPtr>();
+
+    [DllImport("user32.dll", EntryPoint = "SetClassLongPtrW")]
+    private static extern IntPtr SetClassLongPtr64(IntPtr hWnd, int index, IntPtr value);
+
+    [DllImport("user32.dll", EntryPoint = "SetClassLongW")]
+    private static extern int SetClassLong32(IntPtr hWnd, int index, int value);
+
+    [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+    private static extern int GetClassName(IntPtr hWnd, StringBuilder name, int maxCount);
+
+    [DllImport("gdi32.dll")]
+    private static extern IntPtr CreateSolidBrush(int color);
+
     private const int RDW_INVALIDATE = 0x1;
     private const int RDW_ERASE = 0x4;
     private const int RDW_ALLCHILDREN = 0x80;
@@ -806,6 +874,90 @@ namespace ID3_TagIT
 
     [DllImport("user32.dll")]
     private static extern bool RedrawWindow(IntPtr hWnd, IntPtr lprcUpdate, IntPtr hrgnUpdate, int flags);
+  }
+
+  // Native controls are white until they have painted, so a window that is opening shows white
+  // boxes for a moment.  The window is kept off the screen until it is visible and its first
+  // paint is done: when the message queue goes idle, or on a short timer for a window whose
+  // owner pumps messages itself and so never goes idle.
+  internal sealed class CloakUntilPainted
+  {
+    private const int DWMWA_CLOAK = 13;
+    private const int FALLBACK_MILLISECONDS = 100;
+
+    private readonly Form objForm;
+    private Timer objTimer;
+    private bool vbooDone;
+
+    public CloakUntilPainted(Form form)
+    {
+      this.objForm = form;
+
+      if (!Cloak(true))
+        return;
+
+      Application.Idle += new EventHandler(this.Idle);
+      form.HandleDestroyed += new EventHandler(this.Destroyed);
+
+      this.objTimer = new Timer();
+      this.objTimer.Interval = FALLBACK_MILLISECONDS;
+      this.objTimer.Tick += new EventHandler(this.Idle);
+      this.objTimer.Start();
+    }
+
+    private bool Cloak(bool on)
+    {
+      int value = on ? 1 : 0;
+
+      try
+      {
+        return DwmSetWindowAttribute(this.objForm.Handle, DWMWA_CLOAK, ref value, sizeof(int)) == 0;
+      }
+      catch (Exception)
+      {
+        // dwmapi missing or attribute unsupported: the window just opens uncloaked.
+        return false;
+      }
+    }
+
+    private void Idle(object sender, EventArgs e)
+    {
+      // Idle also fires while the form is still hidden, before it is shown.
+      if (this.objForm.Visible)
+        this.Finish();
+    }
+
+    private void Destroyed(object sender, EventArgs e)
+    {
+      this.Release();
+    }
+
+    private void Finish()
+    {
+      if (this.vbooDone)
+        return;
+
+      this.Release();
+
+      if (this.objForm.IsHandleCreated)
+        this.Cloak(false);
+    }
+
+    private void Release()
+    {
+      this.vbooDone = true;
+      Application.Idle -= new EventHandler(this.Idle);
+      this.objForm.HandleDestroyed -= new EventHandler(this.Destroyed);
+
+      if (this.objTimer != null)
+      {
+        this.objTimer.Dispose();
+        this.objTimer = null;
+      }
+    }
+
+    [DllImport("dwmapi.dll")]
+    private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attribute, ref int value, int size);
   }
 
   // Base for the window subclasses that paint native parts WinForms can't recolor (the

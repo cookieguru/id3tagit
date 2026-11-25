@@ -241,6 +241,114 @@ namespace ID3_TagIT.Tests
       });
     }
 
+    [StructLayout(LayoutKind.Sequential)]
+    private struct LOGBRUSH
+    {
+      public uint lbStyle;
+      public int lbColor;
+      public IntPtr lbHatch;
+    }
+
+    [DllImport("user32.dll", EntryPoint = "GetClassLongW")]
+    private static extern uint GetClassLong(IntPtr hWnd, int index);
+
+    [DllImport("gdi32.dll")]
+    private static extern int GetObject(IntPtr hObject, int size, out LOGBRUSH brush);
+
+    private static Color ClassBackground(Form form)
+    {
+      LOGBRUSH brush;
+      IntPtr handle = new IntPtr(unchecked((int)GetClassLong(form.Handle, -10)));
+
+      // The light class brush is a system color index, not a brush Windows can describe.
+      if (GetObject(handle, Marshal.SizeOf(typeof(LOGBRUSH)), out brush) == 0)
+        return Color.Empty;
+
+      return ColorTranslator.FromWin32(brush.lbColor);
+    }
+
+    [Fact]
+    public void DarkModeFillsTheWindowDarkBeforeItsFirstPaint()
+    {
+      WithTheme(ThemeManager.THEME_DARK, delegate (TestForm form)
+      {
+        // The class background is what Windows shows until the form has painted itself.
+        Assert.Equal(ThemeManager.DarkSurface.ToArgb(), ClassBackground(form).ToArgb());
+
+        SetTheme(ThemeManager.THEME_LIGHT);
+        ThemeManager.Apply(form);
+
+        Assert.NotEqual(ThemeManager.DarkSurface.ToArgb(), ClassBackground(form).ToArgb());
+      });
+    }
+
+    [DllImport("dwmapi.dll")]
+    private static extern int DwmGetWindowAttribute(IntPtr hwnd, int attribute, out int value, int size);
+
+    private static bool IsCloaked(Form form)
+    {
+      int cloaked;
+      DwmGetWindowAttribute(form.Handle, 14, out cloaked, sizeof(int));
+
+      return cloaked != 0;
+    }
+
+    [Fact]
+    public void DarkModeHidesAWindowUntilItHasPaintedItself()
+    {
+      TestApp.EnsureInitialized();
+      Sta.Run(delegate ()
+      {
+        Application.EnableVisualStyles();
+        SetTheme(ThemeManager.THEME_DARK);
+
+        try
+        {
+          using (TestForm form = new TestForm())
+          {
+            ThemeManager.Register(form);
+            form.Opacity = 0;
+            IntPtr handle = form.Handle;
+
+            // Native child windows are white until they have painted.
+            Assert.True(IsCloaked(form));
+
+            form.Show();
+
+            for (int i = 0; i < 20 && IsCloaked(form); i++)
+            {
+              Application.DoEvents();
+              System.Threading.Thread.Sleep(25);
+            }
+
+            Assert.False(IsCloaked(form));
+          }
+        }
+        finally
+        {
+          SetTheme(ThemeManager.THEME_LIGHT);
+        }
+      });
+    }
+
+    [Fact]
+    public void LightModeDoesNotHideAWindow()
+    {
+      TestApp.EnsureInitialized();
+      Sta.Run(delegate ()
+      {
+        SetTheme(ThemeManager.THEME_LIGHT);
+
+        using (TestForm form = new TestForm())
+        {
+          ThemeManager.Register(form);
+          IntPtr handle = form.Handle;
+
+          Assert.False(IsCloaked(form));
+        }
+      });
+    }
+
     [Fact]
     public void DarkModeKeepsTheStyleOfCheckBoxesAndRadioButtons()
     {
