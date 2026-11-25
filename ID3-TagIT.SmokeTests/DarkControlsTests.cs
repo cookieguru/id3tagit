@@ -96,6 +96,77 @@ namespace ID3_TagIT.SmokeTests
       }
     }
 
+    private const float LIGHT = 0.60f;
+
+    // The brightest pixel of a region: the text of a control, when the rest is dark.
+    private static float BrightestIn(AutomationElement element, Rectangle region)
+    {
+      using (CaptureImage image = Capture.Element(element))
+      {
+        Bitmap bitmap = image.Bitmap;
+        float brightest = 0;
+        int right = Math.Min(region.Right, bitmap.Width);
+        int bottom = Math.Min(region.Bottom, bitmap.Height);
+
+        for (int y = region.Top; y < bottom; y++)
+          for (int x = region.Left; x < right; x++)
+            brightest = Math.Max(brightest, bitmap.GetPixel(x, y).GetBrightness());
+
+        return brightest;
+      }
+    }
+
+    [Fact]
+    public void TheColumnHeaderTextIsReadable()
+    {
+      using (PortableApp app = DarkApp())
+      {
+        app.Launch(1);
+        AutomationElement list = Ui.Find(app.Main, "MP3View");
+
+        // The header is the top strip of the list.  Windows draws its text nearly black unless
+        // the app sets the color.
+        Rectangle header = new Rectangle(0, 2, Math.Min(300, list.BoundingRectangle.Width), 16);
+        float text = BrightestIn(list, header);
+        float background = Brightness(list, 3, 8);
+        app.AssertNoMessageBox();
+        app.Close();
+
+        Assert.True(background < 0.45f, "Header background brightness " + background.ToString("0.00") + " (" + Environment_() + ")");
+        Assert.True(text > LIGHT, "Header text brightness " + text.ToString("0.00") + " (" + Environment_() + ")");
+      }
+    }
+
+    [Fact]
+    public void ThePreferencesButtonsAndCheckBoxesAreReadable()
+    {
+      using (PortableApp app = DarkApp())
+      {
+        app.Launch(1);
+        FlaUI.Core.AutomationElements.Window preferences = app.OpenDialog("frmPreferences", VirtualKeyShort.F12);
+
+        // A push button is dark with a light caption, and a check box has a light label.
+        AutomationElement cancel = Ui.Find(preferences, "btnCancel");
+        Rectangle cancelBounds = new Rectangle(0, 0, cancel.BoundingRectangle.Width, cancel.BoundingRectangle.Height);
+        float buttonFace = Brightness(cancel, 6, cancel.BoundingRectangle.Height / 2);
+        float buttonText = BrightestIn(cancel, new Rectangle(8, 4, cancelBounds.Width - 16, cancelBounds.Height - 8));
+
+        AutomationElement check = preferences.FindFirstDescendant(cf => cf.ByControlType(FlaUI.Core.Definitions.ControlType.CheckBox));
+        Assert.True(check != null, "No check box on the first page of Preferences");
+        Rectangle checkBounds = new Rectangle(0, 0, check.BoundingRectangle.Width, check.BoundingRectangle.Height);
+        float checkText = BrightestIn(check, new Rectangle(18, 0, checkBounds.Width - 18, checkBounds.Height));
+        float checkBackground = Brightness(check, check.BoundingRectangle.Width - 3, check.BoundingRectangle.Height / 2);
+
+        app.CloseDialog(preferences, "btnCancel");
+        app.Close();
+
+        Assert.True(buttonFace < 0.45f, "Button face brightness " + buttonFace.ToString("0.00") + " (" + Environment_() + ")");
+        Assert.True(buttonText > LIGHT, "Button text brightness " + buttonText.ToString("0.00") + " (" + Environment_() + ")");
+        Assert.True(checkBackground < DARK, "Check box background brightness " + checkBackground.ToString("0.00") + " (" + Environment_() + ")");
+        Assert.True(checkText > LIGHT, "Check box text brightness " + checkText.ToString("0.00") + " (" + Environment_() + ")");
+      }
+    }
+
     [Fact]
     public void ThePreferencesPageIsDark()
     {
