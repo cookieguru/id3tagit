@@ -242,6 +242,24 @@ namespace ID3_TagIT.Tests
     }
 
     [Fact]
+    public void DarkModeKeepsTheStyleOfCheckBoxesAndRadioButtons()
+    {
+      WithTheme(ThemeManager.THEME_DARK, delegate (TestForm form)
+      {
+        GroupBox group = new GroupBox();
+        RadioButton radio = new RadioButton();
+        CheckBox check = new CheckBox();
+        group.Controls.Add(radio);
+        form.Controls.AddRange(new Control[] { group, check });
+        ThemeManager.Apply(form);
+
+        // Windows draws the text of a system style button in a group box black.
+        Assert.Equal(FlatStyle.Standard, radio.FlatStyle);
+        Assert.Equal(FlatStyle.Standard, check.FlatStyle);
+      });
+    }
+
+    [Fact]
     public void LightModeRestoresTheOriginals()
     {
       WithTheme(ThemeManager.THEME_DARK, delegate (TestForm form)

@@ -362,10 +362,11 @@ namespace ID3_TagIT
 
       ButtonBase button = control as ButtonBase;
 
-      // Only a system style button, check box or radio button is drawn by Windows, which then
-      // draws it dark with the Explorer theme.  Leave buttons with custom colors (such as
-      // color swatches) alone.
-      if (button != null && (!vbooIsDark || IsThemeOrSystemColor(button.BackColor)))
+      // Windows draws a system style push button dark with the Explorer theme.  Check boxes and
+      // radio buttons stay standard: Windows draws the text of a system style one in a group box
+      // black, while the standard ones still take their glyph from the theme.  Leave buttons
+      // with custom colors (such as color swatches) alone.
+      if (button is Button && (!vbooIsDark || IsThemeOrSystemColor(button.BackColor)))
         ThemeValue(button, "FlatStyle", () => button.FlatStyle, v => button.FlatStyle = v, FlatStyle.System);
 
       ApplyBorderStyle(control);

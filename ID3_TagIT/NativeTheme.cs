@@ -68,8 +68,12 @@ namespace ID3_TagIT
       ButtonBase button = control as ButtonBase;
 
       // The style is set to System before this is asked; a button with its own colors keeps its own look.
-      if (button != null)
+      if (button is Button)
         return button.FlatStyle == FlatStyle.System ? EXPLORER : null;
+
+      // A standard style check box or radio button draws its glyph from the window's theme.
+      if (button != null)
+        return button.FlatStyle == FlatStyle.Standard ? EXPLORER : null;
 
       Panel panel = control as Panel;
 
