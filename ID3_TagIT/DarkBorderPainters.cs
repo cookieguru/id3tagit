@@ -80,12 +80,19 @@ namespace ID3_TagIT
 
     private readonly Control objControl;
     private readonly bool vbooNonClient;
+    private readonly int vintThickness;
 
     // A border in the non-client area (text boxes) or in the client area (spin boxes).
-    public DarkBorderPainter(Control control, bool nonClient)
+    public DarkBorderPainter(Control control, bool nonClient) : this(control, nonClient, 1)
+    {
+    }
+
+    // A data grid draws a border of its own that is several pixels thick.
+    public DarkBorderPainter(Control control, bool nonClient, int thickness)
     {
       this.objControl = control;
       this.vbooNonClient = nonClient;
+      this.vintThickness = thickness;
     }
 
     public override void Attach()
@@ -136,7 +143,8 @@ namespace ID3_TagIT
 
         using (Graphics g = Graphics.FromHdc(hdc))
         using (Pen border = new Pen(ThemeManager.DarkBorder))
-          g.DrawRectangle(border, 0, 0, width - 1, height - 1);
+          for (int i = 0; i < this.vintThickness; i++)
+            g.DrawRectangle(border, i, i, width - 1 - (2 * i), height - 1 - (2 * i));
       }
       finally
       {

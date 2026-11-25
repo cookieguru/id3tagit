@@ -169,6 +169,29 @@ namespace ID3_TagIT.Tests
     }
 
     [Fact]
+    public void DarkModeReplacesTheThreeDimensionalBorderOfADataGrid()
+    {
+      WithTheme(ThemeManager.THEME_DARK, delegate (TestForm form)
+      {
+        DataGrid grid = new DataGrid();
+        grid.BorderStyle = BorderStyle.Fixed3D;
+        form.Controls.Add(grid);
+        ThemeManager.Apply(form);
+
+        Assert.Equal(BorderStyle.FixedSingle, grid.BorderStyle);
+
+        // Windows draws that border in the bright text color; the border painter redraws it.
+        IntPtr handle = grid.Handle;
+        Assert.True(ThemeManager.HasPainter(grid));
+
+        SetTheme(ThemeManager.THEME_LIGHT);
+        ThemeManager.Apply(form);
+
+        Assert.Equal(BorderStyle.Fixed3D, grid.BorderStyle);
+      });
+    }
+
+    [Fact]
     public void DarkModeKeepsTheBorderWindowsDrawsOnSingleLineTextBoxes()
     {
       WithTheme(ThemeManager.THEME_DARK, delegate (TestForm form)

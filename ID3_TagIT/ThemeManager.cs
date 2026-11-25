@@ -424,7 +424,10 @@ namespace ID3_TagIT
       DataGrid grid = control as DataGrid;
 
       if (grid != null)
+      {
         ApplyDataGrid(grid);
+        AttachPainter(grid, () => new DarkBorderPainter(grid, false, 3));
+      }
 
       // Paints its own fill and border from the theme colors, so only a repaint is needed.
       TaskPaneGroup group = control as TaskPaneGroup;
@@ -474,6 +477,7 @@ namespace ID3_TagIT
       Label label = control as Label;
       Panel panel = control as Panel;
       UpDownBase upDown = control as UpDownBase;
+      DataGrid grid = control as DataGrid;
 
       // Windows draws a dark border, and a focus border, around single-line text boxes itself.
       if (textBox != null && NativeTheme.DrawsDarkBorder(textBox))
@@ -493,6 +497,8 @@ namespace ID3_TagIT
         ThemeValueIf(panel, "BorderStyle", () => panel.BorderStyle, v => panel.BorderStyle = v, BorderStyle.FixedSingle, is3D);
       else if (upDown != null)
         ThemeValueIf(upDown, "BorderStyle", () => upDown.BorderStyle, v => upDown.BorderStyle = v, BorderStyle.FixedSingle, is3D);
+      else if (grid != null)
+        ThemeValueIf(grid, "BorderStyle", () => grid.BorderStyle, v => grid.BorderStyle = v, BorderStyle.FixedSingle, is3D);
     }
 
     private static void ApplyDataGrid(DataGrid grid)
@@ -558,6 +564,13 @@ namespace ID3_TagIT
 
       if (dropDownItem != null && dropDownItem.HasDropDownItems)
         ApplyToolStrip(dropDownItem.DropDown);
+    }
+
+    internal static bool HasPainter(Control control)
+    {
+      ThemePainter painter;
+
+      return Painters.TryGetValue(control, out painter);
     }
 
     // Painters stay attached once created; they only paint while dark mode is on.
