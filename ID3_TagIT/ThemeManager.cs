@@ -410,6 +410,14 @@ namespace ID3_TagIT
       if (upDown != null)
         AttachPainter(upDown, () => new DarkBorderPainter(upDown, false));
 
+      ComboBox combo = control as ComboBox;
+
+      if (combo != null)
+        AttachPainter(combo, () => new DarkComboPainter(combo));
+
+      if (control.Parent is UpDownBase && control.GetType().Name == "UpDownButtons")
+        AttachPainter(control, () => new DarkSpinButtonsPainter(control));
+
       DataGrid grid = control as DataGrid;
 
       if (grid != null)

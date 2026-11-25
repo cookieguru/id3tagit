@@ -191,6 +191,7 @@
     <Compile Include="ID3_TagIT\NativeTheme.cs" />
     <Compile Include="ID3_TagIT\PaneIcons.cs" />
     <Compile Include="ID3_TagIT\DarkBorderPainters.cs" />
+    <Compile Include="ID3_TagIT\DarkControlPainters.cs" />
     <Compile Include="ID3_TagIT\ThemedTabControl.cs" />
     <Compile Include="ID3_TagIT\TaskPaneGroup.cs" />
     <Compile Include="ID3_TagIT\frmTransfer.cs">

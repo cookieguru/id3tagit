@@ -104,6 +104,11 @@ namespace ID3_TagIT.SmokeTests
         app.Launch(1);
         FlaUI.Core.AutomationElements.Window preferences = app.OpenDialog("frmPreferences", VirtualKeyShort.F12);
         float page = Brightness(preferences, preferences.BoundingRectangle.Width / 2, preferences.BoundingRectangle.Height - 65);
+
+        // A drop-down list is a gray button to Windows; it must be as dark as the text boxes.
+        AutomationElement play = Ui.Find(preferences, "cmbPlay");
+        float dropDownList = Brightness(play, play.BoundingRectangle.Width - 40, play.BoundingRectangle.Height / 2);
+        Assert.True(dropDownList < DARK, "Drop-down list brightness " + dropDownList.ToString("0.00") + " (" + Environment_() + ")");
         app.CloseDialog(preferences, "btnCancel");
         app.Close();
 
