@@ -164,6 +164,95 @@ namespace ID3_TagIT
     private static extern int ReleaseDC(IntPtr hWnd, IntPtr hDC);
   }
 
+  // Windows draws a list view's column header with the items view theme, but in a text color
+  // that is nearly black.  Windows keeps drawing the header and its sort images; this only
+  // sets the text color, through the header's custom draw notification to its parent.
+  internal sealed class DarkHeaderTextPainter : ThemePainter
+  {
+    private const int WM_NOTIFY = 0x4E;
+    private const int LVM_GETHEADER = 0x101F;
+    private const int NM_CUSTOMDRAW = -12;
+    private const int CDDS_PREPAINT = 0x1;
+    private const int CDDS_ITEMPREPAINT = 0x10001;
+    private const int CDRF_NEWFONT = 0x2;
+    private const int CDRF_NOTIFYITEMDRAW = 0x20;
+
+    private readonly ListView objListView;
+
+    public DarkHeaderTextPainter(ListView listView)
+    {
+      this.objListView = listView;
+    }
+
+    public override void Attach()
+    {
+      if (this.objListView.IsHandleCreated)
+        this.AssignTo(this.objListView.Handle);
+    }
+
+    protected override bool OwnsPainting
+    {
+      get
+      {
+        return false;
+      }
+    }
+
+    protected override void Paint(Graphics g, Rectangle bounds)
+    {
+    }
+
+    protected override void WndProc(ref Message m)
+    {
+      if (m.Msg == WM_NOTIFY && ThemeManager.IsDark && this.CustomDrawHeader(ref m))
+        return;
+
+      base.WndProc(ref m);
+    }
+
+    private bool CustomDrawHeader(ref Message m)
+    {
+      NMCUSTOMDRAW notice = (NMCUSTOMDRAW)Marshal.PtrToStructure(m.LParam, typeof(NMCUSTOMDRAW));
+
+      if (notice.code != NM_CUSTOMDRAW || notice.hwndFrom != SendMessage(this.Handle, LVM_GETHEADER, IntPtr.Zero, IntPtr.Zero))
+        return false;
+
+      if (notice.dwDrawStage == CDDS_PREPAINT)
+      {
+        m.Result = (IntPtr)CDRF_NOTIFYITEMDRAW;
+        return true;
+      }
+
+      if (notice.dwDrawStage != CDDS_ITEMPREPAINT)
+        return false;
+
+      SetTextColor(notice.hdc, ColorTranslator.ToWin32(ThemeManager.DarkText));
+      m.Result = (IntPtr)CDRF_NEWFONT;
+
+      return true;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    private struct NMCUSTOMDRAW
+    {
+      public IntPtr hwndFrom;
+      public IntPtr idFrom;
+      public int code;
+      public int dwDrawStage;
+      public IntPtr hdc;
+      public RECT rc;
+      public IntPtr dwItemSpec;
+      public int uItemState;
+      public IntPtr lItemlParam;
+    }
+
+    [DllImport("user32.dll")]
+    private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
+
+    [DllImport("gdi32.dll")]
+    private static extern int SetTextColor(IntPtr hdc, int color);
+  }
+
   // The up and down buttons inside a NumericUpDown.
   internal sealed class DarkSpinButtonsPainter : ThemePainter
   {

@@ -382,7 +382,7 @@ namespace ID3_TagIT
       {
         // Classic grid lines are always drawn in a light system color.
         ThemeValueIf(list, "GridLines", () => list.GridLines, v => list.GridLines = v, false, v => v);
-        AttachPainter(list, () => new DarkHeaderPainter(list));
+        AttachPainter(list, () => new DarkHeaderTextPainter(list));
       }
 
       ThemedTabControl tabs = control as ThemedTabControl;
@@ -808,7 +808,7 @@ namespace ID3_TagIT
   }
 
   // Base for the window subclasses that paint native parts WinForms can't recolor (the
-  // ListView column header). Only active in dark mode.
+  // combo boxes). Only active in dark mode.
   internal abstract class ThemePainter : NativeWindow
   {
     protected const int WM_PAINT = 0xF;
@@ -919,187 +919,6 @@ namespace ID3_TagIT
 
     [DllImport("user32.dll")]
     private static extern bool InvalidateRect(IntPtr hWnd, IntPtr lpRect, bool bErase);
-  }
-
-  // Paints a ListView's column header, including the native sort images frmMain sets with
-  // LVM_SETCOLUMN, because the classic header always uses the light system colors.
-  internal sealed class DarkHeaderPainter : ThemePainter
-  {
-    private const int LVM_GETHEADER = 0x101F;
-    private const int HDM_GETITEMCOUNT = 0x1200;
-    private const int HDM_GETITEMRECT = 0x1207;
-    private const int HDM_GETIMAGELIST = 0x1209;
-    private const int HDM_GETITEMW = 0x120B;
-    private const int HDI_TEXT = 0x2;
-    private const int HDI_FORMAT = 0x4;
-    private const int HDI_IMAGE = 0x20;
-    private const int HDF_JUSTIFYMASK = 0x3;
-    private const int HDF_RIGHT = 0x1;
-    private const int HDF_CENTER = 0x2;
-    private const int HDF_SORTDOWN = 0x200;
-    private const int HDF_SORTUP = 0x400;
-    private const int HDF_IMAGE = 0x800;
-    private const int HDF_BITMAP_ON_RIGHT = 0x1000;
-    private const int ILD_TRANSPARENT = 0x1;
-    private const int TEXT_PADDING = 6;
-
-    private readonly ListView objListView;
-
-    public DarkHeaderPainter(ListView listView)
-    {
-      this.objListView = listView;
-    }
-
-    public override void Attach()
-    {
-      if (this.objListView.IsHandleCreated)
-        this.AssignTo(SendMessage(this.objListView.Handle, LVM_GETHEADER, IntPtr.Zero, IntPtr.Zero));
-    }
-
-    protected override void Paint(Graphics g, Rectangle bounds)
-    {
-      g.Clear(ThemeManager.DarkRaised);
-
-      int count = SendMessage(this.Handle, HDM_GETITEMCOUNT, IntPtr.Zero, IntPtr.Zero).ToInt32();
-      IntPtr imageList = SendMessage(this.Handle, HDM_GETIMAGELIST, IntPtr.Zero, IntPtr.Zero);
-      IntPtr textBuffer = Marshal.AllocHGlobal(520);
-
-      try
-      {
-        using (Pen border = new Pen(ThemeManager.DarkBorder))
-        {
-          for (int i = 0; i < count; i++)
-          {
-            RECT rect = new RECT();
-            SendMessage(this.Handle, HDM_GETITEMRECT, (IntPtr)i, ref rect);
-            Rectangle itemBounds = Rectangle.FromLTRB(rect.Left, rect.Top, rect.Right, rect.Bottom);
-
-            HDITEM item = new HDITEM();
-            item.mask = HDI_TEXT | HDI_FORMAT | HDI_IMAGE;
-            item.pszText = textBuffer;
-            item.cchTextMax = 260;
-            SendMessage(this.Handle, HDM_GETITEMW, (IntPtr)i, ref item);
-
-            string text = Marshal.PtrToStringUni(textBuffer) ?? "";
-
-            this.PaintItem(g, itemBounds, text, item, imageList);
-            g.DrawLine(border, itemBounds.Right - 1, itemBounds.Top, itemBounds.Right - 1, itemBounds.Bottom - 1);
-          }
-
-          g.DrawLine(border, bounds.Left, bounds.Bottom - 1, bounds.Right, bounds.Bottom - 1);
-        }
-      }
-      finally
-      {
-        Marshal.FreeHGlobal(textBuffer);
-      }
-    }
-
-    private void PaintItem(Graphics g, Rectangle bounds, string text, HDITEM item, IntPtr imageList)
-    {
-      Rectangle textBounds = Rectangle.FromLTRB(bounds.Left + TEXT_PADDING, bounds.Top, bounds.Right - TEXT_PADDING, bounds.Bottom);
-      bool hasImage = ((item.fmt & HDF_IMAGE) != 0) && (imageList != IntPtr.Zero) && (item.iImage >= 0);
-      int imageWidth = 0;
-      int imageHeight = 0;
-
-      if (hasImage)
-        ImageList_GetIconSize(imageList, out imageWidth, out imageHeight);
-
-      if (hasImage && ((item.fmt & HDF_BITMAP_ON_RIGHT) == 0))
-        textBounds.X += imageWidth + 4;
-
-      if (hasImage)
-        textBounds.Width -= imageWidth + 4;
-
-      if (textBounds.Width < 0)
-        textBounds.Width = 0;
-
-      TextFormatFlags flags = TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine | TextFormatFlags.EndEllipsis | TextFormatFlags.NoPrefix;
-
-      switch (item.fmt & HDF_JUSTIFYMASK)
-      {
-        case HDF_RIGHT:
-          flags |= TextFormatFlags.Right;
-          break;
-
-        case HDF_CENTER:
-          flags |= TextFormatFlags.HorizontalCenter;
-          break;
-      }
-
-      TextRenderer.DrawText(g, text, this.objListView.Font, textBounds, ThemeManager.DarkText, flags);
-
-      if (hasImage)
-      {
-        int x;
-
-        if ((item.fmt & HDF_BITMAP_ON_RIGHT) != 0)
-        {
-          int textWidth = Math.Min(TextRenderer.MeasureText(g, text, this.objListView.Font, textBounds.Size, flags).Width, textBounds.Width);
-
-          if ((item.fmt & HDF_JUSTIFYMASK) == HDF_RIGHT)
-            x = textBounds.Right + 4;
-          else
-            x = textBounds.Left + textWidth + 4;
-        }
-        else
-          x = bounds.Left + TEXT_PADDING;
-
-        int y = bounds.Top + ((bounds.Height - imageHeight) / 2);
-        IntPtr hdc = g.GetHdc();
-
-        try
-        {
-          ImageList_Draw(imageList, item.iImage, hdc, x, y, ILD_TRANSPARENT);
-        }
-        finally
-        {
-          g.ReleaseHdc(hdc);
-        }
-      }
-      else if ((item.fmt & (HDF_SORTUP | HDF_SORTDOWN)) != 0)
-      {
-        int cx = bounds.Left + (bounds.Width / 2);
-        Point[] arrow = ((item.fmt & HDF_SORTUP) != 0)
-          ? new Point[] { new Point(cx - 4, bounds.Top + 5), new Point(cx + 4, bounds.Top + 5), new Point(cx, bounds.Top + 1) }
-          : new Point[] { new Point(cx - 4, bounds.Top + 1), new Point(cx + 4, bounds.Top + 1), new Point(cx, bounds.Top + 5) };
-
-        using (SolidBrush brush = new SolidBrush(ThemeManager.DarkDisabledText))
-          g.FillPolygon(brush, arrow);
-      }
-    }
-
-    [StructLayout(LayoutKind.Sequential)]
-    private struct HDITEM
-    {
-      public int mask;
-      public int cxy;
-      public IntPtr pszText;
-      public IntPtr hbm;
-      public int cchTextMax;
-      public int fmt;
-      public IntPtr lParam;
-      public int iImage;
-      public int iOrder;
-      public uint type;
-      public IntPtr pvFilter;
-      public uint state;
-    }
-
-    [DllImport("user32.dll", CharSet = CharSet.Unicode)]
-    private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
-
-    [DllImport("user32.dll", CharSet = CharSet.Unicode)]
-    private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, ref RECT lParam);
-
-    [DllImport("user32.dll", CharSet = CharSet.Unicode)]
-    private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, ref HDITEM lParam);
-
-    [DllImport("comctl32.dll")]
-    private static extern bool ImageList_Draw(IntPtr himl, int i, IntPtr hdcDst, int x, int y, int fStyle);
-
-    [DllImport("comctl32.dll")]
-    private static extern bool ImageList_GetIconSize(IntPtr himl, out int cx, out int cy);
   }
 
   internal sealed class DarkToolStripRenderer : ToolStripProfessionalRenderer

@@ -14,7 +14,9 @@ namespace ID3_TagIT
 
     private const string EXPLORER = "DarkMode_Explorer";
     private const string COMMON_FILE_DIALOG = "DarkMode_CFD";
+    private const string ITEMS_VIEW = "DarkMode_ItemsView";
 
+    private const int LVM_GETHEADER = 0x101F;
     private const int CB_GETCOMBOBOXINFO = 0x164;
     private const int ORDINAL_SET_PREFERRED_APP_MODE = 135;
     private const int ORDINAL_FLUSH_MENU_THEMES = 136;
@@ -143,6 +145,15 @@ namespace ID3_TagIT
         if (list != IntPtr.Zero)
           SetWindowThemeCall(list, dark ? EXPLORER : null, null);
       }
+
+      // The Explorer theme leaves the column header light; the items view theme draws it dark.
+      if (control is ListView)
+      {
+        IntPtr header = SendMessage(control.Handle, LVM_GETHEADER, IntPtr.Zero, IntPtr.Zero);
+
+        if (header != IntPtr.Zero)
+          SetWindowThemeCall(header, dark ? ITEMS_VIEW : null, null);
+      }
     }
 
     private static IntPtr ReadComboList(ComboBox combo)
@@ -233,6 +244,9 @@ namespace ID3_TagIT
 
     [DllImport("user32.dll")]
     private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, ref COMBOBOXINFO lParam);
+
+    [DllImport("user32.dll")]
+    private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
 
     [DllImport("ntdll.dll")]
     private static extern int RtlGetVersion(ref OSVERSIONINFO info);

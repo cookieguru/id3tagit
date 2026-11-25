@@ -164,6 +164,31 @@ namespace ID3_TagIT.Tests
     }
 
     [Fact]
+    public void ListViewColumnHeaderGetsTheItemsViewTheme()
+    {
+      Sta.Run(delegate ()
+      {
+        using (Recorder recorder = new Recorder())
+        using (ListView list = new ListView())
+        {
+          list.View = View.Details;
+          list.Columns.Add("Name");
+          IntPtr handle = list.Handle;
+          NativeTheme.Apply(list, true);
+
+          Assert.Equal("DarkMode_Explorer", recorder.Names[recorder.Handles.IndexOf(handle)]);
+          Assert.Contains("DarkMode_ItemsView", recorder.Names);
+
+          recorder.Names.Clear();
+          NativeTheme.Apply(list, false);
+
+          Assert.DoesNotContain("DarkMode_ItemsView", recorder.Names);
+          Assert.Equal(2, recorder.Names.Count);
+        }
+      });
+    }
+
+    [Fact]
     public void ComboDropDownListIsThemedToo()
     {
       Sta.Run(delegate ()

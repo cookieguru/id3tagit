@@ -1,4 +1,6 @@
+using System;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Xunit;
 
@@ -97,6 +99,62 @@ namespace ID3_TagIT.Tests
         Color heading = form.Heading.ForeColor;
         Assert.True(heading.GetBrightness() > Color.FromArgb(33, 93, 198).GetBrightness());
         Assert.True(heading.B > heading.R); // still blue
+      });
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    private struct NMCUSTOMDRAW
+    {
+      public IntPtr hwndFrom;
+      public IntPtr idFrom;
+      public int code;
+      public int dwDrawStage;
+      public IntPtr hdc;
+      public int left;
+      public int top;
+      public int right;
+      public int bottom;
+      public IntPtr dwItemSpec;
+      public int uItemState;
+      public IntPtr lItemlParam;
+    }
+
+    [DllImport("user32.dll")]
+    private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
+
+    private static IntPtr CustomDrawHeader(ListView list, int stage)
+    {
+      IntPtr header = SendMessage(list.Handle, 0x101F, IntPtr.Zero, IntPtr.Zero);
+      NMCUSTOMDRAW notice = new NMCUSTOMDRAW();
+      notice.hwndFrom = header;
+      notice.code = -12;
+      notice.dwDrawStage = stage;
+      IntPtr memory = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(NMCUSTOMDRAW)));
+
+      try
+      {
+        Marshal.StructureToPtr(notice, memory, false);
+
+        return SendMessage(list.Handle, 0x4E, IntPtr.Zero, memory);
+      }
+      finally
+      {
+        Marshal.FreeHGlobal(memory);
+      }
+    }
+
+    [Fact]
+    public void DarkModeDrawsTheColumnHeaderTextInTheThemeTextColor()
+    {
+      WithTheme(ThemeManager.THEME_DARK, delegate (TestForm form)
+      {
+        form.List.View = View.Details;
+        form.List.Columns.Add("Name");
+        IntPtr handle = form.List.Handle;
+
+        // Windows' own header text color under the dark theme is nearly black.
+        Assert.Equal((IntPtr)0x20, CustomDrawHeader(form.List, 0x1));
+        Assert.Equal((IntPtr)0x2, CustomDrawHeader(form.List, 0x10001));
       });
     }
 
