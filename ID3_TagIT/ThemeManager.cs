@@ -362,16 +362,11 @@ namespace ID3_TagIT
 
       ButtonBase button = control as ButtonBase;
 
-      // Classic 3D buttons, check boxes and radio buttons ignore dark colors for their frame
-      // and box; flat ones draw with BackColor/ForeColor. Leave buttons with custom colors
-      // (such as color swatches) alone.
+      // Only a system style button, check box or radio button is drawn by Windows, which then
+      // draws it dark with the Explorer theme.  Leave buttons with custom colors (such as
+      // color swatches) alone.
       if (button != null && (!vbooIsDark || IsThemeOrSystemColor(button.BackColor)))
-      {
-        ThemeValue(button, "FlatStyle", () => button.FlatStyle, v => button.FlatStyle = v, FlatStyle.Flat);
-        ThemeValue(button, "FlatAppearance.BorderColor", () => button.FlatAppearance.BorderColor, v => button.FlatAppearance.BorderColor = v, DarkBorder);
-        ThemeValue(button, "FlatAppearance.MouseOverBackColor", () => button.FlatAppearance.MouseOverBackColor, v => button.FlatAppearance.MouseOverBackColor = v, DarkHover);
-        ThemeValue(button, "FlatAppearance.MouseDownBackColor", () => button.FlatAppearance.MouseDownBackColor, v => button.FlatAppearance.MouseDownBackColor = v, DarkBorder);
-      }
+        ThemeValue(button, "FlatStyle", () => button.FlatStyle, v => button.FlatStyle = v, FlatStyle.System);
 
       ApplyBorderStyle(control);
       NativeTheme.Apply(control, vbooIsDark);

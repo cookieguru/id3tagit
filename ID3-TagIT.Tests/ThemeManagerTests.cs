@@ -75,7 +75,7 @@ namespace ID3_TagIT.Tests
         Assert.Equal(ThemeManager.DarkText.ToArgb(), form.ForeColor.ToArgb());
         Assert.Equal(ThemeManager.DarkWindow.ToArgb(), form.TextBox.BackColor.ToArgb());
         Assert.Equal(ThemeManager.DarkButton.ToArgb(), form.Button.BackColor.ToArgb());
-        Assert.Equal(FlatStyle.Flat, form.Button.FlatStyle);
+        Assert.Equal(FlatStyle.System, form.Button.FlatStyle);
       });
     }
 
@@ -171,7 +171,7 @@ namespace ID3_TagIT.Tests
         form.Controls.Add(group);
         ThemeManager.Apply(form);
 
-        Assert.Equal(FlatStyle.Flat, button.FlatStyle);
+        Assert.Equal(FlatStyle.System, button.FlatStyle);
         Assert.False(button.UseVisualStyleBackColor);
         Assert.Equal(ThemeManager.DarkButton.ToArgb(), button.BackColor.ToArgb());
 

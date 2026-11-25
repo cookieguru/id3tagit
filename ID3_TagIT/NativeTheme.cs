@@ -63,6 +63,12 @@ namespace ID3_TagIT
       if (textBox != null)
         return textBox.Multiline ? EXPLORER : COMMON_FILE_DIALOG;
 
+      ButtonBase button = control as ButtonBase;
+
+      // The style is set to System before this is asked; a button with its own colors keeps its own look.
+      if (button != null)
+        return button.FlatStyle == FlatStyle.System ? EXPLORER : null;
+
       Panel panel = control as Panel;
 
       if (panel != null && panel.AutoScroll)

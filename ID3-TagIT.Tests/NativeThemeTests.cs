@@ -113,6 +113,9 @@ namespace ID3_TagIT.Tests
         Assert.Null(NativeTheme.ThemeNameFor(new Panel(), true));
         Assert.Null(NativeTheme.ThemeNameFor(new Label(), true));
         Assert.Null(NativeTheme.ThemeNameFor(new Button(), true));
+        Assert.Equal("DarkMode_Explorer", NativeTheme.ThemeNameFor(new Button { FlatStyle = FlatStyle.System }, true));
+        Assert.Equal("DarkMode_Explorer", NativeTheme.ThemeNameFor(new CheckBox { FlatStyle = FlatStyle.System }, true));
+        Assert.Equal("DarkMode_Explorer", NativeTheme.ThemeNameFor(new RadioButton { FlatStyle = FlatStyle.System }, true));
         Assert.Null(NativeTheme.ThemeNameFor(new ListView(), false));
       });
     }
